@@ -1,6 +1,7 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .main-content {
     margin: 20px;
     display: flex;
@@ -14,6 +15,8 @@ body{
     background: #f1f1f1;
     padding: 20px 70px;
     border-radius: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .cover-product {
@@ -23,10 +26,15 @@ body{
     border-radius: 20px;
 }
 
+.cover-all {
+    display: flex;
+    justify-content: center;
+}
+
 .product-list {
     padding-top: 20px;
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .style-title {
@@ -45,8 +53,9 @@ body{
 }
 
 .product-card {
-    width: calc(100% / 5);
+    width: calc(100% - 40px);
     border: 1px solid #8e3c33;
+    margin: 0 10px;
 }
 
 .product-img {
@@ -82,4 +91,39 @@ body{
 
 .style-name:hover {
     color: #ba2212;
+}
+
+.style-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 82%;
+}
+
+/* slider */
+.prev {
+    position: absolute;
+    z-index: 1000;
+    border: none;
+    font-size: 35px;
+    left: -25px;
+    top: 50%;
+    background: none;
+}
+
+.next {
+    position: absolute;
+    z-index: 1000;
+    border: none;
+    font-size: 35px;
+    right: -25px;
+    top: 50%;
+    background: none;
+}
+
+.cursor:hover .next,
+.cursor:hover .prev {
+    display: block;
+    cursor: pointer;
 }

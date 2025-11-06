@@ -1,37 +1,34 @@
 
-// Nạp nội dung từ header.html
-fetch("common/header.html")
-  .then(res => res.text())
-  .then(data => document.getElementById("header-placeholder").innerHTML = data);
-
-// Nạp nội dung từ footer.html
-fetch("common/footer.html")
-  .then(res => res.text())
-  .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-//   load sản phẩm
 window.addEventListener("DOMContentLoaded", () => {
     const outstandingListContainer = document.getElementById("outstanding-product-list");
     if (outstandingListContainer) {
         const outstandingProducts = [
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Lọ hoa Kutani", price: "2.500.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Lọ hoa Kutani", price: "2.500.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Lọ hoa Kutani", price: "2.500.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Lọ hoa Kutani", price: "2.500.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
         ];
         const amChenProducts = [
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
         ];
         const chumProducts = [
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
-            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_tra_575x766_773602eeadb34857b866db00b2ddbacc.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+            { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
 
         ]
         function renderProducts(containerId, templateId, productArray) {
@@ -57,4 +54,5 @@ window.addEventListener("DOMContentLoaded", () => {
         renderProducts("chum-product-list", "chum-product-template", chumProducts);
     }
 });
+
 

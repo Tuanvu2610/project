@@ -24,13 +24,15 @@ body {
     font-weight: bold;
     color: #ffffff;
     position: relative;
-    top: -15px;
+    top: 0;
 }
 
 .text-header {
     width: 25%;
     margin-right: 20px;
     font-family: "VN Opulent Brush", "LNTH Watermark", cursive;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .search-header {
@@ -257,3 +259,4 @@ body {
 .sub-item:hover:after {
     width: 100%;
 }
+
