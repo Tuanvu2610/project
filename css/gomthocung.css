@@ -1,0 +1,135 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.decription{
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: auto;
+    border-radius: 20px;
+
+}
+.decription p{
+    width: 1000px;
+    margin: 0;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+.dec-img{
+    display: flex;
+    gap: 30px;
+}
+.dec-img img{
+    width: 520px;
+}
+.outstanding-section{
+    width: 1200px;
+    margin: auto;
+    background: #f1f1f1;
+    padding: 20px 70px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.product-section{
+    width: 1200px;
+    margin: auto;
+    padding: 20px 70px;
+    border-radius: 20px;
+}
+.product-list{
+    padding-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.style-title{
+    font-size: 35px;
+    margin: 0;
+    color: #18559e;
+    font-weight: bold;
+    padding: 0 150px;
+}
+
+.outstanding-section>p{
+    font-size: 25px;
+    margin: 0;
+    color: #8e3c33;
+    font-weight: bold;
+}
+.product-card{
+    width: calc(100% / 5 - 20px);
+    border: 1px solid #8e3c33;
+    margin: 0 10px;
+}
+.product-img {
+    height: 200px;
+    width: 100%;
+}
+.padding{
+    padding: 0 20px;
+}
+
+.product-section>button{
+    background: #8e3c33;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    margin: 20px 0;
+    border: none;
+    border-radius: 50px;
+}
+.product-section>button:hover{
+    cursor: pointer;
+}
+.product-card:hover{
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.0);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.style-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 82%;
+}
+.style-name:hover{
+    color: #ba2212;
+}
+.previous{
+    position: absolute;
+    z-index: 1000;
+    border: none;
+    font-size: 35px;
+    left: -25px;
+    top: 50%;
+    background: none;
+}
+.next{
+    position: absolute;
+    z-index: 1000;
+    border: none;
+    font-size: 35px;
+    right: -25px;
+    top: 50%;
+    background: none;
+}
+.cursor:hover .next,
+.cursor:hover .previous{
+    display: block;
+    cursor: pointer;
+}
