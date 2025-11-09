@@ -281,31 +281,38 @@ window.addEventListener("DOMContentLoaded", () => {
             { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
             { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
         ]
+        const giamgiaproductlisthome = [
+        { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ", priceOrigin:"2.000.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+        { name: "Lọ hoa Kutani", price: "2.500.000đ",priceOrigin:"2.000.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+        { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ",priceOrigin:"2.000.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+        { name: "Lọ hoa Kutani", price: "2.500.000đ",priceOrigin:"2.000.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+        { name: "Bộ ấm chén Sen Vàng", price: "1.200.000đ",priceOrigin:"2.000.000đ", img: "../img/bo_binh_6_coc_8.jpg" },
+        ]
 
 
     function renderProducts(containerId, templateId, productArray) {
-            const container = document.getElementById(containerId);
-            const template = document.getElementById(templateId);
+        const container = document.getElementById(containerId);
+        const template = document.getElementById(templateId);
 
-            if (!container || !template) {
-                console.error("Không tìm thấy container hoặc template ID:", containerId, templateId);
-                return;
-            }
-            container.innerHTML = "";
-            productArray.forEach(p => {
-                const clone = template.content.cloneNode(true);
-                clone.querySelector(".product-img").src = p.img;
-                clone.querySelector(".product-img").alt = p.name;
-                clone.querySelector(".product-name").textContent = p.name;
-                clone.querySelector(".product-price").textContent = p.price;
-                const priceOriginEl = clone.querySelector(".price-origin");
-                if (priceOriginEl) {
-                    if (p.priceOrigin) priceOriginEl.textContent = p.priceOrigin;
-                    else priceOriginEl.style.display = "none";
-                }
-                container.appendChild(clone);
-            });
+        if (!container || !template) {
+            console.error("Không tìm thấy container hoặc template ID:", containerId, templateId);
+            return;
         }
+        container.innerHTML = "";
+        productArray.forEach(p => {
+            const clone = template.content.cloneNode(true);
+            clone.querySelector(".product-img").src = p.img;
+            clone.querySelector(".product-img").alt = p.name;
+            clone.querySelector(".product-name").textContent = p.name;
+            clone.querySelector(".product-price").textContent = p.price;
+            const priceOriginEl = clone.querySelector(".price-origin");
+            if (priceOriginEl) {
+                if (p.priceOrigin) priceOriginEl.textContent = p.priceOrigin;
+                else priceOriginEl.style.display = "none";
+            }
+            container.appendChild(clone);
+        });
+    }
         /* gom gia dung */
         renderProducts("outstanding-product-list", "outstanding-product-template", outstandingProducts);
         renderProducts("amchen-product-list", "amchen-product-template", amChenProducts);
@@ -343,6 +350,9 @@ window.addEventListener("DOMContentLoaded", () => {
         renderProducts("amchenLogoPage-list", "amchenLogoPage-template", amchenLogoPage);
         renderProducts("binhhoaPage-list", "binhhoaPage-template", binhhoaPage);
         renderProducts("batdiaPage-list", "batdiaPage-template", batdiaPage);
+        // producthome
+        renderProducts("giamgia-product-list-home", "giamgia-product-template-home", giamgiaproductlisthome);
+        renderProducts("otherchen-product-list-home", "otherchen-product-template-home", giamgiaproductlisthome);
 });
 
 
