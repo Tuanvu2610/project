@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../css/tintuc.css">
+    <title>Gốm sứ trang trí</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gomtrangtri.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../js/javascript.js"></script>
+
 </head>
 <body>
 <!--header-->
@@ -70,85 +77,83 @@
     </ul>
 </nav>
 
-<!-- Banner -->
-<section class="banner">
-    <img src="https://gomsubattrang.com/Images/SanPham/sqp-bo-am-men-ran-bit-dong.jpg" alt="Banner Tin Tức">
-    <div class="banner-text">
-        <h1>Ấm Chén Bát Tràng</h1>
-    </div>
-</section>
-
-<!-- Bản tin -->
-<section class="news-grid">
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
+<!-- content -->
+<section class="content">
+    <div class="discount-section">
+        <p class="section-title">Sản phẩm đang giảm giá</p>
+        <div id="discount-product-list" class="discount-list">
+            <template id="discount-product-template">
+                <div class="product-card">
+                    <img src="" alt="" class="product-img">
+                    <h3 class="product-name padding style-name"></h3>
+                    <div class="price-box padding">
+                        <p class="product-price"></p>
+                        <p class="price-origin"></p>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
-
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
+    <div class="trangtri">
+        <div id="binhtailoc" class="item">
+            <p class="style-title">Bình Thu Hút Tài Lộc</p>
+            <div class="product-section cursor">
+                <div id="lucky-vase-product-list" class="product-list">
+                    <template id="lucky-vase-product-template">
+                        <div class="product-card">
+                            <img src="" alt="" class="product-img">
+                            <h3 class="product-name padding style-name"></h3>
+                            <p class="product-price padding"></p>
+                        </div>
+                    </template>
+                </div>
+                <button>Xem tất cả &#9654;</button>
+            </div>
         </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
+        <div id="binhtyba" class="item">
+            <p class="style-title">Bình Tỳ Bà</p>
+            <div class="product-section cursor">
+                <div id="tyba-product-list" class="product-list">
+                    <template id="tyba-product-template">
+                        <div class="product-card">
+                            <img src="" alt="" class="product-img">
+                            <h3 class="product-name padding style-name"></h3>
+                            <p class="product-price padding"></p>
+                        </div>
+                    </template>
+                </div>
+                <button>Xem tất cả &#9654;</button>
+            </div>
         </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
+        <div id="tuonggom" class="item">
+            <p class="style-title">Tượng Gốm Sứ</p>
+            <div class="product-section cursor">
+                <div id="tuonggom-product-list" class="product-list">
+                    <template id="tuonggom-product-template">
+                        <div class="product-card">
+                            <img src="" alt="" class="product-img">
+                            <h3 class="product-name padding style-name"></h3>
+                            <p class="product-price padding"></p>
+                        </div>
+                    </template>
+                </div>
+                <button>Xem tất cả &#9654;</button>
+            </div>
         </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
+        <div id="holo" class="item">
+            <p class="style-title">Bình Hồ Lô</p>
+            <div class="product-section cursor">
+                <div id="holo-product-list" class="product-list">
+                    <template id="holo-product-template">
+                        <div class="product-card">
+                            <img src="" alt="" class="product-img">
+                            <h3 class="product-name padding style-name"></h3>
+                            <p class="product-price padding"></p>
+                        </div>
+                    </template>
+                </div>
+                <button>Xem tất cả &#9654;</button>
+            </div>
         </div>
     </div>
 </section>
@@ -219,6 +224,29 @@
         </div>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#discount-product-list').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            prevArrow: '<button class="previous">❮</button>',
+            nextArrow: '<button class="next">❯</button>'
+        });
+    });
+    // Chức năng chuyển tab
+    const tabs = document.querySelectorAll(".tab");
+    const items = document.querySelectorAll(".item");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            items.forEach(c => c.style.display = "none");
+            document.getElementById(tab.dataset.target).style.display = "block";
+        });
+    });
+</script>
 </body>
 </html>
