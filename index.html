@@ -20,19 +20,19 @@
     <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
     <div class="right-header">
         <button class="btn-header" id="openModalBtn">Đăng nhập</button>
-        <button class="btn-header line"><img src="../img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button>
+        <button class="btn-header line"><img src="img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button>
     </div>
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"> <a href="html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li>Ấm chén Bát Tràng</li>
-                    <li>Bộ bát đĩa Bát Tràng</li>
-                    <li>Chum ngâm rượu</li>
-                    <li>Dụng cụ nhà tắm</li>
-                    <li>Đèn ngủ</li>
+                    <li><a href="html/gomgiadung.html">Ấm chén bác tràng</a></li>
+                    <li><a href="html/gomgiadung.html">Bộ bác đĩa bác tràng</a></li>
+                    <li><a href="html/gomgiadung.html">Chum ngâm rượu</a></li>
+                    <li><a href="html/gomgiadung.html">Dụng cụ nhà tắm</a></li>
+                    <li><a href="html/gomgiadung.html">Đèn ngủ</a></li>
                 </ul>
             </div>
         </li>
@@ -80,6 +80,13 @@
     </a>
 </div>
 <!-- body -->
+<div class="icon-page">
+    <a href="https://zalo.me/" target="_blank" class="icon-zalo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" width="40">
+        <span>Chat Zalo</span>
+    </a>
+</div>
+<!-- body -->
 <section class="info-home">
     <div class="left-pageinfo">
         <div class="title-left">
@@ -118,7 +125,7 @@
         </div>
     </div>
     <div class="right-pageinfo">
-        <img src="/project/img/gom-su-bach-hoa-kutani-removebg-preview.png" alt="">
+        <img src="img/gom-su-bach-hoa-kutani-removebg-preview.png" alt="">
     </div>
 </section>
 <section class="product-home">
@@ -174,58 +181,46 @@
     </div>
 </section>
 <section id="productInHome">
-    <div class="container">
+    <div class="style-container">
         <p class="style-title"><span style="color: #FFEA00;">⚡</span>Sản phẩm giảm giá sốc</p>
         <div class="cover-all-product">
-            <div class="product-card">
-                <img src="../../project/img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa hoa mặt trời sứ trắng họa tiết hoa sen vẽ tay
-                    SG-HMT06</h3>
-                <div class="product-price padding">
-                    <p class="price-origin">2.300.000đ</p>
-                    <p class="price-sale">2.300.000đ</p>
-                </div>
+            <div class="cover-product product-list" id="giamgia-product-list-home">
+                <template id="giamgia-product-template-home">
+                    <div class="product-card">
+                        <img src="" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name"></h3>
+                        <p class="price-origin padding"></p>
+                        <p class="product-price padding"></p>
+                    </div>
+                </template>
             </div>
-            <div class="product-card">
-                <img src="../../project/img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa hoa mặt trời sứ trắng họa tiết hoa sen vẽ tay
-                    SG-HMT06</h3>
-                <div class="product-price padding">
-                    <p class="price-origin">2.300.000đ</p>
-                    <p class="price-sale">2.300.000đ</p>
-                </div>
+        </div>
+    </div>
+</section>
+<section class="cover-other-product">
+    <div class="other-product">
+        <div class="cover-other">
+            <div class="title-other">
+                <img src="https://png.pngtree.com/png-clipart/20241115/original/pngtree-a-set-of-dishes-png-image_17080300.png"
+                     alt="">
+                <p>BÁT ĐĨA BÁT TRÀNG</p>
             </div>
-            <div class="product-card">
-                <img src="../../project/img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa hoa mặt trời sứ trắng họa tiết hoa sen vẽ tay
-                    SG-HMT06</h3>
-                <div class="product-price padding">
-                    <p class="price-origin">2.300.000đ</p>
-                    <p class="price-sale">2.300.000đ</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="../../project/img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa hoa mặt trời sứ trắng họa tiết hoa sen vẽ tay
-                    SG-HMT06</h3>
-                <div class="product-price padding">
-                    <p class="price-origin">2.300.000đ</p>
-                    <p class="price-sale">2.300.000đ</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="../../project/img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa hoa mặt trời sứ trắng họa tiết hoa sen vẽ tay
-                    SG-HMT06</h3>
-                <div class="product-price padding">
-                    <p class="price-origin">2.300.000đ</p>
-                    <p class="price-sale">2.300.000đ</p>
-                </div>
+        </div>
+    </div>
+    <div class="other-product-home style-container style-other">
+        <p class="style-other-title">Bát đĩa</p>
+        <div class="cover-all-product">
+            <div class="cover-product product-list" id="otherchen-product-list-home">
+                <template id="otherchen-product-template-home">
+                    <div class="product-card">
+                        <img src="" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name"></h3>
+                        <p class="price-origin padding"></p>
+                        <p class="product-price padding"></p>
+                    </div>
+                </template>
             </div>
         </div>
     </div>
@@ -297,6 +292,19 @@
         </div>
     </div>
 </footer>
+
+<script>
+    $(document).ready(function () {
+        $('.product-list').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            prevArrow: '<button class="prev">❮</button>',
+            nextArrow: '<button class="next">❯</button>'
+
+        });
+    });
+</script>
 </body>
 
 </html>

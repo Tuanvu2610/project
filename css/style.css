@@ -230,10 +230,13 @@ body {
     list-style: none;
 }
 
-.hover li {
+.hover li{
     margin: 15px;
     padding: 10px 20px;
     border-bottom: 1px solid #ccc;
+}
+.hover li a{
+    width: 100%;
 }
 
 .sub-item:hover .sub-menu .hover li:hover {
