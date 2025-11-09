@@ -9,7 +9,7 @@ body{
     flex-direction: column;
     gap: 50px;
 }
-.decription{
+.description{
     width: 1200px;
     display: flex;
     flex-direction: column;
@@ -19,21 +19,21 @@ body{
     border-radius: 20px;
 
 }
-.decription p{
+.description p{
     width: 1000px;
     margin: 0;
     font-size: 17px;
     font-weight: bold;
     line-height: 1.6;
 }
-.dec-img{
+.desc-img{
     display: flex;
     gap: 30px;
 }
-.dec-img img{
+.desc-img img{
     width: 520px;
 }
-.saleproduct-section{
+.saleprice-section{
     width: 1200px;
     margin: auto;
     background: #f1f1f1;
@@ -42,10 +42,10 @@ body{
     position: relative;
     overflow: hidden;
 }
-.saleproduct-section>p{
+.saleprice-section>p{
     font-size: 25px;
     margin: 0;
-    color: #973238;
+    color: #8e3c33;
     font-weight: bold;
 }
 .product-section{
@@ -59,7 +59,6 @@ body{
     display: flex;
     gap: 10px;
 }
-
 .style-title{
     font-size: 35px;
     margin: 0;
@@ -69,7 +68,7 @@ body{
 }
 .product-card{
     width: calc(100% / 5 - 20px);
-    border: 1px solid #973238;
+    border: 1px solid #8e3c33;
     margin: 0 10px;
 }
 .product-img {
@@ -79,13 +78,12 @@ body{
 .padding{
     padding: 0 20px;
 }
-
 .product-section>button{
-    background: #973238;
+    background: #8e3c33;
     width: 100%;
     padding: 10px 20px;
     font-size: 18px;
-    color: white;
+    color: #fff;
     font-weight: bold;
     margin: 20px 0;
     border: none;
@@ -107,7 +105,7 @@ body{
     width: 82%;
 }
 .style-name:hover{
-    color: #aa0000;
+    color: #ba2212;
 }
 .previous{
     position: absolute;
