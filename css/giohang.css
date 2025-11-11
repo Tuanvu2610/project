@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff;
+}
+
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 60px;
+    gap: 30px;
+}
+
+/* --- PHẦN SẢN PHẨM --- */
+.cart-items {
+    flex: 2;
+    border-right: 1px solid #eee;
+    padding-right: 30px;
+}
+
+.cart-items h2 {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #b84a3e;
+    display: inline-block;
+    padding-bottom: 4px;
+    color: #2c2c2c;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-info img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-details h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #003366;
+    font-weight: 500;
+}
+
+.price,
+.subtotal {
+    font-weight: bold;
+    color: #000;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.qty-btn {
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.quantity input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* --- PHẦN TỔNG CỘNG --- */
+.cart-summary {
+    flex: 1;
+    padding: 20px;
+    border-left: 1px solid #eee;
+}
+
+.cart-summary h2 {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #b84a3e;
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.checkout-btn {
+    background: #c55a37;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.checkout-btn:hover {
+    background: #a14228;
+}
+
+/* --- MÃ ƯU ĐÃI --- */
+.coupon {
+    margin-top: 25px;
+}
+
+.coupon h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.coupon-input {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.coupon-input button {
+    padding: 10px 20px;
+    border: none;
+    background: #eee;
+    color: #555;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.coupon-input button:hover {
+    background: #ddd;
+}
