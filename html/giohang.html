@@ -73,7 +73,7 @@
 
 <!-- content -->
 <div class="cart-container">
-    <!-- BẢNG SẢN PHẨM -->
+    <!-- SẢN PHẨM -->
     <section class="cart-items">
         <h2>SẢN PHẨM</h2>
         <div class="cart-header">
@@ -116,16 +116,16 @@
             <div class="subtotal">100.000₫</div>
         </div>
     </section>
-    <!-- BẢNG TỔNG CỘNG GIỎ HÀNG -->
+    <!-- THÀNH TIỀN-->
     <aside class="cart-summary">
         <h2>TỔNG CỘNG GIỎ HÀNG</h2>
         <div class="summary-row">
             <span>Tạm tính</span>
-            <span id="subtotal">395000</span>₫
+            <span id="subtotal">495.000 ₫</span>
         </div>
-        <div class="summary-row">
-            <span><b>Tổng</b></span>
-            <span id="total"><b>395000</b></span>₫
+        <div class="summary-row total">
+            <span><b>Tổng cộng</b></span>
+            <span id="total"><b>495.000 ₫</b></span>
         </div>
         <button class="checkout-btn">Tiến hành thanh toán</button>
         <div class="coupon">
@@ -235,64 +235,10 @@
             alert("Mã giảm giá không hợp lệ!");
         }
     });
-    // Hàm chuyển "395.000₫" thành số 395000
-    function parseVND(str) {
-        return parseInt(str.replace(/[^\d]/g, ""), 10);
-    }
-
-    // Hàm định dạng số tiền về dạng "395.000"
-    function formatVND(number) {
-        return number.toLocaleString("vi-VN");
-    }
-
-    // Hàm tính tổng tất cả sản phẩm
-    function updateCartTotal() {
-        let total = 0;
-        document.querySelectorAll(".cart-item").forEach(item => {
-            const subtotalText = item.querySelector(".subtotal").textContent;
-            total += parseVND(subtotalText);
-        });
-        document.getElementById("subtotal").textContent = formatVND(total);
-        document.getElementById("total").innerHTML = `<b>${formatVND(total)}</b>`;
-    }
-
-    // Hàm cập nhật lại subtotal của từng sản phẩm
-    function updateItemSubtotal(item) {
-        const price = parseVND(item.querySelector(".price").textContent);
-        const qty = parseInt(item.querySelector(".qty-input").value, 10) || 0;
-        const subtotal = price * qty;
-        item.querySelector(".subtotal").textContent = `${formatVND(subtotal)}₫`;
-        updateCartTotal(); // cập nhật tổng giỏ hàng
-    }
-
-    // Gắn sự kiện cho nút cộng/trừ
-    document.querySelectorAll(".cart-item").forEach(item => {
-        const minusBtn = item.querySelector(".minus");
-        const plusBtn = item.querySelector(".plus");
-        const qtyInput = item.querySelector(".qty-input");
-
-        minusBtn.addEventListener("click", () => {
-            let current = parseInt(qtyInput.value, 10);
-            if (current > 1) {
-                qtyInput.value = current - 1;
-                updateItemSubtotal(item);
-            }
-        });
-
-        plusBtn.addEventListener("click", () => {
-            let current = parseInt(qtyInput.value, 10);
-            qtyInput.value = current + 1;
-            updateItemSubtotal(item);
-        });
-
-        qtyInput.addEventListener("change", () => {
-            if (qtyInput.value < 1 || isNaN(qtyInput.value)) qtyInput.value = 1;
-            updateItemSubtotal(item);
-        });
-    });
-
-    // ✅ Khởi động: tính tổng lần đầu
-    updateCartTotal();
+    // const subtotals = [395000, 100000];
+    // const total = subtotals.reduce((a, b) => a + b, 0);
+    // document.getElementById("subtotal").textContent = total.toLocaleString("vi-VN") + " ₫";
+    // document.getElementById("total").textContent = total.toLocaleString("vi-VN") + " ₫";
 </script>
 </body>
 </html>
