@@ -353,6 +353,18 @@ window.addEventListener("DOMContentLoaded", () => {
         // producthome
         renderProducts("giamgia-product-list-home", "giamgia-product-template-home", giamgiaproductlisthome);
         renderProducts("otherchen-product-list-home", "otherchen-product-template-home", giamgiaproductlisthome);
+
+    // an/hien mat khau
+    window.togglePassword = function(id, el) {
+        const input = document.getElementById(id);
+        if (input.type === 'password') {
+            input.type = 'text';
+            el.textContent = '🙈';
+        } else {
+            input.type = 'password';
+            el.textContent = '🐵';
+        }
+    };
 });
 
 

@@ -7,7 +7,8 @@
     <title>Bán hàng gốm sứ</title>
     <link rel="stylesheet" href="/project/css/index.css">
     <link rel="stylesheet" href="/project/css/style.css">
-    <script src="/js/javascript.js"></script>
+    <link rel="stylesheet" href="css/dangnhap.css">
+    <script src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         </span>
     <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
     <div class="right-header">
-        <button class="btn-header" id="openModalBtn">Đăng nhập</button>
+        <button class="btn-header"><a href="#loginModal">Đăng nhập</a></button>
         <button class="btn-header line"><img src="img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button>
     </div>
 </header>
@@ -225,6 +226,78 @@
         </div>
     </div>
 </section>
+
+<!--Modal-->
+<!--dang nhap-->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h1 class="head" id="form-title">Đăng nhập</h1>
+        <div class="section active" id="signin">
+            <div class="username-section style-section">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" type="text" placeholder="Tên đăng nhập hoặc Email">
+            </div>
+            <div class="password-section style-section">
+                <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+                <input class="input-style" id="toggle" type="password" placeholder="Mật khẩu">
+                <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>
+            </div>
+            <button class="btn">Đăng nhập</button>
+            <p class="forgot-pass"><a href="#forgotModal">Quên mật khẩu?</a></p>
+        </div>
+        <div class="select">
+            <p>Hoặc đăng nhập bằng</p>
+            <div class="link">
+                <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="">
+            </div>
+        </div>
+
+        <div class="foot"><a href="#signupModal">Đăng ký</a></div>
+    </div>
+</div>
+
+<!--quen mat khau-->
+<div id="forgotModal" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h1 class="head">Quên mật khẩu</h1>
+        <div class="section active" id="forgot">
+            <p style="text-align:center;margin-bottom: 10px;color: #973238;font-weight: bold">
+                Nhập email để đặt lại mật khẩu
+            </p>
+            <div class="username-section style-section">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" type="email" placeholder="Email khôi phục">
+            </div>
+            <button class="btn">Gửi yêu cầu khôi phục</button>
+            <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
+        </div>
+    </div>
+</div>
+
+<!--dang ky-->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h1 class="head">Đăng ký</h1>
+        <div class="username-section style-section">
+            <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+            <input class="input-style" type="text" placeholder="Tên tài khoản hoặc Email">
+        </div>
+        <div class="password-section style-section">
+            <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+            <input class="input-style" type="password" placeholder="Mật khẩu">
+        </div>
+        <div class="confirm-section style-section">
+            <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
+            <input class="input-style" type="password" placeholder="Xác nhận mật khẩu">
+        </div>
+        <button class="btn">Đăng ký</button>
+        <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
+    </div>
+</div>
 
 <!-- footer -->
 <footer class="pageHome-footer" id="footer-home">
