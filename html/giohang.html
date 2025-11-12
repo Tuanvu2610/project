@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gốm sứ trang trí</title>
+    <title>GIỎ HÀNG</title>
+    <link rel="stylesheet" href="../css/giohang.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/gomtrangtri.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="../js/javascript.js"></script>
-
 </head>
 <body>
 <!--header-->
@@ -78,85 +72,71 @@
 </nav>
 
 <!-- content -->
-<section class="content">
-    <div class="discount-section">
-        <p class="section-title">Sản phẩm đang giảm giá</p>
-        <div id="discount-product-list" class="discount-list">
-            <template id="discount-product-template">
-                <div class="product-card">
-                    <img src="" alt="" class="product-img">
-                    <h3 class="product-name padding style-name"></h3>
-                    <div class="price-box padding">
-                        <p class="product-price"></p>
-                        <p class="price-origin"></p>
-                    </div>
-                </div>
-            </template>
+<div class="cart-container">
+    <!-- SẢN PHẨM -->
+    <section class="cart-items">
+        <h2>SẢN PHẨM</h2>
+        <div class="cart-header">
+            <span class="col-product"></span>
+            <span class="col-price">GIÁ</span>
+            <span class="col-quantity">SỐ LƯỢNG</span>
+            <span class="col-total">TẠM TÍNH</span>
         </div>
-    </div>
-    <div class="trangtri">
-        <div id="binhtailoc" class="item">
-            <p class="style-title">Bình Thu Hút Tài Lộc</p>
-            <div class="product-section cursor">
-                <div id="lucky-vase-product-list" class="product-list">
-                    <template id="lucky-vase-product-template">
-                        <div class="product-card">
-                            <img src="" alt="" class="product-img">
-                            <h3 class="product-name padding style-name"></h3>
-                            <p class="product-price padding"></p>
-                        </div>
-                    </template>
+        <!-- Sản phẩm 1 -->
+        <div class="cart-item">
+            <div class="product-info">
+                <img src="https://xuonggomsuviet.vn/wp-content/uploads/2024/09/bo-am-chen-dang-minh-long-hoa-sen-xanh-ke-chi-vang-800x800.webp" alt="Hũ đựng trà">
+                <div class="product-details">
+                    <h3>Bộ ấm trà Bát Tràng dáng Quốc Hội viền chỉ vàng sang trọng</h3>
                 </div>
-                <button>Xem tất cả &#9654;</button>
+            </div>
+            <div class="price">395.000₫</div>
+            <div class="quantity">
+                <button class="qty-btn minus">-</button>
+                <input type="text" value="1" class="qty-input">
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="subtotal">395.000₫</div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="cart-item">
+            <div class="product-info">
+                <img src="https://static.skyshoptv.vn/catalog/San%20pham%20chi%20An/Bo%20coc%20su%20ham%20nong%20de%20dien/a7c7325aee46717ca4ef14251be5dd06.jpg" alt="Ấm giữ nhiệt">
+                <div class="product-details">
+                    <h3>Bộ cốc sứ kèm đế điện giữ nóng cao cấp</h3>
+                </div>
+            </div>
+            <div class="price">100.000₫</div>
+            <div class="quantity">
+                <button class="qty-btn minus">-</button>
+                <input type="text" value="1" class="qty-input">
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="subtotal">100.000₫</div>
+        </div>
+    </section>
+    <!-- THÀNH TIỀN-->
+    <aside class="cart-summary">
+        <h2>TỔNG CỘNG GIỎ HÀNG</h2>
+        <div class="summary-row">
+            <span>Tạm tính</span>
+            <span id="subtotal">495.000 ₫</span>
+        </div>
+        <div class="summary-row total">
+            <span><b>Tổng cộng</b></span>
+            <span id="total"><b>495.000 ₫</b></span>
+        </div>
+        <button class="checkout-btn">Tiến hành thanh toán</button>
+        <div class="coupon">
+            <h3><i class="icon">🏷️</i> Mã ưu đãi</h3>
+            <div class="coupon-input">
+                <input type="text" id="discount-code" placeholder="Nhập mã giảm giá">
+                <button id="apply-discount">Áp dụng</button>
             </div>
         </div>
-        <div id="binhtyba" class="item">
-            <p class="style-title">Bình Tỳ Bà</p>
-            <div class="product-section cursor">
-                <div id="tyba-product-list" class="product-list">
-                    <template id="tyba-product-template">
-                        <div class="product-card">
-                            <img src="" alt="" class="product-img">
-                            <h3 class="product-name padding style-name"></h3>
-                            <p class="product-price padding"></p>
-                        </div>
-                    </template>
-                </div>
-                <button>Xem tất cả &#9654;</button>
-            </div>
-        </div>
-        <div id="tuonggom" class="item">
-            <p class="style-title">Tượng Gốm Sứ</p>
-            <div class="product-section cursor">
-                <div id="tuonggom-product-list" class="product-list">
-                    <template id="tuonggom-product-template">
-                        <div class="product-card">
-                            <img src="" alt="" class="product-img">
-                            <h3 class="product-name padding style-name"></h3>
-                            <p class="product-price padding"></p>
-                        </div>
-                    </template>
-                </div>
-                <button>Xem tất cả &#9654;</button>
-            </div>
-        </div>
-        <div id="holo" class="item">
-            <p class="style-title">Bình Hồ Lô</p>
-            <div class="product-section cursor">
-                <div id="holo-product-list" class="product-list">
-                    <template id="holo-product-template">
-                        <div class="product-card">
-                            <img src="" alt="" class="product-img">
-                            <h3 class="product-name padding style-name"></h3>
-                            <p class="product-price padding"></p>
-                        </div>
-                    </template>
-                </div>
-                <button>Xem tất cả &#9654;</button>
-            </div>
-        </div>
-    </div>
-</section>
+    </aside>
+</div>
 
 <!--footer-->
 <footer class="pageHome-footer" id="footer-home">
@@ -225,28 +205,40 @@
     </div>
 </footer>
 <script>
-    $(document).ready(function () {
-        $('#discount-product-list').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            prevArrow: '<button class="previous">❮</button>',
-            nextArrow: '<button class="next">❯</button>'
-        });
-    });
-    // Chức năng chuyển tab
-    const tabs = document.querySelectorAll(".tab");
-    const items = document.querySelectorAll(".item");
+    const subtotalEl = document.getElementById("subtotal");
+    const totalEl = document.getElementById("total");
+    const discountInput = document.getElementById("discount-code");
+    const applyBtn = document.getElementById("apply-discount");
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
+    let subtotal = parseInt(subtotalEl.textContent.replace(/\./g, ""), 10);
 
-            items.forEach(c => c.style.display = "none");
-            document.getElementById(tab.dataset.target).style.display = "block";
-        });
+    const discountCodes = {
+        "GIAM10": 0.1,
+        "SALE20": 0.2,
+        "FREESHIP": 0.05
+    };
+
+    function formatVND(number) {
+        return number.toLocaleString("vi-VN");
+    }
+
+    applyBtn.addEventListener("click", () => {
+        const code = discountInput.value.trim().toUpperCase();
+        const discount = discountCodes[code];
+
+        if (discount) {
+            const newTotal = subtotal - subtotal * discount;
+            totalEl.innerHTML = `<b>${formatVND(newTotal)}</b>`;
+            alert(`Áp dụng mã "${code}" thành công! Giảm ${discount * 100}%`);
+        } else {
+            totalEl.innerHTML = `<b>${formatVND(subtotal)}</b>`;
+            alert("Mã giảm giá không hợp lệ!");
+        }
     });
+    // const subtotals = [395000, 100000];
+    // const total = subtotals.reduce((a, b) => a + b, 0);
+    // document.getElementById("subtotal").textContent = total.toLocaleString("vi-VN") + " ₫";
+    // document.getElementById("total").textContent = total.toLocaleString("vi-VN") + " ₫";
 </script>
 </body>
 </html>
