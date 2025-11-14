@@ -101,6 +101,7 @@ body {
     display: block;
     width: 82%;
 }
+
 /*am chen bat trang*/
 .cover-pageAmChen {
     height: 500px;
@@ -201,9 +202,13 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    border: 1px solid #8e3c33;
     margin-bottom: 20px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
+
+}
+.cover-all-product-item {
+    border: 1px solid #8e3c33;
+    border-radius: 10px
 
 }
 .product-card-item {
@@ -272,4 +277,126 @@ body {
 .product-price {
     font-weight: bold;
     color: #8e3c33;
+}
+/**/
+.container-modal {
+    width: 1000px;
+    margin: auto;
+    height: 500px;
+    border: 1px solid;
+    border-radius: 25px;
+    padding: 30px;
+    position: fixed;
+    z-index: 2000;
+    top: 63px;
+    background: #fff;
+    right: 210px;
+    border: none;
+}
+.cover-modal {
+    display: flex;
+    gap: 30px;
+}
+.cover-modal img {
+    width: 50%;
+    border-radius: 25px;
+}
+.content-modal {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-between;
+}
+.cover-title {
+    display: flex;
+    flex-direction:column;
+    gap: 40px;
+}
+.title-modal {
+    font-weight: bold;
+    font-size: 40px;
+}
+.price-modal {
+    font-size: 20px;
+}
+.cover-btn {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.cover-btn button {
+    width: calc(50% - 20px);
+    height: 80px;
+    margin-bottom: 100px;
+}
+
+.quantity-input {
+    width: 30px;
+    text-align: center;
+}
+.btn-add {
+    background-color: #82c58f;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+}
+.btn-order {
+    background-color: #8e3c33;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+}
+.quantity-modal button:hover {
+    cursor: pointer;
+}
+.button:hover {
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.0);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.overlay {
+    display: block;
+    position: fixed;
+    z-index: 1500;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 48%);
+}
+.exit-btn {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    font-size: 30px;
+}
+.exit-btn:hover {
+    cursor: pointer;
+}
+
+/**/
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    padding: 0 75px;
+    padding-top: 20px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group select, .filter-group input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+}
+
+.filter-group label {
+    font-weight: bold;
 }
