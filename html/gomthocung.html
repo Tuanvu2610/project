@@ -9,11 +9,7 @@
     <title>Gốm Sứ NÔNG LÂM</title>
     <link rel="stylesheet" href="../css/gomthocung.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/javascript.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 
 </head>
 
@@ -407,28 +403,7 @@
         </div>
     </div>
 </footer>
-<script>
-    $(document).ready(function () {
-        $('.product-list').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            prevArrow: '<button class="previous">❮</button>',
-            nextArrow: '<button class="next">❯</button>'
-
-        });
-    });
-
-    const tabs = document.querySelectorAll(".tab");
-    const items = document.querySelectorAll(".item");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            items.forEach(c => c.style.display = "none");
-            document.getElementById(tab.dataset.target).style.display = "block";
-        });
-    });
-</script>
+<script src="../js/javascript.js"></script>
 </body>
 
 </html>
