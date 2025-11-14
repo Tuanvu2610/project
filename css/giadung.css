@@ -1,5 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
 }
 
 .main-content {
@@ -53,7 +54,7 @@ body {
 }
 
 .product-card {
-    width: calc(100% - 40px);
+    width: calc(100% /5 - 40px);
     border: 1px solid #8e3c33;
     margin: 0 10px;
 }
@@ -100,35 +101,6 @@ body {
     display: block;
     width: 82%;
 }
-
-/* slider */
-.prev {
-    position: absolute;
-    z-index: 100;
-    border: none;
-    font-size: 35px;
-    left: -25px;
-    top: 50%;
-    background: none;
-}
-
-.next {
-    position: absolute;
-    z-index: 100;
-    border: none;
-    font-size: 35px;
-    right: -25px;
-    top: 50%;
-    background: none;
-}
-
-.cursor:hover .next,
-.cursor:hover .prev {
-    display: block;
-    cursor: pointer;
-}
-
-
 /*am chen bat trang*/
 .cover-pageAmChen {
     height: 500px;

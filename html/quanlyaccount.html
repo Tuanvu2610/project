@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gốm Sứ NÔNG LÂM</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/quanly.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+<!--header-->
+<header class="pageHome-header" id="header-home">
+        <span class="text-header"><a href="../index.html" style="display: flex; gap: 15px;">
+            <span class="text-gomsu">Gốm Sứ</span>
+            <span class="text-nonglam">Nông Lâm</span></a>
+        </span>
+    <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
+    <div class="right-header">
+        <button class="btn-header" id="openModalBtn">Đăng nhập</button>
+        <button class="btn-header line"><img src="../img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button>
+    </div>
+</header>
+<nav class="menu-home">
+    <ul class="cover-menu">
+        <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li>Ấm chén bác tràng</li>
+                    <li>Bộ bác đĩa bác tràng</li>
+                    <li>Chum ngâm rượu</li>
+                    <li>Dụng cụ nhà tắm</li>
+                    <li>Đèn ngủ</li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li>Bình gốm bác tràng</li>
+                    <li>Lọ hoa bác tràng</li>
+                    <li>Dĩa sứ trang trí</li>
+                    <li>Tượng gốm sứ</li>
+                    <li>Bình hồ lô</li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li>Bộ đồ thờ đầy đủ</li>
+                    <li>Bác hương</li>
+                    <li>Mâm bồng</li>
+                    <li>bác nắp</li>
+                    <li>cây đèn nến</li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li>Bình hút lộc in logo</li>
+                    <li>Ấm chén in logo</li>
+                    <li>Bình hoa in logo</li>
+                    <li>Quà tặng bát đĩa</li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="../html/tintuc.html">TIN TỨC</a></li>
+        <li><a href="../html/GioiThieu.html">GIỚI THIỆU</a></li>
+        <li><a href="../html/lienhe.html">LIÊN HỆ</a></li>
+        <li><a href="#">ADMIN CONTROL</a></li>
+    </ul>
+</nav>
+
+<!--body-->
+<section class="container-quanly">
+    <div class="sidebar">
+        <div class="title">
+            <h2><span>ADMIN CONTROL</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="#"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header-control">
+            <h1><i class="fas fa-users-cog"></i> Quản lý Người dùng</h1>
+        </div>
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon total">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>2,000</h3>
+                    <p>Tổng số User</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon active">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>1,900</h3>
+                    <p>User Active</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon pending">
+                    <i class="fas fa-user-clock"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>36</h3>
+                    <p>Đang chờ xử lý</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon banned">
+                    <i class="fas fa-user-slash"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>64</h3>
+                    <p>User Bị khoá</p>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm user...">
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm User</button>
+            </div>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label>Nhóm:</label>
+                <select>
+                    <option>Tất cả</option>
+                    <option>Admin</option>
+                    <option>User</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Trạng thái:</label>
+                <select>
+                    <option>Tất cả</option>
+                    <option>Active</option>
+                    <option>Pending</option>
+                    <option>Banned</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sắp xếp:</label>
+                <select>
+                    <option>Mới nhất</option>
+                    <option>Cũ nhất</option>
+                    <option>Theo tên A-Z</option>
+                    <option>Theo tên Z-A</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead class="title-table">
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Nhóm</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày tham gia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr onclick="openTab()">
+                    <td>#001</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>a.nguyen@email.com</td>
+                    <td><span class="role admin">Admin</span></td>
+                    <td><span class="status active">Active</span></td>
+                    <td>20/11/2023</td>
+                </tr>
+                <tr onclick="openTab()">
+                    <td>#002</td>
+                    <td>Trần Thị B</td>
+                    <td>b.tran@email.com</td>
+                    <td><span class="role admin">User</span></td>
+                    <td><span class="status banned">Banned</span></td>
+                    <td>15/01/2024</td>
+                </tr>
+                <tr onclick="openTab()">
+                    <td>#003</td>
+                    <td>Lê Văn C</td>
+                    <td>c.le@email.com</td>
+                    <td><span class="role user">User</span></td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td>10/03/2024</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!--modal-->
+<section class="overlay" id="openmodal" style="display: none;">
+    <div class="container-modal">
+        <div class="cover-modal">
+            <span onclick="document.getElementById('openmodal').style.display='none'"
+                  class="exit-btn">&times;</span>
+            <p>USER</p>
+            <div class="cover-allinfo">
+                <div class="avatar-name">
+                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                    <p>Nguyen Van A</p>
+                </div>
+                <div class="cover-info">
+                    <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: 0342104524</p>
+                    <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: a.nguyen@email.com</p>
+                    <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: 13/11/2005</p>
+                    <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Position: ADMIN</p>
+                </div>
+                <div class="cover-active">
+                    <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: 22/10/2025</p>
+                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>
+                </div>
+                <div class="cover-btn">
+                    <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
+                    <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--footer-->
+<footer class="pageHome-footer" id="footer-home">
+    <div class="container-footer">
+        <div class="cover-left">
+            <h1>GỐM SỨ</h1>
+            <p>Sàn Gốm chuyên cung cấp sản phẩm gốm
+                sứ từ làng nghề Bát Tràng .Các sản phẩm bao gồm: ấm chén,
+                ly sứ ,bát đĩa, lọ hoa, đồ thờ cúng , tượng trang trí, và gốm
+                gia dụng trang trí . Sử dụng chất liệu: đất sét
+                trắng, men rạn, men lam, men ngọc . Kỹ thuật sản
+                xuất: ruyền thống và vẽ tay tỉ mỉ</p>
+            <p>Địa chỉ: Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</p>
+            <p>Phone: </p>
+        </div>
+        <div class="cover-right">
+            <div class="cover-all">
+                <div class="cover-1">
+                    <p>GỐM SỨ</p>
+                    <li><i class="bi bi-chevron-right style-list"></i> Giới thiệu</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Liên hệ</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Tuyển dụng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Đt: </li>
+                    <li><i class="bi bi-chevron-right style-list"></i> gomsuvn@gmail.com</li>
+                </div>
+                <div class="cover-1">
+                    <p>Dịnh vụ</p>
+                    <li><i class="bi bi-chevron-right style-list"></i> Sản xuất gốm sứ</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Quà tặng khách hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Hợp tác bán hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Bát đĩa nhà hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Gốm bác tràng</li>
+                </div>
+                <div class="cover-1">
+                    <p>Chính sách</p>
+                    <li><i class="bi bi-chevron-right style-list"></i> Sản xuất gốm sứ</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Quà tặng khách hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Hợp tác bán hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Bát đĩa nhà hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Gốm bác tràng</li>
+                </div>
+                <div class="cover-1">
+                    <p>Dịnh vụ</p>
+                    <li><i class="bi bi-chevron-right style-list"></i> Sản xuất gốm sứ</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Quà tặng khách hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Hợp tác bán hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Bát đĩa nhà hàng</li>
+                    <li><i class="bi bi-chevron-right style-list"></i> Gốm bác tràng</li>
+                </div>
+            </div>
+            <div class="cover-2">
+                <button class="btn-footer">Ấm chén</button>
+                <button class="btn-footer">Ly sứ</button>
+                <button class="btn-footer">Bát đĩa</button>
+                <button class="btn-footer">Lộc bình</button>
+                <button class="btn-footer">Bình hoa</button>
+                <button class="btn-footer">Bình hút lộc</button>
+                <button class="btn-footer">Mai bình</button>
+                <button class="btn-footer">Chum rượu</button>
+                <button class="btn-footer">Hũ gạo</button>
+                <button class="btn-footer">Đồ thờ cúng</button>
+                <button class="btn-footer">Ấm chén in logo</button>
+            </div>
+            <p class="p"> © 2024 GỐM SỨ® - Nhận đặt hàng trực tuyến và giao hàng tận nơi.</p>
+        </div>
+    </div>
+</footer>
+<script src="../js/javascript.js"></script>
+</body>
+</html>
