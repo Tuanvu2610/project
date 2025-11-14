@@ -9,21 +9,16 @@
     <title>Gốm Sứ NÔNG LÂM</title>
     <link rel="stylesheet" href="../css/giadung.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/javascript.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="../css/ctsanpham.css">
 
 </head>
 
 <body>
 <!-- header -->
 <header class="pageHome-header" id="header-home">
-        <span class="text-header">
+         <span class="text-header"><a href="../index.html" style="display: flex; gap: 15px;">
             <span class="text-gomsu">Gốm Sứ</span>
-            <span class="text-nonglam">Nông Lâm</span>
+            <span class="text-nonglam">Nông Lâm</span></a>
         </span>
     <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
     <div class="right-header">
@@ -45,29 +40,29 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomtrangtri.html">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li>Bình gốm bác tràng</li>
-                    <li>Lọ hoa bác tràng</li>
+                    <li>Bình gốm bát tràng</li>
+                    <li>Lọ hoa bát tràng</li>
                     <li>Dĩa sứ trang trí</li>
                     <li>Tượng gốm sứ</li>
                     <li>Bình hồ lô</li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomthocung.html">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li>Bộ đồ thờ đầy đủ</li>
-                    <li>Bác hương</li>
-                    <li>Mâm bồng</li>
-                    <li>bác nắp</li>
-                    <li>cây đèn nến</li>
+                    <li><a>Bộ đồ thờ đầy đủ</a></li>
+                    <li><a>Bát hương</a></li>
+                    <li><a>Mâm bồng</a></li>
+                    <li><a>Bát nắp</a></li>
+                    <li><a>Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomquatang.html">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li>Bình hút lộc in logo</li>
@@ -77,9 +72,10 @@
                 </ul>
             </div>
         </li>
-        <li><a href="">TIN TỨC</a></li>
-        <li><a href="">GIỚI THIỆU</a></li>
+        <li><a href="../html/tintuc.html">TIN TỨC</a></li>
+        <li><a href="../html/GioiThieu.html">GIỚI THIỆU</a></li>
         <li><a href="../html/lienhe.html">LIÊN HỆ</a></li>
+        <li><a href="../html/quanlyaccount.html">ADMIN CONTROL</a></li>
     </ul>
 </nav>
 
@@ -89,14 +85,36 @@
         <p>Sản phẩm đang giảm giá</p>
         <div class="slider">
             <div id="outstanding-product-list" class="product-list">
-                <template id="outstanding-product-template">
-                    <div class="product-card">
-                        <img src="" alt="" class="product-img">
-                        <h3 class="product-name padding style-name"></h3>
-                        <p class="price-origin padding"></p>
-                        <p class="product-price padding"></p>
-                    </div>
-                </template>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
             </div>
         </div>
     </div>
@@ -104,13 +122,31 @@
         <p class="style-title">Ấm chén bát tràng</p>
         <div class="cover-product cursor">
             <div id="amchen-product-list" class="product-list">
-                <template id="amchen-product-template">
-                    <div class="product-card">
-                        <img src="" alt="" class="product-img">
-                        <h3 class="product-name padding style-name"></h3>
-                        <p class="product-price padding"></p>
-                    </div>
-                </template>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -119,14 +155,31 @@
         <p class="style-title">Chum ngâm rượu</p>
         <div class="cover-product cursor">
             <div id="chum-product-list" class="product-list">
-                <template id="chum-product-template">
-                    <div class="product-card">
-                        <img src="" alt="" class="product-img">
-                        <h3 class="product-name padding style-name"></h3>
-                        <p class="product-price padding"></p>
-                        <p class="product-priceSale"></p>
-                    </div>
-                </template>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
+                <div class="product-card" onclick="openTab()">
+                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+                    <p class="product-price padding">2.300.000đ</p>
+                </div>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -211,15 +264,41 @@
     </div>
 
     <div class="cover-product-item" id="amchen-product-list-2">
-        <template id="amchen-product-template-2">
-            <div class="product-card-item">
-                <img src="" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name"></h3>
-                <p class="price-origin padding"></p>
-                <p class="product-price padding"></p>
-            </div>
-        </template>
+        <div class="product-card-item" onclick="openTab()" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
     </div>
 </section>
 
@@ -233,7 +312,8 @@
                 <p><span style="font-weight: bold">Bộ bát đĩa Bát Tràng</span> là lựa
                     chọn hoàn hảo cho mọi gia đình Việt,
                     kết hợp hài hòa giữa vẻ đẹp truyền thống và sự tinh tế hiện đại.
-                    Được chế tác thủ công từ gốm sứ cao cấp <span style="font-weight: bold">Bát Tràng</span>, mỗi sản phẩm
+                    Được chế tác thủ công từ gốm sứ cao cấp <span style="font-weight: bold">Bát Tràng</span>, mỗi
+                    sản phẩm
                     đều trải qua quá trình nung ở nhiệt độ cao, giúp bền chắc, khó
                     sứt mẻ và an toàn tuyệt đối cho sức khỏe.
                 </p>
@@ -260,8 +340,7 @@
             </div>
             <div class="cover-choose">
                 <div class="title-choose">
-                    <img src="https://gombinhduong.vn/public/uploads/Sanpham/chen-sanh.jpg"
-                         alt="">
+                    <img src="https://gombinhduong.vn/public/uploads/Sanpham/chen-sanh.jpg" alt="">
                     <span>Chén dĩa kiểu xưa</span>
                 </div>
             </div>
@@ -293,15 +372,41 @@
     </div>
 
     <div class="cover-product-item" id="batdia-product-list-2">
-        <template id="batdia-product-template-2">
-            <div class="product-card-item">
-                <img src="" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name"></h3>
-                <p class="price-origin padding"></p>
-                <p class="product-price padding"></p>
-            </div>
-        </template>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
     </div>
 </section>
 
@@ -312,7 +417,8 @@
         <div class="cover-allAmChen">
             <div class="title-product">
                 <h1>Chum Ngâm Rượu Bát Tràng: Bí Quyết Ủ Rượu Ngon, Khử Độc Tố An Toàn</h1>
-                <p><span style="font-weight: bold">Chum ngâm rượu Bát Tràng</span> là lựa chọn hàng đầu của những người sành
+                <p><span style="font-weight: bold">Chum ngâm rượu Bát Tràng</span> là lựa chọn hàng đầu của những
+                    người sành
                     rượu Việt. Được làm thủ công từ đất sét chọn lọc và nung ở nhiệt độ cao,
                     chum có độ bền chắc vượt trội, khả năng giữ nhiệt và trao đổi oxy tự nhiên
                     giúp <span style="font-weight: bold">rượu được “thở” và lên men hài hòa.</span>
@@ -381,15 +487,41 @@
     </div>
 
     <div class="cover-product-item" id="chum-product-list-2">
-        <template id="chum-product-template-2">
-            <div class="product-card-item">
-                <img src="" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name"></h3>
-                <p class="price-origin padding"></p>
-                <p class="product-price padding"></p>
-            </div>
-        </template>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
     </div>
 </section>
 
@@ -399,9 +531,12 @@
         <div class="cover-allAmChen">
             <div class="title-product">
                 <h1>Bộ Dụng Cụ Nhà Tắm Gốm Sứ Bát Tràng: Nâng Tầm Không Gian, An Toàn & Bền Vững</h1>
-                <p>Sản phẩm được chế tác từ <span style="font-weight: bold">gốm sứ cao cấp, nung ở nhiệt độ cao</span>, đảm bảo bền bỉ,
-                    chống mẻ nứt, đồng thời hoàn toàn an toàn cho sức khỏe. Bề mặt men mịn, sáng bóng, dễ vệ sinh, hạn chế bám bẩn và vi khuẩn
-                    , <span style="font-weight: bold">mang lại trải nghiệm sử dụng tiện nghi và an toàn cho cả gia đình</span>
+                <p>Sản phẩm được chế tác từ <span style="font-weight: bold">gốm sứ cao cấp, nung ở nhiệt độ
+                            cao</span>, đảm bảo bền bỉ,
+                    chống mẻ nứt, đồng thời hoàn toàn an toàn cho sức khỏe. Bề mặt men mịn, sáng bóng, dễ vệ sinh,
+                    hạn chế bám bẩn và vi khuẩn
+                    , <span style="font-weight: bold">mang lại trải nghiệm sử dụng tiện nghi và an toàn cho cả gia
+                            đình</span>
                 </p>
             </div>
             <div class="img-amchen">
@@ -450,15 +585,41 @@
 
     </div>
     <div class="cover-product-item" id="nhatam-product-list-2">
-        <template id="nhatam-product-template-2">
-            <div class="product-card-item">
-                <img src="" alt="" class="product-img">
-                <button class="btn-seen">Xem nhanh</button>
-                <h3 class="product-name padding style-name"></h3>
-                <p class="price-origin padding"></p>
-                <p class="product-price padding"></p>
-            </div>
-        </template>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
+        <div class="product-card-item" onclick="openTab()">
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
+            <button class="btn-seen">Xem nhanh</button>
+            <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
+            <p class="price-origin padding">5.000.000đ</p>
+            <p class="product-price padding">2.300.000đ</p>
+        </div>
     </div>
 </section>
 
@@ -469,13 +630,13 @@
             <div class="title-product">
                 <h1>Đèn Ngủ Gốm Sứ Bát Tràng: Ánh Sáng Ấm Áp, Nâng Tầm Không Gian</h1>
                 <p>Được chế tác từ <span style="font-weight: bold">gốm sứ cao cấp, nung ở
-                        nhiệt độ cao</span>, đèn không chỉ bền bỉ, an
+                            nhiệt độ cao</span>, đèn không chỉ bền bỉ, an
                     toàn mà còn tôn lên vẻ đẹp tinh tế, nghệ
                     thuật trong từng chi tiết. Đây là giải
                     pháp hoàn hảo để tạo điểm nhấn thẩm mỹ
                     cho phòng ngủ, phòng khách hoặc góc đọc
                     sách, đồng thời mang lại <span style="font-weight: bold">cảm giác thư thái
-                        và ấm cúng.</span>
+                            và ấm cúng.</span>
                 </p>
             </div>
             <div class="img-amchen">
@@ -542,7 +703,7 @@
 
     <div class="cover-product-item product-card" id="denngu-product-list-2">
         <template id="denngu-product-template-2">
-            <div class="product-card-item">
+            <div class="product-card-item" onclick="openTab()">
                 <img src="" alt="" class="product-img">
                 <button class="btn-seen">Xem nhanh</button>
                 <h3 class="product-name padding style-name"></h3>
@@ -552,7 +713,41 @@
         </template>
     </div>
 </section>
-
+<!--modal-->
+<section class="overlay" style="display: none" id="openmodal">
+    <div class="container-modal">
+        <div class="cover-modal">
+            <span onclick="document.getElementById('openmodal').style.display='none'"
+                  class="exit-btn">&times;</span>
+            <img src="../img/bo_binh_6_coc_8.jpg" alt="">
+            <div class="content-modal">
+                <div class="cover-title">
+                    <div class="title-modal">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</div>
+                    <div class="price-modal">Giá: 2.300.000đ</div>
+                    <div class="quantity-modal">
+                        <button type="button" class="btn-decrease">
+                            &minus;
+                        </button>
+                        <input type="text" class="quantity-input" value="1" inputmode="numeric" pattern="[0-9]*">
+                        <button type="button" class="btn-increase">
+                            &plus;
+                        </button>
+                    </div>
+                </div>
+                <div class="cover-btn">
+                    <button class="btn-add button">
+                        <h3>THÊM VÀO GIỎ HÀNG</h3>
+                        <p>Mua thêm sản phẩm khác</p>
+                    </button>
+                    <button class="btn-order button">
+                        <h3>ĐẶT HÀNG NHANH</h3>
+                        <p>Mua thêm sản phẩm khác</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- footer -->
 <footer class="pageHome-footer" id="footer-home">
     <div class="container-footer">
@@ -619,28 +814,7 @@
         </div>
     </div>
 </footer>
-<script>
-    $(document).ready(function () {
-        $('.product-list').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            prevArrow: '<button class="prev">❮</button>',
-            nextArrow: '<button class="next">❯</button>'
-
-        });
-    });
-
-    const tabs = document.querySelectorAll(".tab");
-    const items = document.querySelectorAll(".item");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            items.forEach(c => c.style.display = "none");
-            document.getElementById(tab.dataset.target).style.display = "block";
-        });
-    });
-</script>
+<script src="../js/javascript.js"></script>
 </body>
 
 </html>

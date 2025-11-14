@@ -36,7 +36,7 @@ body {
 }
 
 .right-header {
-    width: 35%;
+    width: 40%;
     margin: auto;
     display: flex;
     align-items: center;
@@ -46,16 +46,12 @@ body {
 .btn-header {
     background-color: #973238;
     border: none;
+    color: #ffffff;
     font-size: 16px;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
-}
-.btn-header a {
-    text-decoration: none;
-    color: #ffffff;
 }
 
 .btn-header img {
@@ -299,7 +295,9 @@ body {
     border-top-right-radius: 10px;
     position: relative;
 }
-
+.cover-all-product {
+    width: 100%;
+}
 .cover-all-product p {
     padding: 0 20px;
     font-weight: bold;
