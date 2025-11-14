@@ -9,7 +9,7 @@ body{
     flex-direction: column;
     gap: 50px;
 }
-.decription{
+.description{
     width: 1200px;
     display: flex;
     flex-direction: column;
@@ -19,18 +19,18 @@ body{
     border-radius: 20px;
 
 }
-.decription p{
+.description p{
     width: 1000px;
     margin: 0;
     font-size: 17px;
     font-weight: bold;
     line-height: 1.6;
 }
-.dec-img{
+.desc-img{
     display: flex;
     gap: 30px;
 }
-.dec-img img{
+.desc-img img{
     width: 520px;
 }
 .saleproduct-section{
@@ -156,7 +156,7 @@ body{
 }
 .product-item{
     margin: auto;
-    padding: 30px 60px;
+    padding: 20px 70px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -165,6 +165,7 @@ body{
     border-radius: 10px;
 }
 .product-card-item{
+    width: calc(100% / 5 - 18px);
     border-radius: 10px;
     position: relative;
     overflow: hidden;

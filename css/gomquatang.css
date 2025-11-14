@@ -33,7 +33,7 @@ body{
 .desc-img img{
     width: 520px;
 }
-.saleprice-section{
+.saleproduct-section{
     width: 1200px;
     margin: auto;
     background: #f1f1f1;
@@ -42,7 +42,7 @@ body{
     position: relative;
     overflow: hidden;
 }
-.saleprice-section>p{
+.saleproduct-section>p{
     font-size: 25px;
     margin: 0;
     color: #8e3c33;
@@ -154,7 +154,7 @@ body{
 }
 .product-item{
     margin: auto;
-    padding: 30px 60px;
+    padding: 20px 70px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -163,6 +163,7 @@ body{
     border-radius: 10px;
 }
 .product-card-item{
+    width: calc(100% / 5 - 18px);
     border-radius: 10px;
     position: relative;
     overflow: hidden;
