@@ -20,6 +20,3 @@
             document.getElementById(tab.dataset.target).style.display = "block";
         });
     });
-    function openTab() {
-        document.getElementById('openmodal').style.display = "block";
-    }
