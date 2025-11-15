@@ -34,7 +34,7 @@
     top: 12px;
     right: 18px;
     font-size: 25px;
-    color: #973238;
+    color: #0a8300;
     cursor: pointer;
     transition: 0.2s;
     text-decoration: none;
@@ -50,7 +50,7 @@
 }
 h1.head{
     text-align: center;
-    color: #973238;
+    color: #0a8300;
     margin-bottom: 25px;
 }
 .style-section{
@@ -80,7 +80,7 @@ h1.head{
     padding: 11px;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(135deg, #973238, #7b64f6);
+    background: linear-gradient(135deg, #5be004, #187e02);;
     color: white;
     font-size: 11px;
     font-weight: bold;
@@ -104,7 +104,7 @@ h1.head{
 }
 .forgot-pass a{
     text-decoration: none;
-    color: #973238;
+    color: #0a8300;
 }
 .foot{
     text-align: center;
@@ -115,7 +115,7 @@ h1.head{
 }
 .foot a{
     text-decoration: none;
-    color: #973238;
+    color: #0a8300;
 }
 
 .foot:hover{
