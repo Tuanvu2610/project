@@ -1,0 +1,143 @@
+.container-page {
+    display: flex;
+}
+.cover-left-page {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d8e02c7;
+}
+.cover-right-page {
+    width: 70%;
+    padding: 10px 50px;
+    flex: 1;
+    height: 500px;
+}
+.info-avatar img {
+    width: 50px;
+    padding: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+.name {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.info-avatar {
+    display: flex;
+    gap: 20px;
+    padding: 20px 50px;
+    border-bottom: 1px solid #cccccc6b;
+}
+.nav-links {
+    padding: 10px;
+    list-style: none;
+}
+.nav-links li {
+    margin: 15px 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+.nav-links img {
+    width: 25px;
+}
+.title-page {
+    font-size: 25px;
+    font-weight: bold;
+    align-items: center;
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.list-page {
+    display: flex;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 20px;
+}
+.list-page li {
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.list-page li:hover {
+    cursor: pointer;
+}
+
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.title-table {
+    background: #0d8e02c7;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status.dagiao {
+    background: #e7f7ef;
+    color: #2ecc71;
+}
+
+.status.chuagiao {
+    background: #fef9e7;
+    color: #f39c12;
+}
+
+.status.huy {
+    background: #fdedec;
+    color: #e74c3c;
+}
+tr:hover {
+    cursor: pointer;
+}
