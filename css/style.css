@@ -286,3 +286,7 @@ a {
     width: 50%;
     align-items: center;
 }
+.line2 {
+    border-left: 1px solid #fff;
+    padding: 15px;
+}
