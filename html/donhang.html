@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gốm sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/thongke.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Đơn hàng</title>
+    <link rel="stylesheet" href="../css/donhang.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<!--header-->
 <!--header-->
 <header class="pageHome-header" id="header-home">
          <span class="text-header"><a href="../index.html" style="display: flex; gap: 15px;">
@@ -80,7 +78,7 @@
     </ul>
 </nav>
 
-<!--content-->
+<!-- content -->
 <div class="container">
     <div class="sidebar">
         <div class="title">
@@ -96,136 +94,107 @@
         </ul>
     </div>
     <div class="content">
+
         <div class="head-title">
-            <h1><i class="fas fa-chart-bar"></i> Thống kê bán hàng - Gốm sứ Nông Lâm</h1>
-            <p>Doanh thu và số lượng sản phẩm theo năm & tháng</p>
+            <h1><i class="fas fa-receipt"></i>Đơn hàng</h1>
         </div>
-        <div class="cover-all-section">
-        <section class="filter-section">
-            <form>
-                <label for="year">Chọn năm:</label>
-                <select id="year">
-                    <option>2024</option>
-                    <option selected>2025</option>
-                    <option>2026</option>
-                </select>
 
-                <label for="month">Chọn tháng:</label>
-                <select id="month">
-                    <option>Tất cả</option>
-                    <option>Tháng 1</option>
-                    <option>Tháng 2</option>
-                    <option>Tháng 3</option>
-                    <option>Tháng 4</option>
-                    <option>Tháng 5</option>
-                    <option>Tháng 6</option>
-                    <option>Tháng 7</option>
-                    <option>Tháng 8</option>
-                    <option>Tháng 9</option>
-                    <option>Tháng 10</option>
-                    <option>Tháng 11</option>
-                    <option>Tháng 12</option>
-                </select>
-            </form>
-        </section>
-
-        <section class="summary-section">
-            <div class="card">
-                <h3>Doanh thu (VNĐ)</h3>
-                <p class="value">1,250,000,000</p>
-            </div>
-            <div class="card">
-                <h3>Số đơn hàng</h3>
-                <p class="value">4,820</p>
-            </div>
-            <div class="card">
-                <h3>Sản phẩm bán ra</h3>
-                <p class="value">12,350</p>
-            </div>
-        </section>
-
-        <section class="chart-section">
-            <h2>Biểu đồ doanh thu theo 12 tháng</h2>
-            <div class="chart-bar">
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:60%;"><span>60%</span></div>
-                    <div class="label">Tháng 1</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:75%;"><span>75%</span></div>
-                    <div class="label">Tháng 2</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:85%;"><span>85%</span></div>
-                    <div class="label">Tháng 3</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:55%;"><span>55%</span></div>
-                    <div class="label">Tháng 4</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:95%;"><span>95%</span></div>
-                    <div class="label">Tháng 5</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:70%;"><span>70%</span></div>
-                    <div class="label">Tháng 6</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:80%;"><span>80%</span></div>
-                    <div class="label">Tháng 7</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:65%;"><span>65%</span></div>
-                    <div class="label">Tháng 8</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:90%;"><span>90%</span></div>
-                    <div class="label">Tháng 9</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:75%;"><span>75%</span></div>
-                    <div class="label">Tháng 10</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:88%;"><span>88%</span></div>
-                    <div class="label">Tháng 11</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:92%;"><span>92%</span></div>
-                    <div class="label">Tháng 12</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="table-section">
-            <h2>Bảng thống kê chi tiết năm 2024</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Tháng</th>
-                    <th>Doanh thu (VNĐ)</th>
-                    <th>Số đơn</th>
-                    <th>Sản phẩm bán</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr><td>1</td><td>80,000,000</td><td>400</td><td>950</td></tr>
-                <tr><td>2</td><td>95,000,000</td><td>430</td><td>980</td></tr>
-                <tr><td>3</td><td>110,000,000</td><td>470</td><td>1,050</td></tr>
-                <tr><td>4</td><td>75,000,000</td><td>390</td><td>890</td></tr>
-                <tr><td>5</td><td>125,000,000</td><td>520</td><td>1,200</td></tr>
-                <tr><td>6</td><td>98,000,000</td><td>450</td><td>1,000</td></tr>
-                <tr><td>7</td><td>105,000,000</td><td>480</td><td>1,050</td></tr>
-                <tr><td>8</td><td>85,000,000</td><td>420</td><td>960</td></tr>
-                <tr><td>9</td><td>115,000,000</td><td>500</td><td>1,120</td></tr>
-                <tr><td>10</td><td>95,000,000</td><td>460</td><td>1,000</td></tr>
-                <tr><td>11</td><td>108,000,000</td><td>480</td><td>1,100</td></tr>
-                <tr><td>12</td><td>120,000,000</td><td>510</td><td>1,150</td></tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="order-tabs">
+            <button class="active">Chưa giao</button>
+            <button>Đang vận chuyển</button>
+            <button>Đã giao</button>
+            <div class="order-summary">Đơn hàng đã hoàn thành: <b>36000</b></div>
         </div>
+
+        <table class="order-table">
+            <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Hàng hóa</th>
+                <th>Số lượng</th>
+                <th>Số tiền</th>
+                <th>Người nhận</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr class="order-row">
+                <td>3601</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">Nguyễn Văn A</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-loading">Đang xử lý</button>
+                </td>
+            </tr>
+
+            <tr class="order-row">
+                <td>3602</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">Trần Thị B</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-confirm">Xác nhận</button>
+                </td>
+            </tr>
+
+            <tr class="order-row">
+                <td>3603</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">Lê Văn C</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-confirm">Xác nhận</button>
+                </td>
+            </tr>
+
+            <tr class="order-row">
+                <td>3604</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">user1203</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-confirm">Xác nhận</button>
+                </td>
+            </tr>
+
+            <tr class="order-row">
+                <td>3605</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">Tên Đại</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-loading">Đang xử lý</button>
+                </td>
+            </tr>
+
+            <tr class="order-row">
+                <td>3606</td>
+                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                <td class="center">1</td>
+                <td class="money">2.300.000đ</td>
+                <td class="receiver">Chưa Nghĩ Ra</td>
+                <td class="center">30/11 - 2/12</td>
+                <td class="status">
+                    <button class="btn-loading">Đang xử lý</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
 </div>
 

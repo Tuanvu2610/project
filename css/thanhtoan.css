@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #faf7f7;
+}
+
+.checkout-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Giúp box căn giữa toàn màn hình */
+    padding: 40px 0;
+}
+
+.checkout-container > section {
+    width: 850px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+}
+
+.shipping-info h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.shipping-info p {
+    margin: 3px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.change-btn {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.change-btn:hover {
+    text-decoration: underline;
+}
+
+.product-list h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.product-item {
+    display: grid;
+    grid-template-columns: 70px 1fr 100px 40px 100px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.product-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-name {
+    font-size: 15px;
+    color: #333;
+    margin: 0;
+}
+
+.product-price,
+.product-qty,
+.product-total {
+    font-size: 15px;
+    color: #333;
+    text-align: right;
+}
+
+.voucher-box {
+    width: 850px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    margin: 20px auto;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+}
+
+.voucher-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.voucher-header h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.voucher-input {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.voucher-input input {
+    width: 220px;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.voucher-input input:focus {
+    border-color: #e74c3c;
+}
+
+.voucher-input button {
+    padding: 0 18px;
+    height: 38px;
+    background: #f8961e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.voucher-input button:hover {
+    opacity: 0.95;
+}
+
+.payment-method h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #e74c3c;
+}
+
+.method-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.summary-row.total span:last-child {
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+    background: #c9302c;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    opacity: 0.95;
+}
