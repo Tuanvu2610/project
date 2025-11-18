@@ -299,6 +299,7 @@
         </div>
     </div>
 </section>
+
 <!--Modal-->
 <!--dang nhap-->
 <div id="loginModal" class="modal">
@@ -308,11 +309,11 @@
         <div class="section active" id="signin">
             <div class="username-section style-section">
                 <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" type="text" placeholder="Tên đăng nhập hoặc Email">
+                <input class="input-style" type="text" name="dn_username" placeholder="Tên đăng nhập hoặc Email">
             </div>
             <div class="password-section style-section">
                 <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-                <input class="input-style" id="toggle" type="password" placeholder="Mật khẩu">
+                <input class="input-style" id="toggle" name="dn_pass" type="password" placeholder="Mật khẩu">
                 <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>
             </div>
             <button class="btn">Đăng nhập</button>
@@ -341,7 +342,7 @@
             </p>
             <div class="username-section style-section">
                 <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" type="email" placeholder="Email khôi phục">
+                <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">
             </div>
             <button class="btn">Gửi yêu cầu khôi phục</button>
             <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
@@ -354,22 +355,33 @@
     <div class="modal-content">
         <a href="#" class="close-btn">&times;</a>
         <h1 class="head">Đăng ký</h1>
+        <div class=name-section>
+            <div class="lastname-section name-style">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" name="lastname" type="text" placeholder="Họ">
+            </div>
+            <div class="firstname-section name-style">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" name="firstname" type="text" placeholder="Tên">
+            </div>
+        </div>
         <div class="username-section style-section">
             <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-            <input class="input-style" type="text" placeholder="Tên tài khoản hoặc Email">
+            <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản hoặc Email">
         </div>
         <div class="password-section style-section">
             <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-            <input class="input-style" type="password" placeholder="Mật khẩu">
+            <input class="input-style" name="dk_pass" type="password" placeholder="Mật khẩu">
         </div>
         <div class="confirm-section style-section">
             <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
-            <input class="input-style" type="password" placeholder="Xác nhận mật khẩu">
+            <input class="input-style" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">
         </div>
         <button class="btn">Đăng ký</button>
         <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
     </div>
 </div>
+
 <!-- footer -->
 <footer class="pageHome-footer" id="footer-home">
     <div class="container-footer">

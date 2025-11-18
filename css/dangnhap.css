@@ -74,6 +74,25 @@ h1.head{
     margin-top: 8px;
     background: transparent;
 }
+.name-section{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.name-section img{
+    width: 20px;
+    opacity: 0.8;
+}
+.name-style{
+    display: flex;
+    align-items: center;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    transition: 0.3s;
+}
 .btn{
     text-align: center;
     width: 250px;
