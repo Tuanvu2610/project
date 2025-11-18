@@ -12,7 +12,7 @@ body{
 }
 .sidebar{
     width: 25%;
-    background: #b75056;
+    background: #0d8e02c7;
     color: white;
     padding: 20px 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -56,17 +56,23 @@ body{
     text-align: center;
 }
 .content{
-    max-width: 1000px;
-    margin: auto;
+    flex: 1;
+    padding: 20px;
     margin-bottom: 20px;
-    padding: 10px 0;
 }
 .head-title h1{
     font-size: 1.8rem;
-    color: #8e3c33;
+    color: #000000;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.head-title {
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 .filter-section{
     background-color: white;

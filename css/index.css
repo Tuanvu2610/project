@@ -8,7 +8,7 @@ body {
 .pageHome-header {
     width: calc(100% - 200px);
     padding: 20px 100px;
-    background-color: #973238;
+    background-color: #0a8300;
     display: flex;
     justify-content: space-between;
 }
@@ -44,7 +44,7 @@ body {
 }
 
 .btn-header {
-    background-color: #973238;
+    background-color: #0a8300;
     border: none;
     color: #ffffff;
     font-size: 16px;
@@ -63,7 +63,7 @@ body {
 }
 
 .menu-home {
-    color: #8e3c33;
+    color: #0a8300;
     font-size: 20px;
     font-weight: bold;
     background: #f1f1f1;
@@ -90,7 +90,7 @@ body {
 
 .left-pageinfo {
     width: 50%;
-    color: #8e3c33;
+    color: #0a8300;
     padding: 20px 50px;
     display: flex;
     flex-direction: column;
@@ -135,14 +135,14 @@ body {
     font-weight: bold;
     font-size: 40px;
     margin: 10px;
-    color: #8e3c33;
+    color: #0a8300;
 }
 
 .style-btn {
     padding: 15px;
     border-radius: 40px;
     width: 250px;
-    border: 2px solid #8e3c33;
+    border: 2px solid #0a8300;
     /* color: #fff; */
     font-weight: bold;
     font-size: 16px;
@@ -165,6 +165,7 @@ body {
     background: #1877f2;
     border-radius: 30px;
     color: #fff;
+    z-index: 1000;
 }
 
 .icon-page {
@@ -218,7 +219,7 @@ body {
 
 .product-home span {
     font-weight: bold;
-    color: #8e3c33;
+    color: #0a8300;
 }
 
 .cover-choose:hover {
@@ -232,7 +233,7 @@ body {
     margin: 0;
     font-size: 12px;
     margin-top: -15px;
-    color: #8e3c33;
+    color: #0a8300;
 }
 
 #img-home .container img {
@@ -248,7 +249,7 @@ body {
 /*  */
 .style-container {
     width: 100%;
-    background-color: #951d1dc2;
+    background-color: #ccc;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,7 +258,7 @@ body {
 }
 
 .style-container .style-title {
-    color: #fff;
+    color: #d61919;
     font-size: 30px;
     font-weight: bold;
 }
@@ -279,13 +280,15 @@ body {
     width: 100%;
     justify-content: center;
 }
-
-.product-card {
+.cover-product a {
     width: calc(100% / 5 - 50px);
     background-color: #fff;
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+}
+.product-card {
+    width: 100%;
 }
 
 .product-card img {
@@ -312,11 +315,11 @@ body {
 }
 
 .price-sale {
-    color: #8e3c33;
+    color: #0a8300;
     font-size: 17px;
 }
 
-.cover-all-product .product-card:hover {
+.cover-all-product a:hover {
     cursor: pointer;
     transform: translateY(-3px) scale(1.0);
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
@@ -335,17 +338,17 @@ body {
     font-weight: bold;
 }
 
-.cover-all-product .product-card:hover .btn-seen {
+.cover-all-product a:hover .btn-seen {
     display: block;
     cursor: pointer;
 }
 
-.cover-all-product .product-card:hover .btn-seen:hover {
+.cover-all-product a:hover .btn-seen:hover {
     color: #fff;
-    background-color: #8e3c33;
+    background-color: #0a8300;
 }
 
-.cover-all-product .product-card:hover img {
+.cover-all-product a:hover img {
     transition: transform 0.3s ease;
     transform: scale(1.05);
 }
@@ -357,11 +360,11 @@ body {
     width: 82%;
 }
 .style-name:hover {
-    color: #ba2212;
+    color: #0a8300;
 }
 .product-price {
     font-weight: bold;
-    color: #8e3c33;
+    color: #ff0000;
 }
 .title-other {
     display: flex;
@@ -380,10 +383,10 @@ body {
     font-size: 75px;
     text-align: right;
     font-weight: bold;
-    color: #973238;
+    color: #0a8300;
 }
 .cover-other {
-    background: linear-gradient(to bottom, #8e3c33, transparent);
+    background: linear-gradient(to bottom, #0a8300, transparent);
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
     padding: 2px 2px 0 2px;
@@ -403,18 +406,18 @@ body {
 }
 .style-other {
     background: none;
-    border: 1px solid #8e3c33;
+    border: 1px solid #0a8300;
     width: calc(100% - 5px);
     margin: auto;
     border-radius: 50px;
 }
-.style-other .product-card {
-    border: 1px solid #8e3c33;
+.style-other a {
+    border: 1px solid #0a8300;
 }
 .style-other-title {
     font-size: 50px;
     margin: 0;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #973238;
+    color: #0a8300;
 }

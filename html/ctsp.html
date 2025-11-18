@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gốm Sứ NÔNG LÂM</title>
+    <title>Gốm sứ NÔNG LÂM</title>
+    <link rel="stylesheet" href="../css/ctsanpham.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/quanly.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 <body>
-<!--header-->
 <!--header-->
 <header class="pageHome-header" id="header-home">
          <span class="text-header"><a href="../index.html" style="display: flex; gap: 15px;">
@@ -79,175 +77,127 @@
         <li><a href="../html/quanlyaccount.html">ADMIN CONTROL</a></li>
     </ul>
 </nav>
-
 <!--body-->
-<section class="container-quanly">
-    <div class="sidebar">
-        <div class="title">
-            <h2><span>ADMIN CONTROL</span></h2>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="../html/thongke.html"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
-            <li><a href="../html/kho.html"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
-            <li><a href="../html/donhang.html"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
-            <li><a href="#"><i class="fas fa-user"></i> <span>Nhân viên</span></a> </li>
-            <li><a href="#"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
-        </ul>
+<section class="cover-all-info">
+<div class="info-container container-sp">
+    <div class="product-image">
+        <img src="../img/bo_binh_6_coc_8.jpg" alt="">
     </div>
-    <div class="main-content">
-        <div class="header-control">
-            <h1><i class="fas fa-users-cog"></i> Quản lý Người dùng</h1>
+    <div class="product-title">
+        <h1>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h1>
+        <div class="rating">
+            <span class="stars">★★★★★</span>
+            <span>5.0</span>
+            <span>|</span>
+            <span>(1 đánh giá)</span>
+            <span>|</span>
+            <span>Đã bán 12</span>
         </div>
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon total">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>2,000</h3>
-                    <p>Tổng số User</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon active">
-                    <i class="fas fa-user-check"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>1,900</h3>
-                    <p>User Active</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon pending">
-                    <i class="fas fa-user-clock"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>36</h3>
-                    <p>Đang chờ xử lý</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon banned">
-                    <i class="fas fa-user-slash"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>64</h3>
-                    <p>User Bị khoá</p>
-                </div>
-            </div>
+        <div class="price">
+            2.300.000₫ – 2.500.000₫
         </div>
-        <div class="controls">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm user...">
+        <div class="info-box">
+            <h3>Thông Tin Chi Tiết</h3>
+            <div class="info-content">
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fas fa-tag"></i></span>
+                        <strong>Dòng sản phẩm</strong>
+                        <span class="tag">Bộ bát đĩa Hoa mặt trời</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fas fa-gem"></i></span>
+                        <strong>Chất liệu</strong>
+                        <span>Gốm sứ Bát Tràng</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fas fa-palette"></i></span>
+                        <strong>Loại men</strong>
+                        <span class="tag">Men kem</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fas fa-ruler-combined"></i></span>
+                        <strong>Kích thước</strong>
+                        <span>ĐK 45cm, ĐK 55cm</span>
+                    </li>
+                </ul>
             </div>
-            <div class="action-buttons">
-                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm User</button>
+            <div class="info-footer">
+                <button class="see-more-btn">Xem thêm (5)</button>
             </div>
         </div>
-        <div class="filters">
-            <div class="filter-group">
-                <label>Nhóm:</label>
-                <select>
-                    <option>Tất cả</option>
-                    <option>Admin</option>
-                    <option>User</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Trạng thái:</label>
-                <select>
-                    <option>Tất cả</option>
-                    <option>Active</option>
-                    <option>Pending</option>
-                    <option>Banned</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Sắp xếp:</label>
-                <select>
-                    <option>Mới nhất</option>
-                    <option>Cũ nhất</option>
-                    <option>Theo tên A-Z</option>
-                    <option>Theo tên Z-A</option>
-                </select>
+
+        <div class="variant-selection">
+            <h4>Kích thước bát đĩa</h4>
+            <div class="variants">
+                <button class="variant-btn active" type="button">
+                    <span class="size">ĐK 45CM</span>
+                    <span class="var-price">2.300.000₫</span>
+                </button>
+                <button class="variant-btn" type="button">
+                    <span class="size">ĐK 55CM</span>
+                    <span class="var-price">2.500.000₫</span>
+                </button>
             </div>
         </div>
-        <div class="table-container">
-            <table>
-                <thead class="title-table">
-                <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Email</th>
-                    <th>Nhóm</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày tham gia</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr onclick="openTab()">
-                    <td>#001</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>a.nguyen@email.com</td>
-                    <td><span class="role admin">Admin</span></td>
-                    <td><span class="status active">Active</span></td>
-                    <td>20/11/2023</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#002</td>
-                    <td>Trần Thị B</td>
-                    <td>b.tran@email.com</td>
-                    <td><span class="role admin">User</span></td>
-                    <td><span class="status banned">Banned</span></td>
-                    <td>15/01/2024</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#003</td>
-                    <td>Lê Văn C</td>
-                    <td>c.le@email.com</td>
-                    <td><span class="role user">User</span></td>
-                    <td><span class="status pending">Pending</span></td>
-                    <td>10/03/2024</td>
-                </tr>
-                </tbody>
-            </table>
+
+        <div class="quantity-control">
+            <button type="button" class="btn-decrease">&minus;</button>
+            <input type="text" class="quantity-input" value="1">
+            <button type="button" class="btn-increase">&plus;</button>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-add-cart">
+                THÊM VÀO GIỎ
+                <span>Mua thêm sản phẩm khác</span>
+            </button>
+            <button class="btn-buy-now">
+                ĐẶT HÀNG NHANH
+                <span>Giao tận nơi, nhận hàng trả tiền</span>
+            </button>
         </div>
     </div>
+</div>
 </section>
-<!--modal-->
-<section class="overlay" id="openmodal" style="display: none;">
-    <div class="container-modal">
-        <div class="cover-modal">
-            <span onclick="document.getElementById('openmodal').style.display='none'"
-                  class="exit-btn">&times;</span>
-            <p>USER</p>
-            <div class="cover-allinfo">
-                <div class="avatar-name">
-                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
-                    <p>Nguyen Van A</p>
-                </div>
-                <div class="cover-info">
-                    <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: 0342104524</p>
-                    <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: a.nguyen@email.com</p>
-                    <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: 13/11/2005</p>
-                    <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Position: ADMIN</p>
-                </div>
-                <div class="cover-active">
-                    <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: 22/10/2025</p>
-                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>
-                </div>
-                <div class="cover-btn">
-                    <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
-                    <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
-                </div>
+<section class="cover-all-feedback">
+    <div class="container-sp">
+        <div class="title-feedback">
+            <p class="title">4.7 <span class="stars">★</span> Đánh giá sản phẩm</p>
+            <p>Xem tất cả ></p>
+        </div>
+        <div class="feedback-all">
+            <p><span>Chuẩn (50)</span> <span>Giao hàng nhanh (12)</span> <span>Sản phẩm đẹp (36)</span></p>
+        </div>
+        <div class="cover-feedback">
+            <div class="left-feedback">4.7  <p class="stars">★★★★★</p></div>
+            <div class="right-feedback">
+                <div class="cover-line"><p>5 <div class="line-feedback star5"></div></p></div>
+                <div class="cover-line"><p>4 <div class="line-feedback star4"></div></p></div>
+                <div class="cover-line"><p>3 <div class="line-feedback star3"></div></p></div>
+                <div class="cover-line"><p>2 <div class="line-feedback star2"></div></p></div>
+                <div class="cover-line"><p>1 <div class="line-feedback star1"></div></p></div>
+            </div>
+        </div>
+        <div class="cover-comment">
+            <div class="cmt">
+                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
+                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
+                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
+            </div>
+            <div class="cmt">
+                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
+                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
+                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
+            </div>
+            <div class="cmt">
+                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
+                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
+                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
             </div>
         </div>
     </div>
 </section>
-
-
 <!--footer-->
 <footer class="pageHome-footer" id="footer-home">
     <div class="container-footer">
@@ -314,6 +264,5 @@
         </div>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
 </body>
 </html>

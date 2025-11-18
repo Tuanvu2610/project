@@ -14,7 +14,7 @@ body{
 
 .sidebar{
     width: 25%;
-    background: #b75056;
+    background:#0d8e02c7;
     color: white;
     padding: 20px 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -97,7 +97,7 @@ body{
 }
 
 .order-tabs button.active {
-    background: #333;
+    background: #4b89ff;
     color: white;
 }
 
@@ -128,6 +128,27 @@ body{
     background: white;
     border-bottom: 1px solid #eee;
     font-size: 15px;
+}
+
+.status button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-confirm {
+    background-color: #28a745;
+}
+
+.btn-loading {
+    background: #e74c3c;
+}
+
+.status button:hover {
+    opacity: 0.8;
 }
 
 .order-row td:first-child {

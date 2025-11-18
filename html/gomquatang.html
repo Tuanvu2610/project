@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="../css/gomquatang.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/ctsanpham.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 
 <body>
@@ -25,8 +21,14 @@
         </span>
     <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
     <div class="right-header">
-        <button class="btn-header" id="openModalBtn">Đăng nhập</button>
-        <button class="btn-header line"><img src="../img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button>
+        <a href="../html/myinfo.html" class="avart-user">
+            <div style="width: 30%"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt=""></div>
+            <div class="info-user">
+                <p>Nguyen Van A</p>
+                <p>0342104524</p>
+            </div>
+        </a>
+        <a href="../html/giohang.html"> <button class="btn-header line2"><img src="../img/shopping-cart-svgrepo-com (1).svg" alt="">Giỏ hàng</button> </a>
     </div>
 </header>
 <nav class="menu-home">
@@ -34,33 +36,33 @@
         <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li>Ấm chén Bát Tràng</li>
-                    <li>Bộ bát đĩa Bát Tràng</li>
-                    <li>Chum ngâm rượu</li>
-                    <li>Dụng cụ nhà tắm</li>
-                    <li>Đèn ngủ</li>
+                    <li class="tab" data-target="amchenbattrang-page">Ấm chén bác tràng</li>
+                    <li class="tab" data-target="bacdia-page">Bộ bác đĩa bác tràng</li>
+                    <li class="tab" data-target="chum-page">Chum ngâm rượu</li>
+                    <li class="tab" data-target="nhatam-page">Dụng cụ nhà tắm</li>
+                    <li class="tab" data-target="denngu-page">Đèn ngủ</li>
                 </ul>
             </div>
         </li>
         <li class="sub-item"><a href="../html/gomtrangtri.html">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li>Bình gốm bát tràng</li>
-                    <li>Lọ hoa bát tràng</li>
-                    <li>Đĩa sứ trang trí</li>
-                    <li>Tượng gốm sứ</li>
-                    <li>Bình hồ lô</li>
+                    <li><a href="../html/gomtrangtri.html">Bình gốm bát tràng</a></li>
+                    <li><a href="../html/gomtrangtri.html">Lọ hoa bát tràng</a></li>
+                    <li><a href="../html/gomtrangtri.html">Dĩa sứ trang trí</a></li>
+                    <li><a href="../html/gomtrangtri.html">Tượng gốm sứ</a></li>
+                    <li><a href="../html/gomtrangtri.html">Bình hồ lô</a></li>
                 </ul>
             </div>
         </li>
         <li class="sub-item"><a href="../html/gomthocung.html">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a>Bộ đồ thờ đầy đủ</a></li>
-                    <li><a>Bát hương</a></li>
-                    <li><a>Mâm bồng</a></li>
-                    <li><a>Bát nắp</a></li>
-                    <li><a>Cây đèn nến</a></li>
+                    <li><a href="../html/gomthocung.html">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="../html/gomthocung.html">Bát hương</a></li>
+                    <li><a href="../html/gomthocung.html">Mâm bồng</a></li>
+                    <li><a href="../html/gomthocung.html">Bát nắp</a></li>
+                    <li><a href="../html/gomthocung.html">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
@@ -101,35 +103,35 @@
         <p>Sản phẩm đang giảm giá</p>
         <div class="slider">
             <div id="saleproduct-list" class="product-list">
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/lysu.png" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Ly cốc gốm sứ cao cấp</h3>
                     <p class="price-origin padding">200.000đ</p>
-                    <p class="product-price padding">190.000đ</p>
+                    <p class="product-price padding">190.000đ</p></a>
                 </div>
             </div>
         </div>
@@ -138,35 +140,35 @@
         <p class="style-title">Bình hút lộc in logo</p>
         <div class="product-section cursor">
             <div id="binhhutloc-list" class="product-list">
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
                     <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
                 </div>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -174,35 +176,35 @@
         <p class="style-title">Ấm chén in logo</p>
         <div class="product-section cursor">
             <div id="amchenLogo-list" class="product-list">
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
                     <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
                 </div>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -210,35 +212,35 @@
         <p class="style-title">Bình hoa in logo</p>
         <div class="product-section cursor">
             <div id="binhhoa-list" class="product-list">
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
                     <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
                 </div>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -246,35 +248,35 @@
         <p class="style-title">Quà tặng bát đĩa</p>
         <div class="product-section cursor">
             <div id="batdia-list" class="product-list">
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
-                <div class="product-card" onclick="openTab()">
+                <div class="product-card"><a href="../html/ctsp.html">
                     <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
                     <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
                     <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
                 </div>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -300,42 +302,48 @@
             </div>
         </div>
         <div id="binhhutlocPage-list" class="product-item">
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                <p class="price-origin padding">5.000.000đ</p>
-                <p class="product-price padding">3.900.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                <p class="price-origin padding">5.000.000đ</p>
-                <p class="product-price padding">3.900.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                <p class="price-origin padding">5.000.000đ</p>
-                <p class="product-price padding">3.900.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                <p class="price-origin padding">5.000.000đ</p>
-                <p class="product-price padding">3.900.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                <p class="price-origin padding">5.000.000đ</p>
-                <p class="product-price padding">3.900.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
+                    <p class="price-origin padding">5.000.000đ</p>
+                    <p class="product-price padding">3.900.000đ</p></a>
             </div>
         </div>
+    </div>
 </section>
 
 <!--am chen in logo-->
@@ -358,42 +366,48 @@
             </div>
         </div>
         <div id="amchenLogoPage-list" class="product-item">
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                <p class="price-origin padding">3.000.000đ</p>
-                <p class="product-price padding">2.600.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
+                    <p class="price-origin padding">3.000.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                <p class="price-origin padding">3.000.000đ</p>
-                <p class="product-price padding">2.600.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
+                    <p class="price-origin padding">3.000.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                <p class="price-origin padding">3.000.000đ</p>
-                <p class="product-price padding">2.600.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
+                    <p class="price-origin padding">3.000.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                <p class="price-origin padding">3.000.000đ</p>
-                <p class="product-price padding">2.600.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
+                    <p class="price-origin padding">3.000.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                <p class="price-origin padding">3.000.000đ</p>
-                <p class="product-price padding">2.600.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
+                    <p class="price-origin padding">3.000.000đ</p>
+                    <p class="product-price padding">2.600.000đ</p></a>
             </div>
         </div>
+    </div>
 </section>
 
 <!--binh hoa in logo-->
@@ -415,42 +429,48 @@
             </div>
         </div>
         <div id="binhhoaPage-list" class="product-item">
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                <p class="price-origin padding">3.600.000đ</p>
-                <p class="product-price padding">1.800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
+                    <p class="price-origin padding">3.600.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                <p class="price-origin padding">3.600.000đ</p>
-                <p class="product-price padding">1.800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
+                    <p class="price-origin padding">3.600.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                <p class="price-origin padding">3.600.000đ</p>
-                <p class="product-price padding">1.800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
+                    <p class="price-origin padding">3.600.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                <p class="price-origin padding">3.600.000đ</p>
-                <p class="product-price padding">1.800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
+                    <p class="price-origin padding">3.600.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                <p class="price-origin padding">3.600.000đ</p>
-                <p class="product-price padding">1.800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
+                    <p class="price-origin padding">3.600.000đ</p>
+                    <p class="product-price padding">1.800.000đ</p></a>
             </div>
         </div>
+    </div>
 </section>
 
 <!--qua tang bat dia-->
@@ -471,75 +491,45 @@
             </div>
         </div>
         <div id="batdiaPage-list" class="product-item">
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                <p class="price-origin padding">1.000.000đ</p>
-                <p class="product-price padding">800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
+                    <p class="price-origin padding">1.000.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                <p class="price-origin padding">1.000.000đ</p>
-                <p class="product-price padding">800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
+                    <p class="price-origin padding">1.000.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                <p class="price-origin padding">1.000.000đ</p>
-                <p class="product-price padding">800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
+                    <p class="price-origin padding">1.000.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                <p class="price-origin padding">1.000.000đ</p>
-                <p class="product-price padding">800.000đ</p>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
+                    <p class="price-origin padding">1.000.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
             </div>
-            <div class="product-card-item" onclick="openTab()">
-                <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                <button class="btn">Xem nhanh</button>
-                <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                <p class="price-origin padding">1.000.000đ</p>
-                <p class="product-price padding">800.000đ</p>
-            </div>
-        </div>
-</section>
-
-<!--modal-->
-<section class="overlay" style="display: none" id="openmodal">
-    <div class="container-modal">
-        <div class="cover-modal">
-            <span onclick="document.getElementById('openmodal').style.display='none'"
-                  class="exit-btn">&times;</span>
-            <img src="../img/tieu-chi-chon-qua-tang-gom-su.jpg" alt="">
-            <div class="content-modal">
-                <div class="cover-title">
-                    <div class="title-modal">Bộ quà tặng gốm sứ sang trọng</div>
-                    <div class="price-modal">Giá: 6.900.000đ</div>
-                    <div class="quantity-modal">
-                        <button type="button" class="btn-decrease">
-                            &minus;
-                        </button>
-                        <input type="text" class="quantity-input" value="1" inputmode="numeric" pattern="[0-9]*">
-                        <button type="button" class="btn-increase">
-                            &plus;
-                        </button>
-                    </div>
-                </div>
-                <div class="cover-btn">
-                    <button class="btn-add button">
-                        <h3>THÊM VÀO GIỎ HÀNG</h3>
-                        <p>Mua thêm sản phẩm khác</p>
-                    </button>
-                    <button class="btn-order button">
-                        <h3>ĐẶT HÀNG NHANH</h3>
-                        <p>Mua thêm sản phẩm khác</p>
-                    </button>
-                </div>
+            <div class="product-card-item">
+                <a href="../html/ctsp.html">
+                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
+                    <button class="btn">Xem nhanh</button>
+                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
+                    <p class="price-origin padding">1.000.000đ</p>
+                    <p class="product-price padding">800.000đ</p></a>
             </div>
         </div>
     </div>
@@ -556,7 +546,7 @@
                 gia dụng trang trí . Sử dụng chất liệu: đất sét
                 trắng, men rạn, men lam, men ngọc . Kỹ thuật sản
                 xuất: ruyền thống và vẽ tay tỉ mỉ</p>
-            <p>Địa chỉ: Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</p>
+            <p>Địa chỉ: Khu phố 33, Linh Xuân, Tp.HCM</p>
             <p>Phone: </p>
         </div>
         <div class="cover-right">

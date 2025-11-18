@@ -12,7 +12,7 @@ body{
 }
 .sidebar{
     width: 25%;
-    background: #b75056;
+    background: #0d8e02c7;
     color: white;
     padding: 20px 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -24,10 +24,10 @@ body{
     margin-bottom: 20px;
 }
 .title h2{
-    font-size: 1.5rem;
+    font-size: 26px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
 }
 .nav-links{
@@ -86,7 +86,6 @@ body{
     color: white;
 }
 
-
 /* --- Bảng kho hàng --- */
 .warehouse-table table {
     width: 110%;
@@ -95,7 +94,6 @@ body{
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .warehouse-table thead {

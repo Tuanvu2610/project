@@ -4,21 +4,18 @@
     <meta charset="UTF-8">
     <title>Gốm Sứ NÔNG LÂM</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/quanly.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="../css/myinfo.css">
 </head>
 <body>
-<!--header-->
-<!--header-->
+<!-- header -->
 <header class="pageHome-header" id="header-home">
-         <span class="text-header"><a href="../index.html" style="display: flex; gap: 15px;">
+         <span class="text-header"><a href="/project" style="display: flex; gap: 15px;">
             <span class="text-gomsu">Gốm Sứ</span>
             <span class="text-nonglam">Nông Lâm</span></a>
         </span>
     <div class="search-header"><input type="text" placeholder="Tìm kiếm....."></div>
     <div class="right-header">
-        <a href="../html/myinfo.html" class="avart-user">
+        <a href="" class="avart-user">
             <div style="width: 30%"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt=""></div>
             <div class="info-user">
                 <p>Nguyen Van A</p>
@@ -33,11 +30,11 @@
         <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="../html/gomgiadung.html">Ấm chén bác tràng</a></li>
-                    <li><a href="../html/gomgiadung.html">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="../html/gomgiadung.html">Chum ngâm rượu</a></li>
-                    <li><a href="../html/gomgiadung.html">Dụng cụ nhà tắm</a></li>
-                    <li><a href="../html/gomgiadung.html">Đèn ngủ</a></li>
+                    <li class="tab" data-target="amchenbattrang-page">Ấm chén bác tràng</li>
+                    <li class="tab" data-target="bacdia-page">Bộ bác đĩa bác tràng</li>
+                    <li class="tab" data-target="chum-page">Chum ngâm rượu</li>
+                    <li class="tab" data-target="nhatam-page">Dụng cụ nhà tắm</li>
+                    <li class="tab" data-target="denngu-page">Đèn ngủ</li>
                 </ul>
             </div>
         </li>
@@ -79,176 +76,69 @@
         <li><a href="../html/quanlyaccount.html">ADMIN CONTROL</a></li>
     </ul>
 </nav>
-
 <!--body-->
-<section class="container-quanly">
-    <div class="sidebar">
-        <div class="title">
-            <h2><span>ADMIN CONTROL</span></h2>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="../html/thongke.html"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
-            <li><a href="../html/kho.html"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
-            <li><a href="../html/donhang.html"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
-            <li><a href="#"><i class="fas fa-user"></i> <span>Nhân viên</span></a> </li>
-            <li><a href="#"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
-        </ul>
-    </div>
-    <div class="main-content">
-        <div class="header-control">
-            <h1><i class="fas fa-users-cog"></i> Quản lý Người dùng</h1>
-        </div>
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon total">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>2,000</h3>
-                    <p>Tổng số User</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon active">
-                    <i class="fas fa-user-check"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>1,900</h3>
-                    <p>User Active</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon pending">
-                    <i class="fas fa-user-clock"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>36</h3>
-                    <p>Đang chờ xử lý</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon banned">
-                    <i class="fas fa-user-slash"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>64</h3>
-                    <p>User Bị khoá</p>
-                </div>
-            </div>
-        </div>
-        <div class="controls">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm user...">
-            </div>
-            <div class="action-buttons">
-                <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm User</button>
-            </div>
-        </div>
-        <div class="filters">
-            <div class="filter-group">
-                <label>Nhóm:</label>
-                <select>
-                    <option>Tất cả</option>
-                    <option>Admin</option>
-                    <option>User</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Trạng thái:</label>
-                <select>
-                    <option>Tất cả</option>
-                    <option>Active</option>
-                    <option>Pending</option>
-                    <option>Banned</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Sắp xếp:</label>
-                <select>
-                    <option>Mới nhất</option>
-                    <option>Cũ nhất</option>
-                    <option>Theo tên A-Z</option>
-                    <option>Theo tên Z-A</option>
-                </select>
-            </div>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead class="title-table">
-                <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Email</th>
-                    <th>Nhóm</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày tham gia</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr onclick="openTab()">
-                    <td>#001</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>a.nguyen@email.com</td>
-                    <td><span class="role admin">Admin</span></td>
-                    <td><span class="status active">Active</span></td>
-                    <td>20/11/2023</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#002</td>
-                    <td>Trần Thị B</td>
-                    <td>b.tran@email.com</td>
-                    <td><span class="role admin">User</span></td>
-                    <td><span class="status banned">Banned</span></td>
-                    <td>15/01/2024</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#003</td>
-                    <td>Lê Văn C</td>
-                    <td>c.le@email.com</td>
-                    <td><span class="role user">User</span></td>
-                    <td><span class="status pending">Pending</span></td>
-                    <td>10/03/2024</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-<!--modal-->
-<section class="overlay" id="openmodal" style="display: none;">
-    <div class="container-modal">
-        <div class="cover-modal">
-            <span onclick="document.getElementById('openmodal').style.display='none'"
-                  class="exit-btn">&times;</span>
-            <p>USER</p>
-            <div class="cover-allinfo">
-                <div class="avatar-name">
-                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+<section class="body-info">
+    <div class="container-info">
+        <div class="cover-left-page">
+            <div class="info-avatar">
+                <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                <div class="name">
                     <p>Nguyen Van A</p>
+                    <p>0342104524</p>
                 </div>
-                <div class="cover-info">
-                    <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: 0342104524</p>
-                    <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: a.nguyen@email.com</p>
-                    <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: 13/11/2005</p>
-                    <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Position: ADMIN</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active"><img src="https://www.svgrepo.com/show/352649/user-tie.svg"></i> <span>Thông tin của tôi</span></a></li>
+                <li><a href="../html/trangthaidon.html"><img src="https://www.svgrepo.com/show/335144/product-downloadable.svg" alt=""></i> <span>Đơn mua</span></a></li>
+            </ul>
+        </div>
+        <div class="cover-right-page">
+            <div class="title-info">
+                <p>Hồ sơ của tôi</p>
+                <p class="style-title-info">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+            </div>
+            <div class="cover-info">
+                <div class="left-info">
+                    <div class="cover-username style-lable">
+                        <label>Tên đăng nhập: </label>
+                        <input type="text" class="style-input" name="username" id="" placeholder="NguyenVanA2005">
+                    </div>
+                    <div class="cover-name style-lable">
+                        <label>Tên: </label>
+                        <input type="text" class="style-input" name="name" id="" placeholder="Nguyen Van A">
+                    </div>
+                    <div class="cover-email style-lable">
+                        <label>Email: </label>
+                        <input type="text" class="style-input" name="email" id="" placeholder="a.nguyen@email.com">
+                    </div>
+                    <div class="cover-phone style-lable">
+                        <label>Phone: </label>
+                        <input type="text" class="style-phone" name="phone" id="" placeholder="0342104524">
+                    </div>
+                    <div class="cover-phone style-lable">
+                        <label>Giới tính: </label>
+                        <div class="cover-sex">
+                            <div>
+                                <label> Nam</label>
+                                <input type="radio" class="style-radio" name="man">
+                            </div>
+                            <div>
+                                <label> Nu</label>
+                                <input type="radio" class="style-radio" name="women">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="cover-active">
-                    <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: 22/10/2025</p>
-                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>
-                </div>
-                <div class="cover-btn">
-                    <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
-                    <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
+                <div class="right-info">
+                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                    <button>Thay đổi</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!--footer-->
+<!-- footer -->
 <footer class="pageHome-footer" id="footer-home">
     <div class="container-footer">
         <div class="cover-left">
@@ -314,6 +204,6 @@
         </div>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
+
 </body>
 </html>
