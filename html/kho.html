@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kho</title>
+    <link rel="stylesheet" href="../css/kho.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!--header-->
+
+<!-- content -->
+<div class="container">
+    <div class="sidebar">
+        <div class="title">
+            <h2><span>ADMIN CONTROL</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="../html/thongke.html"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="../html/kho.html"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+            <li><a href="../html/donhang.html"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
+            <li><a href="#"><i class="fas fa-user"></i> <span>Nhân viên</span></a> </li>
+            <li><a href="#"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="head-title">
+            <h1><i class="fas fa-warehouse"></i> Kho hàng</h1>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab active">Đã lên kệ</button>
+            <button class="tab">Chưa lên kệ</button>
+        </div>
+
+        <div class="warehouse-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Hàng hóa</th>
+                    <th>Giá</th>
+                    <th>Hàng tồn kho</th>
+                    <th>Đã bán</th>
+                    <th>Trạng thái</th>
+                    <th>Lợi nhuận</th> <!-- loi nhuan an 5% nha -->
+                    <th>Thao tác</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
+                    </td>
+                    <td>2.300.000đ</td>
+                    <td>100</td>
+                    <td>360</td>
+                    <td class="status selling">Đang bán</td>
+                    <td class="profit green">115.000đ</td>
+                    <td>
+                        <button class="remove">Gỡ bán</button>
+                        <button class="edit">Điều chỉnh</button>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+
+</body>
+</html>

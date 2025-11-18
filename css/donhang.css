@@ -1,0 +1,155 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 24px;
+    color: #333;
+}
+
+.container{
+    display: flex;
+    min-height: 100vh;
+    margin-bottom: 50px;
+}
+
+.sidebar{
+    width: 25%;
+    background: #b75056;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.title{
+    text-align: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.title h2{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-links{
+    list-style: none;
+    padding: 0 15px;
+}
+
+.nav-links li{
+    margin-bottom: 10px;
+}
+
+.nav-links a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a i{
+    width: 20px;
+    text-align: center;
+}
+
+.content {
+    flex: 1;
+    padding: 25px;
+}
+
+.head-title h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-tabs {
+    display: flex;
+    align-items: center;
+    background: #e8e8e8;
+    padding: 12px 20px;
+    border-radius: 10px;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.order-tabs button {
+    padding: 8px 20px;
+    border-radius: 18px;
+    border: none;
+    background: #ddd;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.order-tabs button.active {
+    background: #333;
+    color: white;
+}
+
+.order-summary {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.order-table th {
+    padding: 10px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.order-row {
+    background: white;
+    border-radius: 10px;
+}
+
+.order-row td {
+    padding: 14px 12px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.order-row td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.order-row td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.money {
+    font-weight: bold;
+}
+
+.receiver {
+    font-style: italic;
+}
