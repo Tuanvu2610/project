@@ -285,8 +285,36 @@ a {
     display: flex;
     width: 50%;
     align-items: center;
+    position: relative;
 }
 .line2 {
     border-left: 1px solid #fff;
     padding: 15px;
+}
+
+.list-choose {
+    display: none;
+    position: absolute;
+    right: 15px;
+    bottom: -135px;
+    background: #fff;
+    color: #0a8300;
+    z-index: 1001;
+    width: 210px;
+    border: 1px solid #0a8300;
+    list-style: none;
+    padding: 0;
+}
+.avart-user:hover .list-choose{
+    display: block;
+    cursor: pointer;
+}
+.list-choose li {
+    margin: 15px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+}
+.avart-user:hover .list-choose li:hover{
+    cursor: pointer;
+    background-color: rgb(241, 241, 241);
 }
