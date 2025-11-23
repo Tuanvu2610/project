@@ -75,11 +75,7 @@ body {
     z-index: 1000;
 }
 
-.cover-menu {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
+
 
 .info-home {
     height: max-content;
