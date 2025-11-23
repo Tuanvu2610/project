@@ -6,29 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="5945867e-5d1e-43b6-9fb9-2c117089c5b0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/GioiThieu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/GioiThieu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/ctsanpham.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/ctsanpham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/dangnhap.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/dangnhap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/giadung.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/giadung.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/gomquatang.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gomquatang.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/gomthocung.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gomthocung.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/quanly.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/quanly.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/thongke.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/thongke.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/tintuc.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/tintuc.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/GioiThieu.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/GioiThieu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/ctsp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/ctsp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/donhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/donhang.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/giohang.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/giohang.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/gomgiadung.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/gomgiadung.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/gomquatang.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/gomquatang.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/gomthocung.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/gomthocung.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/gomtrangtri.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/gomtrangtri.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/kho.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/kho.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/lienhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/lienhe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/myinfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/quanlyaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/quanlyaccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/thongke.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/thongke.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/tintuc.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/tintuc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/trangthaidon.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/trangthaidon.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/javascript.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,26 +54,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;vu&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ltweb/upcode/project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "vu",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "D:/ltweb/fix/project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ltweb\pro-web" />
@@ -101,6 +97,7 @@
       <workItem from="1762065063834" duration="2272000" />
       <workItem from="1763197221678" duration="646000" />
       <workItem from="1763220134405" duration="4921000" />
+      <workItem from="1763868515390" duration="672000" />
     </task>
     <servers />
   </component>
