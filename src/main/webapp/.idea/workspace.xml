@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5945867e-5d1e-43b6-9fb9-2c117089c5b0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/gomtrangtri.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/gomtrangtri.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/myinfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/myinfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/quanly.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/quanly.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/trangthaidon.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/trangthaidon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/gomgiadung.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/gomgiadung.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/haumai.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/haumai.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/lienhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/lienhe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/myinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/quanlyaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/quanlyaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/thanhtoan.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/thanhtoan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/trangthaidon.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/trangthaidon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Tuanvu2610&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tuanvu2610/project.git&quot;,
+    &quot;accountId&quot;: &quot;ca2da3de-f4b5-447c-9720-99bc13d275f0&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="34uYjud9ZQOVl6NIXUP0Mv9I6yS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/Admin/Downloads/project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ltweb\pro-web" />
+      <recent name="D:\ltweb\pro-web\css" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5945867e-5d1e-43b6-9fb9-2c117089c5b0" name="Changes" comment="" />
+      <created>1762065062709</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762065062709</updated>
+      <workItem from="1762065063834" duration="2272000" />
+      <workItem from="1763197221678" duration="646000" />
+      <workItem from="1763220134405" duration="4921000" />
+      <workItem from="1763868515390" duration="672000" />
+      <workItem from="1764259176460" duration="948000" />
+      <workItem from="1764311828527" duration="4721000" />
+      <workItem from="1764345068991" duration="2947000" />
+      <workItem from="1764392834753" duration="2598000" />
+      <workItem from="1765373463706" duration="627000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
