@@ -15,14 +15,13 @@ public class Product {
         this.name = name;
         this.img = img;
         this.category_id = category_id;
-        this.material = this.material;
+        this.material = material;
         this.size = size;
         this.price_sale = price_sale;
         this.price_origin = price_origin;
     }
 
-    public Product(int id, String name, String img, int categoryId, String material, int priceSale, int priceOrigin) {
-    }
+    public Product() {}
 
     public int getId() {
         return id;

@@ -126,7 +126,7 @@
             <button class="slide-btn next" onclick="slideRight()">❯</button>
             <div class="slider-wrapper">
                 <div id="slider" class="product-list">
-                    <c:forEach var="p" items="${list}">
+                    <c:forEach var="p" items="${listDiscounts}">
                         <div class="product-card">
                             <span class="discount-percent">-20%</span>
                             <img src="${p.img}" alt="" class="product-img">
@@ -144,7 +144,7 @@
     <div class="thocung">
         <p class="style-title">Bộ đồ thờ đầy đủ</p>
         <div class="product-section cursor">
-            <div id="mambong-list" class="product-list hidden">
+            <div id="dotho-list" class="product-list hidden">
                 <c:forEach var="p" items="${listDoTho}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
