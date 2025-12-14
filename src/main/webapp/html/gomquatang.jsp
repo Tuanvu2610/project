@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/gomquatang.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ctsanpham.css">
+    <link rel="stylesheet" href="css/gomquatang.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -17,7 +18,7 @@
 <!--header-->
 <header class="pageHome-header" id="header-home">
 
-    <a href="../index.jsp" class="text-header">
+    <a href="index.jsp" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
@@ -121,37 +122,22 @@
     </div>
     <div class="saleproduct-section cursor">
         <p>Sản phẩm đang giảm giá</p>
-        <div class="slider">
-            <div id="saleproduct-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/lysu.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Ly cốc gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">200.000đ</p>
-                    <p class="product-price padding">190.000đ</p></a>
+        <div id="saleproduct-list" class="hidden">
+            <button class="slide-btn prev" onclick="slideLeft()">❮</button>
+            <button class="slide-btn next" onclick="slideRight()">❯</button>
+            <div class="slider-wrapper">
+                <div id="slider" class="product-list">
+                    <c:forEach var="p" items="${listDiscounts}">
+                        <div class="product-card">
+                            <span class="discount-percent">-20%</span>
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <div class="product-price">
+                                <p class="price-origin padding">${p.price_origin}đ</p>
+                                <p class="price-sale padding">${p.price_sale}đ</p>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -159,145 +145,53 @@
     <div class="quatang">
         <p class="style-title">Bình hút lộc in logo</p>
         <div class="product-section cursor">
-            <div id="binhhutloc-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hut-loc-mau-xanh-ve-vang-phuc-duc-tai-loc-28cm_02112022084918.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hút lộc chữ Phúc</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">3.900.000đ</p></a>
-                </div>
+            <div id="binhhutloc-list" class="product-list hidden">
+                <c:forEach var="p" items="${listBinhHutLoc}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Ấm chén in logo</p>
         <div class="product-section cursor">
-            <div id="amchenLogo-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-am-chen-su-in-logo-bat-trang-qua-tang-cao-cap.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ ấm chén sứ cao cấp</h3>
-                    <p class="price-origin padding">3.000.000đ</p>
-                    <p class="product-price padding">2.600.000đ</p></a>
-                </div>
+            <div id="amcheninlogo-list" class="product-list hidden">
+                <c:forEach var="p" items="${listAmChenInLogo}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Bình hoa in logo</p>
         <div class="product-section cursor">
-            <div id="binhhoa-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/binh-hoa-minh-long-05.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bình hoa gốm sứ Minh Long</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-                </div>
+            <div id="binhhoa-list" class="product-list hidden">
+                <c:forEach var="p" items="${listBinhHoa}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Quà tặng bát đĩa</p>
         <div class="product-section cursor">
-            <div id="batdia-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-bat-dia-1-1202x800.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bộ bát đĩa gốm sứ cao cấp</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-                </div>
+            <div id="batdia-list" class="product-list hidden">
+                <c:forEach var="p" items="${listBatDia}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
