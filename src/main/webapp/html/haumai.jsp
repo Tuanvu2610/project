@@ -11,7 +11,7 @@
 <body>
 <!--header-->
 <header class="pageHome-header" id="header-home">
-    <a href="../index.jsp" class="text-header">
+    <a href="../index.html" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
@@ -22,24 +22,8 @@
     </div>
 
     <div class="right-header">
-        <div class="user-info-container">
-            <a href="myinfo.jsp" class="cover-avatar-user">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="info-user">
-                    <span class="user-name">Nguyen Van A</span>
-                    <span class="user-phone">0342104524</span>
-                </div>
-            </a>
-            <div class="user-menu">
-                <ul>
-                    <li><a href="myinfo.jsp"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                </ul>
-            </div>
-        </div>
-        <a href="giohang.jsp" class="btn-header cart-btn">
+        <button class="btn-header"><a href="#loginModal"><i class="fas fa-user"></i> Đăng nhập</a></button>
+        <a href="../html/giohang.html" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
             <span class="cart-badge">2</span> </a>
@@ -47,53 +31,53 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="gomgiadung.jsp">Đèn ngủ</a></li>
+                    <li><a href="../html/gomgiadung.html">Ấm chén bác tràng</a></li>
+                    <li><a href="../html/gomgiadung.html">Bộ bác đĩa bác tràng</a></li>
+                    <li><a href="../html/gomgiadung.html">Chum ngâm rượu</a></li>
+                    <li><a href="../html/gomgiadung.html">Dụng cụ nhà tắm</a></li>
+                    <li><a href="../html/gomgiadung.html">Đèn ngủ</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomtrangtri.html">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomtrangtri.jsp">Bình gốm bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
-                    <li><a href="gomtrangtri.jsp">Tượng gốm sứ</a></li>
-                    <li><a href="gomtrangtri.jsp">Bình hồ lô</a></li>
+                    <li><a href="../html/gomtrangtri.html">Bình gốm bát tràng</a></li>
+                    <li><a href="../html/gomtrangtri.html">Lọ hoa bát tràng</a></li>
+                    <li><a href="../html/gomtrangtri.html">Dĩa sứ trang trí</a></li>
+                    <li><a href="../html/gomtrangtri.html">Tượng gốm sứ</a></li>
+                    <li><a href="../html/gomtrangtri.html">Bình hồ lô</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomthocung.html">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
+                    <li><a href="../html/gomthocung.html">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="../html/gomthocung.html">Bát hương</a></li>
+                    <li><a href="../html/gomthocung.html">Mâm bồng</a></li>
+                    <li><a href="../html/gomthocung.html">Bát nắp</a></li>
+                    <li><a href="../html/gomthocung.html">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="../html/gomquatang.html">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
+                    <li><a href="../html/gomquatang.html">Bình hút lộc in logo</a></li>
+                    <li><a href="../html/gomquatang.html">Ấm chén in logo</a></li>
+                    <li><a href="../html/gomquatang.html">Bình hoa in logo</a></li>
+                    <li><a href="../html/gomquatang.html">Quà tặng bát đĩa</a></li>
                 </ul>
             </div>
         </li>
-        <li><a href="tintuc.jsp">TIN TỨC</a></li>
-        <li><a href="GioiThieu.jsp">GIỚI THIỆU</a></li>
-        <li><a href="lienhe.jsp">LIÊN HỆ</a></li>
-        <li><a href="quanlyaccount.jsp">ADMIN CONTROL</a></li>
+        <li><a href="../html/tintuc.html">TIN TỨC</a></li>
+        <li><a href="../html/GioiThieu.html">GIỚI THIỆU</a></li>
+        <li><a href="../html/lienhe.html">LIÊN HỆ</a></li>
+        <li><a href="../html/quanlyaccount.html">ADMIN CONTROL</a></li>
     </ul>
 </nav>
 
@@ -104,10 +88,10 @@
             <h2><span>ADMIN CONTROL</span></h2>
         </div>
         <ul class="nav-links">
-            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
-            <li><a href="kho.jsp"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
-            <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
+            <li><a href="../html/quanlyaccount.html"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="../html/thongke.html"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="../html/kho.html"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+            <li><a href="../html/donhang.html"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
             <li><a href="#" class="active"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
         </ul>
     </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/giadung.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ctsanpham.css">
+    <link rel="stylesheet" href="css/giadung.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -30,21 +31,21 @@
 
     <div class="right-header">
         <div class="user-info-container">
-        <a href="myinfo.jsp" class="cover-avatar-user">
-            <div class="user-avatar">
-                <i class="fas fa-user"></i>
+            <a href="myinfo.jsp" class="cover-avatar-user">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="info-user">
+                    <span class="user-name">Nguyen Van A</span>
+                    <span class="user-phone">0342104524</span>
+                </div>
+            </a>
+            <div class="user-menu">
+                <ul>
+                    <li><a href="myinfo.jsp"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                </ul>
             </div>
-            <div class="info-user">
-                <span class="user-name">Nguyen Van A</span>
-                <span class="user-phone">0342104524</span>
-            </div>
-        </a>
-        <div class="user-menu">
-            <ul>
-                <li><a href="myinfo.jsp"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-            </ul>
-        </div>
         </div>
         <a href="giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
@@ -54,7 +55,7 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="../html/gomgiadung.html">GỐM GIA DỤNG</a>  </i>
+        <li class="sub-item"> <a href="../html/gomgiadung.jsp">GỐM GIA DỤNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li class="tab" data-target="amchenbattrang-page"><a>Ấm chén bác tràng</a></li>
@@ -108,91 +109,37 @@
 <section class="main-content item">
     <div class="cover-outstanding cursor">
         <p>Sản phẩm đang giảm giá</p>
-        <div class="slider">
-            <div id="outstanding-product-list" class="product-list">
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/snapedit_1728806993960_ea56ed6a1e86471c9203962993361bf1_master.jpeg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Viền Vàng Nortylis Màu Xanh Emerald
-                            Gốm Sứ Cao Cấp Phong Cách Hiện Đại Châu Âu Quà Tặng Tân Gia</h3>
-                        <p class="price-origin padding">3.000.000đ</p>
-                        <p class="product-price padding">2.200.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">11.000.000đ</p>
-                        <p class="product-price padding">7.350.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="price-origin padding">750.000đ</p>
-                        <p class="product-price padding">550.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomsubaokhanh.vn/media/news/0609_gom-su-bao-khanh--2.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng trắng xanh</h3>
-                        <p class="price-origin padding">10.000.000đ</p>
-                        <p class="product-price padding">6.300.000đ</p>
-                    </div>
-                </a>
+        <div id="outstanding-product-list" class="hiden">
+            <button class="slide-btn prev" onclick="slideLeft()">❮</button>
+            <button class="slide-btn next" onclick="slideRight()">❯</button>
+            <div class="slider-wrapper">
+                <div class="product-list" id="slider">
+                    <c:forEach var="p" items="${list}">
+                        <div class="product-card">
+                            <span class="sale-pecent">-20%</span>
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <div class="product-price">
+                                <p class="price-origin padding">${p.price_origin}đ</p>
+                                <p class="price-sale padding">${p.price_sale}đ</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>
     <div>
         <p class="style-title">Ấm chén bát tràng</p>
         <div class="cover-product cursor">
-            <div id="amchen-product-list" class="product-list">
-                <a href="ctsp.jsp">
+            <div id="amchen-product-list" class="product-list hiden">
+                <c:forEach var="p" items="${list}">
                     <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">650.000đ</p>
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
                     </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="product-price padding">650.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="product-price padding">650.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="product-price padding">650.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="product-price padding">650.000đ</p>
-                    </div>
-                </a>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -200,42 +147,14 @@
     <div>
         <p class="style-title">Bộ bát dĩa bác tràng</p>
         <div class="cover-product cursor">
-            <div id="batdia-product-list" class="product-list">
-                <a href="ctsp.jsp">
+            <div id="batdia-product-list" class="product-list hiden">
+                <c:forEach var="p" items="${list}">
                     <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
                     </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -243,42 +162,14 @@
     <div>
         <p class="style-title">Bộ chum ngâm rượu</p>
         <div class="cover-product cursor">
-            <div id="chum-product-list" class="product-list">
-                <a href="ctsp.jsp">
+            <div id="chum-product-list" class="product-list hiden">
+                <c:forEach var="p" items="${list}">
                     <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">2.300.000đ</p>
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
                     </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -286,42 +177,14 @@
     <div>
         <p class="style-title">Đèn ngủ</p>
         <div class="cover-product cursor">
-            <div id="denngu-product-list" class="product-list">
-                <a href="ctsp.jsp">
+            <div id="denngu-product-list" class="product-list hiden">
+                <c:forEach var="p" items="${list}">
                     <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="product-price padding">495,000 ₫</p>
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
                     </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="product-price padding">495,000 ₫</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="product-price padding">495,000 ₫</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="product-price padding">495,000 ₫</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="product-price padding">495,000 ₫</p>
-                    </div>
-                </a>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -329,42 +192,14 @@
     <div>
         <p class="style-title">Dụng cụ nhà tắm</p>
         <div class="cover-product cursor">
-            <div id="nhatam-product-list" class="product-list">
-                <a href="ctsp.jsp">
+            <div id="nhatam-product-list" class="product-list hiden">
+                <c:forEach var="p" items="${list}">
                     <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13493/f2a25e59e289cc2cb9c2ce7b20bba6e4.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
                     </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13493/f2a25e59e289cc2cb9c2ce7b20bba6e4.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13493/f2a25e59e289cc2cb9c2ce7b20bba6e4.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13493/f2a25e59e289cc2cb9c2ce7b20bba6e4.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13493/f2a25e59e289cc2cb9c2ce7b20bba6e4.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
@@ -1090,7 +925,7 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
+<script src="js/javascript.js"></script>
 </body>
 
 </html>
