@@ -86,4 +86,10 @@ public class Product {
     public void setPrice_origin(int price_origin) {
         this.price_origin = price_origin;
     }
+    public int getPercent() {
+        if (price_origin <= 0 || price_sale >= price_origin) return 0;
+        return (int) Math.round(
+                (price_origin - price_sale) * 100.0 / price_origin
+        );
+    }
 }
