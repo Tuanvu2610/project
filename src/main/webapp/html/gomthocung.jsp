@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/gomthocung.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ctsanpham.css">
+    <link rel="stylesheet" href="css/gomthocung.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -17,7 +18,7 @@
 <!--header-->
 <header class="pageHome-header" id="header-home">
 
-    <a href="../index.jsp" class="text-header">
+    <a href="index.jsp" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
@@ -120,47 +121,22 @@
     </div>
     <div class="saleproduct-section cursor">
         <p>Sản phẩm đang giảm giá</p>
-        <div class="slider">
-            <div id="saleproduct-list" class="product-list">
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                        <p class="price-origin padding">10.000.000đ</p>
-                        <p class="product-price padding">5.000.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                        <p class="price-origin padding">6.000.000đ</p>
-                        <p class="product-price padding">3.600.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card" >
-                    <a href="ctsp.jsp">
-                        <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                        <p class="price-origin padding">3.600.000đ</p>
-                        <p class="product-price padding">1.800.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                        <p class="price-origin padding">1.000.000đ</p>
-                        <p class="product-price padding">800.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                        <p class="price-origin padding">4.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </a>
+        <div id="saleproduct-list" class="hidden">
+            <button class="slide-btn prev" onclick="slideLeft()">❮</button>
+            <button class="slide-btn next" onclick="slideRight()">❯</button>
+            <div class="slider-wrapper">
+                <div id="slider" class="product-list">
+                    <c:forEach var="p" items="${list}">
+                        <div class="product-card">
+                            <span class="discount-percent">-20%</span>
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <div class="product-price">
+                                <p class="price-origin padding">${p.price_origin}đ</p>
+                                <p class="price-sale padding">${p.price_sale}đ</p>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -168,203 +144,66 @@
     <div class="thocung">
         <p class="style-title">Bộ đồ thờ đầy đủ</p>
         <div class="product-section cursor">
-            <div id="dotho-list" class="product-list">
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                        <p class="price-origin padding">10.000.000đ</p>
-                        <p class="product-price padding">5.000.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="ctsp.jsp">
-                        <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                        <p class="price-origin padding">10.000.000đ</p>
-                        <p class="product-price padding">5.000.000đ</p>
-                    </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p>
-                </a>
-                </div>
+            <div id="mambong-list" class="product-list hidden">
+                <c:forEach var="p" items="${listDoTho}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Bát hương</p>
         <div class="product-section cursor">
-            <div id="bathuong-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p>
-                </a>
-                </div>
+            <div id="bathuong-list" class="product-list hidden">
+                <c:forEach var="p" items="${listBatHuong}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Mâm Bồng</p>
         <div class="product-section cursor">
-            <div id="mambong-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p>
-                </a>
-                </div>
+            <div id="mambong-list" class="product-list hidden">
+                <c:forEach var="p" items="${listMamBong}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Bát Nắp</p>
         <div class="product-section cursor">
-            <div id="batnap-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
-                </a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p>
-                </a>
-                </div>
+            <div id="batnap-list" class="product-list hidden">
+                <c:forEach var="p" items="${listBatNap}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
         <p class="style-title">Cây Đèn Nến</p>
         <div class="product-section cursor">
-            <div id="dennen-list" class="product-list">
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-                </div>
-                <div class="product-card"><a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-                </div>
+            <div id="dennen-list" class="product-list hidden">
+                <c:forEach var="p" items="${listDenNen}">
+                    <div class="product-card">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <p class="price-sale padding">${p.price_sale}đ</p>
+                    </div>
+                </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
         </div>
