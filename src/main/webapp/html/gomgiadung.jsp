@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -8,9 +9,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="css/giadung.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ctsanpham.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/giadung.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -55,7 +56,7 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="../html/gomgiadung.jsp">GỐM GIA DỤNG</a>  </i>
+        <li class="sub-item"> <a href="/gom-gia-dung">GỐM GIA DỤNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li class="tab" data-target="amchenbattrang-page"><a>Ấm chén bác tràng</a></li>
@@ -77,24 +78,24 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a></i>
+        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
+                    <li><a href="list-thocung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="list-thocung">Bát hương</a></li>
+                    <li><a href="list-thocung">Mâm bồng</a></li>
+                    <li><a href="list-thocung">Bát nắp</a></li>
+                    <li><a href="list-thocung">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a>  </i>
+        <li class="sub-item"><a href="list-quatang">GỐM QUÀ TẶNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
+                    <li><a href="list-quatang">Bình hút lộc in logo</a></li>
+                    <li><a href="list-quatang">Ấm chén in logo</a></li>
+                    <li><a href="list-quatang">Bình hoa in logo</a></li>
+                    <li><a href="list-quatang">Quà tặng bát đĩa</a></li>
                 </ul>
             </div>
         </li>
@@ -116,12 +117,18 @@
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${list}">
                         <div class="product-card">
-                            <span class="sale-pecent">-20%</span>
+                            <c:if test="${p.percent > 0}">
+                                <span class="sale-pecent">-${p.percent}%</span>
+                            </c:if>
                             <img src="${p.img}" alt="" class="product-img">
                             <h3 class="product-name padding style-name">${p.name}</h3>
                             <div class="product-price">
-                                <p class="price-origin padding">${p.price_origin}đ</p>
-                                <p class="price-sale padding">${p.price_sale}đ</p>
+                                <span class="price-origin ">
+                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                </span>
+                                <span class="price-sale">
+                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
                             </div>
                         </div>
                     </c:forEach>
@@ -133,11 +140,13 @@
         <p class="style-title">Ấm chén bát tràng</p>
         <div class="cover-product cursor">
             <div id="amchen-product-list" class="product-list hiden">
-                <c:forEach var="p" items="${list}">
+                <c:forEach var="p" items="${listAmChen}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -148,11 +157,13 @@
         <p class="style-title">Bộ bát dĩa bác tràng</p>
         <div class="cover-product cursor">
             <div id="batdia-product-list" class="product-list hiden">
-                <c:forEach var="p" items="${list}">
+                <c:forEach var="p" items="${listbatDia}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -163,11 +174,13 @@
         <p class="style-title">Bộ chum ngâm rượu</p>
         <div class="cover-product cursor">
             <div id="chum-product-list" class="product-list hiden">
-                <c:forEach var="p" items="${list}">
+                <c:forEach var="p" items="${listChum}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -178,11 +191,13 @@
         <p class="style-title">Đèn ngủ</p>
         <div class="cover-product cursor">
             <div id="denngu-product-list" class="product-list hiden">
-                <c:forEach var="p" items="${list}">
+                <c:forEach var="p" items="${listDenNgu}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -193,11 +208,13 @@
         <p class="style-title">Dụng cụ nhà tắm</p>
         <div class="cover-product cursor">
             <div id="nhatam-product-list" class="product-list hiden">
-                <c:forEach var="p" items="${list}">
+                <c:forEach var="p" items="${listNhaTam}">
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -228,36 +245,41 @@
         </div>
         <div class="choose">
             <div class="cover-choose">
+                <c:set var="p" value="${listAmChen[0]}" />
                 <div class="title-choose">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLXqu-K5W32ZgSvEo5YcXnvRyHRYH2R5oftQ&s"
+                    <img src="${p.img}"
                          alt="">
                     <span>Ấm chén Bát Tràng</span>
                 </div>
             </div>
             <div class="cover-choose">
+                <c:set var="p" value="${listAmChen[1]}" />
                 <div class="title-choose">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDJFpuy-etJzc1F4PyvB-vm91A8svh6XAPfQ&s"
+                    <img src="${p.img}"
                          alt="">
                     <span>Ấm trà</span>
                 </div>
             </div>
             <div class="cover-choose">
+                <c:set var="p" value="${listAmChen[2]}" />
                 <div class="title-choose">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaavF5naj0b7Dz5ZeGQQCgqNjg7v5XeTDz9w&s"
+                    <img src="${p.img}"
                          alt="">
                     <span>Ấm trà sứ trắng</span>
                 </div>
             </div>
             <div class="cover-choose">
+                <c:set var="p" value="${listAmChen[3]}" />
                 <div class="title-choose">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK7TXdMn1ouhoaSncFSHoXhvITuqw8R0YNLQ&s"
+                    <img src="${p.img}"
                          alt="">
                     <span>Khay trà</span>
                 </div>
             </div>
             <div class="cover-choose">
+                <c:set var="p" value="${listAmChen[4]}"/>
                 <div class="title-choose">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUpn29ItdDOZ_tce1IL43q-OCBPzuluGPiNw&s"
+                    <img src="${p.img}"
                          alt="">
                     <span>Tử sa</span>
                 </div>
@@ -272,14 +294,14 @@
                 <p>Bộ ấm chén gốm sứ Bát Tràng men nâu.</p>
                 <button>Xem nhanh</button>
             </div>
-            <img src="../img/am%20chen.png" width="100%" />
+            <img src="img/am%20chen.png" width="100%" />
         </div>
         <div class="product">
             <div class="btnAndTitle">
                 <p>Bộ Ấm Chén Uống Trà Bát Tràng Men Nâu Cao Cấp</p>
                 <button>Xem nhanh</button>
             </div>
-            <img src="../img/amchen2.png" width="100%" />
+            <img src="img/amchen2.png" width="100%" />
         </div>
     </div>
 
@@ -307,51 +329,21 @@
             </div>
         </div>
         <div class="cover-product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
+            <c:forEach var="p" items="${listAmChen}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -414,14 +406,14 @@
                 <p>Bộ bát đĩa hoa sen Bát Tràng</p>
                 <button>Xem nhanh</button>
             </div>
-            <img src="../img/download.png" width="100%" />
+            <img src="img/download.png" width="100%" />
         </div>
         <div class="product">
             <div class="btnAndTitle">
                 <p>Bộ bát đĩa hoa sen Bát Tràng</p>
                 <button>Xem nhanh</button>
             </div>
-            <img src="../img/download.png" width="100%" />
+            <img src="img/download.png" width="100%" />
         </div>
     </div>
 
@@ -448,50 +440,22 @@
             </div>
         </div>
         <div class="cover-product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
+            <div class="cover-product-item">
+                <c:forEach var="p" items="${listbatDia}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                            <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -563,50 +527,22 @@
             </div>
         </div>
         <div class="cover-product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
+            <div class="cover-product-item">
+                <c:forEach var="p" items="${listChum}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                            <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -691,50 +627,22 @@
             </div>
         </div>
         <div class="cover-product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
+            <div class="cover-product-item">
+                <c:forEach var="p" items="${listNhaTam}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                            <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -808,50 +716,22 @@
             </div>
         </div>
         <div class="cover-product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                    <button class="btn-seen">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                    <p class="price-origin padding">5.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p>
-                </a>
+            <div class="cover-product-item">
+                <c:forEach var="p" items="${listDenNgu}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn-seen">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                            <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>

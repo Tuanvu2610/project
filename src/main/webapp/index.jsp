@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gốm sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="css/dangnhap.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ctsanpham.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dangnhap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 
@@ -38,7 +38,7 @@
 
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="html/gomgiadung.jsp">GỐM GIA DỤNG</a> </i>
+        <li class="sub-item"> <a href="gom-gia-dung">GỐM GIA DỤNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomgiadung.jsp">Ấm chén bác tràng</a></li>
@@ -60,7 +60,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="html/gomthocung.jsp">GỐM THỜ CÚNG</a> </i>
+        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
@@ -71,7 +71,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="html/gomquatang.jsp">GỐM QUÀ TẶNG</a> </i>
+        <li class="sub-item"><a href="list-quatang">GỐM QUÀ TẶNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomquatang.jsp">Bình hút lộc in logo</a></li>
@@ -189,9 +189,9 @@
 <section id="img-home">
     <div class="container">
         <div class="hover-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoTOhROSQfBeeh6So9piYADBWfz7T4fLFw_Q&s"
-             alt=""></div>
+                                    alt=""></div>
         <div class="hover-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHhuLP36jtq2KTCoKCRIX8-VMnWRBtvDSeyw&s"
-             alt=""></div>
+                                    alt=""></div>
     </div>
 </section>
 <section id="productInHome">

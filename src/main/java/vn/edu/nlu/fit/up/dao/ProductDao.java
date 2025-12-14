@@ -53,5 +53,12 @@ public class ProductDao extends BaseDao {
                 h.createQuery("SELECT * FROM products").mapToBean(Product.class).list()
         );
     }
-
+    public List<Product> getByCategory(int category_id) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE category_id = :category_id")
+                        .bind("category_id", category_id)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
 }

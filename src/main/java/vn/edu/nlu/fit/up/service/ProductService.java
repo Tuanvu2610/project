@@ -11,4 +11,8 @@ public class ProductService {
     public List<Product> getListProduct() {
         return pdao.getListProduct();
     }
+    public List<Product> getByCategory(int category_id) {
+        return pdao.getByCategory(category_id);
+    }
+
 }
