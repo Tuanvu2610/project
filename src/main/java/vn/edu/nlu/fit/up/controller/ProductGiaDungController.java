@@ -16,7 +16,7 @@ public class ProductGiaDungController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService ps = new ProductService();
-        List<Product> list = ps.getListProduct();
+        List<Product> list = ps.disProduct();
         List<Product> listAmChen = ps.getByCategory(5);
         List<Product> listbatDia = ps.getByCategory(6);
         List<Product> listChum = ps.getByCategory(7);

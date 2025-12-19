@@ -14,5 +14,11 @@ public class ProductService {
     public List<Product> getByCategory(int category_id) {
         return pdao.getByCategory(category_id);
     }
+    public List<Product> disProduct() {
+        return pdao.discountProduct();
+    }
 
+    public List<Product> discountList() {
+        return pdao.discountList();
+    }
 }
