@@ -9,14 +9,16 @@ import vn.edu.nlu.fit.up.service.ProductService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListProductController", value = "/products")
+@WebServlet(name = "ListProductController", value = "/home")
 public class ListProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService ps = new ProductService();
-        List<Product> list = ps.getListProduct();
+        List<Product> list = ps.discountList();
+        List<Product> listbatDia = ps.getByCategory(6);
         request.setAttribute("list", list);
-        request.getRequestDispatcher("/html/gomgiadung.jsp").forward(request, response);
+        request.setAttribute("listbatDia", listbatDia);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     @Override

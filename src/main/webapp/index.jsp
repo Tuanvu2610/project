@@ -1,3 +1,5 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -197,53 +199,29 @@
 <section id="productInHome">
     <div class="style-container">
         <p class="style-title"><span style="color: #FFEA00;">⚡</span>Sản phẩm giảm giá sốc</p>
-        <div class="cover-all-product">
-            <div class="cover-product product-list" id="giamgia-product-list-home">
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="img/bo_binh_6_coc_8.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://gomminhhuy.com/wp-content/uploads/2025/10/Hoa-bien-Phuc-Loc-600x600.png" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ ấm chén Bát Tràng – Hỏa Biến Phúc Lộc – HB05</h3>
-                        <p class="price-origin padding">6.000.000đ</p>
-                        <p class="product-price padding">1.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">11.000.000đ</p>
-                        <p class="product-price padding">7.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://thudoden.vn/wp-content/uploads/2021/09/den-ban-go-yj011.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Đèn Bàn Hiện Đại ĐB29</h3>
-                        <p class="price-origin padding">1.890.000đ</p>
-                        <p class="product-price padding">550.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://cdn.f20beauty.com/13515/Bo-do-dung-nha-tam-bang-su-trang.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ đồ dùng nhà tắm bằng sứ trắng</h3>
-                        <p class="price-origin padding">700.000đ</p>
-                        <p class="product-price padding">320.000đ</p>
-                    </div>
-                </a>
+        <div id="outstanding-product-list" class="cover">
+            <button class="slide-btn prev" onclick="slideLeft()">❮</button>
+            <button class="slide-btn next" onclick="slideRight()">❯</button>
+            <div class="slider-wrapper hiden">
+                <div class="product-list" id="slider">
+                    <c:forEach var="p" items="${list}">
+                        <div class="product-card">
+                            <c:if test="${p.percent > 0}">
+                                <span class="sale-pecent">-${p.percent}%</span>
+                            </c:if>
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <div class="product-price">
+                                <span class="price-origin ">
+                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                </span>
+                                <span class="price-sale">
+                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>
@@ -260,53 +238,29 @@
     </div>
     <div class="other-product-home style-container style-other">
         <p class="style-other-title">Bát đĩa</p>
-        <div class="cover-all-product">
-            <div class="cover-product product-list" id="otherchen-product-list-home">
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
-                <a href="html/ctsp.jsp">
-                    <div class="product-card">
-                        <img src="https://product.hstatic.net/200000535717/product/462264280_990052693137046_7596563095321441631_n_1a248f15402745b2be7b9c7e6c42b738_master.jpg" alt="" class="product-img">
-                        <button class="btn-seen">Xem nhanh</button>
-                        <h3 class="product-name padding style-name">Bộ Tô Chén Đĩa Gốm Sứ Cao Cấp Clara Viền Vàng Sang Trọng</h3>
-                        <p class="price-origin padding">5.000.000đ</p>
-                        <p class="product-price padding">2.300.000đ</p>
-                    </div>
-                </a>
+        <div id="batdia-product-list" class="cover">
+            <button class="slide-btn prev" onclick="slideLeft()">❮</button>
+            <button class="slide-btn next" onclick="slideRight()">❯</button>
+            <div class="slider-wrapper hiden">
+                <div class="product-list" id="slider">
+                    <c:forEach var="p" items="${listbatDia}">
+                        <div class="product-card">
+                            <c:if test="${p.percent > 0}">
+                                <span class="sale-pecent">-${p.percent}%</span>
+                            </c:if>
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <div class="product-price">
+                                <span class="price-origin ">
+                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                </span>
+                                <span class="price-sale">
+                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>

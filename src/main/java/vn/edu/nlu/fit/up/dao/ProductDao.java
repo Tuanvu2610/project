@@ -61,4 +61,28 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
+    public List<Product> discountProduct() {
+        return get().withHandle(h ->
+                h.createQuery("""
+                SELECT *
+                FROM products
+                WHERE category_id IN (5,6,7,8,9)
+                AND price_sale < price_origin
+                ORDER BY ((price_origin - price_sale) * 100.0 / price_origin) DESC
+            """)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+    public List<Product> discountList() {
+        return get().withHandle(h ->
+                h.createQuery("""
+                SELECT *
+                FROM products
+                WHERE price_sale < price_origin
+                ORDER BY ((price_origin - price_sale) * 100.0 / price_origin) DESC
+                """)    .mapToBean(Product.class)
+                        .list()
+        );
+    }
 }
