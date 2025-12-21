@@ -55,7 +55,7 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gom-tho-cung">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"> <a href="gom-gia-dung">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
@@ -77,7 +77,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a class="tab" data-target="main-thocung" href="../html/gomthocung.html">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a class="tab" data-target="main-thocung" href="#">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li class="tab" data-target="dotho-page"><a>Bộ đồ thờ đầy đủ</a></li>
@@ -88,7 +88,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
@@ -128,21 +128,23 @@
             <div class="slider-wrapper">
                 <div id="slider" class="product-list">
                     <c:forEach var="p" items="${listDiscounts}">
-                        <div class="product-card">
-                            <c:if test="${p.percent > 0}">
-                                <span class="discount-percent">-${p.percent}%</span>
-                            </c:if>
-                            <img src="${p.img}" alt="" class="product-img">
-                            <h3 class="product-name padding style-name">${p.name}</h3>
-                            <div class="product-price">
-                                <span class="price-origin ">
-                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
-                                </span>
-                                <span class="price-sale">
-                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
-                                </span>
+                        <a href="chitietsanpham?id=${p.id}">
+                            <div class="product-card">
+                                <c:if test="${p.percent > 0}">
+                                    <span class="discount-percent">-${p.percent}%</span>
+                                </c:if>
+                                <img src="${p.img}" alt="" class="product-img">
+                                <h3 class="product-name padding style-name">${p.name}</h3>
+                                <div class="product-price">
+                                    <span class="price-origin ">
+                                        <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                    </span>
+                                    <span class="price-sale">
+                                        <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>
@@ -153,13 +155,15 @@
         <div class="product-section cursor">
             <div id="dotho-list" class="product-list hidden">
                 <c:forEach var="p" items="${listDoTho}">
-                    <div class="product-card">
-                        <img src="${p.img}" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">${p.name}</h3>
-                        <span class="price-sale">
+                    <a href="chitietsanpham?id=${p.id}">
+                        <div class="product-card">
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
-                    </div>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -168,13 +172,15 @@
         <div class="product-section cursor">
             <div id="bathuong-list" class="product-list hidden">
                 <c:forEach var="p" items="${listBatHuong}">
-                    <div class="product-card">
-                        <img src="${p.img}" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">${p.name}</h3>
-                        <span class="price-sale">
+                    <a href="chitietsanpham?id=${p.id}">
+                        <div class="product-card">
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
-                    </div>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -183,13 +189,15 @@
         <div class="product-section cursor">
             <div id="mambong-list" class="product-list hidden">
                 <c:forEach var="p" items="${listMamBong}">
-                    <div class="product-card">
-                        <img src="${p.img}" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">${p.name}</h3>
-                        <span class="price-sale">
+                    <a href="chitietsanpham?id=${p.id}">
+                        <div class="product-card">
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
-                    </div>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -198,13 +206,15 @@
         <div class="product-section cursor">
             <div id="batnap-list" class="product-list hidden">
                 <c:forEach var="p" items="${listBatNap}">
-                    <div class="product-card">
-                        <img src="${p.img}" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">${p.name}</h3>
-                        <span class="price-sale">
+                    <a href="chitietsanpham?id=${p.id}">
+                        <div class="product-card">
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
-                    </div>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -213,13 +223,15 @@
         <div class="product-section cursor">
             <div id="dennen-list" class="product-list hidden">
                 <c:forEach var="p" items="${listDenNen}">
-                    <div class="product-card">
-                        <img src="${p.img}" alt="" class="product-img">
-                        <h3 class="product-name padding style-name">${p.name}</h3>
-                        <span class="price-sale">
+                    <a href="chitietsanpham?id=${p.id}">
+                        <div class="product-card">
+                            <img src="${p.img}" alt="" class="product-img">
+                            <h3 class="product-name padding style-name">${p.name}</h3>
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
-                    </div>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
             <button>Xem tất cả &#9654;</button>
@@ -246,19 +258,21 @@
         </div>
         <div id="dothoPage-list" class="product-item">
             <c:forEach var="p" items="${listDoTho}">
-                <div class="product-card-item">
-                    <img src="${p.img}" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">${p.name}</h3>
-                    <div class="product-price">
+                <a href="chitietsanpham?id=${p.id}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
                         <span class="price-origin ">
                             <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                         </span>
-                        <span class="price-sale">
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -283,19 +297,21 @@
         </div>
         <div id="bathuongPage-list" class="product-item">
             <c:forEach var="p" items="${listBatHuong}">
-                <div class="product-card-item">
-                    <img src="${p.img}" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">${p.name}</h3>
-                    <div class="product-price">
+                <a href="chitietsanpham?id=${p.id}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
                         <span class="price-origin ">
                             <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                         </span>
-                        <span class="price-sale">
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -321,19 +337,21 @@
         </div>
         <div id="mambongPage-list" class="product-item">
             <c:forEach var="p" items="${listMamBong}">
-                <div class="product-card-item">
-                    <img src="${p.img}" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">${p.name}</h3>
-                    <div class="product-price">
+                <a href="chitietsanpham?id=${p.id}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
                         <span class="price-origin ">
                             <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                         </span>
-                        <span class="price-sale">
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -358,19 +376,21 @@
         </div>
         <div id="batnapPage-list" class="product-item">
             <c:forEach var="p" items="${listBatNap}">
-                <div class="product-card-item">
-                    <img src="${p.img}" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">${p.name}</h3>
-                    <div class="product-price">
+                <a href="chitietsanpham?id=${p.id}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
                         <span class="price-origin ">
                             <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                         </span>
-                        <span class="price-sale">
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -397,19 +417,21 @@
         </div>
         <div id="dennenPage-list" class="product-item">
             <c:forEach var="p" items="${listDenNen}">
-                <div class="product-card-item">
-                    <img src="${p.img}" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">${p.name}</h3>
-                    <div class="product-price">
+                <a href="chitietsanpham?id=${p.id}">
+                    <div class="product-card-item">
+                        <img src="${p.img}" alt="" class="product-img">
+                        <button class="btn">Xem nhanh</button>
+                        <h3 class="product-name padding style-name">${p.name}</h3>
+                        <div class="product-price">
                         <span class="price-origin ">
                             <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                         </span>
-                        <span class="price-sale">
+                            <span class="price-sale">
                             <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                         </span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>

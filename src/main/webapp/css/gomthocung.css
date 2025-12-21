@@ -149,8 +149,11 @@ body{
     margin-bottom: 20px;
     border-radius: 10px;
 }
-.product-card-item{
+.product-item a{
     width: calc(100% / 5 - 18px);
+}
+.product-card-item{
+    width: 100%;
     border-radius: 10px;
     position: relative;
     overflow: hidden;

@@ -73,7 +73,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="list-quatang">GỐM QUÀ TẶNG</a> </i>
+        <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomquatang.jsp">Bình hút lộc in logo</a></li>
