@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -54,7 +55,7 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"> <a href="gom-tho-cung">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
@@ -128,12 +129,18 @@
                 <div id="slider" class="product-list">
                     <c:forEach var="p" items="${listDiscounts}">
                         <div class="product-card">
-                            <span class="discount-percent">-20%</span>
+                            <c:if test="${p.percent > 0}">
+                                <span class="discount-percent">-${p.percent}%</span>
+                            </c:if>
                             <img src="${p.img}" alt="" class="product-img">
                             <h3 class="product-name padding style-name">${p.name}</h3>
                             <div class="product-price">
-                                <p class="price-origin padding">${p.price_origin}đ</p>
-                                <p class="price-sale padding">${p.price_sale}đ</p>
+                                <span class="price-origin ">
+                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                </span>
+                                <span class="price-sale">
+                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
                             </div>
                         </div>
                     </c:forEach>
@@ -149,7 +156,9 @@
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -162,7 +171,9 @@
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -175,7 +186,9 @@
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -188,7 +201,9 @@
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -201,7 +216,9 @@
                     <div class="product-card">
                         <img src="${p.img}" alt="" class="product-img">
                         <h3 class="product-name padding style-name">${p.name}</h3>
-                        <p class="price-sale padding">${p.price_sale}đ</p>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
                     </div>
                 </c:forEach>
             </div>
@@ -228,46 +245,21 @@
             </div>
         </div>
         <div id="dothoPage-list" class="product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
+            <c:forEach var="p" items="${listDoTho}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bo-do-tho-loc-phat-01.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bàn thờ thần tài cao cấp</h3>
-                    <p class="price-origin padding">10.000.000đ</p>
-                    <p class="product-price padding">5.000.000đ</p></a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -290,46 +282,21 @@
             </div>
         </div>
         <div id="bathuongPage-list" class="product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
+            <c:forEach var="p" items="${listBatHuong}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/bat_huong_kem_chan_ke_men_su_hanh_vang_trang_tram_-_dap_noi_-_gom_pham_dung_bat_trang.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát hương song long cầu nguyệt</h3>
-                    <p class="price-origin padding">6.000.000đ</p>
-                    <p class="product-price padding">3.600.000đ</p></a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -353,46 +320,21 @@
             </div>
         </div>
         <div id="mambongPage-list" class="product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
+            <c:forEach var="p" items="${listMamBong}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/mbs-photoroom_332b96141fe64be18b08afe4289faaaf_master.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Mâm bồng men ngọc lục bảo</h3>
-                    <p class="price-origin padding">3.600.000đ</p>
-                    <p class="product-price padding">1.800.000đ</p></a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -415,46 +357,21 @@
             </div>
         </div>
         <div id="batnapPage-list" class="product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
+            <c:forEach var="p" items="${listBatNap}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/Bat-sam-tho-gom-su-long-loan-bat-trang-cao-cap-191222-02-400x292.jpg" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Bát sâm họa tiết sen</h3>
-                    <p class="price-origin padding">1.000.000đ</p>
-                    <p class="product-price padding">800.000đ</p></a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -479,46 +396,21 @@
             </div>
         </div>
         <div id="dennenPage-list" class="product-item">
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
+            <c:forEach var="p" items="${listDenNen}">
+                <div class="product-card-item">
+                    <img src="${p.img}" alt="" class="product-img">
                     <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-            </div>
-            <div class="product-card-item">
-                <a href="ctsp.jsp">
-                    <img src="../img/untitled_design_-_2024-01-25t151326.089_c88372f8fc7d4760b2445954c7617d45_master.png" alt="" class="product-img">
-                    <button class="btn">Xem nhanh</button>
-                    <h3 class="product-name padding style-name">Đôi chân nến men hoa sen</h3>
-                    <p class="price-origin padding">4.000.000đ</p>
-                    <p class="product-price padding">2.300.000đ</p></a>
-            </div>
+                    <h3 class="product-name padding style-name">${p.name}</h3>
+                    <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                        <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -592,6 +484,6 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
+<script src="js/javascript.js"></script>
 </body>
 </html>
