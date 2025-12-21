@@ -62,7 +62,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a> </i>
+        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
