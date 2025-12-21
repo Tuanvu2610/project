@@ -1,11 +1,205 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Kho</title>
-    <link rel="stylesheet" href="../css/kho.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background:#f7f7f7;
+            margin:0;
+            padding:24px;
+        }
+
+        .container{
+            display:flex;
+            min-height:100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar{
+            width:25%;
+            background:#0d8e02c7;
+            color:#fff;
+            padding:20px 0;
+        }
+
+        .title{
+            text-align:center;
+            padding-bottom:20px;
+            border-bottom:1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-links{
+            list-style:none;
+            padding:15px;
+        }
+
+        .nav-links a{
+            display:flex;
+            gap:10px;
+            padding:12px;
+            color:#fff;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover{
+            background:rgba(255,255,255,0.15);
+        }
+
+        /* ===== CONTENT ===== */
+        .content{
+            flex:1;
+            padding-left:20px;
+        }
+
+        .head-title h1{
+            margin-bottom:20px;
+        }
+
+        /* ===== TABS ===== */
+        .tab-container{
+            margin-bottom:20px;
+        }
+
+        .tab{
+            padding:10px 20px;
+            border:none;
+            cursor:pointer;
+            border-radius:6px;
+            background:#ddd;
+            font-weight:bold;
+        }
+
+        .tab.active{
+            background:#4b89ff;
+            color:#fff;
+        }
+
+        .tab-content{
+            display:none;
+        }
+
+        .tab-content.active{
+            display:block;
+        }
+
+        /* ===== TABLE ===== */
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:#fff;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td{
+            padding:15px;
+            text-align:left;
+            border-bottom:1px solid #eee;
+        }
+
+        th{
+            background:#f5f5f5;
+        }
+
+        .product{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .product img{
+            width:50px;
+            height:50px;
+            border-radius:6px;
+            border:1px solid #ccc;
+        }
+
+        /* ===== STATUS ===== */
+        .status.selling{
+            color:#0079ff;
+            font-weight:bold;
+        }
+
+        .status.pending{
+            color:#ff9800;
+            font-weight:bold;
+        }
+
+        .profit{
+            color:#00aa33;
+            font-weight:bold;
+        }
+
+        /* ===== BUTTONS ===== */
+        button{
+            padding:6px 12px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .remove{ background:#e0e0e0; }
+        .edit{ background:#ffba00; }
+        .publish{ background:#4caf50; color:white; }
+        .delete{ background:#ff5252; color:white; }
+
+        button:hover{ opacity:0.85; }
+
+        .save{
+            background:#2196f3;
+            color:white;
+        }
+
+        /* --- Trạng thái chưa lên kệ --- */
+        .status.pending {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        /* --- Button cho bảng chưa lên kệ --- */
+        .publish {
+            background: #4caf50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .publish:hover {
+            background: #43a047;
+        }
+
+        .delete {
+            background: #ff5252;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .delete:hover {
+            background: #e53935;
+        }
+        .save{
+            background:#2196f3;
+            color:white;
+        }
+    </style>
+
 </head>
 <body>
 <!--header-->
@@ -116,11 +310,12 @@
             <h1><i class="fas fa-warehouse"></i> Kho hàng</h1>
         </div>
 
-        <div class="tab-container">
-            <button class="tab active">Đã lên kệ</button>
-            <button class="tab">Chưa lên kệ</button>
+        <!-- ===== ĐÃ LÊN KỆ ===== -->
+        <div class="tab-container" >
+            <button class="tab active" data-tab="on">Đã lên kệ</button>
+            <button class="tab" data-tab="off">Chưa lên kệ</button>
         </div>
-
+    <div class="tab-content active" id="on">
         <div class="warehouse-table">
             <table>
                 <thead>
@@ -135,20 +330,27 @@
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="onSaleBody">
                 <tr>
                     <td class="product">
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
-                    <td>2.300.000đ</td>
+                    <td>
+                        <span class="price-text">2.300.000</span> đ
+                        <input type="number"
+                               class="price-input"
+                               value="2300000"
+                               style="display:none; width:100px;">
+                    </td>
                     <td>100</td>
                     <td>360</td>
                     <td class="status selling">Đang bán</td>
                     <td class="profit green">115.000đ</td>
                     <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
+                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
                     </td>
                 </tr>
 
@@ -157,14 +359,21 @@
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
-                    <td>2.300.000đ</td>
+                    <td>
+                        <span class="price-text">2.300.000</span> đ
+                        <input type="number"
+                               class="price-input"
+                               value="2300000"
+                               style="display:none; width:100px;">
+                    </td>
                     <td>100</td>
                     <td>360</td>
                     <td class="status selling">Đang bán</td>
                     <td class="profit green">115.000đ</td>
                     <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
+                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
                     </td>
                 </tr>
 
@@ -173,164 +382,87 @@
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
-                    <td>2.300.000đ</td>
+                    <td>
+                        <span class="price-text">2.300.000</span> đ
+                        <input type="number"
+                               class="price-input"
+                               value="2300000"
+                               style="display:none; width:100px;">
+                    </td>
                     <td>100</td>
                     <td>360</td>
                     <td class="status selling">Đang bán</td>
                     <td class="profit green">115.000đ</td>
                     <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>2.300.000đ</td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove">Gỡ bán</button>
-                        <button class="edit">Điều chỉnh</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
+                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
                     </td>
                 </tr>
 
                 </tbody>
             </table>
         </div>
+    </div>
+        <!-- ===== CHƯA LÊN KỆ ===== -->
+        <div class="tab-content" id="off">
+            <table>
+                <thead>
+                <tr>
+                    <th>Hàng hóa</th>
+                    <th>Giá dự kiến</th>
+                    <th>Tồn kho</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+                </thead>
+                <tbody id="offSaleBody">
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Lọ Hoa Gốm Men Lam</span>
+                    </td>
+                    <td>850.000đ</td>
+                    <td>120</td>
+                    <td class="status pending">Chưa lên kệ</td>
+                    <td>
+                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Lọ Hoa Gốm Men Lam</span>
+                    </td>
+                    <td>850.000đ</td>
+                    <td>120</td>
+                    <td class="status pending">Chưa lên kệ</td>
+                    <td>
+                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product">
+                        <img src="../img/bo_binh_6_coc_8.jpg">
+                        <span>Lọ Hoa Gốm Men Lam</span>
+                    </td>
+                    <td>850.000đ</td>
+                    <td>120</td>
+                    <td class="status pending">Chưa lên kệ</td>
+                    <td>
+                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
+                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 
@@ -403,5 +535,110 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
+
+<script>
+    /* 1. CHUYỂN TAB (Đã lên kệ / Chưa lên kệ) */
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.onclick = () => {
+            document.querySelectorAll(".tab").forEach(t =>
+                t.classList.remove("active")
+            );
+            document.querySelectorAll(".tab-content").forEach(c =>
+                c.classList.remove("active")
+            );
+
+            tab.classList.add("active");
+            document.getElementById(tab.dataset.tab).classList.add("active");
+        };
+    });
+
+    /* 2. ĐIỀU CHỈNH GIÁ SẢN PHẨM */
+    function editPrice(btn){
+        const row = btn.closest("tr");
+        row.querySelector(".price-text").style.display = "none";
+        row.querySelector(".price-input").style.display = "inline-block";
+        btn.style.display = "none";
+        row.querySelector(".save").style.display = "inline-block";
+    }
+    function savePrice(btn){
+        const row = btn.closest("tr");
+        const input = row.querySelector(".price-input");
+        const newPrice = Number(input.value);
+
+        if(newPrice <= 0){
+            alert("Giá không hợp lệ");
+            return;
+        }
+        row.querySelector(".price-text").innerText =
+            newPrice.toLocaleString("vi-VN");
+
+        row.querySelector(".price-text").style.display = "inline";
+        input.style.display = "none";
+        btn.style.display = "none";
+        row.querySelector(".edit").style.display = "inline-block";
+    }
+
+    /* 3. XÓA SẢN PHẨM */
+    function deleteProduct(btn){
+        if(!confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) return;
+        const row = btn.closest("tr");
+        row.remove();
+    }
+
+    /* 4. LÊN KỆ SẢN PHẨM */
+    function publishProduct(btn){
+        if(!confirm("Xác nhận đưa sản phẩm lên kệ?")) return;
+        const oldRow = btn.closest("tr");
+        // Hàng hóa
+        const tdProduct = oldRow.querySelector("td.product").cloneNode(true);
+        // Giá
+        const rawPrice = oldRow.children[1].innerText.replace("đ","").trim();
+        const priceNumber = Number(rawPrice.replace(/\D/g,''));
+        const profit = Math.round(priceNumber * 0.05);
+        const tdPrice = document.createElement("td");
+        tdPrice.innerHTML = `
+        <span class="price-text">${rawPrice}</span> đ
+        <input type="number" class="price-input"
+               value="${priceNumber}"
+               style="display:none; width:100px;">
+    `;
+        // Tồn
+        const tdStock = document.createElement("td");
+        tdStock.innerText = oldRow.children[2].innerText;
+        // Đã bán
+        const tdSold = document.createElement("td");
+        tdSold.innerText = "0";
+        // Trạng thái
+        const tdStatus = document.createElement("td");
+        tdStatus.className = "status selling";
+        tdStatus.innerText = "Đang bán";
+        // Lợi nhuận 5%
+        const tdProfit = document.createElement("td");
+        tdProfit.className = "profit";
+        tdProfit.innerText = profit.toLocaleString("vi-VN") + "đ";
+        // Thao tác
+        const tdAction = document.createElement("td");
+        tdAction.innerHTML = `
+        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
+        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
+        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
+    `;
+        // Ghép dòng
+        const newRow = document.createElement("tr");
+        newRow.append(
+            tdProduct,
+            tdPrice,
+            tdStock,
+            tdSold,
+            tdStatus,
+            tdProfit,
+            tdAction
+        );
+
+        document.getElementById("onSaleBody").appendChild(newRow);
+        oldRow.remove();
+        document.querySelector('[data-tab="on"]').click();
+    }
+</script>
 </body>
 </html>
