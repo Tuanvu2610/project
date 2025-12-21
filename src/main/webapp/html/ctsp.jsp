@@ -1,10 +1,11 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Gốm sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/ctsanpham.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/ctsanpham.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -99,86 +100,86 @@
 </nav>
 <!--body-->
 <section class="cover-all-info">
-<div class="info-container container-sp">
-    <div class="product-image">
-        <img src="../img/bo_binh_6_coc_8.jpg" alt="">
-    </div>
-    <div class="product-title">
-        <h1>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</h1>
-        <div class="rating">
-            <span class="stars">★★★★★</span>
-            <span>5.0</span>
-            <span>|</span>
-            <span>(1 đánh giá)</span>
-            <span>|</span>
-            <span>Đã bán 12</span>
+    <div class="info-container container-sp">
+        <div class="product-image">
+            <img src="${p.img}" alt="">
         </div>
-        <div class="price">
-            2.300.000₫ – 2.500.000₫
-        </div>
-        <div class="info-box">
-            <h3>Thông Tin Chi Tiết</h3>
-            <div class="info-content">
-                <ul>
-                    <li>
-                        <span class="icon"><i class="fas fa-tag"></i></span>
-                        <strong>Dòng sản phẩm</strong>
-                        <span class="tag">Bộ bát đĩa Hoa mặt trời</span>
-                    </li>
-                    <li>
-                        <span class="icon"><i class="fas fa-gem"></i></span>
-                        <strong>Chất liệu</strong>
-                        <span>Gốm sứ Bát Tràng</span>
-                    </li>
-                    <li>
-                        <span class="icon"><i class="fas fa-palette"></i></span>
-                        <strong>Loại men</strong>
-                        <span class="tag">Men kem</span>
-                    </li>
-                    <li>
-                        <span class="icon"><i class="fas fa-ruler-combined"></i></span>
-                        <strong>Kích thước</strong>
-                        <span>ĐK 45cm, ĐK 55cm</span>
-                    </li>
-                </ul>
+        <div class="product-title">
+            <h1>${p.name}</h1>
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span>5.0</span>
+                <span>|</span>
+                <span>(1 đánh giá)</span>
+                <span>|</span>
+                <span>Đã bán 12</span>
             </div>
-            <div class="info-footer">
-                <button class="see-more-btn">Xem thêm (5)</button>
+            <div class="price">
+                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
             </div>
-        </div>
+            <div class="info-box">
+                <h3>Thông Tin Chi Tiết</h3>
+                <div class="info-content">
+                    <ul>
+                        <%--                    <li>--%>
+                        <%--                        <span class="icon"><i class="fas fa-tag"></i></span>--%>
+                        <%--                        <strong>Dòng sản phẩm</strong>--%>
+                        <%--                        <span class="tag">${p.price_sale}</span>--%>
+                        <%--                    </li>--%>
+                        <li>
+                            <span class="icon"><i class="fas fa-gem"></i></span>
+                            <strong>Chất liệu</strong>
+                            <span>${p.material}</span>
+                        </li>
+                        <%--                    <li>--%>
+                        <%--                        <span class="icon"><i class="fas fa-palette"></i></span>--%>
+                        <%--                        <strong>Loại men</strong>--%>
+                        <%--                        <span class="tag">Men kem</span>--%>
+                        <%--                    </li>--%>
+                        <li>
+                            <span class="icon"><i class="fas fa-ruler-combined"></i></span>
+                            <strong>Kích thước</strong>
+                            <span>${p.size}</span>
+                        </li>
+                    </ul>
+                </div>
+                <%--            <div class="info-footer">--%>
+                <%--                <button class="see-more-btn">Xem thêm (5)</button>--%>
+                <%--            </div>--%>
+            </div>
 
-        <div class="variant-selection">
-            <h4>Kích thước bát đĩa</h4>
-            <div class="variants">
-                <button class="variant-btn active" type="button">
-                    <span class="size">ĐK 45CM</span>
-                    <span class="var-price">2.300.000₫</span>
+            <div class="variant-selection">
+                <h4>Kích thước bát đĩa</h4>
+                <div class="variants">
+                    <button class="variant-btn active" type="button">
+                        <span class="size">ĐK 45CM</span>
+                        <span class="var-price">2.300.000₫</span>
+                    </button>
+                    <button class="variant-btn" type="button">
+                        <span class="size">ĐK 55CM</span>
+                        <span class="var-price">2.500.000₫</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="quantity-control">
+                <button type="button" class="btn-decrease">&minus;</button>
+                <input type="text" class="quantity-input" value="1">
+                <button type="button" class="btn-increase">&plus;</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-add-cart">
+                    THÊM VÀO GIỎ
+                    <span>Mua thêm sản phẩm khác</span>
                 </button>
-                <button class="variant-btn" type="button">
-                    <span class="size">ĐK 55CM</span>
-                    <span class="var-price">2.500.000₫</span>
+                <button class="btn-buy-now">
+                    ĐẶT HÀNG NHANH
+                    <span>Giao tận nơi, nhận hàng trả tiền</span>
                 </button>
             </div>
         </div>
-
-        <div class="quantity-control">
-            <button type="button" class="btn-decrease">&minus;</button>
-            <input type="text" class="quantity-input" value="1">
-            <button type="button" class="btn-increase">&plus;</button>
-        </div>
-
-        <div class="action-buttons">
-            <button class="btn-add-cart">
-                THÊM VÀO GIỎ
-                <span>Mua thêm sản phẩm khác</span>
-            </button>
-            <button class="btn-buy-now">
-                ĐẶT HÀNG NHANH
-                <span>Giao tận nơi, nhận hàng trả tiền</span>
-            </button>
-        </div>
     </div>
-</div>
 </section>
 <section class="cover-all-feedback">
     <div class="container-sp">

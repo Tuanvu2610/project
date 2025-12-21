@@ -21,4 +21,7 @@ public class ProductService {
     public List<Product> discountList() {
         return pdao.discountList();
     }
+    public Product getProduct(int id) {
+        return pdao.getProduct(id);
+    }
 }
