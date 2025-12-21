@@ -62,7 +62,7 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a> </i>
+        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="html/gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
@@ -212,12 +212,12 @@
                             <img src="${p.img}" alt="" class="product-img">
                             <h3 class="product-name padding style-name">${p.name}</h3>
                             <div class="product-price">
-                                <span class="price-origin ">
-                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
-                                </span>
+                                    <span class="price-origin ">
+                                        <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                    </span>
                                 <span class="price-sale">
-                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
-                                </span>
+                                        <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                    </span>
                             </div>
                         </div>
                     </c:forEach>
@@ -251,12 +251,12 @@
                             <img src="${p.img}" alt="" class="product-img">
                             <h3 class="product-name padding style-name">${p.name}</h3>
                             <div class="product-price">
-                                <span class="price-origin ">
-                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
-                                </span>
+                                    <span class="price-origin ">
+                                        <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                    </span>
                                 <span class="price-sale">
-                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
-                                </span>
+                                        <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                    </span>
                             </div>
                         </div>
                     </c:forEach>
