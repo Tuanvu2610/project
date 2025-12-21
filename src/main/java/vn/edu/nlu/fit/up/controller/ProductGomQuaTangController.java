@@ -7,8 +7,8 @@ import vn.edu.nlu.fit.up.dao.ProductDao;
 
 import java.io.IOException;
 
-@WebServlet(name = "GomQuaTangController", value = "/list-quatang")
-public class GomQuaTangController extends HttpServlet {
+@WebServlet(name = "ProductGomQuaTangController", value = "/gom-qua-tang")
+public class ProductGomQuaTangController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDao dao = new ProductDao();
