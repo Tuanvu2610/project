@@ -2,6 +2,7 @@ package vn.edu.nlu.fit.up.dao;
 
 import org.jdbi.v3.core.Jdbi;
 import vn.edu.nlu.fit.up.model.Product;
+import vn.edu.nlu.fit.up.model.Reviews;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,5 +85,26 @@ public class ProductDao extends BaseDao {
                 """)    .mapToBean(Product.class)
                         .list()
         );
+    }
+    public List<Reviews> getReviewByID(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where product_id=:product_id")
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list());
+    }
+    public int totalReview(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where product_id=:product_id")
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list()
+                .size());
+    }
+    public int totalReviewByStar(int stars, int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where stars=:stars and product_id=:product_id")
+                .bind("stars", stars)
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list()
+                .size());
     }
 }
