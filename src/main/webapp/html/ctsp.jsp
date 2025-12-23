@@ -1,4 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,14 @@
     <link rel="stylesheet" href="css/ctsanpham.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
 
+        .star5::before { width: ${(star5 * 1.0 / totalReview) * 100 }%;}
+        .star4::before { width: ${(star4 * 100.0) / totalReview}%;}
+        .star3::before { width: ${(star3 * 100.0) / totalReview}%;}
+        .star2::before { width: ${(star2 * 100.0) / totalReview}%;}
+        .star1::before { width: ${(star1 * 100.0) / totalReview}%;}
+    </style>
 </head>
 <body>
 <!--header-->
@@ -108,9 +116,9 @@
             <h1>${p.name}</h1>
             <div class="rating">
                 <span class="stars">★★★★★</span>
-                <span>5.0</span>
+                <span>${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview}</span>
                 <span>|</span>
-                <span>(1 đánh giá)</span>
+                <span>(${totalReview} đánh giá)</span>
                 <span>|</span>
                 <span>Đã bán 12</span>
             </div>
@@ -121,44 +129,17 @@
                 <h3>Thông Tin Chi Tiết</h3>
                 <div class="info-content">
                     <ul>
-                        <%--                    <li>--%>
-                        <%--                        <span class="icon"><i class="fas fa-tag"></i></span>--%>
-                        <%--                        <strong>Dòng sản phẩm</strong>--%>
-                        <%--                        <span class="tag">${p.price_sale}</span>--%>
-                        <%--                    </li>--%>
                         <li>
                             <span class="icon"><i class="fas fa-gem"></i></span>
                             <strong>Chất liệu</strong>
                             <span>${p.material}</span>
                         </li>
-                        <%--                    <li>--%>
-                        <%--                        <span class="icon"><i class="fas fa-palette"></i></span>--%>
-                        <%--                        <strong>Loại men</strong>--%>
-                        <%--                        <span class="tag">Men kem</span>--%>
-                        <%--                    </li>--%>
                         <li>
                             <span class="icon"><i class="fas fa-ruler-combined"></i></span>
                             <strong>Kích thước</strong>
                             <span>${p.size}</span>
                         </li>
                     </ul>
-                </div>
-                <%--            <div class="info-footer">--%>
-                <%--                <button class="see-more-btn">Xem thêm (5)</button>--%>
-                <%--            </div>--%>
-            </div>
-
-            <div class="variant-selection">
-                <h4>Kích thước bát đĩa</h4>
-                <div class="variants">
-                    <button class="variant-btn active" type="button">
-                        <span class="size">ĐK 45CM</span>
-                        <span class="var-price">2.300.000₫</span>
-                    </button>
-                    <button class="variant-btn" type="button">
-                        <span class="size">ĐK 55CM</span>
-                        <span class="var-price">2.500.000₫</span>
-                    </button>
                 </div>
             </div>
 
@@ -184,38 +165,37 @@
 <section class="cover-all-feedback">
     <div class="container-sp">
         <div class="title-feedback">
-            <p class="title">4.7 <span class="stars">★</span> Đánh giá sản phẩm</p>
+            <p class="title">Đánh giá sản phẩm</p>
             <p>Xem tất cả ></p>
         </div>
-        <div class="feedback-all">
-            <p><span>Chuẩn (50)</span> <span>Giao hàng nhanh (12)</span> <span>Sản phẩm đẹp (36)</span></p>
-        </div>
         <div class="cover-feedback">
-            <div class="left-feedback">4.7  <p class="stars">★★★★★</p></div>
+            <div class="left-feedback">${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview }<p class="stars">★★★★★</p></div>
             <div class="right-feedback">
-                <div class="cover-line"><p>5 <div class="line-feedback star5"></div></p></div>
-                <div class="cover-line"><p>4 <div class="line-feedback star4"></div></p></div>
-                <div class="cover-line"><p>3 <div class="line-feedback star3"></div></p></div>
-                <div class="cover-line"><p>2 <div class="line-feedback star2"></div></p></div>
-                <div class="cover-line"><p>1 <div class="line-feedback star1"></div></p></div>
+                <div class="cover-line">5 <div class="line-feedback star5"></div></div>
+                <div class="cover-line">4 <div class="line-feedback star4"></div></div>
+                <div class="cover-line">3 <div class="line-feedback star3"></div></div>
+                <div class="cover-line">2 <div class="line-feedback star2"></div></div>
+                <div class="cover-line">1 <div class="line-feedback star1"></div></div>
             </div>
         </div>
         <div class="cover-comment">
-            <div class="cmt">
-                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
-                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
-                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
-            </div>
-            <div class="cmt">
-                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
-                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
-                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
-            </div>
-            <div class="cmt">
-                <div class="cover-user"><img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">Nguyen Van A</div>
-                <div class="feedback-user"> <p class="stars">★★★★★</p> 15/11/2025</div>
-                <div class="cmt-user">Hàng đẹp và chất lượng, giao hàng nhanh chóng, mẫu mã đẹp, đội ngũ thân thiện</div>
-            </div>
+            <c:forEach var="h" items="${rw}">
+                <div class="cmt">
+                    <div class="cover-user">
+                        <img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">
+                        <div class="feedback-user">
+                            <span>${h.name}</span>
+                            <div class="cover-feedback-date">
+                                <p class="stars-comment">
+                                    <c:forEach begin="1" end="${h.stars}">★</c:forEach><c:forEach begin="1" end="${5 - h.stars}">☆</c:forEach>
+                                </p>
+                                <span class="date">${h.created_at}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmt-user">${h.content}</div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </section>

@@ -2,6 +2,7 @@ package vn.edu.nlu.fit.up.service;
 
 import vn.edu.nlu.fit.up.dao.ProductDao;
 import vn.edu.nlu.fit.up.model.Product;
+import vn.edu.nlu.fit.up.model.Reviews;
 
 import java.util.List;
 
@@ -23,5 +24,15 @@ public class ProductService {
     }
     public Product getProduct(int id) {
         return pdao.getProduct(id);
+    }
+    public List<Reviews> getReviewByID(int product_id) {
+        return pdao.getReviewByID(product_id);
+    }
+
+    public int totalReview(int id) {
+        return pdao.totalReview(id);
+    }
+    public int totalReviewByStar(int stars, int product_id) {
+        return pdao.totalReviewByStar(stars, product_id);
     }
 }
