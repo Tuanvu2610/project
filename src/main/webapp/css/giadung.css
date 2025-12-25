@@ -314,11 +314,6 @@ body {
     text-overflow: ellipsis;
     padding: 0 20px;
 }
-.product-priceSale {
-    color: #0a8300;
-    font-size: 17px;
-    font-weight: bold;
-}
 .cover-product-item .product-card-item:hover img {
     transition: transform 0.3s ease;
     transform: scale(1.05);

@@ -20,15 +20,15 @@
 <!-- header -->
 <header class="pageHome-header" id="header-home">
 
-    <a href="../index.jsp" class="text-header">
+    <a href="home" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
 
-    <div class="search-header">
-        <input type="text" placeholder="Bạn đang tìm sản phẩm gốm sứ nào?">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
+    <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+        <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </form>
 
     <div class="right-header">
         <div class="user-info-container">
@@ -78,24 +78,24 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a></i>
+        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="list-thocung">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="list-thocung">Bát hương</a></li>
-                    <li><a href="list-thocung">Mâm bồng</a></li>
-                    <li><a href="list-thocung">Bát nắp</a></li>
-                    <li><a href="list-thocung">Cây đèn nến</a></li>
+                    <li><a href="gom-tho-cung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="gom-tho-cung">Bát hương</a></li>
+                    <li><a href="gom-tho-cung">Mâm bồng</a></li>
+                    <li><a href="gom-tho-cung">Bát nắp</a></li>
+                    <li><a href="gom-tho-cung">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="list-quatang">GỐM QUÀ TẶNG</a>  </i>
+        <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="list-quatang">Bình hút lộc in logo</a></li>
-                    <li><a href="list-quatang">Ấm chén in logo</a></li>
-                    <li><a href="list-quatang">Bình hoa in logo</a></li>
-                    <li><a href="list-quatang">Quà tặng bát đĩa</a></li>
+                    <li><a href="gom-qua-tang">Bình hút lộc in logo</a></li>
+                    <li><a href="gom-qua-tang">Ấm chén in logo</a></li>
+                    <li><a href="gom-qua-tang">Bình hoa in logo</a></li>
+                    <li><a href="gom-qua-tang">Quà tặng bát đĩa</a></li>
                 </ul>
             </div>
         </li>

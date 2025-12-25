@@ -23,11 +23,10 @@
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
-
-    <div class="search-header">
-        <input type="text" placeholder="Bạn đang tìm sản phẩm gốm sứ nào?">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
+        <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+            <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+        </form>
 
     <div class="right-header">
         <button class="btn-header"><a href="#loginModal"><i class="fas fa-user"></i> Đăng nhập</a></button>
@@ -43,11 +42,11 @@
         <li class="sub-item"> <a href="gom-gia-dung">GỐM GIA DỤNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="html/gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="html/gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="html/gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="html/gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="html/gomgiadung.jsp">Đèn ngủ</a></li>
+                    <li><a href="gom-gia-dung">Ấm chén bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Bộ bác đĩa bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Chum ngâm rượu</a></li>
+                    <li><a href="gom-gia-dung">Dụng cụ nhà tắm</a></li>
+                    <li><a href="gom-gia-dung">Đèn ngủ</a></li>
                 </ul>
             </div>
         </li>
@@ -62,24 +61,24 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a> </i>
+        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="html/gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="html/gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="html/gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="html/gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="html/gomthocung.jsp">Cây đèn nến</a></li>
+                    <li><a href="gom-tho-cung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="gom-tho-cung">Bát hương</a></li>
+                    <li><a href="gom-tho-cung">Mâm bồng</a></li>
+                    <li><a href="gom-tho-cung">Bát nắp</a></li>
+                    <li><a href="gom-tho-cung">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
         <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a> </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="html/gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="html/gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="html/gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="html/gomquatang.jsp">Quà tặng bát đĩa</a></li>
+                    <li><a href="gom-qua-tang">Bình hút lộc in logo</a></li>
+                    <li><a href="gom-qua-tang">Ấm chén in logo</a></li>
+                    <li><a href="gom-qua-tang">Bình hoa in logo</a></li>
+                    <li><a href="gom-qua-tang">Quà tặng bát đĩa</a></li>
                 </ul>
             </div>
         </li>
@@ -205,6 +204,7 @@
             <div class="slider-wrapper hiden">
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${list}">
+                        <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <c:if test="${p.percent > 0}">
                                 <span class="sale-pecent">-${p.percent}%</span>
@@ -220,6 +220,7 @@
                                     </span>
                             </div>
                         </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>
@@ -244,6 +245,7 @@
             <div class="slider-wrapper hiden">
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${listbatDia}">
+                        <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <c:if test="${p.percent > 0}">
                                 <span class="sale-pecent">-${p.percent}%</span>
@@ -259,6 +261,7 @@
                                     </span>
                             </div>
                         </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>

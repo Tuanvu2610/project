@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +22,15 @@
 <!--header-->
 <header class="pageHome-header" id="header-home">
 
-    <a href="../index.jsp" class="text-header">
+    <a href="home" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
 
-    <div class="search-header">
-        <input type="text" placeholder="Bạn đang tìm sản phẩm gốm sứ nào?">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
+    <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+        <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </form>
 
     <div class="right-header">
         <div class="user-info-container">
@@ -116,11 +117,11 @@
             <h1>${p.name}</h1>
             <div class="rating">
                 <span class="stars">★★★★★</span>
-                <span>${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview}</span>
+                <span><fmt:formatNumber value="${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview }" pattern="#.#" groupingUsed="true"/></span>
                 <span>|</span>
                 <span>(${totalReview} đánh giá)</span>
                 <span>|</span>
-                <span>Đã bán 12</span>
+                <span>Đã bán ${totalProductSold}</span>
             </div>
             <div class="price">
                 <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
@@ -169,7 +170,10 @@
             <p>Xem tất cả ></p>
         </div>
         <div class="cover-feedback">
-            <div class="left-feedback">${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview }<p class="stars">★★★★★</p></div>
+            <div class="left-feedback">
+                <fmt:formatNumber value="${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview }" pattern="#.#"/>
+                <p class="stars">★★★★★</p>
+            </div>
             <div class="right-feedback">
                 <div class="cover-line">5 <div class="line-feedback star5"></div></div>
                 <div class="cover-line">4 <div class="line-feedback star4"></div></div>
