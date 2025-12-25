@@ -1,0 +1,113 @@
+.cover-product-item {
+    margin: auto;
+    padding: 20px 70px;
+    width: calc(100% - 143px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.cover-product-item a{
+    width: calc(100% / 5 - 18px);
+}
+.cover-all-product-item {
+    border: 1px solid #0a8300;
+    border-radius: 10px
+
+}
+.product-card-item {
+    /*width: calc(100% / 5 - 18px);*/
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #0a8300;
+    padding-bottom: 25px;
+}
+
+.product-card-item img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.product-card-item .btn-seen {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    padding: 10px;
+    left: 0;
+    top: 230px;
+    border: none;
+    background-color: #cccccca8;
+    font-weight: bold;
+}
+.product-card-item:hover {
+    cursor: pointer;
+}
+.product-card-item:hover .btn-seen {
+    display: block;
+}
+.product-card-item img {
+    width: 100%;
+    height: 260px;
+}
+.product-card-item:hover .btn-seen:hover {
+    color: #ffffff;
+    background-color: #0a8300;
+    cursor: pointer;
+}
+.product-card-item .style-title-pro{
+    width: calc(100% - 40px);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 20px;
+}
+.cover-product-item .product-card-item:hover img {
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+}
+
+.product-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-origin {
+    font-size: 14px;
+    display: block;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+}
+
+.price-sale {
+    font-size: 22px;
+    display: block;
+    font-weight: 700;
+    color: #2e7d32; /* xanh sale */
+}
+
+.style-name:hover {
+    color: #0a8300;
+}
+
+.style-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+    min-height: 44px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    text-align: center;
+}
+

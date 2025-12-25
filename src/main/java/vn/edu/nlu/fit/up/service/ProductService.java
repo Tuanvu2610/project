@@ -35,4 +35,12 @@ public class ProductService {
     public int totalReviewByStar(int stars, int product_id) {
         return pdao.totalReviewByStar(stars, product_id);
     }
+
+    public int totalProductSold(int id) {
+        return pdao.totalProductSold(id);
+    }
+
+    public List<Product> search(String keyword) {
+        return pdao.search(keyword);
+    }
 }

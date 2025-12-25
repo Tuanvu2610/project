@@ -107,4 +107,26 @@ public class ProductDao extends BaseDao {
                 .list()
                 .size());
     }
+    public int totalProductSold(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT SUM(quantity) AS da_ban FROM order_details WHERE product_id =:product_id")
+                .bind("product_id", product_id)
+                .mapTo(Integer.class)
+                .findOne()
+                .orElse(0));
+    }
+    public List<Product> search(String keyword) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT p.* FROM products p JOIN categories c on c.id =p.category_id  WHERE p.name LIKE :kw and c.name like :kw")
+                        .bind("kw", "%" + keyword + "%")
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+
+//    static void main() {
+//        ProductDao dao = new ProductDao();
+//        int i = dao.totalProductSold(5);
+//        System.out.println(i);
+//    }
 }

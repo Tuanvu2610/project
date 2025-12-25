@@ -19,15 +19,15 @@
 <!--header-->
 <header class="pageHome-header" id="header-home">
 
-    <a href="index.jsp" class="text-header">
+    <a href="home" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
 
-    <div class="search-header">
-        <input type="text" placeholder="Bạn đang tìm sản phẩm gốm sứ nào?">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
+    <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+        <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </form>
 
     <div class="right-header">
         <div class="user-info-container">

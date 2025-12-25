@@ -1,15 +1,24 @@
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Thanh Toán</title>
-    <link rel="stylesheet" href="../css/thanhtoan.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gốm Sứ NÔNG LÂM</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ctsanpham.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
+
 <body>
-<!--header-->
+<!-- header -->
 <header class="pageHome-header" id="header-home">
 
     <a href="home" class="text-header">
@@ -48,18 +57,18 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"> <a href="/gom-gia-dung">GỐM GIA DỤNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="gomgiadung.jsp">Đèn ngủ</a></li>
+                    <li class="tab" data-target="amchenbattrang-page"><a>Ấm chén bác tràng</a></li>
+                    <li class="tab" data-target="bacdia-page"><a>Bộ bác đĩa bác tràng</a></li>
+                    <li class="tab" data-target="chum-page"><a>Chum ngâm rượu</a></li>
+                    <li class="tab" data-target="nhatam-page"><a>Dụng cụ nhà tắm</a></li>
+                    <li class="tab" data-target="denngu-page"><a>Đèn ngủ</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
                     <li><a href="gomtrangtri.jsp">Bình gốm bát tràng</a></li>
@@ -70,24 +79,24 @@
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="list-thocung">GỐM THỜ CÚNG</a></i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
+                    <li><a href="list-thocung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="list-thocung">Bát hương</a></li>
+                    <li><a href="list-thocung">Mâm bồng</a></li>
+                    <li><a href="list-thocung">Bát nắp</a></li>
+                    <li><a href="list-thocung">Cây đèn nến</a></li>
                 </ul>
             </div>
         </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
+        <li class="sub-item"><a href="list-quatang">GỐM QUÀ TẶNG</a>  </i>
             <div class="sub-menu">
                 <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
+                    <li><a href="list-quatang">Bình hút lộc in logo</a></li>
+                    <li><a href="list-quatang">Ấm chén in logo</a></li>
+                    <li><a href="list-quatang">Bình hoa in logo</a></li>
+                    <li><a href="list-quatang">Quà tặng bát đĩa</a></li>
                 </ul>
             </div>
         </li>
@@ -95,74 +104,30 @@
         <li><a href="GioiThieu.jsp">GIỚI THIỆU</a></li>
         <li><a href="lienhe.jsp">LIÊN HỆ</a></li>
         <li><a href="quanlyaccount.jsp">ADMIN CONTROL</a></li>
-
     </ul>
 </nav>
-<!-- content -->
-<section class="checkout-container">
-    <section class="shipping-info">
-        <h2>📍 Địa Chỉ Nhận Hàng</h2>
-        <p><strong>Tạ Thuận</strong> (+84) 123 321 123</p>
-        <p>Hẻm cụt, ngõ vào, xã Chưa Đặt, huyện Không Biết, tỉnh Tào Lao</p>
-        <a href="#" class="change-btn">Thay đổi</a>
-    </section>
 
-    <section class="product-list">
-        <h2>Sản phẩm</h2>
-        <div class="product-item">
-            <img src="https://xuonggomsuviet.vn/wp-content/uploads/2024/09/bo-am-chen-dang-minh-long-hoa-sen-xanh-ke-chi-vang-800x800.webp" alt="Ấm đựng trà">
-            <div class="product-detail">
-                <p class="product-name">Bộ ấm trà Bát Tràng dáng Quốc Hội viền chỉ vàng sang trọng</p>
+<%--body--%>
+<div class="cover-product-item">
+    <c:forEach var="p" items="${list}">
+        <a href="chitietsanpham?id=${p.id}">
+            <div class="product-card-item">
+                <img src="${p.img}" alt="" class="product-img">
+                <button class="btn-seen">Xem nhanh</button>
+                <h3 class="product-name padding style-name">${p.name}</h3>
+                <div class="product-price">
+                        <span class="price-origin ">
+                            <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                        </span>
+                    <span class="price-sale">
+                            <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                        </span>
+                </div>
             </div>
-            <p class="product-price">395.000₫</p>
-            <p class="product-qty">x1</p>
-            <p class="product-total">395.000₫</p>
-        </div>
-        <div class="product-item">
-            <img src="https://static.skyshoptv.vn/catalog/San%20pham%20chi%20An/Bo%20coc%20su%20ham%20nong%20de%20dien/a7c7325aee46717ca4ef14251be5dd06.jpg" alt="Bộ cốc sứ kèm đế điện">
-            <div class="product-detail">
-                <p class="product-name">Bộ cốc sứ kèm đế điện giữ nóng cao cấp</p>
-            </div>
-            <p class="product-price">100.000₫</p>
-            <p class="product-qty">x1</p>
-            <p class="product-total">100.000₫</p>
-        </div>
-    </section>
-    <section class="voucher-box">
-        <div class="voucher-header">
-            <h2><i class="icon">🏷️</i>Voucher ưu đãi</h2>
-        </div>
-        <div class="voucher-input">
-            <input type="text" placeholder="Nhập mã giảm giá">
-            <button>Áp dụng</button>
-        </div>
-    </section>
-    <section class="payment-method">
-        <h2>Phương thức thanh toán</h2>
-        <div class="method-row">
-            <span>Thanh toán khi nhận hàng</span>
-            <a href="#" class="change-btn">Thay đổi</a>
-        </div>
-    </section>
-
-    <section class="summary">
-        <div class="summary-row">
-            <span>Tổng tiền hàng</span>
-            <span>495.000₫</span>
-        </div>
-        <div class="summary-row">
-            <span>Phí vận chuyển</span>
-            <span>20.000₫</span>
-        </div>
-        <div class="summary-row total">
-            <span>Tổng thanh toán</span>
-            <span class="highlight">515.000₫</span>
-        </div>
-        <button class="checkout-btn">Đặt hàng</button>
-    </section>
-</section>
-
-<!--footer-->
+        </a>
+    </c:forEach>
+</div>
+<!-- footer -->
 <footer class="site-footer">
     <div class="footer-container">
 
@@ -231,5 +196,7 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
+<script src="js/javascript.js"></script>
 </body>
+
 </html>

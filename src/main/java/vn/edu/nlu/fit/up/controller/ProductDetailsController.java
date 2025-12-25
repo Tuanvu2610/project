@@ -27,6 +27,8 @@ public class ProductDetailsController extends HttpServlet {
         int star3 = ps.totalReviewByStar(3, id);
         int star2 = ps.totalReviewByStar(2, id);
         int star1 = ps.totalReviewByStar(1, id);
+        int totalProductSold = ps.totalProductSold(id);
+        request.setAttribute("totalProductSold", totalProductSold);
         request.setAttribute("star5", star5);
         request.setAttribute("star4", star4);
         request.setAttribute("star3", star3);
