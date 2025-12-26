@@ -106,7 +106,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="/thong-ke"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
             <li><a href="kho.jsp"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
             <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
             <li><a href="haumai.jsp"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
