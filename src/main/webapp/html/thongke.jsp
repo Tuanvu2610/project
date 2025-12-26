@@ -1,11 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gốm sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/thongke.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/thongke.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -113,111 +115,76 @@
             <li><a href="haumai.jsp"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
         </ul>
     </div>
+    <!--body-->
     <div class="content">
         <div class="head-title">
             <h1><i class="fas fa-chart-bar"></i> Thống kê bán hàng - Gốm sứ Nông Lâm</h1>
             <p>Doanh thu và số lượng sản phẩm theo năm & tháng</p>
         </div>
-        <div class="cover-all-section">
-        <section class="filter-section">
-            <form>
-                <label for="year">Chọn năm:</label>
-                <select id="year">
-                    <option>2024</option>
-                    <option selected>2025</option>
-                    <option>2026</option>
-                </select>
+        <div class="all-section">
+            <section class="filter-section">
+                <form action="${pageContext.request.contextPath}/thong-ke" method="get" id="filterForm">
+                    <label for="year">Chọn năm:</label>
+                    <select id="year" name="year" onchange="this.form.submit()">
+                        <c:forEach var="y" begin="2022" end="2026">
+                            <option value="${y}" ${year == y ? 'selected' : ''}>
+                                    ${y}
+                            </option>
+                        </c:forEach>
+                    </select>
+                    <label for="month">Chọn tháng:</label>
+                    <select id="month" name="month" onchange="this.form.submit()">
+                        <option value="0" ${month == '0' || month == null ? 'selected' : ''}>
+                            Tất cả
+                        </option>
+                        <c:forEach var="m" begin="1" end="12">
+                            <option value="${m}" ${month == m ? 'selected' : ''}>
+                                Tháng ${m}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </form>
+            </section>
 
-                <label for="month">Chọn tháng:</label>
-                <select id="month">
-                    <option>Tất cả</option>
-                    <option>Tháng 1</option>
-                    <option>Tháng 2</option>
-                    <option>Tháng 3</option>
-                    <option>Tháng 4</option>
-                    <option>Tháng 5</option>
-                    <option>Tháng 6</option>
-                    <option>Tháng 7</option>
-                    <option>Tháng 8</option>
-                    <option>Tháng 9</option>
-                    <option>Tháng 10</option>
-                    <option>Tháng 11</option>
-                    <option>Tháng 12</option>
-                </select>
-            </form>
-        </section>
+            <section class="summary-section">
+                <div class="card">
+                    <h3>Doanh thu (VNĐ)</h3>
+                    <p class="value">
+                        <fmt:formatNumber value="${totalRevenue}" type="number"/>
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Số đơn hàng</h3>
+                    <p class="value">${totalOrders}</p>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm bán ra</h3>
+                    <p class="value">${totalProducts}</p>
+                </div>
+            </section>
 
-        <section class="summary-section">
-            <div class="card">
-                <h3>Doanh thu (VNĐ)</h3>
-                <p class="value">1,250,000,000</p>
-            </div>
-            <div class="card">
-                <h3>Số đơn hàng</h3>
-                <p class="value">4,820</p>
-            </div>
-            <div class="card">
-                <h3>Sản phẩm bán ra</h3>
-                <p class="value">12,350</p>
-            </div>
-        </section>
+            <section class="chart-section">
+                <h2>
+                    Biểu đồ doanh thu 12 tháng năm ${year}
+                </h2>
+                <div class="chart-bar">
+                    <c:forEach var="value" items="${chartData}" varStatus="loop">
+                        <div class="bar-wrapper">
+                            <div class="bar" style="height:${value}%;"> <span>${value}%</span></div>
 
-        <section class="chart-section">
-            <h2>Biểu đồ doanh thu theo 12 tháng</h2>
-            <div class="chart-bar">
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:60%;"><span>60%</span></div>
-                    <div class="label">Tháng 1</div>
+                            <div class="label">Tháng ${loop.index + 1}</div>
+                        </div>
+                    </c:forEach>
                 </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:75%;"><span>75%</span></div>
-                    <div class="label">Tháng 2</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:85%;"><span>85%</span></div>
-                    <div class="label">Tháng 3</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:55%;"><span>55%</span></div>
-                    <div class="label">Tháng 4</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:95%;"><span>95%</span></div>
-                    <div class="label">Tháng 5</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:70%;"><span>70%</span></div>
-                    <div class="label">Tháng 6</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:80%;"><span>80%</span></div>
-                    <div class="label">Tháng 7</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:65%;"><span>65%</span></div>
-                    <div class="label">Tháng 8</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:90%;"><span>90%</span></div>
-                    <div class="label">Tháng 9</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:75%;"><span>75%</span></div>
-                    <div class="label">Tháng 10</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:88%;"><span>88%</span></div>
-                    <div class="label">Tháng 11</div>
-                </div>
-                <div class="bar-wrapper">
-                    <div class="bar" style="height:92%;"><span>92%</span></div>
-                    <div class="label">Tháng 12</div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="table-section">
-            <h2>Bảng thống kê chi tiết năm 2024</h2>
+            <section class="table-section">
+            <h2>
+                Bảng thống kê chi tiết năm ${year}
+                <c:if test="${month != null && month != '0'}">
+                    - Tháng ${month}
+                </c:if>
+            </h2>
             <table>
                 <thead>
                 <tr>
@@ -228,18 +195,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr><td>1</td><td>80,000,000</td><td>400</td><td>950</td></tr>
-                <tr><td>2</td><td>95,000,000</td><td>430</td><td>980</td></tr>
-                <tr><td>3</td><td>110,000,000</td><td>470</td><td>1,050</td></tr>
-                <tr><td>4</td><td>75,000,000</td><td>390</td><td>890</td></tr>
-                <tr><td>5</td><td>125,000,000</td><td>520</td><td>1,200</td></tr>
-                <tr><td>6</td><td>98,000,000</td><td>450</td><td>1,000</td></tr>
-                <tr><td>7</td><td>105,000,000</td><td>480</td><td>1,050</td></tr>
-                <tr><td>8</td><td>85,000,000</td><td>420</td><td>960</td></tr>
-                <tr><td>9</td><td>115,000,000</td><td>500</td><td>1,120</td></tr>
-                <tr><td>10</td><td>95,000,000</td><td>460</td><td>1,000</td></tr>
-                <tr><td>11</td><td>108,000,000</td><td>480</td><td>1,100</td></tr>
-                <tr><td>12</td><td>120,000,000</td><td>510</td><td>1,150</td></tr>
+                <c:forEach items="${stats}" var="s">
+                    <tr>
+                        <td>${s.month}</td>
+                        <td>${s.revenue}</td>
+                        <td>${s.totalOrders}</td>
+                        <td>${s.totalProducts}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </section>
