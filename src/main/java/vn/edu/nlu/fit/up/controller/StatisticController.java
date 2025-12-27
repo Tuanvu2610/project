@@ -20,54 +20,36 @@ public class StatisticController extends HttpServlet {
 
         String yearParam = request.getParameter("year");
         String monthParam = request.getParameter("month");
-
         StatisticDao dao = new StatisticDao();
+        int year = yearParam != null ? Integer.parseInt(yearParam) : LocalDate.now().getYear();
+        int month = monthParam != null ? Integer.parseInt(monthParam) : 0;
+
+        Map<Integer, Long> revenueData = dao.revenueByYear(year);
+        long maxRevenue = revenueData.values().stream().max(Long::compareTo).orElse(1L);
+        int[] chartData = new int[12];
+        for (int m = 1; m <= 12; m++) {
+            long rev = revenueData.getOrDefault(m, 0L);
+            chartData[m - 1] = (int) Math.round((rev * 100.0) / maxRevenue); // chuẩn hóa cột theo max
+        }
+
         List<Statistic> stats;
-
-        int year = Integer.parseInt(
-                request.getParameter("year") != null
-                        ? request.getParameter("year")
-                        : String.valueOf(LocalDate.now().getYear())
-        );
-
-        Map<Integer, Integer> rawData = dao.orderCountByYear(year);
-
-        if (monthParam == null || monthParam.equals("0")) {
-            // 👉 Tất cả tháng
+        if (month == 0) {
             stats = dao.byYear(year);
         } else {
-            int month = Integer.parseInt(monthParam);
             stats = dao.byYearMonth(year, month);
         }
 
-        long revenue = 0;
-        int orders = 0;
-        int products = 0;
-
-        for (Statistic s : stats) {
-            revenue += s.getRevenue();
-            orders += s.getTotalOrders();
-            products += s.getTotalProducts();
-        }
-
-        int maxOrders = rawData.values().stream()
-                .max(Integer::compareTo)
-                .orElse(1);
-
-// mảng 12 tháng mặc định 0%
-        int[] chartData = new int[12];
-        for (int i = 0; i < 12; i++) {
-            chartData[i] = rawData.getOrDefault(i + 1, 0);
-        }
+        long totalRevenue = stats.stream().mapToLong(Statistic::getRevenue).sum();
+        int totalOrders = stats.stream().mapToInt(Statistic::getTotalOrders).sum();
+        int totalProducts = stats.stream().mapToInt(Statistic::getTotalProducts).sum();
 
         request.setAttribute("stats", stats);
-        request.setAttribute("totalRevenue", revenue);
-        request.setAttribute("totalOrders", orders);
-        request.setAttribute("totalProducts", products);
-
-        request.setAttribute("chartData", chartData);
+        request.setAttribute("totalRevenue", totalRevenue);
+        request.setAttribute("totalOrders", totalOrders);
+        request.setAttribute("totalProducts", totalProducts);
         request.setAttribute("year", year);
-        request.setAttribute("month", monthParam == null ? "0" : monthParam);
+        request.setAttribute("month", String.valueOf(month));
+        request.setAttribute("chartData", chartData);
 
         request.getRequestDispatcher("/html/thongke.jsp").forward(request, response);
     }

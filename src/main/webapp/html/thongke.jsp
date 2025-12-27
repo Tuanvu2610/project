@@ -170,8 +170,9 @@
                 <div class="chart-bar">
                     <c:forEach var="value" items="${chartData}" varStatus="loop">
                         <div class="bar-wrapper">
-                            <div class="bar" style="height:${value}%;"> <span>${value}%</span></div>
-
+                            <div class="bar" style="height:${value}%;">
+                                <span>${revenueData[loop.index + 1]}</span>
+                            </div>
                             <div class="label">Tháng ${loop.index + 1}</div>
                         </div>
                     </c:forEach>

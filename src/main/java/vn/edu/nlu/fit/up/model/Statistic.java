@@ -2,7 +2,7 @@ package vn.edu.nlu.fit.up.model;
 
 public class Statistic {
     private int month;
-    private double revenue;
+    private long revenue;
     private int totalOrders;
     private int totalProducts;
 
@@ -14,11 +14,11 @@ public class Statistic {
         this.month = month;
     }
 
-    public double getRevenue() {
+    public long getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(double revenue) {
+    public void setRevenue(long revenue) {
         this.revenue = revenue;
     }
 
