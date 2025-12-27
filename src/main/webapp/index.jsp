@@ -23,10 +23,10 @@
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
-        <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
-            <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+    <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+        <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
         <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-        </form>
+    </form>
 
     <div class="right-header">
         <button class="btn-header"><a href="#loginModal"><i class="fas fa-user"></i> Đăng nhập</a></button>
@@ -85,7 +85,7 @@
         <li><a href="html/tintuc.jsp">TIN TỨC</a></li>
         <li><a href="html/GioiThieu.jsp">GIỚI THIỆU</a></li>
         <li><a href="html/lienhe.jsp">LIÊN HỆ</a></li>
-        <li><a href="html/quanlyaccount.jsp">ADMIN CONTROL</a></li>
+        <li><a href="quan-ly-account">ADMIN CONTROL</a></li>
     </ul>
 </nav>
 <div class="icon-page">
@@ -205,21 +205,21 @@
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${list}">
                         <a href="chitietsanpham?id=${p.id}">
-                        <div class="product-card">
-                            <c:if test="${p.percent > 0}">
-                                <span class="sale-pecent">-${p.percent}%</span>
-                            </c:if>
-                            <img src="${p.img}" alt="" class="product-img">
-                            <h3 class="product-name padding style-name">${p.name}</h3>
-                            <div class="product-price">
+                            <div class="product-card">
+                                <c:if test="${p.percent > 0}">
+                                    <span class="sale-pecent">-${p.percent}%</span>
+                                </c:if>
+                                <img src="${p.img}" alt="" class="product-img">
+                                <h3 class="product-name padding style-name">${p.name}</h3>
+                                <div class="product-price">
                                     <span class="price-origin ">
                                         <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                                     </span>
-                                <span class="price-sale">
+                                    <span class="price-sale">
                                         <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                                     </span>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </c:forEach>
                 </div>
@@ -246,21 +246,21 @@
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${listbatDia}">
                         <a href="chitietsanpham?id=${p.id}">
-                        <div class="product-card">
-                            <c:if test="${p.percent > 0}">
-                                <span class="sale-pecent">-${p.percent}%</span>
-                            </c:if>
-                            <img src="${p.img}" alt="" class="product-img">
-                            <h3 class="product-name padding style-name">${p.name}</h3>
-                            <div class="product-price">
+                            <div class="product-card">
+                                <c:if test="${p.percent > 0}">
+                                    <span class="sale-pecent">-${p.percent}%</span>
+                                </c:if>
+                                <img src="${p.img}" alt="" class="product-img">
+                                <h3 class="product-name padding style-name">${p.name}</h3>
+                                <div class="product-price">
                                     <span class="price-origin ">
                                         <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                                     </span>
-                                <span class="price-sale">
+                                    <span class="price-sale">
                                         <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                                     </span>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </c:forEach>
                 </div>

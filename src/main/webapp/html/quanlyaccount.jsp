@@ -1,10 +1,12 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/quanly.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/quanly.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -106,7 +108,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="#" class="active"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="/thong-ke"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
             <li><a href="kho.jsp"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
             <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
             <li><a href="haumai.jsp"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
@@ -122,7 +124,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="stat-info">
-                    <h3>2,000</h3>
+                    <h3>${totalAcc}</h3>
                     <p>Tổng số User</p>
                 </div>
             </div>
@@ -131,7 +133,7 @@
                     <i class="fas fa-user-check"></i>
                 </div>
                 <div class="stat-info">
-                    <h3>1,900</h3>
+                    <h3>${totalActive}</h3>
                     <p>User Active</p>
                 </div>
             </div>
@@ -140,7 +142,7 @@
                     <i class="fas fa-user-clock"></i>
                 </div>
                 <div class="stat-info">
-                    <h3>36</h3>
+                    <h3>${totalPending}</h3>
                     <p>Đang chờ xử lý</p>
                 </div>
             </div>
@@ -149,7 +151,7 @@
                     <i class="fas fa-user-slash"></i>
                 </div>
                 <div class="stat-info">
-                    <h3>64</h3>
+                    <h3>${totalBanned}</h3>
                     <p>User Bị khoá</p>
                 </div>
             </div>
@@ -198,73 +200,58 @@
                     <th>ID</th>
                     <th>User</th>
                     <th>Email</th>
-                    <th>Nhóm</th>
+                    <th>Chức năng</th>
                     <th>Trạng thái</th>
                     <th>Ngày tham gia</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr onclick="openTab()">
-                    <td>#001</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>a.nguyen@email.com</td>
-                    <td><span class="role admin">Admin</span></td>
-                    <td><span class="status active">Active</span></td>
-                    <td>20/11/2023</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#002</td>
-                    <td>Trần Thị B</td>
-                    <td>b.tran@email.com</td>
-                    <td><span class="role admin">User</span></td>
-                    <td><span class="status banned">Banned</span></td>
-                    <td>15/01/2024</td>
-                </tr>
-                <tr onclick="openTab()">
-                    <td>#003</td>
-                    <td>Lê Văn C</td>
-                    <td>c.le@email.com</td>
-                    <td><span class="role user">User</span></td>
-                    <td><span class="status pending">Pending</span></td>
-                    <td>10/03/2024</td>
-                </tr>
+                <C:forEach var="p" items="${listAcc}">
+                    <tr onclick="location.href='account-detail?id=${p.id}'">
+                        <td>${p.id}</td>
+                        <td>${p.name}</td>
+                        <td>${p.username}</td>
+                        <td><span class="role admin">${p.role}</span></td>
+                        <td><span class="status ${p.status}">${p.status}</span></td>
+                        <td>${p.registration_date}</td>
+                    </tr>
+                </C:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </section>
 <!--modal-->
-<section class="overlay" id="openmodal" style="display: none;">
-    <div class="container-modal">
-        <div class="cover-modal">
-            <span onclick="document.getElementById('openmodal').style.display='none'"
-                  class="exit-btn">&times;</span>
-            <p>USER</p>
-            <div class="cover-allinfo">
-                <div class="avatar-name">
-                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
-                    <p style="margin: 0">Nguyen Van A</p>
-                </div>
-                <div class="cover-info">
-                    <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: 0342104524</p>
-                    <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: a.nguyen@email.com</p>
-                    <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: 13/11/2005</p>
-                    <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Role: ADMIN</p>
-                </div>
-                <div class="cover-active">
-                    <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: 22/10/2025</p>
-                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>
-                </div>
-                <div class="cover-btn">
-                    <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
-                    <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
+<C:if test="${not empty account}">
+    <section class="overlay" style="display: block;">
+        <div class="container-modal">
+            <div class="cover-modal">
+                <span onclick="location.href='quan-ly-account'" class="exit-btn">&times;</span>
+                <p>${fn:toUpperCase(account.role)}</p>
+                <div class="cover-allinfo">
+                    <div class="avatar-name">
+                        <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                        <p style="margin: 0">${account.name}</p>
+                    </div>
+                    <div class="cover-info">
+                        <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: ${account.phone}</p>
+                        <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: ${account.username}</p>
+                        <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: ${account.date_of_birth}</p>
+                        <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Role: ${account.role}</p>
+                    </div>
+                    <div class="cover-active">
+                        <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: ${account.registration_date}</p>
+                            <%--                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>--%>
+                    </div>
+                    <div class="cover-btn">
+                        <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
+                        <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
+</C:if>
 <!--footer-->
 <footer class="site-footer">
     <div class="footer-container">
@@ -334,6 +321,6 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
-<script src="../js/javascript.js"></script>
+<script src="${pageContext.request.contextPath}/js/javascript.js"></script>
 </body>
 </html>
