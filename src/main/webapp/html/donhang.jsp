@@ -1,18 +1,236 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <title>Đơn hàng</title>
-    <link rel="stylesheet" href="../css/donhang.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
 
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background:#f7f7f7;
+                margin:0;
+                padding:0;
+            }
+
+            .container{
+                display:flex;
+                min-height:100vh;
+            }
+
+            /* ===== SIDEBAR ===== */
+            .sidebar{
+                width:25%;
+                background:#0d8e02c7;
+                color:#fff;
+                padding:20px 0;
+            }
+
+            .title{
+                text-align:center;
+                padding-bottom:20px;
+                border-bottom:1px solid rgba(255,255,255,0.2);
+            }
+
+            .nav-links{
+                list-style:none;
+                padding:15px;
+            }
+
+            .nav-links a{
+                display:flex;
+                gap:10px;
+                padding:16px 18px;
+                color:#fff;
+                text-decoration:none;
+                border-radius:8px;
+            }
+
+            .nav-links a.active,
+            .nav-links a:hover{
+                background:rgba(255,255,255,0.15);
+            }
+
+            .content-wrapper{
+                background:#fff;
+                border-radius:16px;
+                padding:24px;
+                box-shadow:0 8px 24px rgba(0,0,0,.06);
+            }
+
+            .content{
+                flex:1;
+                padding:25px;
+            }
+
+            /* TITLE */
+            .head-title h1{
+                font-size:26px;
+                margin-bottom:20px;
+                display:flex;
+                align-items:center;
+                gap:10px;
+            }
+
+            /* ORDER TABS */
+            .order-tabs{
+                display:flex;
+                align-items:center;
+                gap:12px;
+                background:#eee;
+                padding:12px 16px;
+                border-radius:14px;
+                margin-bottom:20px;
+            }
+
+            .order-tabs .tab{
+                padding:8px 20px;
+                border-radius:20px;
+                border:none;
+                background:#ddd;
+                font-weight:600;
+                cursor:pointer;
+            }
+
+            .order-tabs .tab.active{
+                background:#3b82f6;
+                color:#fff;
+            }
+
+            .order-summary{
+                margin-left:auto;
+                font-weight:600;
+            }
+
+            /* TABLE */
+            .order-table {
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: auto;
+            }
+
+            .item-name {
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .order-table th{
+                text-align:left;
+                padding:14px 12px;
+                border-bottom:2px solid #e5e5e5;
+            }
+
+            .order-table td{
+                padding:16px 12px;
+                border-bottom:1px solid #eee;
+            }
+
+            .center{ text-align:center; }
+            .money{ font-weight:700; }
+            .item-name{ font-weight:600; }
+            .receiver{ font-style:italic; }
+
+            /* STATUS CELL */
+            .status{
+                position:relative;
+            }
+
+            /* BUTTONS – TRẠNG THÁI */
+            .status button,
+            .status span{
+                padding:6px 16px;
+                border-radius:18px;
+                font-size:13px;
+                font-weight:600;
+                border:none;
+                min-width: 120px;
+            }
+
+            .btn-processing{
+                background:#ef4444;
+                color:#fff;
+                cursor:pointer;
+            }
+
+            .btn-shipping{
+                background:#3b82f6;
+                color:#fff;
+                cursor:default;
+            }
+
+            .btn-cancelled{
+                background:#9ca3af;
+                color:#fff;
+            }
+
+            /* ACTION MENU */
+            .action-menu{
+                position:absolute;
+                top:40px;
+                right:0;
+                background:#fff;
+                padding:10px;
+                border-radius:12px;
+                box-shadow:0 4px 12px rgba(0,0,0,.1);
+                display:none;
+                z-index:100;
+                width:160px;
+            }
+
+            .action-menu button{
+                width:100%;
+                margin-bottom:6px;
+                padding:6px;
+                border-radius:8px;
+                font-weight:600;
+                cursor:pointer;
+            }
+
+            /* ACTION BUTTONS */
+            .btn-confirm{
+                background:#22c55e;
+                color:#fff;
+            }
+
+            .btn-cancel{
+                background:#ef4444;
+                color:#fff;
+            }
+
+            /* CANCEL BOX */
+            .cancel-box{
+                display:none;
+                margin-top:8px;
+            }
+
+            .cancel-box input{
+                width:100%;
+                padding:6px;
+                border-radius:8px;
+                border:1px solid #ddd;
+                margin-bottom:6px;
+            }
+
+            .cancel-box button{
+                width:100%;
+                background:#ef4444;
+                color:#fff;
+                border-radius:8px;
+            }
+        </style>
 </head>
+
 <body>
 <!--header-->
 <header class="pageHome-header" id="header-home">
 
-    <a href="home" class="text-header">
+    <a href="${pageContext.request.contextPath}/home" class="text-header">
         <span class="text-nonglam">NÔNG LÂM</span>
         <span class="text-gomsu">GỐM SỨ TINH HOA</span>
     </a>
@@ -114,107 +332,136 @@
         </ul>
     </div>
     <div class="content">
-
+        <div class="content-wrapper">
+        <!-- TITLE -->
         <div class="head-title">
-            <h1><i class="fas fa-receipt"></i>Đơn hàng</h1>
+            <h1><i class="fas fa-receipt"></i> Đơn hàng</h1>
         </div>
 
+        <!-- TABS -->
         <div class="order-tabs">
-            <button class="active">Chưa giao</button>
-            <button>Đang vận chuyển</button>
-            <button>Đã giao</button>
-            <div class="order-summary">Đơn hàng đã hoàn thành: <b>36000</b></div>
+            <button class="tab active" data-tab="pending">Chưa giao</button>
+            <button class="tab" data-tab="shipping">Đang vận chuyển</button>
+            <button class="tab" data-tab="done">Đã giao</button>
+
+            <div class="order-summary">
+                Đơn hàng đã hoàn thành: <b>36000</b>
+            </div>
         </div>
 
-        <table class="order-table">
-            <thead>
-            <tr>
-                <th>Mã đơn hàng</th>
-                <th>Hàng hóa</th>
-                <th>Số lượng</th>
-                <th>Số tiền</th>
-                <th>Người nhận</th>
-                <th>Ngày đặt</th>
-                <th>Trạng thái</th>
-            </tr>
-            </thead>
+        <!-- FORM + TABLE -->
+        <form method="post">
+            <table class="order-table">
+                <colgroup>
+                    <col style="width:120px">  <!-- Mã đơn hàng -->
+                    <col style="width:420px">  <!-- Hàng hóa -->
+                    <col style="width:90px">   <!-- Số lượng -->
+                    <col style="width:140px">  <!-- Số tiền -->
+                    <col style="width:160px">  <!-- Người nhận -->
+                    <col style="width:100px">  <!-- Ngày -->
+                    <col style="width:160px">  <!-- Trạng thái -->
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Hàng hóa</th>
+                    <th>Số lượng</th>
+                    <th>Số tiền</th>
+                    <th>Người nhận</th>
+                    <th>Ngày</th>
+                    <th>Trạng thái</th>
+                </tr>
+                </thead>
 
-            <tbody>
+                <!-- ===== CHƯA GIAO ===== -->
+                <tbody id="pending">
+                <tr>
+                    <td>3601</td>
+                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                    <td class="center">1</td>
+                    <td class="money">2.300.000đ</td>
+                    <td class="receiver">Nguyễn Văn A</td>
+                    <td class="center">30/11 - 2/12</td>
+                    <td class="status">
+                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Đang xử lý </button>
 
-            <tr class="order-row">
-                <td>3601</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">Nguyễn Văn A</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-loading">Đang xử lý</button>
-                </td>
-            </tr>
+                        <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
+                        <div class="action-menu">
+                            <button class="btn-confirm" onclick="confirmOrder(this)"> ✔ Xác nhận </button>
+                            <button class="btn-cancel" onclick="openCancelBox(this, event)"> ✖ Hủy </button>
 
-            <tr class="order-row">
-                <td>3602</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">Trần Thị B</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-confirm">Xác nhận</button>
-                </td>
-            </tr>
+                            <div class="cancel-box">
+                                <input type="text" placeholder="Lý do hủy...">
+                                <button onclick="cancelOrder(this, event)">Xác nhận hủy</button>
+                            </div>
+                        </div>
+                    </td>
 
-            <tr class="order-row">
-                <td>3603</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">Lê Văn C</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-confirm">Xác nhận</button>
-                </td>
-            </tr>
+                </tr>
 
-            <tr class="order-row">
-                <td>3604</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">user1203</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-confirm">Xác nhận</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>3602</td>
+                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                    <td class="center">1</td>
+                    <td class="money">2.300.000đ</td>
+                    <td class="receiver">Trần Thị B</td>
+                    <td class="center">30/11 - 2/12</td>
+                    <td class="status">
+                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Đang xử lý </button>
 
-            <tr class="order-row">
-                <td>3605</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">Tên Đại</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-loading">Đang xử lý</button>
-                </td>
-            </tr>
+                        <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
+                        <div class="action-menu">
+                            <button class="btn-confirm" onclick="confirmOrder(this)"> ✔ Xác nhận </button>
+                            <button class="btn-cancel" onclick="openCancelBox(this, event)"> ✖ Hủy </button>
 
-            <tr class="order-row">
-                <td>3606</td>
-                <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                <td class="center">1</td>
-                <td class="money">2.300.000đ</td>
-                <td class="receiver">Chưa Nghĩ Ra</td>
-                <td class="center">30/11 - 2/12</td>
-                <td class="status">
-                    <button class="btn-loading">Đang xử lý</button>
-                </td>
-            </tr>
+                            <div class="cancel-box">
+                                <input type="text" placeholder="Lý do hủy...">
+                                <button onclick="cancelOrder(this, event)">Xác nhận hủy</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
 
-            </tbody>
-        </table>
+                <!-- ===== ĐANG VẬN CHUYỂN ===== -->
+                <tbody id="shipping" style="display:none">
+                <tr>
+                    <td>3501</td>
+                    <td class="item-name">Bộ Ấm Trà Gốm Sứ Hoa Sen Trắng</td>
+                    <td class="center">2</td>
+                    <td class="money">1.800.000đ</td>
+                    <td class="receiver">Phạm Văn D</td>
+                    <td class="center">28/11 - 30/11</td>
+                    <td><span class="status shipping">Đang giao</span></td>
+                </tr>
+
+                <tr>
+                    <td>3502</td>
+                    <td class="item-name">Chén Uống Trà Gốm Sứ Cao Cấp</td>
+                    <td class="center">1</td>
+                    <td class="money">950.000đ</td>
+                    <td class="receiver">Hoàng Thị E</td>
+                    <td class="center">29/11 - 1/12</td>
+                    <td><span class="status shipping">Đang giao</span></td>
+                </tr>
+                </tbody>
+
+                <!-- ===== ĐÃ GIAO ===== -->
+                <tbody id="done" style="display:none">
+                <tr>
+                    <td>3801</td>
+                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
+                    <td class="center">1</td>
+                    <td class="money">2.300.000đ</td>
+                    <td class="receiver">Nguyễn Văn D</td>
+                    <td class="center">01/12</td>
+                    <td><span class="status done">Đã giao</span></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </form>
+        </div>
     </div>
 </div>
 
@@ -287,5 +534,94 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
+
+<script>
+    /* TAB CHUYỂN TRẠNG THÁI */
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+
+            // đổi active tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // ẩn toàn bộ tbody
+            document.querySelectorAll('tbody[id]').forEach(tb => {
+                tb.style.display = 'none';
+            });
+
+            // hiện tbody tương ứng
+            const target = document.getElementById(this.dataset.tab);
+            if (target) target.style.display = '';
+        });
+    });
+
+    /* MENU TRẠNG THÁI */
+    /* ===== MỞ MENU ===== */
+    function openActionMenu(btn, e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        closeAllMenus();
+
+        const menu = btn.parentElement.querySelector('.action-menu');
+        menu.style.display = 'block';
+        // Đánh dấu menu đang mở
+        btn.parentElement.classList.add('menu-open');
+    }
+
+    /* ===== ĐÓNG MENU ===== */
+    function closeAllMenus() {
+        document.querySelectorAll('.action-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+        document.querySelectorAll('.menu-open').forEach(el => {
+            el.classList.remove('menu-open');
+        });
+    }
+
+    /* ===== CLICK NGOÀI STATUS → ĐÓNG ===== */
+    document.addEventListener('click', function (e) {
+        // nếu click KHÔNG nằm trong .status
+        if (!e.target.closest('.status')) {
+            closeAllMenus();
+        }
+    });
+
+    /* ===== XÁC NHẬN ===== */
+    function confirmOrder(btn) {
+        if (!confirm("Xác nhận chuyển sang vận chuyển?")) return;
+
+        const statusCell = btn.closest('.status');
+        statusCell.innerHTML = `
+        <button class="btn-shipping" disabled> Chờ vận chuyển </button>
+`;
+    }
+
+    /* ===== HỦY ===== */
+    function openCancelBox(btn, e) {
+        e.preventDefault();
+        e.stopPropagation(); // 🔥 CHẶN DOCUMENT CLICK
+
+        const statusCell = btn.closest('.status');
+        statusCell.querySelector('.cancel-box').style.display = 'block';
+    }
+
+    function cancelOrder(btn) {
+        const statusCell = btn.closest('.status');
+        const reason = statusCell.querySelector('input').value.trim();
+
+        if (!reason) {
+            alert("Vui lòng nhập lý do hủy");
+            return;
+        }
+
+        if (!confirm("Bạn chắc chắn muốn hủy đơn?")) return;
+
+        statusCell.innerHTML = `
+        <span class="btn-cancelled">Đã hủy</span>
+    `;
+    }
+</script>
+
 </body>
 </html>

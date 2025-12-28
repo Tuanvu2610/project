@@ -12,7 +12,7 @@
             font-family: Arial, Helvetica, sans-serif;
             background:#f7f7f7;
             margin:0;
-            padding:24px;
+            padding:0;
         }
 
         .container{
@@ -42,7 +42,7 @@
         .nav-links a{
             display:flex;
             gap:10px;
-            padding:12px;
+            padding:16px 18px;
             color:#fff;
             text-decoration:none;
             border-radius:8px;
@@ -337,7 +337,7 @@
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
                     <td>
-                        <span class="price-text">2.300.000</span> đ
+                        <span class="price-text">2.300.000 đ</span>
                         <input type="number"
                                class="price-input"
                                value="2300000"
@@ -360,7 +360,7 @@
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
                     <td>
-                        <span class="price-text">2.300.000</span> đ
+                        <span class="price-text">2.300.000 đ</span>
                         <input type="number"
                                class="price-input"
                                value="2300000"
@@ -383,7 +383,7 @@
                         <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
                     </td>
                     <td>
-                        <span class="price-text">2.300.000</span> đ
+                        <span class="price-text">2.300.000 đ</span>
                         <input type="number"
                                class="price-input"
                                value="2300000"
@@ -422,7 +422,7 @@
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Lọ Hoa Gốm Men Lam</span>
                     </td>
-                    <td>850.000đ</td>
+                    <td>850.000 đ</td>
                     <td>120</td>
                     <td class="status pending">Chưa lên kệ</td>
                     <td>
@@ -436,7 +436,7 @@
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Lọ Hoa Gốm Men Lam</span>
                     </td>
-                    <td>850.000đ</td>
+                    <td>850.000 đ</td>
                     <td>120</td>
                     <td class="status pending">Chưa lên kệ</td>
                     <td>
@@ -450,7 +450,7 @@
                         <img src="../img/bo_binh_6_coc_8.jpg">
                         <span>Lọ Hoa Gốm Men Lam</span>
                     </td>
-                    <td>850.000đ</td>
+                    <td>850.000 đ</td>
                     <td>120</td>
                     <td class="status pending">Chưa lên kệ</td>
                     <td>
