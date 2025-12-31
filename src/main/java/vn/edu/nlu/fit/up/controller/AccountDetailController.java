@@ -14,19 +14,26 @@ import java.io.IOException;
 public class AccountDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idRaw = request.getParameter("id");
-        if (idRaw == null) {
-            response.sendRedirect("quan-ly-account");
-            return;
-        }
-        int id = Integer.parseInt(idRaw);
+        int id = Integer.parseInt(request.getParameter("id"));
         AccountDao ad = new AccountDao();
         Account acc = ad.getAccountById(id);
-        request.setAttribute("listAcc", ad.getAccount());
-        request.setAttribute("account", acc);
 
-        request.getRequestDispatcher("/html/quanlyaccount.jsp")
-                .forward(request, response);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        response.getWriter().write(
+                "{"
+                        + "\"id\":" + acc.getId() + ","
+                        + "\"name\":\"" + acc.getName() + "\","
+                        + "\"username\":\"" + acc.getUsername() + "\","
+                        + "\"phone\":\"" + acc.getPhone() + "\","
+                        + "\"date_of_birth\":\"" + acc.getDate_of_birth() + "\","
+                        + "\"role\":\"" + acc.getRole() + "\","
+                        + "\"status\":\"" + acc.getStatus() + "\","
+                        + "\"registration_date\":\"" + acc.getRegistration_date() + "\""
+                        + "}"
+        );
+
     }
 
     @Override

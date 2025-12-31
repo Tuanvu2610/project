@@ -27,8 +27,23 @@ public class AccountDao extends BaseDao{
                         .orElse(null)
         );
     }
+    public List<Account> getAccountByPage(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
 
-        static void main() {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT * FROM accounts
+            ORDER BY id DESC
+            LIMIT :limit OFFSET :offset
+        """)
+                        .bind("limit", pageSize)
+                        .bind("offset", offset)
+                        .mapToBean(Account.class)
+                        .list()
+        );
+    }
+
+    static void main() {
         AccountDao dao = new AccountDao();
         Account i = dao.getAccountById(8);
         System.out.println(i);

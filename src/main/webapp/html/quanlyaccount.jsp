@@ -1,4 +1,4 @@
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -206,8 +206,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <C:forEach var="p" items="${listAcc}">
-                    <tr onclick="location.href='account-detail?id=${p.id}'">
+                <c:forEach var="p" items="${listAcc}">
+                    <tr class="view" data-id="${p.id}">
                         <td>${p.id}</td>
                         <td>${p.name}</td>
                         <td>${p.username}</td>
@@ -215,43 +215,66 @@
                         <td><span class="status ${p.status}">${p.status}</span></td>
                         <td>${p.registration_date}</td>
                     </tr>
-                </C:forEach>
+                </c:forEach>
                 </tbody>
             </table>
+        </div>
+        <c:set var="start" value="${currentPage - 2}" />
+        <c:set var="end" value="${currentPage + 2}" />
+
+        <c:if test="${start < 1}">
+            <c:set var="start" value="1" />
+        </c:if>
+
+        <c:if test="${end > totalPages}">
+            <c:set var="end" value="${totalPages}" />
+        </c:if>
+
+        <div class="pagination">
+            <c:if test="${currentPage > 1}">
+                <a href="quan-ly-account?page=${currentPage - 1}">&laquo;</a>
+            </c:if>
+            <c:forEach begin="${start}" end="${end}" var="i">
+                <a href="quan-ly-account?page=${i}"
+                   class="${i == currentPage ? 'active' : ''}">
+                        ${i}
+                </a>
+            </c:forEach>
+            <c:if test="${currentPage < totalPages}">
+                <a href="quan-ly-account?page=${currentPage + 1}">&raquo;</a>
+            </c:if>
         </div>
     </div>
 </section>
 <!--modal-->
-<C:if test="${not empty account}">
-    <section class="overlay" style="display: block;">
-        <div class="container-modal">
-            <div class="cover-modal">
-                <span onclick="location.href='quan-ly-account'" class="exit-btn">&times;</span>
-                <p>${fn:toUpperCase(account.role)}</p>
-                <div class="cover-allinfo">
-                    <div class="avatar-name">
-                        <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
-                        <p style="margin: 0">${account.name}</p>
-                    </div>
-                    <div class="cover-info">
-                        <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: ${account.phone}</p>
-                        <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: ${account.username}</p>
-                        <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: ${account.date_of_birth}</p>
-                        <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Role: ${account.role}</p>
-                    </div>
-                    <div class="cover-active">
-                        <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng kí: ${account.registration_date}</p>
-                            <%--                    <p><img src="https://www.svgrepo.com/show/532124/clock-two-thirty.svg" alt="">Hoạt động cuối: 11/11/2025</p>--%>
-                    </div>
-                    <div class="cover-btn">
-                        <button class="edit"><img src="../img/edit-svgrepo-com.png" alt="">Edit</button>
-                        <button class="remove"><img src="../img/delete-svgrepo-com.svg" alt="">Remove</button>
-                    </div>
+<section class="overlay" style="display: none;">
+    <div class="container-modal">
+        <div class="cover-modal">
+            <span class="exit-btn">&times;</span>
+            <p id="role"></p>
+            <div class="cover-allinfo">
+                <div class="avatar-name">
+                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                    <p style="margin: 0" id="name"></p>
+                </div>
+                <div class="cover-info">
+                    <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone: <span id="phone"></span></p>
+                    <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email: <span id="email"></span></p>
+                    <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday: <span id="birthday"></span></p>
+                    <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Role: <span id="role2"></span></p>
+                    <p><img src="https://www.svgrepo.com/show/497557/status.svg" alt="">Status: <span id="status"></span></p>
+                </div>
+                <div class="cover-active">
+                    <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng ký: <span id="date"></span></p>
+                </div>
+                <div class="cover-btn">
+                    <button class="edit"><img src="img/edit-svgrepo-com.png">️Edit</button>
+                    <button class="remove"><img src="img/delete-svgrepo-com.svg">Remove</button>
                 </div>
             </div>
         </div>
-    </section>
-</C:if>
+    </div>
+</section>
 <!--footer-->
 <footer class="site-footer">
     <div class="footer-container">
@@ -321,6 +344,31 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
-<script src="${pageContext.request.contextPath}/js/javascript.js"></script>
+<script>
+    document.querySelectorAll('.view').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const id = this.dataset.id;
+
+            fetch('${pageContext.request.contextPath}/account-detail?id=' + id)
+                .then(res => res.json())
+                .then(acc => {
+                    document.getElementById('name').innerText = acc.name;
+                    document.getElementById('email').innerText = acc.username;
+                    document.getElementById('phone').innerText = acc.phone;
+                    document.getElementById('birthday').innerText = acc.date_of_birth;
+                    document.getElementById('role').innerText = acc.role.toUpperCase();
+                    document.getElementById('role2').innerText = acc.role;
+                    document.getElementById('status').innerText = acc.status;
+                    document.getElementById('date').innerText = acc.registration_date;
+                    document.querySelector('.overlay').style.display = 'block';
+                });
+        });
+    });
+    document.querySelector('.exit-btn').addEventListener('click', () => {
+        document.querySelector('.overlay').style.display = 'none';
+    });
+</script>
+
 </body>
 </html>
