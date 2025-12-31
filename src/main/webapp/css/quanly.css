@@ -279,6 +279,28 @@ tbody tr:hover {
 tr:hover {
     cursor: pointer;
 }
+.pagination {
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+.pagination a {
+    padding: 6px 12px;
+    margin: 2px;
+    border: 1px solid #4CAF50;
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.pagination a:hover {
+    color: white;
+    background: #4caf50a3;
+}
 
 /*modal*/
 .overlay {
