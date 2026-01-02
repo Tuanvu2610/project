@@ -1,0 +1,245 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gốm Sứ NÔNG LÂM</title>
+    <link rel="stylesheet" href="css/dangnhap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+<!--header-->
+<header class="pageHome-header" id="header-home">
+    <a href="#" class="text-header">
+        <span class="text-nonglam">NÔNG LÂM</span>
+        <span class="text-gomsu">GỐM SỨ TINH HOA</span>
+    </a>
+    <form action="${pageContext.request.contextPath}/product-search" method="get" class="search-header">
+        <input type="text" name="keyword" placeholder="Tìm sản phẩm..." value="${param.keyword}">
+        <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+
+    <div class="right-header">
+        <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+        <a href="html/giohang.jsp" class="btn-header cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-badge">0</span> </a>
+    </div>
+</header>
+
+<nav class="menu-home">
+    <ul class="cover-menu">
+        <li class="sub-item"> <a href="gom-gia-dung">GỐM GIA DỤNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-gia-dung">Ấm chén bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Bộ bác đĩa bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Chum ngâm rượu</a></li>
+                    <li><a href="gom-gia-dung">Dụng cụ nhà tắm</a></li>
+                    <li><a href="gom-gia-dung">Đèn ngủ</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="html/gomtrangtri.jsp">GỐM TRANG TRÍ</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="html/gomtrangtri.jsp">Bình gốm bát tràng</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Tượng gốm sứ</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Bình hồ lô</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-tho-cung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="gom-tho-cung">Bát hương</a></li>
+                    <li><a href="gom-tho-cung">Mâm bồng</a></li>
+                    <li><a href="gom-tho-cung">Bát nắp</a></li>
+                    <li><a href="gom-tho-cung">Cây đèn nến</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-qua-tang">Bình hút lộc in logo</a></li>
+                    <li><a href="gom-qua-tang">Ấm chén in logo</a></li>
+                    <li><a href="gom-qua-tang">Bình hoa in logo</a></li>
+                    <li><a href="gom-qua-tang">Quà tặng bát đĩa</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="html/tintuc.jsp">TIN TỨC</a></li>
+        <li><a href="html/GioiThieu.jsp">GIỚI THIỆU</a></li>
+        <li><a href="html/lienhe.jsp">LIÊN HỆ</a></li>
+        <li><a href="quan-ly-account">ADMIN CONTROL</a></li>
+    </ul>
+</nav>
+
+<!--Modal-->
+<!--dang nhap-->
+<div class="modal-content">
+    <a href="${pageContext.request.contextPath}/home" class="close-btn">&times;</a>
+    <h1 class="head" id="form-title">Đăng nhập</h1>
+    <form action="${pageContext.request.contextPath}/login" method="post">
+        <div class="section active" id="signin">
+            <span style="color: red; font-size: 12px; padding: 0 22px;">${error}</span>
+            <div class="username-section style-section">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" type="text" name="username" placeholder="Tên đăng nhập hoặc Email">
+            </div>
+            <div class="password-section style-section">
+                <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+                <input class="input-style" id="toggle" name="password" type="password" placeholder="Mật khẩu">
+                <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>
+            </div>
+            <button type="submit" class="btn">Đăng nhập</button>
+            <p class="forgot-pass"><a href="${pageContext.request.contextPath}/html/forgot-password.jsp">Quên mật khẩu?</a></p>
+        </div>
+    </form>
+
+    <div class="select">
+        <p>Hoặc đăng nhập bằng</p>
+        <div class="link">
+            <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="">
+        </div>
+    </div>
+
+    <div class="foot">
+        <a href="${pageContext.request.contextPath}/html/register.jsp">Đăng ký</a>
+    </div>
+</div>
+
+<!--quen mat khau-->
+<div id="forgotModal" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h1 class="head">Quên mật khẩu</h1>
+        <div class="section active" id="forgot">
+            <p style="text-align:center;margin-bottom: 10px;color: #0a8300;font-weight: bold">
+                Nhập email để đặt lại mật khẩu
+            </p>
+            <div class="username-section style-section">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">
+            </div>
+            <button class="btn">Gửi yêu cầu khôi phục</button>
+            <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
+        </div>
+    </div>
+</div>
+
+<!--dang ky-->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h1 class="head">Đăng ký</h1>
+        <div class=name-section>
+            <div class="lastname-section name-style">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" name="lastname" type="text" placeholder="Họ">
+            </div>
+            <div class="firstname-section name-style">
+                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                <input class="input-style" name="firstname" type="text" placeholder="Tên">
+            </div>
+        </div>
+        <div class="username-section style-section">
+            <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+            <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản hoặc Email">
+        </div>
+        <div class="password-section style-section">
+            <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+            <input class="input-style" name="dk_pass" type="password" placeholder="Mật khẩu">
+        </div>
+        <div class="confirm-section style-section">
+            <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
+            <input class="input-style" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">
+        </div>
+        <button class="btn">Đăng ký</button>
+        <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <div class="footer-column">
+            <h3 class="footer-title">Về Chúng Tôi</h3>
+            <p style="margin-bottom: 20px;">
+                Tinh hoa gốm Việt - Nơi lưu giữ và phát triển những giá trị truyền thống của làng nghề Bát Tràng. Chúng tôi cam kết mang đến những sản phẩm chất lượng cao, an toàn và thẩm mỹ.
+            </p>
+            <ul class="contact-info">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Khu phố 33, Linh Xuân, Tp.HCM</span>
+                </li>
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Hotline: 0987.654.321 (Zalo/Viber)</span>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: info@gomsutinhhoa.vn</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Hỗ Trợ Khách Hàng</h3>
+            <ul class="footer-links">
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả & Hoàn tiền</a></li>
+                <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                <li><a href="#">Quy định vận chuyển</a></li>
+                <li><a href="#">Hình thức thanh toán</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Sản Phẩm Nổi Bật</h3>
+            <ul class="footer-links">
+                <li><a href="#">Bộ đồ ăn Bát Tràng</a></li>
+                <li><a href="#">Ấm chén trà cao cấp</a></li>
+                <li><a href="#">Lọ hoa & Bình hút lộc</a></li>
+                <li><a href="#">Đồ thờ cúng tâm linh</a></li>
+                <li><a href="#">Quà tặng doanh nghiệp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Kết Nối Với Chúng Tôi</h3>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Zalo"><i class="fas fa-comment-dots"></i></a>
+                <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <h3 class="footer-title" style="margin-top: 30px;">Đăng Ký Nhận Tin</h3>
+            <p style="margin-bottom: 15px;">Nhận ngay thông tin về các chương trình khuyến mãi và sản phẩm mới nhất.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Nhập email của bạn...">
+                <button type="submit">ĐĂNG KÝ</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
+    </div>
+</footer>
+<script src="js/javascript.js"></script>
+</body>
+</html>
