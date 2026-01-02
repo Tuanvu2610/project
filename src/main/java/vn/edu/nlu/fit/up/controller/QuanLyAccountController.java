@@ -6,10 +6,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import vn.edu.nlu.fit.up.dao.AccountDao;
+import vn.edu.nlu.fit.up.dao.CategoryDao;
 import vn.edu.nlu.fit.up.model.Account;
+import vn.edu.nlu.fit.up.model.Category;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "QuanLyAccountController", value = "/quan-ly-account")
 public class QuanLyAccountController extends HttpServlet {
@@ -35,7 +39,18 @@ public class QuanLyAccountController extends HttpServlet {
         request.setAttribute("totalActive", ad.getAccountByStatus("active"));
         request.setAttribute("totalPending",  ad.getAccountByStatus("pending"));
         request.setAttribute("totalBanned",  ad.getAccountByStatus("banned"));
+        CategoryDao cd = new CategoryDao();
+        List<Category> parents = cd.getCategoryParent();
+
+        Map<Integer, List<Category>> childrenMap = new HashMap<>();
+        for (Category p : parents) {
+            childrenMap.put(p.getId(),
+                    cd.getCategoryChild(p.getId()));
+        }
+        request.setAttribute("parents", parents);
+        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/quanlyaccount.jsp").forward(request, response);
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
