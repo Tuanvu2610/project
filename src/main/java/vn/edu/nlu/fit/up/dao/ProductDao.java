@@ -1,6 +1,7 @@
 package vn.edu.nlu.fit.up.dao;
 
 import org.jdbi.v3.core.Jdbi;
+import vn.edu.nlu.fit.up.model.Category;
 import vn.edu.nlu.fit.up.model.Product;
 import vn.edu.nlu.fit.up.model.Reviews;
 
@@ -10,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ProductDao extends BaseDao {
-    static Map<Integer, Product> data = new HashMap<>();
     public Product getProduct(int id) {
         return get().withHandle(h -> h.createQuery("SELECT * FROM products where id=:id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
     }
@@ -122,7 +122,6 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
-
 
 //    static void main() {
 //        ProductDao dao = new ProductDao();

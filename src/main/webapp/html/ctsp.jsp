@@ -58,53 +58,17 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="gomgiadung.jsp">Đèn ngủ</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomtrangtri.jsp">Bình gốm bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
-                    <li><a href="gomtrangtri.jsp">Tượng gốm sứ</a></li>
-                    <li><a href="gomtrangtri.jsp">Bình hồ lô</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="tintuc.jsp">TIN TỨC</a></li>
-        <li><a href="GioiThieu.jsp">GIỚI THIỆU</a></li>
-        <li><a href="lienhe.jsp">LIÊN HỆ</a></li>
-        <li><a href="quanlyaccount.jsp">ADMIN CONTROL</a></li>
+        <c:forEach var="t" items="${parents}">
+            <li class="sub-item"> <a href="${t.link}">${t.name}</a>
+                <div class="sub-menu">
+                    <ul class="hover">
+                        <c:forEach var="c" items="${children[t.id]}">
+                            <li><a href="${c.link}?tab=${c.datatarget}">${c.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </li>
+        </c:forEach>
     </ul>
 </nav>
 <!--body-->

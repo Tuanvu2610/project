@@ -5,13 +5,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import vn.edu.nlu.fit.up.dao.CategoryDao;
 import vn.edu.nlu.fit.up.dao.ProductDao;
+import vn.edu.nlu.fit.up.model.Category;
 import vn.edu.nlu.fit.up.model.Product;
 import vn.edu.nlu.fit.up.model.Reviews;
 import vn.edu.nlu.fit.up.service.ProductService;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "ProductDetailsController", value = "/chitietsanpham")
 public class ProductDetailsController extends HttpServlet {
@@ -37,8 +41,18 @@ public class ProductDetailsController extends HttpServlet {
         request.setAttribute("rw", listReview);
         request.setAttribute("totalReview", totalReview);
         request.setAttribute("p", p);
-        request.getRequestDispatcher("/html/ctsp.jsp").forward(request, response);
+        CategoryDao cd = new CategoryDao();
+        List<Category> parents = cd.getCategoryParent();
 
+        Map<Integer, List<Category>> childrenMap = new HashMap<>();
+        for (Category pr : parents) {
+            childrenMap.put(pr.getId(),
+                    cd.getCategoryChild(pr.getId()));
+        }
+        request.setAttribute("parents", parents);
+        request.setAttribute("children", childrenMap);
+
+        request.getRequestDispatcher("/html/ctsp.jsp").forward(request, response);
     }
 
     @Override

@@ -3,11 +3,14 @@ package vn.edu.nlu.fit.up.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import vn.edu.nlu.fit.up.dao.CategoryDao;
 import vn.edu.nlu.fit.up.dao.StatisticDao;
+import vn.edu.nlu.fit.up.model.Category;
 import vn.edu.nlu.fit.up.model.Statistic;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +53,18 @@ public class StatisticController extends HttpServlet {
         request.setAttribute("year", year);
         request.setAttribute("month", String.valueOf(month));
         request.setAttribute("chartData", chartData);
+        CategoryDao cd = new CategoryDao();
+        List<Category> parents = cd.getCategoryParent();
 
+        Map<Integer, List<Category>> childrenMap = new HashMap<>();
+        for (Category p : parents) {
+            childrenMap.put(p.getId(),
+                    cd.getCategoryChild(p.getId()));
+        }
+        request.setAttribute("parents", parents);
+        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/thongke.jsp").forward(request, response);
+
     }
 
     @Override
