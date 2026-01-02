@@ -53,10 +53,18 @@
             background:rgba(255,255,255,0.15);
         }
 
-        /* ===== CONTENT ===== */
+        /* CONTENT */
+
+        .content-wrapper{
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            box-shadow:0 8px 24px rgba(0,0,0,.06);
+        }
+
         .content{
             flex:1;
-            padding-left:20px;
+            padding:24px;
         }
 
         .head-title h1{
@@ -306,6 +314,7 @@
         </ul>
     </div>
     <div class="content">
+        <div class="content-wrapper">
         <div class="head-title">
             <h1><i class="fas fa-warehouse"></i> Kho hàng</h1>
         </div>
@@ -462,7 +471,7 @@
                 </tbody>
             </table>
         </div>
-
+        </div>
     </div>
 </div>
 
