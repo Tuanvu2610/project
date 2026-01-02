@@ -1,12 +1,207 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/haumai.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background:#f7f7f7;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            display:flex;
+            min-height:100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar{
+            width:25%;
+            background:#0d8e02c7;
+            color:#fff;
+            padding:20px 0;
+        }
+
+        .title{
+            text-align:center;
+            padding-bottom:20px;
+            border-bottom:1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-links{
+            list-style:none;
+            padding:15px;
+        }
+
+        .nav-links a{
+            display:flex;
+            gap:10px;
+            padding:16px 18px;
+            color:#fff;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover{
+            background:rgba(255,255,255,0.15);
+        }
+
+        /* CONTENT */
+        .content{
+            flex:1;
+            padding:24px;
+        }
+
+        .content-wrapper{
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            box-shadow:0 8px 24px rgba(0,0,0,.06);
+        }
+
+        /* TITLE */
+        .head-title h1{
+            margin:0;
+        }
+
+        .sub-title{
+            color:#666;
+            margin:8px 0 20px;
+        }
+
+        /* ADMIN BOX */
+        .admin-box{
+            width:100%;
+            max-width:100%;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,.08);
+        }
+
+
+        /* TABLE */
+        .support-table{
+            width:100%;
+            border-collapse:collapse;
+            table-layout: fixed;
+        }
+
+        .support-table th,
+        .support-table td{
+            padding:12px 14px;
+            text-align:left;
+            vertical-align:middle;
+            border-bottom:1px solid #eee;
+        }
+
+        .support-table th{
+            background:#f1f5f9;
+            font-weight:bold;
+        }
+
+        .support-table td:nth-child(5),
+        .support-table td:nth-child(6){
+            white-space:nowrap;
+        }
+
+        .badge{
+            display:inline-flex;
+            align-items:center;
+            white-space:nowrap;
+            padding:4px 12px;
+            border-radius:999px;
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        /* Status */
+        .status-wait{ background:#fde68a; color:#92400e; }
+        .status-processing{ background:#bfdbfe; color:#1e40af; }
+        .status-done{ background:#bbf7d0; color:#065f46; }
+        .status-rejected{ background:#fecaca; color:#991b1b; }
+
+        /* Priority */
+        .priority-high{ background:#fee2e2; color:#b91c1c; }
+        .priority-medium{ background:#fef3c7; color:#92400e; }
+        .priority-low{ background:#dcfce7; color:#166534; }
+
+        .btn{
+            padding:6px 14px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            white-space:nowrap;
+        }
+
+        .btn.view{ background:#2563eb; color:#fff; }
+        .btn.processing{ background:#facc15; }
+        .btn.success{ background:#22c55e; color:#fff; }
+        .btn.danger{ background:#ef4444; color:#fff; }
+
+        .modal-overlay{
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.4);
+            justify-content:center;
+            align-items:center;
+            z-index:1000;
+        }
+
+        .modal{
+            background:#fff;
+            width:min(600px, 92vw);
+            border-radius:12px;
+            overflow:hidden;
+        }
+
+        .modal-header{
+            padding:16px 20px;
+            border-bottom:1px solid #eee;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .close-btn{
+            background:none;
+            border:none;
+            font-size:22px;
+            cursor:pointer;
+        }
+
+        .modal-body{
+            padding:20px;
+        }
+
+        .section{
+            margin-bottom:20px;
+        }
+
+        .image-list img{
+            width:100px;
+            max-width:100%;
+            border-radius:8px;
+            margin-right:10px;
+        }
+
+        .modal-footer{
+            padding:16px;
+            border-top:1px solid #eee;
+            display:flex;
+            gap:10px;
+            justify-content:flex-end;
+        }
+    </style>
+
 </head>
 <body>
 <!--header-->
@@ -88,92 +283,23 @@
             <h2><span>ADMIN CONTROL</span></h2>
         </div>
         <ul class="nav-links">
-            <li><a href="../html/quanlyaccount.html"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="../html/thongke.html"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
-            <li><a href="../html/kho.html"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
-            <li><a href="../html/donhang.html"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
+            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="kho.jsp"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+            <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
             <li><a href="#" class="active"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
         </ul>
     </div>
     <!-- Header -->
     <div class="content">
-        <header class="header">
+        <div class="content-wrapper">
+        <div class="head-title">
             <h1><i class="fas fa-headset"></i> Quản lý Hỗ trợ Khách hàng</h1>
-            <p class="subtitle">Theo dõi và xử lý các yêu cầu hỗ trợ từ khách hàng</p>
-        </header>
-
-        <!-- Stats -->
-        <div class="stats-grid">
-
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div>
-                        <p class="stat-label">Tổng yêu cầu</p>
-                        <p class="stat-value">4</p>
-                    </div>
-                    <div class="stat-icon blue">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div>
-                        <p class="stat-label">Chờ xử lý</p>
-                        <p class="stat-value">1</p>
-                    </div>
-                    <div class="stat-icon red">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div>
-                        <p class="stat-label">Đang xử lý</p>
-                        <p class="stat-value">1</p>
-                    </div>
-                    <div class="stat-icon yellow">
-                        <i class="fas fa-spinner"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div>
-                        <p class="stat-label">Đã giải quyết</p>
-                        <p class="stat-value">2</p>
-                    </div>
-                    <div class="stat-icon green">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                </div>
-            </div>
+            <p class="sub-title">Theo dõi và xử lý các yêu cầu hậu mãi</p>
         </div>
 
-        <!-- Filters -->
-        <div class="filter-section">
-            <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm theo tên, tiêu đề, mã yêu cầu...">
-            </div>
-
-            <div class="filter-select-wrapper">
-                <select>
-                    <option value="all">Tất cả</option>
-                    <option value="pending">Chờ xử lý</option>
-                    <option value="in-progress">Đang xử lý</option>
-                    <option value="resolved">Đã giải quyết</option>
-                    <option value="closed">Đã đóng</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Table -->
-        <div class="table-container">
-            <table>
+        <div class="admin-box">
+            <table class="support-table">
                 <thead>
                 <tr>
                     <th>Mã</th>
@@ -183,71 +309,97 @@
                     <th>Ưu tiên</th>
                     <th>Trạng thái</th>
                     <th>Thời gian</th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr>
+
+                <tr data-id="TK001">
                     <td>TK001</td>
-                    <td>
-                        <div class="customer-info">
-                            <div class="name">Nguyễn Văn A</div>
-                            <div class="email">a.nguyen@email.com</div>
-                        </div>
-                    </td>
-                    <td>Sản phẩm có vết xước nhỏ ở bề mặt</td>
+                    <td><b>Nguyễn Văn A</b><br><small>a.nguyen@email.com</small></td>
+                    <td>Sản phẩm bị trầy xước nhẹ</td>
                     <td>Bảo hành</td>
-                    <td><span class="badge priority high">Cao</span></td>
-                    <td><span class="badge status pending">Chờ xử lý</span></td>
-                    <td>2025-11-20 09:30</td>
+                    <td><span class="badge priority-high">Cao</span></td>
+                    <td class="status-cell"><span class="badge status-wait">Chờ xử lý</span></td>
+                    <td>20/11/2025 09:30</td>
+                    <td><button class="btn view" onclick="openModal(this)" data-id="TK001">Xem</button></td>
                 </tr>
 
-                <tr>
+                <tr data-id="TK002">
                     <td>TK002</td>
-                    <td>
-                        <div class="customer-info">
-                            <div class="name">Trần Thị B</div>
-                            <div class="email">b.tran@email.com</div>
-                        </div>
-                    </td>
-                    <td>Sản phẩm giao sai mẫu đã đặt</td>
+                    <td><b>Trần Thị B</b><br><small>b.tran@email.com</small></td>
+                    <td>Giao sai mẫu đã đặt</td>
                     <td>Đổi trả</td>
-                    <td><span class="badge priority medium">Trung bình</span></td>
-                    <td><span class="badge status in-progress">Đang xử lý</span></td>
-                    <td>2025-11-19 14:20</td>
+                    <td><span class="badge priority-medium">Trung bình</span></td>
+                    <td class="status-cell"><span class="badge status-processing">Đang xử lý</span></td>
+                    <td>19/11/2025 14:20</td>
+                    <td><button class="btn view" onclick="openModal(this)" data-id="TK002">Xem</button></td>
                 </tr>
 
-                <tr>
+                <tr data-id="TK003">
                     <td>TK003</td>
-                    <td>
-                        <div class="customer-info">
-                            <div class="name">Lê Văn C</div>
-                            <div class="email">c.le@email.com</div>
-                        </div>
-                    </td>
-                    <td>Do chỗ đặt trang trí không vừa nên trả hàng</td>
+                    <td><b>Lê Văn C</b><br><small>c.le@email.com</small></td>
+                    <td>Trả hàng do không phù hợp</td>
                     <td>Hoàn trả</td>
-                    <td><span class="badge priority low">Thấp</span></td>
-                    <td><span class="badge status resolved">Đã giải quyết</span></td>
-                    <td>2025-11-18 10:00</td>
+                    <td><span class="badge priority-low">Thấp</span></td>
+                    <td class="status-cell"><span class="badge status-done">Đã giải quyết</span></td>
+                    <td>18/11/2025 10:00</td>
+                    <td><button class="btn view" onclick="openModal(this)" data-id="TK003">Xem</button></td>
                 </tr>
 
-                <tr>
+                <tr data-id="TK004">
                     <td>TK004</td>
-                    <td>
-                        <div class="customer-info">
-                            <div class="name">Vũ Minh H</div>
-                            <div class="email">H.vu@email.com</div>
-                        </div>
-                    </td>
-                    <td>Khách yêu cầu hủy yêu cầu hỗ trợ</td>
+                    <td><b>Vũ Minh H</b><br><small>h.vu@email.com</small></td>
+                    <td>Yêu cầu hoàn tiền không hợp lệ</td>
                     <td>Khác</td>
-                    <td><span class="badge priority low">Thấp</span></td>
-                    <td><span class="badge status closed">Đã đóng</span></td>
-                    <td>2025-11-18 10:00</td>
+                    <td><span class="badge priority-low">Thấp</span></td>
+                    <td class="status-cell"><span class="badge status-rejected">Đã từ chối</span></td>
+                    <td>18/11/2025 10:00</td>
+                    <td><button class="btn view" onclick="openModal(this)" data-id="TK004">Xem</button></td>
                 </tr>
+
                 </tbody>
             </table>
+        </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="supportModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Chi tiết yêu cầu hậu mãi</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <b>Mã yêu cầu:</b> <span id="m-id"></span><br>
+                    <b>Khách hàng:</b> <span id="m-name"></span><br>
+                    <b>Email:</b> <span id="m-email"></span><br>
+                    <b>Thời gian:</b> <span id="m-time"></span><br>
+                    <b>Trạng thái:</b> <span id="m-status" class="badge"></span>
+                </div>
+
+                <div class="section">
+                    <h4>Nội dung</h4>
+                    <p id="m-content"></p>
+                </div>
+
+                <div class="section">
+                    <h4>Hình ảnh</h4>
+                    <div class="image-list">
+                        <img src="../img/loi1.jpg">
+                        <img src="../img/loi2.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" id="modalActions">
+                <button class="btn processing" onclick="changeStatus('processing')">Đang xử lý</button>
+                <button class="btn success" onclick="changeStatus('done')">Giải quyết</button>
+                <button class="btn danger" onclick="changeStatus('rejected')">Từ chối</button>
+            </div>
         </div>
     </div>
 </div>
@@ -321,5 +473,58 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
+
+<script>
+    let currentRow = null;
+
+    function openModal(btn){
+        currentRow = btn.closest("tr");
+
+        document.getElementById("m-id").innerText = currentRow.children[0].innerText;
+        document.getElementById("m-name").innerText = currentRow.children[1].querySelector("b").innerText;
+        document.getElementById("m-email").innerText = currentRow.children[1].querySelector("small").innerText;
+        document.getElementById("m-time").innerText = currentRow.children[6].innerText;
+        document.getElementById("m-content").innerText = currentRow.children[2].innerText;
+
+        const statusSpan = currentRow.querySelector(".status-cell span");
+        const modalStatus = document.getElementById("m-status");
+        modalStatus.innerText = statusSpan.innerText;
+        modalStatus.className = statusSpan.className;
+
+        if(statusSpan.innerText === "Đã giải quyết" || statusSpan.innerText === "Đã từ chối"){
+            document.getElementById("modalActions").style.display = "none";
+        }else{
+            document.getElementById("modalActions").style.display = "flex";
+        }
+
+        document.getElementById("supportModal").style.display = "flex";
+    }
+
+    function closeModal(){
+        document.getElementById("supportModal").style.display = "none";
+    }
+
+    function changeStatus(type){
+        const map = {
+            processing:{ text:"Đang xử lý", class:"badge status-processing" },
+            done:{ text:"Đã giải quyết", class:"badge status-done" },
+            rejected:{ text:"Đã từ chối", class:"badge status-rejected" }
+        };
+
+        const info = map[type];
+
+        document.getElementById("m-status").innerText = info.text;
+        document.getElementById("m-status").className = info.class;
+
+        const tableStatus = currentRow.querySelector(".status-cell span");
+        tableStatus.innerText = info.text;
+        tableStatus.className = info.class;
+
+        if(type === "done" || type === "rejected"){
+            document.getElementById("modalActions").style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
