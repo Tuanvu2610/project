@@ -29,26 +29,81 @@
     </form>
 
     <div class="right-header">
-        <button class="btn-header"><a href="#loginModal"><i class="fas fa-user"></i> Đăng nhập</a></button>
+        <c:choose>
+            <c:when test="${not empty sessionScope.auth}">
+                <div class="user">
+                    <button class="btn-header">
+                        <i class="fas fa-user"></i>
+                        <span class="username">Xin chào, ${sessionScope.auth.username}</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu">
+                        <a href="profile">Tài khoản</a>
+                        <a href="orders">Đơn hàng</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+            </c:otherwise>
+        </c:choose>
         <a href="html/giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
             <span class="cart-badge">0</span> </a>
     </div>
 </header>
+
 <nav class="menu-home">
     <ul class="cover-menu">
-        <c:forEach var="t" items="${parents}">
-            <li class="sub-item"> <a href="${t.link}">${t.name}</a>
-                <div class="sub-menu">
-                    <ul class="hover">
-                        <c:forEach var="c" items="${children[t.id]}">
-                            <li><a href="${c.link}?tab=${c.datatarget}">${c.name}</a></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </li>
-        </c:forEach>
+        <li class="sub-item"> <a href="gom-gia-dung">GỐM GIA DỤNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-gia-dung">Ấm chén bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Bộ bác đĩa bác tràng</a></li>
+                    <li><a href="gom-gia-dung">Chum ngâm rượu</a></li>
+                    <li><a href="gom-gia-dung">Dụng cụ nhà tắm</a></li>
+                    <li><a href="gom-gia-dung">Đèn ngủ</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="html/gomtrangtri.jsp">GỐM TRANG TRÍ</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="html/gomtrangtri.jsp">Bình gốm bát tràng</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Tượng gốm sứ</a></li>
+                    <li><a href="html/gomtrangtri.jsp">Bình hồ lô</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="gom-tho-cung">GỐM THỜ CÚNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-tho-cung">Bộ đồ thờ đầy đủ</a></li>
+                    <li><a href="gom-tho-cung">Bát hương</a></li>
+                    <li><a href="gom-tho-cung">Mâm bồng</a></li>
+                    <li><a href="gom-tho-cung">Bát nắp</a></li>
+                    <li><a href="gom-tho-cung">Cây đèn nến</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="sub-item"><a href="gom-qua-tang">GỐM QUÀ TẶNG</a> </i>
+            <div class="sub-menu">
+                <ul class="hover">
+                    <li><a href="gom-qua-tang">Bình hút lộc in logo</a></li>
+                    <li><a href="gom-qua-tang">Ấm chén in logo</a></li>
+                    <li><a href="gom-qua-tang">Bình hoa in logo</a></li>
+                    <li><a href="gom-qua-tang">Quà tặng bát đĩa</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="html/tintuc.jsp">TIN TỨC</a></li>
+        <li><a href="html/GioiThieu.jsp">GIỚI THIỆU</a></li>
+        <li><a href="html/lienhe.jsp">LIÊN HỆ</a></li>
+        <li><a href="quan-ly-account">ADMIN CONTROL</a></li>
     </ul>
 </nav>
 <div class="icon-page">
@@ -232,87 +287,87 @@
     </div>
 </section>
 
-<!--Modal-->
-<!--dang nhap-->
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <a href="#" class="close-btn">&times;</a>
-        <h1 class="head" id="form-title">Đăng nhập</h1>
-        <div class="section active" id="signin">
-            <div class="username-section style-section">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" type="text" name="dn_username" placeholder="Tên đăng nhập hoặc Email">
-            </div>
-            <div class="password-section style-section">
-                <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-                <input class="input-style" id="toggle" name="dn_pass" type="password" placeholder="Mật khẩu">
-                <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>
-            </div>
-            <button class="btn">Đăng nhập</button>
-            <p class="forgot-pass"><a href="#forgotModal">Quên mật khẩu?</a></p>
-        </div>
-        <div class="select">
-            <p>Hoặc đăng nhập bằng</p>
-            <div class="link">
-                <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="">
-            </div>
-        </div>
+<%--<!--Modal-->--%>
+<%--<!--dang nhap-->--%>
+<%--<div id="loginModal" class="modal">--%>
+<%--    <div class="modal-content">--%>
+<%--        <a href="#" class="close-btn">&times;</a>--%>
+<%--        <h1 class="head" id="form-title">Đăng nhập</h1>--%>
+<%--        <div class="section active" id="signin">--%>
+<%--            <div class="username-section style-section">--%>
+<%--                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">--%>
+<%--                <input class="input-style" type="text" name="dn_username" placeholder="Tên đăng nhập hoặc Email">--%>
+<%--            </div>--%>
+<%--            <div class="password-section style-section">--%>
+<%--                <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">--%>
+<%--                <input class="input-style" id="toggle" name="dn_pass" type="password" placeholder="Mật khẩu">--%>
+<%--                <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>--%>
+<%--            </div>--%>
+<%--            <button class="btn">Đăng nhập</button>--%>
+<%--            <p class="forgot-pass"><a href="#forgotModal">Quên mật khẩu?</a></p>--%>
+<%--        </div>--%>
+<%--        <div class="select">--%>
+<%--            <p>Hoặc đăng nhập bằng</p>--%>
+<%--            <div class="link">--%>
+<%--                <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="">--%>
+<%--                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="">--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
-        <div class="foot"><a href="#signupModal">Đăng ký</a></div>
-    </div>
-</div>
+<%--        <div class="foot"><a href="#signupModal">Đăng ký</a></div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-<!--quen mat khau-->
-<div id="forgotModal" class="modal">
-    <div class="modal-content">
-        <a href="#" class="close-btn">&times;</a>
-        <h1 class="head">Quên mật khẩu</h1>
-        <div class="section active" id="forgot">
-            <p style="text-align:center;margin-bottom: 10px;color: #0a8300;font-weight: bold">
-                Nhập email để đặt lại mật khẩu
-            </p>
-            <div class="username-section style-section">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">
-            </div>
-            <button class="btn">Gửi yêu cầu khôi phục</button>
-            <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
-        </div>
-    </div>
-</div>
+<%--<!--quen mat khau-->--%>
+<%--<div id="forgotModal" class="modal">--%>
+<%--    <div class="modal-content">--%>
+<%--        <a href="#" class="close-btn">&times;</a>--%>
+<%--        <h1 class="head">Quên mật khẩu</h1>--%>
+<%--        <div class="section active" id="forgot">--%>
+<%--            <p style="text-align:center;margin-bottom: 10px;color: #0a8300;font-weight: bold">--%>
+<%--                Nhập email để đặt lại mật khẩu--%>
+<%--            </p>--%>
+<%--            <div class="username-section style-section">--%>
+<%--                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">--%>
+<%--                <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">--%>
+<%--            </div>--%>
+<%--            <button class="btn">Gửi yêu cầu khôi phục</button>--%>
+<%--            <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-<!--dang ky-->
-<div id="signupModal" class="modal">
-    <div class="modal-content">
-        <a href="#" class="close-btn">&times;</a>
-        <h1 class="head">Đăng ký</h1>
-        <div class=name-section>
-            <div class="lastname-section name-style">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="lastname" type="text" placeholder="Họ">
-            </div>
-            <div class="firstname-section name-style">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="firstname" type="text" placeholder="Tên">
-            </div>
-        </div>
-        <div class="username-section style-section">
-            <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-            <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản hoặc Email">
-        </div>
-        <div class="password-section style-section">
-            <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-            <input class="input-style" name="dk_pass" type="password" placeholder="Mật khẩu">
-        </div>
-        <div class="confirm-section style-section">
-            <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
-            <input class="input-style" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">
-        </div>
-        <button class="btn">Đăng ký</button>
-        <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
-    </div>
-</div>
+<%--<!--dang ky-->--%>
+<%--<div id="signupModal" class="modal">--%>
+<%--    <div class="modal-content">--%>
+<%--        <a href="#" class="close-btn">&times;</a>--%>
+<%--        <h1 class="head">Đăng ký</h1>--%>
+<%--        <div class=name-section>--%>
+<%--            <div class="lastname-section name-style">--%>
+<%--                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">--%>
+<%--                <input class="input-style" name="lastname" type="text" placeholder="Họ">--%>
+<%--            </div>--%>
+<%--            <div class="firstname-section name-style">--%>
+<%--                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">--%>
+<%--                <input class="input-style" name="firstname" type="text" placeholder="Tên">--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="username-section style-section">--%>
+<%--            <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">--%>
+<%--            <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản hoặc Email">--%>
+<%--        </div>--%>
+<%--        <div class="password-section style-section">--%>
+<%--            <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">--%>
+<%--            <input class="input-style" name="dk_pass" type="password" placeholder="Mật khẩu">--%>
+<%--        </div>--%>
+<%--        <div class="confirm-section style-section">--%>
+<%--            <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">--%>
+<%--            <input class="input-style" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">--%>
+<%--        </div>--%>
+<%--        <button class="btn">Đăng ký</button>--%>
+<%--        <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <!-- footer -->
 <footer class="site-footer">

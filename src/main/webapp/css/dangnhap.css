@@ -11,10 +11,11 @@
     align-items: center;
     animation: fadeIn 0.3s ease;
 }
-.modal:target{
+.modal.active {
     display: flex;
 }
 .modal-content{
+    margin: auto;
     background: #fff;
     padding: 30px 40px;
     border-radius: 20px;
@@ -24,6 +25,8 @@
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     animation: slideUp 0.3s ease;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 @keyframes slideUp{
     from { transform: translateY(40px); opacity: 0; }
@@ -166,4 +169,48 @@ h1.head{
     cursor: pointer;
     user-select: none;
     margin-left: 8px;
+}
+.user{
+    position: relative;
+    display: inline-block;
+}
+.user .btn-header{
+    cursor: pointer;
+}
+.user-menu{
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: #ffffff;
+    min-width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    z-index: 1000;
+}
+.user-menu a{
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.user-menu a:hover{
+    background: #0a8300;
+    color: #fff;
+}
+.user:hover .user-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.user:hover .fa-caret-down{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
