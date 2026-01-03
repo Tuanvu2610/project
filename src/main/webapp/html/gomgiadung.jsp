@@ -36,7 +36,7 @@
                 <div class="user">
                     <button class="btn-header">
                         <i class="fas fa-user"></i>
-                        <span class="username">Xin chào, ${sessionScope.auth.username}</span>
+                        <span class="username">Xin chào, ${sessionScope.auth.firstname}</span>
                         <i class="fas fa-caret-down"></i>
                     </button>
                     <div class="user-menu">

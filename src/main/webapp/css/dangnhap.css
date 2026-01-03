@@ -1,32 +1,41 @@
-.modal{
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
+.modal-container{
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: url(../img/background.jpg);
+    display: none;
     justify-content: center;
     align-items: center;
+    z-index: 2000;
+}
+.modal-container.active{
+    display: flex;
+}
+.modal{
+    display: none;
     animation: fadeIn 0.3s ease;
 }
-.modal.active {
-    display: flex;
+.modal.active{
+    display: block;
 }
 .modal-content{
     margin: auto;
     background: #fff;
     padding: 30px 40px;
     border-radius: 20px;
-    width: 250px;
-    height: 400px;
+    width: 300px;
+    height: 450px;
     max-width: 90%;
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     animation: slideUp 0.3s ease;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+@keyframes fadeIn{
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 @keyframes slideUp{
     from { transform: translateY(40px); opacity: 0; }
@@ -41,177 +50,189 @@
     cursor: pointer;
     transition: 0.2s;
     text-decoration: none;
+    z-index: 10;
 }
 .close-btn:hover{
     color: red;
 }
-.section {
+.section{
     display: none;
 }
 .section.active{
     display: block;
 }
-h1.head{
+h1.head {
     text-align: center;
     color: #0a8300;
     margin-bottom: 25px;
+    font-size: 24px;
 }
 .style-section{
     display: flex;
     align-items: center;
-    width: 250px;
+    width: 100%; /* Đổi thành 100% */
     margin-bottom: 20px;
     border: none;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #ddd;
     outline: none;
     transition: 0.3s;
+    padding-bottom: 5px;
+}
+.style-section:focus-within{
+    border-bottom-color: #0a8300;
 }
 .style-section img{
     width: 20px;
     opacity: 0.8;
+    margin-right: 10px;
 }
-.input-style{
+.input-style {
     flex: 1;
     border: none;
     outline: none;
-    margin-top: 8px;
     background: transparent;
+    font-size: 14px;
+}
+.input-style::placeholder{
+    color: #999;
 }
 .name-section{
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-.name-section img{
-    width: 20px;
-    opacity: 0.8;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 .name-style{
     display: flex;
     align-items: center;
-    width: calc(50% - 10px);
+    width: calc(50% - 7.5px);
     margin-bottom: 20px;
     border: none;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #ddd;
     outline: none;
     transition: 0.3s;
+    padding-bottom: 5px;
+}
+.name-style:focus-within{
+    border-bottom-color: #0a8300;
+}
+
+.name-style img {
+    width: 20px;
+    opacity: 0.8;
+    margin-right: 10px;
 }
 .btn{
     text-align: center;
-    width: 250px;
-    padding: 11px;
+    width: 100%;
+    padding: 12px;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(135deg, #5be004, #187e02);;
+    background: linear-gradient(135deg, #5be004, #187e02);
     color: white;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 10px;
 }
-
 .btn:hover{
-    background-color: red;
+    background: linear-gradient(135deg, #187e02, #5be004);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(24, 126, 2, 0.3);
 }
 .forgot-pass{
     text-align: right;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-    margin: 8px 0;
-}
-.forgot-pass:hover{
-    color: red;
-    cursor: pointer;
-    text-decoration: none;
+    margin: 15px 0;
 }
 .forgot-pass a{
     text-decoration: none;
     color: #0a8300;
+    transition: 0.2s;
+}
+.forgot-pass a:hover{
+    color: red;
+    text-decoration: underline;
 }
 .foot{
     text-align: center;
-    margin-top: 45px;
+    margin-top: 25px;
+    padding-top: 15px;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
 }
 .foot a{
     text-decoration: none;
     color: #0a8300;
+    transition: 0.2s;
+    font-size: 14px;
 }
-
-.foot:hover{
+.foot a:hover{
     color: red;
-    text-decoration: none;
+    text-decoration: underline;
 }
 .select{
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .select p{
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 15px;
     font-size: 14px;
-    color: #ccc;
+    color: #666;
+}
+.select .link{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 .select .link img{
     width: 25px;
-    margin: 0px 4px;
     padding: 7px;
     border-radius: 25px;
     background: #efefef;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 .select .link img:hover{
     cursor: pointer;
     transform: scale(1.1);
+    background: #ddd;
 }
 .toggle-password{
     cursor: pointer;
     user-select: none;
     margin-left: 8px;
+    font-size: 16px;
 }
-/*.user{*/
-/*    position: relative;*/
-/*    display: inline-block;*/
-/*}*/
-/*.user .btn-header{*/
-/*    cursor: pointer;*/
-/*}*/
-/*.user-menu{*/
-/*    position: absolute;*/
-/*    top: 120%;*/
-/*    right: 5px;*/
-/*    background: #ffffff;*/
-/*    min-width: 200px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 8px 20px rgba(0,0,0,0.15);*/
-/*    overflow: hidden;*/
-/*    opacity: 0;*/
-/*    visibility: hidden;*/
-/*    transform: translateY(10px);*/
-/*    transition: all 0.25s ease;*/
-/*    z-index: 1000;*/
-/*}*/
-/*.user-menu a{*/
-/*    display: block;*/
-/*    padding: 12px 16px;*/
-/*    text-decoration: none;*/
-/*    color: #333;*/
-/*    font-weight: 500;*/
-/*    font-size: 15px;*/
-/*    transition: background 0.2s ease, color 0.2s ease;*/
-/*}*/
-/*.user-menu a:hover{*/
-/*    background: #0a8300;*/
-/*    color: #fff;*/
-/*}*/
-/*.user:hover .user-menu{*/
-/*    opacity: 1;*/
-/*    display: block;*/
-/*    visibility: visible;*/
-/*    transform: translateY(0);*/
-/*}*/
-/*.user:hover .fa-caret-down{*/
-/*    transform: rotate(180deg);*/
-/*    transition: transform 0.3s ease;*/
-/*}*/
+.error-message{
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+}
+.success-message{
+    color: green;
+    font-size: 12px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #e6ffe6;
+    border-radius: 5px;
+}
+@media (max-width: 480px) {
+    .modal-content {
+        width: 280px;
+        padding: 20px 25px;
+    }
+    .name-section{
+        flex-direction: column;
+        gap: 0;
+    }
+    .name-style{
+        width: 100%;
+    }
+}

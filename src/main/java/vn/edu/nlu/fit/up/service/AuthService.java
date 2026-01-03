@@ -14,4 +14,12 @@ public class AuthService {
         }
         return null;
     }
+
+    public boolean register(User user) {
+        return authDao.registerUser(user);
+    }
+
+    public boolean isUsernameExist(String username) {
+        return authDao.isUsernameExist(username);
+    }
 }
