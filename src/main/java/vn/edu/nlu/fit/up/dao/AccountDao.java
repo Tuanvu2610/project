@@ -1,5 +1,6 @@
 package vn.edu.nlu.fit.up.dao;
 import vn.edu.nlu.fit.up.model.Account;
+import vn.edu.nlu.fit.up.model.User;
 
 import java.util.List;
 
@@ -42,11 +43,26 @@ public class AccountDao extends BaseDao{
                         .list()
         );
     }
+    public int updateAcc(User user, int id) {
+        return get().withHandle(handle ->
+                handle.createUpdate(
+                                "UPDATE users " +
+                                        "SET name = :name, email = :email, phone = :phone, sex = :sex " +
+                                        "WHERE id = :id"
+                        )
+                        .bind("id", id)
+                        .bind("name", user.getName())
+                        .bind("email", user.getEmail())
+                        .bind("phone", user.getPhone())
+                        .bind("sex",user.getSex())
+                        .execute()
+        );
+    }
+
 
     static void main() {
         AccountDao dao = new AccountDao();
         Account i = dao.getAccountById(8);
         System.out.println(i);
     }
-
 }
