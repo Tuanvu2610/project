@@ -40,3 +40,16 @@
     function openTab() {
         document.getElementById('openmodal').style.display = "block";
     }
+
+    //login, logout
+    function showLoginModal() {
+        document.getElementById('loginModal').classList.add('active');
+        document.getElementById('signupModal').classList.remove('active');
+    }
+    function showSignupModal() {
+        document.getElementById('loginModal').classList.remove('active');
+        document.getElementById('signupModal').classList.add('active');
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        showLoginModal();
+    });

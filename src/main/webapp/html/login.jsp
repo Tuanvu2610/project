@@ -25,7 +25,25 @@
     </form>
 
     <div class="right-header">
-        <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+        <c:choose>
+            <c:when test="${not empty sessionScope.auth}">
+                <div class="user">
+                    <button class="btn-header">
+                        <i class="fas fa-user"></i>
+                        <span class="username">Xin chào, ${sessionScope.auth.firstname}</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu">
+                        <a href="tai-khoan">Tài khoản</a>
+                        <a href="orders">Đơn hàng</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+            </c:otherwise>
+        </c:choose>
         <a href="html/giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
@@ -49,38 +67,94 @@
     </ul>
 </nav>
 
-<!--Modal-->
-<!--dang nhap-->
-<div class="modal-content">
-    <a href="${pageContext.request.contextPath}/home" class="close-btn">&times;</a>
-    <h1 class="head" id="form-title">Đăng nhập</h1>
-    <form action="${pageContext.request.contextPath}/login" method="post">
-        <div class="section active" id="signin">
-            <span style="color: red; font-size: 12px; padding: 0 22px;">${error}</span>
-            <div class="username-section style-section">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" type="text" name="username" placeholder="Tên đăng nhập hoặc Email">
+<div class="modal-container active">
+    <div id="loginModal" class="modal active">
+        <div class="modal-content">
+            <a href="home" class="close-btn">&times;</a>
+            <h1 class="head">Đăng nhập</h1>
+            <c:if test="${not empty error}">
+                <div class="error-message">${error}</div>
+            </c:if>
+            <form action="login" method="post">
+                <div class="section active">
+                    <div class="username-section style-section">
+                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                        <input class="input-style" type="text" name="username" placeholder="Tên đăng nhập hoặc Email">
+                    </div>
+                    <div class="password-section style-section">
+                        <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+                        <input class="input-style" id="loginPassword" name="password" type="password" placeholder="Mật khẩu">
+                        <span class="toggle-password" onclick="togglePassword('loginPassword', this)">🐵</span>
+                    </div>
+                    <button type="submit" class="btn">Đăng nhập</button>
+                    <p class="forgot-pass">
+                        <a href="${pageContext.request.contextPath}/html/forgot-password.jsp">Quên mật khẩu?</a>
+                    </p>
+                </div>
+            </form>
+            <div class="select">
+                <p>Hoặc đăng nhập bằng</p>
+                <div class="link">
+                    <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="Facebook">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                </div>
             </div>
-            <div class="password-section style-section">
-                <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-                <input class="input-style" id="toggle" name="password" type="password" placeholder="Mật khẩu">
-                <span class="toggle-password" onclick="togglePassword('toggle', this)">🐵</span>
+            <div class="foot">
+                <a href="javascript:void(0)" onclick="showSignupModal()">Đăng ký tài khoản mới</a>
             </div>
-            <button type="submit" class="btn">Đăng nhập</button>
-            <p class="forgot-pass"><a href="${pageContext.request.contextPath}/html/forgot-password.jsp">Quên mật khẩu?</a></p>
-        </div>
-    </form>
-
-    <div class="select">
-        <p>Hoặc đăng nhập bằng</p>
-        <div class="link">
-            <img src="https://www.svgrepo.com/show/354981/facebook-option.svg" alt="">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="">
         </div>
     </div>
 
-    <div class="foot">
-        <a href="${pageContext.request.contextPath}/html/register.jsp">Đăng ký</a>
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="close-btn" onclick="showLoginModal()">&times;</a>
+            <h1 class="head">Đăng ký</h1>
+            <c:if test="${not empty regiserror}">
+                <div class="error-message">${regiserror}</div>
+            </c:if>
+            <form action="login" method="post">
+                <input type="hidden" name="action" value="register">
+
+                <div class="name-section">
+                    <div class="firstname-section name-style">
+                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                        <input class="input-style" name="firstname" type="text" placeholder="Tên"
+                               value="${first != null ? first : ''}">
+                    </div>
+                    <div class="lastname-section name-style">
+                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                        <input class="input-style" name="lastname" type="text" placeholder="Họ"
+                               value="${last != null ? last : ''}">
+                    </div>
+                </div>
+
+                <div class="username-section style-section">
+                    <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                    <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản"
+                           value="${user != null ? user : ''}">
+                </div>
+                <div class="email-section style-section">
+                    <img src="https://www.svgrepo.com/show/498958/email.svg" alt="">
+                    <input class="input-style" name="dk_username" type="text" placeholder="Email"
+                           value="${email != null ? email : ''}">
+                </div>
+                <div class="password-section style-section">
+                    <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
+                    <input class="input-style" id="registerPassword" name="dk_pass" type="password" placeholder="Mật khẩu">
+                    <span class="toggle-password" onclick="togglePassword('registerPassword', this)">🐵</span>
+                </div>
+                <div class="confirm-section style-section">
+                    <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
+                    <input class="input-style" id="confirmPassword" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">🐵</span>
+                </div>
+
+                <button class="btn" type="submit">Đăng ký</button>
+            </form>
+            <div class="foot">
+                <a href="javascript:void(0)" onclick="showLoginModal()">Quay lại Đăng nhập</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -100,38 +174,6 @@
             <button class="btn">Gửi yêu cầu khôi phục</button>
             <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
         </div>
-    </div>
-</div>
-
-<!--dang ky-->
-<div id="signupModal" class="modal">
-    <div class="modal-content">
-        <a href="#" class="close-btn">&times;</a>
-        <h1 class="head">Đăng ký</h1>
-        <div class=name-section>
-            <div class="lastname-section name-style">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="lastname" type="text" placeholder="Họ">
-            </div>
-            <div class="firstname-section name-style">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="firstname" type="text" placeholder="Tên">
-            </div>
-        </div>
-        <div class="username-section style-section">
-            <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-            <input class="input-style" name="dk_username" type="text" placeholder="Tên tài khoản hoặc Email">
-        </div>
-        <div class="password-section style-section">
-            <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-            <input class="input-style" name="dk_pass" type="password" placeholder="Mật khẩu">
-        </div>
-        <div class="confirm-section style-section">
-            <img src="https://www.svgrepo.com/show/93282/verify.svg" alt="">
-            <input class="input-style" name="confirm_pass" type="password" placeholder="Xác nhận mật khẩu">
-        </div>
-        <button class="btn">Đăng ký</button>
-        <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
     </div>
 </div>
 
