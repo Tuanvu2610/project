@@ -150,87 +150,51 @@ ul {
     border-radius: 10px;
     border: 2px solid #2e7d32;
 }
-
-/*avatar*/
-.user-info-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 6px 12px;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: all 0.3s ease;
+/**/
+.user{
     position: relative;
+    display: inline-block;
 }
-
-.user-info-container:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.user .btn-header{
+    cursor: pointer;
 }
-.cover-avatar-user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #e0e0e0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-size: 20px;
-    border: 2px solid rgba(255,255,255,0.5);
-}
-
-.info-user {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.user-name {
-    font-weight: 700;
-    font-size: 14px;
-}
-
-.user-phone {
-    font-size: 12px;
-    opacity: 0.9;
-}
-
-.user-menu {
-    display: none;
+.user-menu{
     position: absolute;
-    top:55px;
-    right: -30px;
-    background-color: white;
+    top: 120%;
+    right: 5px;
+    background: #ffffff;
     min-width: 200px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     overflow: hidden;
-    animation: fadeIn 0.2s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    z-index: 1000;
 }
-
-.user-info-container:hover .user-menu {
+.user-menu a{
     display: block;
-}
-
-.user-menu a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    color:  #333333;
-    font-size: 14px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
     font-weight: 500;
+    font-size: 15px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
-
-.user-menu a:hover {
-    background-color: #f5f5f5;
-    color: #2e7d32;
+.user-menu a:hover{
+    background: #0a8300;
+    color: #fff;
+}
+.user:hover .user-menu{
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    transform: translateY(0);
+}
+.user:hover .fa-caret-down{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
 /*menu-danh muc*/
 .menu-home {

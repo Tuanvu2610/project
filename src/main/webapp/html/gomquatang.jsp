@@ -30,27 +30,29 @@
     </form>
 
     <div class="right-header">
-        <div class="user-info-container">
-            <a href="myinfo.jsp" class="cover-avatar-user">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+        <c:choose>
+            <c:when test="${not empty sessionScope.auth}">
+                <div class="user">
+                    <button class="btn-header">
+                        <i class="fas fa-user"></i>
+                        <span class="username">Xin chào, ${sessionScope.auth.username}</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu">
+                        <a href="tai-khoan">Tài khoản</a>
+                        <a href="orders">Đơn hàng</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
                 </div>
-                <div class="info-user">
-                    <span class="user-name">Nguyen Van A</span>
-                    <span class="user-phone">0342104524</span>
-                </div>
-            </a>
-            <div class="user-menu">
-                <ul>
-                    <li><a href="myinfo.jsp"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                </ul>
-            </div>
-        </div>
-        <a href="giohang.jsp" class="btn-header cart-btn">
+            </c:when>
+            <c:otherwise>
+                <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+            </c:otherwise>
+        </c:choose>
+        <a href="html/giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
-            <span class="cart-badge">2</span> </a>
+            <span class="cart-badge">0</span> </a>
     </div>
 </header>
 <nav class="menu-home">

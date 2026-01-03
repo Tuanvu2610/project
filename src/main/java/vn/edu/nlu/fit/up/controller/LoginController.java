@@ -5,6 +5,12 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import vn.edu.nlu.fit.up.dao.CategoryDao;
+import vn.edu.nlu.fit.up.model.Category;
 import vn.edu.nlu.fit.up.service.AuthService;
 import vn.edu.nlu.fit.up.model.User;
 
@@ -12,6 +18,16 @@ import vn.edu.nlu.fit.up.model.User;
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CategoryDao cd = new CategoryDao();
+        List<Category> parents = cd.getCategoryParent();
+
+        Map<Integer, List<Category>> childrenMap = new HashMap<>();
+        for (Category p : parents) {
+            childrenMap.put(p.getId(),
+                    cd.getCategoryChild(p.getId()));
+        }
+        request.setAttribute("parents", parents);
+        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("html/login.jsp").forward(request,response);
 
     }

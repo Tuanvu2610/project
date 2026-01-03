@@ -1,10 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/myinfo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dangnhap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/myinfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -22,23 +24,25 @@
     </form>
 
     <div class="right-header">
-        <div class="user-info-container">
-            <a href="../html/myinfo.html" class="cover-avatar-user">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+        <c:choose>
+            <c:when test="${not empty sessionScope.auth}">
+                <div class="user">
+                    <button class="btn-header">
+                        <i class="fas fa-user"></i>
+                        <span class="username">Xin chào, ${sessionScope.auth.username}</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu">
+                        <a href="tai-khoan">Tài khoản</a>
+                        <a href="orders">Đơn hàng</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
                 </div>
-                <div class="info-user">
-                    <span class="user-name">Nguyen Van A</span>
-                    <span class="user-phone">0342104524</span>
-                </div>
-            </a>
-            <div class="user-menu">
-                <ul>
-                    <li><a href="../html/myinfo.html"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                </ul>
-            </div>
-        </div>
+            </c:when>
+            <c:otherwise>
+                <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+            </c:otherwise>
+        </c:choose>
         <a href="giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
@@ -47,53 +51,17 @@
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="gomgiadung.jsp">Đèn ngủ</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomtrangtri.jsp">Bình gốm bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
-                    <li><a href="gomtrangtri.jsp">Tượng gốm sứ</a></li>
-                    <li><a href="gomtrangtri.jsp">Bình hồ lô</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="tintuc.jsp">TIN TỨC</a></li>
-        <li><a href="GioiThieu.jsp">GIỚI THIỆU</a></li>
-        <li><a href="lienhe.jsp">LIÊN HỆ</a></li>
-        <li><a href="quanlyaccount.jsp">ADMIN CONTROL</a></li>
+        <c:forEach var="t" items="${parents}">
+            <li class="sub-item"> <a href="${t.link}">${t.name}</a>
+                <div class="sub-menu">
+                    <ul class="hover">
+                        <c:forEach var="c" items="${children[t.id]}">
+                            <li><a href="${c.link}?tab=${c.datatarget}">${c.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </li>
+        </c:forEach>
     </ul>
 </nav>
 <!--body-->
@@ -103,8 +71,8 @@
             <div class="info-avatar">
                 <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
                 <div class="name">
-                    <p>Nguyen Van A</p>
-                    <p>0342104524</p>
+                    <p>${sessionScope.auth.name}</p>
+                    <p>${sessionScope.auth.phone}</p>
                 </div>
             </div>
             <ul class="nav-links">
@@ -119,46 +87,48 @@
                 <p>Hồ sơ của tôi</p>
                 <p class="style-title-info">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
             </div>
-            <div class="cover-info">
-                <div class="left-info">
-                    <div class="cover-username style-lable">
-                        <label>Tên đăng nhập: </label>
-                        <input type="text" class="style-input" name="username" id="" placeholder="NguyenVanA2005">
-                    </div>
-                    <div class="cover-name style-lable">
-                        <label>Tên: </label>
-                        <input type="text" class="style-input" name="name" id="" placeholder="Nguyen Van A">
-                    </div>
-                    <div class="cover-email style-lable">
-                        <label>Email: </label>
-                        <input type="text" class="style-input" name="email" id="" placeholder="a.nguyen@email.com">
-                    </div>
-                    <div class="cover-phone style-lable">
-                        <label>Phone: </label>
-                        <input type="text" class="style-phone" name="phone" id="" placeholder="0342104524">
-                    </div>
-                    <div class="cover-phone style-lable">
-                        <label>Giới tính: </label>
-                        <div class="cover-sex">
-                            <div>
-                                <label> Nam</label>
-                                <input type="radio" class="style-radio" name="sex" checked>
-                            </div>
-                            <div>
-                                <label> Nu</label>
-                                <input type="radio" class="style-radio" name="sex">
+            <form action="tai-khoan" method="post">
+                <div class="cover-info">
+                    <div class="left-info">
+                        <div class="cover-username style-lable">
+                            <label>Tên đăng nhập: </label>
+                            <input type="text" class="style-input" name="username" id="" value="${sessionScope.auth.username}" readonly>
+                        </div>
+                        <div class="cover-name style-lable">
+                            <label>Tên: </label>
+                            <input type="text" class="style-input" name="name" id="" value="${sessionScope.auth.name}">
+                        </div>
+                        <div class="cover-email style-lable">
+                            <label>Email: </label>
+                            <input type="text" class="style-input" name="email" id="" value="${sessionScope.auth.email}">
+                        </div>
+                        <div class="cover-phone style-lable">
+                            <label>Phone: </label>
+                            <input type="text" class="style-phone" name="phone" id="" value="${sessionScope.auth.phone}">
+                        </div>
+                        <div class="cover-phone style-lable">
+                            <label>Giới tính: </label>
+                            <div class="cover-sex">
+                                <div>
+                                    <label> Nam</label>
+                                    <input type="radio" class="style-radio" name="sex" value="Male"${sessionScope.auth.sex == "Male" ? "checked" : ""}>
+                                </div>
+                                <div>
+                                    <label> Nu</label>
+                                    <input type="radio" class="style-radio" name="sex" value="Female"${sessionScope.auth.sex == "Female" ? "checked" : ""}>
+                                </div>
                             </div>
                         </div>
+                        <div class="btn-save">
+                            <button>Lưu</button>
+                        </div>
                     </div>
-                    <div class="btn-save">
-                        <button>Lưu</button>
+                    <div class="right-info">
+                        <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                        <button>Thay đổi</button>
                     </div>
                 </div>
-                <div class="right-info">
-                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
-                    <button>Thay đổi</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
