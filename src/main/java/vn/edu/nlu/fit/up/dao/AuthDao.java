@@ -36,4 +36,10 @@ public class AuthDao extends BaseDao {
                 .bind("img", user.getImg())
                 .execute() >0);
     }
+
+    public User findByEmail(String email) {
+        return get().withHandle(h -> h.createQuery("select * from users where email = :email")
+                .bind("email", email)
+                .mapToBean(User.class).findFirst().orElse(null));
+    }
 }

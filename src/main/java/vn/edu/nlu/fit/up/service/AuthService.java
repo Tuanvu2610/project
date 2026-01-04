@@ -22,4 +22,8 @@ public class AuthService {
     public boolean isUsernameExist(String username) {
         return authDao.isUsernameExist(username);
     }
+
+    public User findByEmail(String email) {
+        return authDao.findByEmail(email);
+    }
 }

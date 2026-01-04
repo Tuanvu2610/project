@@ -36,13 +36,16 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if ("register".equals(action)) {
+        if("register".equals(action)){
             actionRegister(request, response);
-        } else {
+        }else if("forgot".equals(action)){
+            actionForgotPass(request, response);
+        }else{
             actionLogin(request, response);
         }
     }
 
+    //dang nhap
     private void actionLogin(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -60,6 +63,7 @@ public class LoginController extends HttpServlet {
         }
     }
 
+    //dang ky
     private void actionRegister(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AuthService as = new AuthService();
@@ -152,5 +156,30 @@ public class LoginController extends HttpServlet {
             return "Tên đăng nhập chỉ được chứa chữ cái, số, dấu chấm và gạch dưới";
         }
         return null;
+    }
+
+    //quen mat khau
+    private void actionForgotPass(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String email = request.getParameter("restore_email");
+        AuthService as = new AuthService();
+
+        if (email == null || email.trim().isEmpty()) {
+            request.setAttribute("error", "Vui lòng nhập email khôi phục.");
+            request.getRequestDispatcher("html/login.jsp").forward(request, response);
+            return;
+        }
+
+        User u = as.findByEmail(email);
+
+        if (u == null) {
+            request.setAttribute("error", "Email không tồn tại trong hệ thống.");
+            request.getRequestDispatcher("html/login.jsp").forward(request, response);
+            return;
+        }
+        request.setAttribute("success",
+                "Yêu cầu khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra email.");
+        request.getRequestDispatcher("html/login.jsp").forward(request, response);
     }
 }

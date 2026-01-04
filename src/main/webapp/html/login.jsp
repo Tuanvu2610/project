@@ -68,7 +68,7 @@
 </nav>
 
 <div class="modal-container active">
-    <div id="loginModal" class="modal active">
+    <div id="loginModal" class="modal">
         <div class="modal-content">
             <a href="home" class="close-btn">&times;</a>
             <h1 class="head">Đăng nhập</h1>
@@ -83,13 +83,14 @@
                     </div>
                     <div class="password-section style-section">
                         <img src="https://www.svgrepo.com/show/535485/lock-closed.svg" alt="">
-                        <input class="input-style" id="loginPassword" name="password" type="password" placeholder="Mật khẩu">
+                        <input class="input-style" id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Mật khẩu">
                         <span class="toggle-password" onclick="togglePassword('loginPassword', this)">🐵</span>
                     </div>
+                    <div class="remember-section">
+                        <label class="remember-me"><input type="checkbox" name="remember">Ghi nhớ mật khẩu</label>
+                    </div>
                     <button type="submit" class="btn">Đăng nhập</button>
-                    <p class="forgot-pass">
-                        <a href="${pageContext.request.contextPath}/html/forgot-password.jsp">Quên mật khẩu?</a>
-                    </p>
+                    <p class="forgot-pass"><a href="javascript:void(0)" onclick="showForgotPass()">Quên mật khẩu?</a></p>
                 </div>
             </form>
             <div class="select">
@@ -99,15 +100,13 @@
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
                 </div>
             </div>
-            <div class="foot">
-                <a href="javascript:void(0)" onclick="showSignupModal()">Đăng ký tài khoản mới</a>
-            </div>
+            <div class="foot"><a href="javascript:void(0)" onclick="showSignup()">Đăng ký tài khoản mới</a></div>
         </div>
     </div>
 
     <div id="signupModal" class="modal">
         <div class="modal-content">
-            <a href="javascript:void(0)" class="close-btn" onclick="showLoginModal()">&times;</a>
+            <a href="javascript:void(0)" class="close-btn" onclick="showLogin()">&times;</a>
             <h1 class="head">Đăng ký</h1>
             <c:if test="${not empty regiserror}">
                 <div class="error-message">${regiserror}</div>
@@ -116,15 +115,15 @@
                 <input type="hidden" name="action" value="register">
 
                 <div class="name-section">
-                    <div class="firstname-section name-style">
-                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                        <input class="input-style" name="firstname" type="text" placeholder="Tên"
-                               value="${first != null ? first : ''}">
-                    </div>
                     <div class="lastname-section name-style">
                         <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
                         <input class="input-style" name="lastname" type="text" placeholder="Họ"
                                value="${last != null ? last : ''}">
+                    </div>
+                    <div class="firstname-section name-style">
+                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                        <input class="input-style" name="firstname" type="text" placeholder="Tên"
+                               value="${first != null ? first : ''}">
                     </div>
                 </div>
 
@@ -135,7 +134,7 @@
                 </div>
                 <div class="email-section style-section">
                     <img src="https://www.svgrepo.com/show/498958/email.svg" alt="">
-                    <input class="input-style" name="dk_username" type="text" placeholder="Email"
+                    <input class="input-style" name="email" type="email" placeholder="Email"
                            value="${email != null ? email : ''}">
                 </div>
                 <div class="password-section style-section">
@@ -151,28 +150,31 @@
 
                 <button class="btn" type="submit">Đăng ký</button>
             </form>
-            <div class="foot">
-                <a href="javascript:void(0)" onclick="showLoginModal()">Quay lại Đăng nhập</a>
-            </div>
+            <div class="foot"><a href="javascript:void(0)" onclick="showLogin()">Quay lại Đăng nhập</a></div>
         </div>
     </div>
-</div>
 
-<!--quen mat khau-->
-<div id="forgotModal" class="modal">
-    <div class="modal-content">
-        <a href="#" class="close-btn">&times;</a>
-        <h1 class="head">Quên mật khẩu</h1>
-        <div class="section active" id="forgot">
-            <p style="text-align:center;margin-bottom: 10px;color: #0a8300;font-weight: bold">
-                Nhập email để đặt lại mật khẩu
-            </p>
-            <div class="username-section style-section">
-                <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">
+    <!--quen mat khau-->
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="close-btn" onclick="showLogin()">&times;</a>
+            <h1 class="head">Quên mật khẩu</h1>
+            <div class="section active" id="forgot">
+                <p style="text-align:center;margin-bottom: 10px;color: #0a8300;font-weight: bold">
+                    Nhập email để đặt lại mật khẩu
+                </p>
+                <form action="login" method="post">
+                    <input type="hidden" name="action" value="forgot">
+
+                    <div class="username-section style-section">
+                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                        <input class="input-style" name="restore_email" type="email" placeholder="Email khôi phục">
+                    </div>
+
+                    <button class="btn" type="submit">Gửi yêu cầu khôi phục</button>
+                </form>
+                <div class="foot"><a href="javascript:void(0)" onclick="showLogin()">Quay lại Đăng nhập</a></div>
             </div>
-            <button class="btn">Gửi yêu cầu khôi phục</button>
-            <div class="foot"><a href="#loginModal">Quay lại Đăng nhập</a></div>
         </div>
     </div>
 </div>

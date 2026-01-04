@@ -41,15 +41,22 @@
         document.getElementById('openmodal').style.display = "block";
     }
 
-    //login, logout
-    function showLoginModal() {
+    //login, signup, forgot
+    function showLogin() {
         document.getElementById('loginModal').classList.add('active');
         document.getElementById('signupModal').classList.remove('active');
+        document.getElementById('forgotModal').classList.remove('active');
     }
-    function showSignupModal() {
+    function showSignup() {
         document.getElementById('loginModal').classList.remove('active');
         document.getElementById('signupModal').classList.add('active');
+        document.getElementById('forgotModal').classList.remove('active');
+    }
+    function showForgotPass() {
+        document.getElementById('loginModal').classList.remove('active');
+        document.getElementById('signupModal').classList.remove('active');
+        document.getElementById('forgotModal').classList.add('active');
     }
     document.addEventListener("DOMContentLoaded", function () {
-        showLoginModal();
+        showLogin();
     });
