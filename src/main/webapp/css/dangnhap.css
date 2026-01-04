@@ -70,7 +70,7 @@ h1.head {
 .style-section{
     display: flex;
     align-items: center;
-    width: 100%; /* Đổi thành 100% */
+    width: 100%;
     margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid #ddd;
@@ -151,6 +151,7 @@ h1.head {
     text-decoration: none;
     color: #0a8300;
     transition: 0.2s;
+    font-size: 14px;
 }
 .forgot-pass a:hover{
     color: red;
@@ -177,7 +178,6 @@ h1.head {
     margin-top: 20px;
 }
 .select p{
-    margin-top: 50px;
     margin-bottom: 15px;
     font-size: 14px;
     color: #666;
@@ -215,7 +215,7 @@ h1.head {
     border-radius: 5px;
 }
 .success-message{
-    color: green;
+    color: #0a8300;
     font-size: 12px;
     text-align: center;
     margin: 10px 0;
@@ -235,4 +235,19 @@ h1.head {
     .name-style{
         width: 100%;
     }
+}
+.remember-section{
+    width: 100%;
+    margin: 8px 0 15px;
+}
+.remember-me{
+    margin-top: -5px;
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.remember-me input{
+    accent-color: #0a8300;
 }
