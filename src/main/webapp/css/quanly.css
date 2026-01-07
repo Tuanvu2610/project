@@ -404,11 +404,12 @@ tr:hover {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    gap: 10px;
 }
-
-.cover-btn button {
-    width: 48%;
-    padding: 12px;
+.size-btn {
+    width: 50%;
+}
+.button-style {
     border-radius: 14px;
     font-size: 16px;
     font-weight: 600;
@@ -419,8 +420,8 @@ tr:hover {
     justify-content: center;
     align-items: center;
     transition: 0.2s;
+    padding: 12px;
 }
-
 .cover-btn img {
     width: 20px;
 }
@@ -436,7 +437,38 @@ tr:hover {
 .remove {
     background: #e53935;
     color: white;
+    width: 100%;
 }
 .remove:hover {
     background: #cc2e2a;
+}
+.thongbao {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.thongbao-success {
+    background: #e6fffa;
+    color: #065f46;
+    border-left: 5px solid #10b981;
+}
+
+.thongbao-warning {
+    background: #fff7ed;
+    color: #92400e;
+    border-left: 5px solid #f59e0b;
+}
+
+.thongbao-danger {
+    background: #fef2f2;
+    color: #991b1b;
+    border-left: 5px solid #ef4444;
+}
+.save {
+    margin: auto;
+    margin-top: 20px;
+    background: #4caf50;
+    color: white;
 }

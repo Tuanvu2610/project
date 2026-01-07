@@ -159,6 +159,17 @@
                 </select>
             </div>
         </div>
+        <c:if test="${not empty param.msg}">
+            <div class="thongbao thongbao-success">
+                <c:choose>
+                    <c:when test="${param.msg == 'deleted'}">✅ Xóa tài khoản thành công</c:when>
+                    <c:when test="${param.msg == 'notfound'}">⚠️ Không tìm thấy tài khoản</c:when>
+                    <c:when test="${param.msg == 'editSuccess'}">✅ Chỉnh sửa tài khoản thành công</c:when>
+                    <c:when test="${param.msg == 'notfoundEdit'}">⚠️ Không tìm thấy tài khoản</c:when>
+                    <c:otherwise>❌ Có lỗi xảy ra</c:otherwise>
+                </c:choose>
+            </div>
+        </c:if>
         <div class="table-container">
             <table>
                 <thead class="title-table">
@@ -172,9 +183,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="p" items="${listAcc}">
+                <c:forEach var="p" items="${listAcc}" varStatus="st">
                     <tr class="view" data-id="${p.id}">
-                        <td>${p.id}</td>
+                        <td>${st.index + 1 + 10 * (currentPage - 1)}</td>
                         <td>${p.name}</td>
                         <td>${p.username}</td>
                         <td><span class="role admin">${p.role}</span></td>
@@ -213,7 +224,7 @@
     </div>
 </section>
 <!--modal-->
-<section class="overlay" style="display: none;">
+<section class="overlay overlay-view" style="display: none;">
     <div class="container-modal">
         <div class="cover-modal">
             <span class="exit-btn">&times;</span>
@@ -234,9 +245,61 @@
                     <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng ký: <span id="date"></span></p>
                 </div>
                 <div class="cover-btn">
-                    <button class="edit"><img src="img/edit-svgrepo-com.png">️Edit</button>
-                    <button class="remove"><img src="img/delete-svgrepo-com.svg">Remove</button>
+                    <button class="edit button-style size-btn" onclick="openEdit()"><img src="img/edit-svgrepo-com.png">️Edit</button>
+                    <form class="size-btn" action="${pageContext.request.contextPath}/account-detail" method="post" onsubmit="return confirm('Bạn có chắc muốn xóa user này?')">
+                        <input type="hidden" name="action" value="deleteUser">
+                        <input type="hidden" name="id" id="delete-id">
+                        <button type="submit"  class="remove button-style">
+                            <img src="img/delete-svgrepo-com.svg">Remove
+                        </button>
+                    </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%----%>
+<section class="overlay overlay-edit" style="display: none;">
+    <div class="container-modal">
+        <div class="cover-modal">
+            <span class="exit-btn">&times;</span>
+            <p id="role"></p>
+            <div class="cover-allinfo">
+                <div class="avatar-name">
+                    <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
+                    <p style="margin: 0" id="name-id"></p>
+                </div>
+                <form action="account-detail" method="post">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="id" id="edit-id">
+                    <div class="cover-info">
+                        <p><img src="https://www.svgrepo.com/show/535565/phone.svg" alt="">Phone:
+                            <label for="edit-phone"></label><input type="text" name="phone" id="edit-phone"></p>
+                        <p><img src="https://www.svgrepo.com/show/533217/mail-open-alt-1.svg" alt="">Email:
+                            <label for="edit-email"></label><input type="email" name="email" id="edit-email"></p>
+                        <p><img src="https://www.svgrepo.com/show/509759/birthday-cupcake.svg" alt="">Birthday:
+                            <label for="edit-birthday"></label><input type="date" name="birthday" id="edit-birthday"></p>
+                        <p><img src="https://www.svgrepo.com/show/535465/key-skeleton.svg" alt="">Role:
+                            <select name="role" id="edit-role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </p>
+                        <p><img src="https://www.svgrepo.com/show/497557/status.svg" alt="">Status:
+                            <select name="status" id="edit-status">
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="banned">Banned</option>
+                            </select>
+                        </p>
+                    </div>
+                    <div class="cover-active">
+                        <p><img src="https://www.svgrepo.com/show/502605/date-range.svg" alt="">Đăng ký: <span id="date-edit"></span></p>
+                    </div>
+                    <div class="cover-btn">
+                        <button  type="submit" class="save button-style size-btn"><img src="img/save-floppy-svgrepo-com.svg">Lưu</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -311,6 +374,7 @@
     </div>
 </footer>
 <script>
+    let currentAcc = null;
     document.querySelectorAll('.view').forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -319,6 +383,7 @@
             fetch('${pageContext.request.contextPath}/account-detail?id=' + id)
                 .then(res => res.json())
                 .then(acc => {
+                    currentAcc = acc;
                     document.getElementById('name').innerText = acc.name;
                     document.getElementById('email').innerText = acc.username;
                     document.getElementById('phone').innerText = acc.phone;
@@ -327,10 +392,36 @@
                     document.getElementById('role2').innerText = acc.role;
                     document.getElementById('status').innerText = acc.status;
                     document.getElementById('date').innerText = acc.registration_date;
+                    document.getElementById('delete-id').value = acc.user_id;
                     document.querySelector('.overlay').style.display = 'block';
                 });
         });
     });
+
+    setTimeout(() => {
+        const thongbao = document.querySelector('.thongbao');
+        if (thongbao) thongbao.style.display = 'none';
+    }, 3000);
+
+
+    if (window.location.search.includes('msg=')) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('msg');
+
+        window.history.replaceState({}, document.title, url.pathname + url.search);
+    }
+    function openEdit() {
+        document.querySelector('.overlay-view').style.display = 'none';
+        document.querySelector('.overlay-edit').style.display = 'block';
+        document.getElementById("edit-id").value = currentAcc.user_id;
+        document.getElementById('name-id').innerText = currentAcc.name;
+        document.getElementById('edit-phone').value = currentAcc.phone;
+        document.getElementById('edit-email').value = currentAcc.username;
+        document.getElementById('edit-birthday').value = currentAcc.date_of_birth;
+        document.getElementById('edit-role').value = currentAcc.role;
+        document.getElementById('edit-status').value = currentAcc.status;
+        document.getElementById('date-edit').innerText = currentAcc.registration_date;
+    }
     document.querySelector('.exit-btn').addEventListener('click', () => {
         document.querySelector('.overlay').style.display = 'none';
     });

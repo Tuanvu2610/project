@@ -58,11 +58,39 @@ public class AccountDao extends BaseDao{
                         .execute()
         );
     }
-
-
-    static void main() {
-        AccountDao dao = new AccountDao();
-        Account i = dao.getAccountById(8);
-        System.out.println(i);
+    public int delete(int id) {
+        return get().withHandle(handle ->
+                handle.createUpdate("""
+            DELETE FROM accounts
+            WHERE user_id = :id
+        """)
+                        .bind("id", id)
+                        .execute()
+        );
     }
+
+    public int editAcc(Account acc, User user, int id) {
+        return get().withHandle(handle ->
+                handle.createUpdate("""
+                                 UPDATE accounts a
+                                 JOIN users u on a.user_id = u.id
+                                 SET u.phone = :phone, u.email = :email,
+                                  u.date_of_birth = :date_of_birth, a.role = :role ,  a.status = :status WHERE a.user_id = :id
+                                """
+                        )
+                        .bind("id", id)
+                        .bind("phone", user.getPhone())
+                        .bind("email", user.getEmail())
+                        .bind("date_of_birth", user.getDate_of_birth())
+                        .bind("role",acc.getRole())
+                        .bind("status",acc.getStatus())
+                        .execute()
+        );
+    }
+
+//    static void main() {
+//        AccountDao dao = new AccountDao();
+//        Account i = dao.getAccountById(8);
+//        System.out.println(i);
+//    }
 }
