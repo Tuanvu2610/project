@@ -7,7 +7,7 @@ body {
 .container-quanly {
     display: flex;
     min-height: 100vh;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 .sidebar {
     width: 25%;

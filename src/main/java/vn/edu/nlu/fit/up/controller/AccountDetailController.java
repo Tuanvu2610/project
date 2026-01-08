@@ -44,7 +44,7 @@ public class AccountDetailController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if ("delete".equals(action)) {
+        if ("deleteUser".equals(action)) {
             deleteUser(request, response);
         } else if ("update".equals(action)) {
             updateUser(request, response);
