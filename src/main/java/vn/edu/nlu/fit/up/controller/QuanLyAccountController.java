@@ -28,9 +28,8 @@ public class QuanLyAccountController extends HttpServlet {
             page = 1;
         }
         int pageSize = 10;
-        AccountDao dao = new AccountDao();
-        List<Account> list = dao.getAccountByPage(page, pageSize);
-        int total = dao.totalAccount();
+        List<Account> list = ad.getAccountByPage(page, pageSize);
+        int total = ad.totalAccount();
         int totalPages = (int) Math.ceil((double) total / pageSize);
         request.setAttribute("listAcc", list);
         request.setAttribute("currentPage", page);
