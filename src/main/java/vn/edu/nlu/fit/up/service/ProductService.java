@@ -43,4 +43,17 @@ public class ProductService {
     public List<Product> search(String keyword) {
         return pdao.search(keyword);
     }
+
+    public List<Product> getDiscountGomThoCung() {
+        return pdao.getDiscountGomThoCung();
+    }
+
+    public List<Product> getDiscountGomQuaTang() {
+        return pdao.getDiscountGomQuaTang();
+    }
+
+    public void addProduct(Product p) {
+        pdao.addProduct(p);
+    }
+
 }

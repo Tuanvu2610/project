@@ -123,6 +123,21 @@ public class ProductDao extends BaseDao {
         );
     }
 
+    public void addProduct(Product p) {
+        get().withHandle(h -> h.createUpdate("""
+        INSERT INTO products(name, img, category_id, material, size, price_sale, price_origin)
+        VALUES (:name, :img, :category_id, :material, :size, :price_sale, :price_origin)
+    """)
+                .bind("name", p.getName())
+                .bind("img", p.getImg())
+                .bind("category_id", p.getCategory_id())
+                .bind("material", p.getMaterial())
+                .bind("size", p.getSize())
+                .bind("price_sale", p.getPrice_sale())
+                .bind("price_origin", p.getPrice_origin())
+                .execute());
+    }
+
 //    static void main() {
 //        ProductDao dao = new ProductDao();
 //        int i = dao.totalProductSold(5);

@@ -15,4 +15,21 @@ public class CategoryDao extends BaseDao {
                 .mapToBean(Category.class)
                 .list());
     }
+    public List<String> getCategoryImages() {
+        return get().withHandle(h -> h.createQuery("select img from categories").mapTo(String.class).list()).stream()
+                .filter(img -> img != null && !img.isBlank())
+                .toList();
+    }
+    public List<Category> getAllCategoryChild() {
+        return get().withHandle(h ->
+                h.createQuery("select * from categories where parent_id is not null")
+                        .mapToBean(Category.class)
+                        .list()
+        );
+    }
+//    public List<String> getParentCategoryImages() {
+//        return get().withHandle(h -> h.createQuery("SELECT img FROM categories WHERE parent_id IS NULL").mapTo(String.class).list().stream()
+//                .filter(img -> img != null && !img.isBlank())
+//                .toList());
+//    }
 }
