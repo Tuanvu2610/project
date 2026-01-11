@@ -50,10 +50,11 @@
                 <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
             </c:otherwise>
         </c:choose>
-        <a href="html/giohang.jsp" class="btn-header cart-btn">
+        <a href="${pageContext.request.contextPath}/gio-hang" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
-            <span class="cart-badge">0</span> </a>
+            <span class="cart-badge">${empty sessionScope.cart ? 0 : sessionScope.cart.totalQuantity}</span> </a>
+
     </div>
 </header>
 <nav class="menu-home">
@@ -82,23 +83,24 @@
             <div class="slider-wrapper">
                 <div class="product-list" id="slider">
                     <c:forEach var="p" items="${list}">
-                        <a href="chitietsanpham?id=${p.id}">
-                            <div class="product-card">
+                        <div class="product-card">
+                            <a href="chitietsanpham?id=${p.id}">
                                 <c:if test="${p.percent > 0}">
                                     <span class="sale-pecent">-${p.percent}%</span>
                                 </c:if>
                                 <img src="${p.img}" alt="" class="product-img">
                                 <h3 class="product-name padding style-name">${p.name}</h3>
-                                <div class="product-price">
+                            </a>
+                            <div class="product-price">
                                 <span class="price-origin ">
                                     <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
                                 </span>
-                                    <span class="price-sale">
+                                <span class="price-sale">
                                     <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                                 </span>
-                                </div>
+                                <a href="AddCart?id=${p.id}&q=1"><i class="fas fa-shopping-cart btn-add-style"></i></a>
                             </div>
-                        </a>
+                        </div>
                     </c:forEach>
                 </div>
             </div>
