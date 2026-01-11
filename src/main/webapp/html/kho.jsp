@@ -1,212 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Kho</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/kho.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background:#f7f7f7;
-            margin:0;
-            padding:0;
-        }
-
-        .container{
-            display:flex;
-            min-height:100vh;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar{
-            width:25%;
-            background:#0d8e02c7;
-            color:#fff;
-            padding:20px 0;
-        }
-
-        .title{
-            text-align:center;
-            padding-bottom:20px;
-            border-bottom:1px solid rgba(255,255,255,0.2);
-        }
-
-        .nav-links{
-            list-style:none;
-            padding:15px;
-        }
-
-        .nav-links a{
-            display:flex;
-            gap:10px;
-            padding:16px 18px;
-            color:#fff;
-            text-decoration:none;
-            border-radius:8px;
-        }
-
-        .nav-links a.active,
-        .nav-links a:hover{
-            background:rgba(255,255,255,0.15);
-        }
-
-        /* CONTENT */
-
-        .content-wrapper{
-            background:#fff;
-            border-radius:16px;
-            padding:24px;
-            box-shadow:0 8px 24px rgba(0,0,0,.06);
-        }
-
-        .content{
-            flex:1;
-            padding:24px;
-        }
-
-        .head-title h1{
-            margin-bottom:20px;
-        }
-
-        /* ===== TABS ===== */
-        .tab-container{
-            margin-bottom:20px;
-        }
-
-        .tab{
-            padding:10px 20px;
-            border:none;
-            cursor:pointer;
-            border-radius:6px;
-            background:#ddd;
-            font-weight:bold;
-        }
-
-        .tab.active{
-            background:#4b89ff;
-            color:#fff;
-        }
-
-        .tab-content{
-            display:none;
-        }
-
-        .tab-content.active{
-            display:block;
-        }
-
-        /* ===== TABLE ===== */
-        table{
-            width:100%;
-            border-collapse:collapse;
-            background:#fff;
-            border-radius:10px;
-            overflow:hidden;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
-
-        th, td{
-            padding:15px;
-            text-align:left;
-            border-bottom:1px solid #eee;
-        }
-
-        th{
-            background:#f5f5f5;
-        }
-
-        .product{
-            display:flex;
-            align-items:center;
-            gap:10px;
-        }
-
-        .product img{
-            width:50px;
-            height:50px;
-            border-radius:6px;
-            border:1px solid #ccc;
-        }
-
-        /* ===== STATUS ===== */
-        .status.selling{
-            color:#0079ff;
-            font-weight:bold;
-        }
-
-        .status.pending{
-            color:#ff9800;
-            font-weight:bold;
-        }
-
-        .profit{
-            color:#00aa33;
-            font-weight:bold;
-        }
-
-        /* ===== BUTTONS ===== */
-        button{
-            padding:6px 12px;
-            border:none;
-            border-radius:6px;
-            cursor:pointer;
-            font-weight:bold;
-        }
-
-        .remove{ background:#e0e0e0; }
-        .edit{ background:#ffba00; }
-        .publish{ background:#4caf50; color:white; }
-        .delete{ background:#ff5252; color:white; }
-
-        button:hover{ opacity:0.85; }
-
-        .save{
-            background:#2196f3;
-            color:white;
-        }
-
-        /* --- Trạng thái chưa lên kệ --- */
-        .status.pending {
-            color: #ff9800;
-            font-weight: bold;
-        }
-
-        /* --- Button cho bảng chưa lên kệ --- */
-        .publish {
-            background: #4caf50;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .publish:hover {
-            background: #43a047;
-        }
-
-        .delete {
-            background: #ff5252;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .delete:hover {
-            background: #e53935;
-        }
-        .save{
-            background:#2196f3;
-            color:white;
-        }
-    </style>
 
 </head>
 <body>
@@ -224,78 +26,44 @@
     </form>
 
     <div class="right-header">
-        <div class="user-info-container">
-            <a href="myinfo.jsp" class="cover-avatar-user">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+        <c:choose>
+            <c:when test="${not empty sessionScope.auth}">
+                <div class="user">
+                    <button class="btn-header">
+                        <i class="fas fa-user"></i>
+                        <span class="username">Xin chào, ${sessionScope.auth.firstname}</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu">
+                        <a href="tai-khoan">Tài khoản</a>
+                        <a href="orders">Đơn hàng</a>
+                        <a href="logout">Đăng xuất</a>
+                    </div>
                 </div>
-                <div class="info-user">
-                    <span class="user-name">Nguyen Van A</span>
-                    <span class="user-phone">0342104524</span>
-                </div>
-            </a>
-            <div class="user-menu">
-                <ul>
-                    <li><a href="myinfo.jsp"><i class="fas fa-id-card"></i> Tài khoản của tôi</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-                </ul>
-            </div>
-        </div>
-        <a href="giohang.jsp" class="btn-header cart-btn">
+            </c:when>
+            <c:otherwise>
+                <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
+            </c:otherwise>
+        </c:choose>
+        <a href="html/giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
-            <span class="cart-badge">2</span> </a>
+            <span class="cart-badge">0</span> </a>
     </div>
 </header>
 <nav class="menu-home">
     <ul class="cover-menu">
-        <li class="sub-item"> <a href="gomgiadung.jsp">GỐM GIA DỤNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomgiadung.jsp">Ấm chén bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Bộ bác đĩa bác tràng</a></li>
-                    <li><a href="gomgiadung.jsp">Chum ngâm rượu</a></li>
-                    <li><a href="gomgiadung.jsp">Dụng cụ nhà tắm</a></li>
-                    <li><a href="gomgiadung.jsp">Đèn ngủ</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomtrangtri.jsp">GỐM TRANG TRÍ</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomtrangtri.jsp">Bình gốm bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Lọ hoa bát tràng</a></li>
-                    <li><a href="gomtrangtri.jsp">Dĩa sứ trang trí</a></li>
-                    <li><a href="gomtrangtri.jsp">Tượng gốm sứ</a></li>
-                    <li><a href="gomtrangtri.jsp">Bình hồ lô</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomthocung.jsp">GỐM THỜ CÚNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomthocung.jsp">Bộ đồ thờ đầy đủ</a></li>
-                    <li><a href="gomthocung.jsp">Bát hương</a></li>
-                    <li><a href="gomthocung.jsp">Mâm bồng</a></li>
-                    <li><a href="gomthocung.jsp">Bát nắp</a></li>
-                    <li><a href="gomthocung.jsp">Cây đèn nến</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="sub-item"><a href="gomquatang.jsp">GỐM QUÀ TẶNG</a><i class="bi bi-chevron-down"></i>
-            <div class="sub-menu">
-                <ul class="hover">
-                    <li><a href="gomquatang.jsp">Bình hút lộc in logo</a></li>
-                    <li><a href="gomquatang.jsp">Ấm chén in logo</a></li>
-                    <li><a href="gomquatang.jsp">Bình hoa in logo</a></li>
-                    <li><a href="gomquatang.jsp">Quà tặng bát đĩa</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="tintuc.jsp">TIN TỨC</a></li>
-        <li><a href="GioiThieu.jsp">GIỚI THIỆU</a></li>
-        <li><a href="lienhe.jsp">LIÊN HỆ</a></li>
-        <li><a href="quanlyaccount.jsp">ADMIN CONTROL</a></li>
+        <c:forEach var="t" items="${parents}">
+            <li class="sub-item"> <a href="${t.link}">${t.name}</a>
+                <div class="sub-menu">
+                    <ul class="hover">
+                        <c:forEach var="c" items="${children[t.id]}">
+                            <li><a href="${c.link}?tab=${c.datatarget}">${c.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </li>
+        </c:forEach>
     </ul>
 </nav>
 
@@ -306,8 +74,8 @@
             <h2><span>ADMIN CONTROL</span></h2>
         </div>
         <ul class="nav-links">
-            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="/quan-ly-account"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="/thong-ke"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
             <li><a href="#" class="active"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
             <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
             <li><a href="haumai.jsp"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
@@ -315,162 +83,128 @@
     </div>
     <div class="content">
         <div class="content-wrapper">
-        <div class="head-title">
-            <h1><i class="fas fa-warehouse"></i> Kho hàng</h1>
-        </div>
-
-        <!-- ===== ĐÃ LÊN KỆ ===== -->
-        <div class="tab-container" >
-            <button class="tab active" data-tab="on">Đã lên kệ</button>
-            <button class="tab" data-tab="off">Chưa lên kệ</button>
-        </div>
-    <div class="tab-content active" id="on">
-        <div class="warehouse-table">
-            <table>
-                <thead>
-                <tr>
-                    <th>Hàng hóa</th>
-                    <th>Giá</th>
-                    <th>Hàng tồn kho</th>
-                    <th>Đã bán</th>
-                    <th>Trạng thái</th>
-                    <th>Lợi nhuận</th> <!-- loi nhuan an 5% nha -->
-                    <th>Thao tác</th>
-                </tr>
-                </thead>
-
-                <tbody id="onSaleBody">
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>
-                        <span class="price-text">2.300.000 đ</span>
-                        <input type="number"
-                               class="price-input"
-                               value="2300000"
-                               style="display:none; width:100px;">
-                    </td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
-                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>
-                        <span class="price-text">2.300.000 đ</span>
-                        <input type="number"
-                               class="price-input"
-                               value="2300000"
-                               style="display:none; width:100px;">
-                    </td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
-                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</span>
-                    </td>
-                    <td>
-                        <span class="price-text">2.300.000 đ</span>
-                        <input type="number"
-                               class="price-input"
-                               value="2300000"
-                               style="display:none; width:100px;">
-                    </td>
-                    <td>100</td>
-                    <td>360</td>
-                    <td class="status selling">Đang bán</td>
-                    <td class="profit green">115.000đ</td>
-                    <td>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
-                        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-        <!-- ===== CHƯA LÊN KỆ ===== -->
-        <div class="tab-content" id="off">
-            <table>
-                <thead>
-                <tr>
-                    <th>Hàng hóa</th>
-                    <th>Giá dự kiến</th>
-                    <th>Tồn kho</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
-                </tr>
-                </thead>
-                <tbody id="offSaleBody">
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Lọ Hoa Gốm Men Lam</span>
-                    </td>
-                    <td>850.000 đ</td>
-                    <td>120</td>
-                    <td class="status pending">Chưa lên kệ</td>
-                    <td>
-                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Lọ Hoa Gốm Men Lam</span>
-                    </td>
-                    <td>850.000 đ</td>
-                    <td>120</td>
-                    <td class="status pending">Chưa lên kệ</td>
-                    <td>
-                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="product">
-                        <img src="../img/bo_binh_6_coc_8.jpg">
-                        <span>Lọ Hoa Gốm Men Lam</span>
-                    </td>
-                    <td>850.000 đ</td>
-                    <td>120</td>
-                    <td class="status pending">Chưa lên kệ</td>
-                    <td>
-                        <button class="publish" onclick="publishProduct(this)">Lên kệ</button>
-                        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-        </div>
+            <div class="head-title">
+                <h1><i class="fas fa-warehouse"></i> Kho hàng</h1>
+            </div>
+            <div class="tab-container" >
+                <button class="tab active" data-tab="on">Đã lên kệ</button>
+                <button class="tab" data-tab="off">Chưa lên kệ</button>
+            </div>
+            <div class="tab-content active" id="on">
+                <div class="warehouse-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Hàng hóa</th>
+                            <th>Giá</th>
+                            <th>Hàng tồn kho</th>
+                            <th>Đã bán</th>
+                            <th>Trạng thái</th>
+                            <th>Lợi nhuận</th> <!-- loi nhuan an 5% nha -->
+                            <th>Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody id="onSaleBody">
+                        <c:forEach var="p" items="${onSale}">
+                            <tr data-id="${p.id}">
+                                <form action="${pageContext.request.contextPath}/kho" method="post">
+                                    <input type="hidden" name="action" value="update">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <td class="product">
+                                        <img src="${p.img}">
+                                        <span class="view">${p.name}</span>
+                                        <input class="edit" type="text" name="name" value="${p.name}" style="display:none; width:160px;">
+                                    </td>
+                                    <td>
+                                        <span class="view"><fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/> đ</span>
+                                        <input class="edit" type="number" name="price" value="${p.price_sale}" style="display:none; width:100px;">
+                                    </td>
+                                    <td>100</td>
+                                    <td>0</td>
+                                    <td class="status selling">Đang bán</td>
+                                    <td class="profit">
+                                        <fmt:formatNumber value="${p.price_sale * 0.05}" groupingUsed="true"/> đ
+                                    </td>
+                                    <td>
+                                        <div class="action-btn">
+                                            <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                                <input type="hidden" name="action" value="update">
+                                                <input type="hidden" name="id" value="${p.id}">
+                                                <button type="button" class="btn edit-btn" onclick="edit(this)">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                                <button type="submit" class="btn save" style="display:none;">
+                                                    <i class="fas fa-save"></i>
+                                                </button>
+                                            </form>
+                                            <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                                <input type="hidden" name="action" value="unpublish">
+                                                <input type="hidden" name="id" value="${p.id}">
+                                                <button type="submit" class="btn remove" onclick="return confirm('Xác nhận đưa sản phẩm xuống kệ?')">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                </button>
+                                            </form>
+                                            <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="hidden" name="id" value="${p.id}">
+                                                <button type="submit" class="btn delete" onclick="return confirm('Xóa sản phẩm này?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </form>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-content" id="off">
+                <div style="margin-bottom:15px; text-align:right;">
+                    <a href="${pageContext.request.contextPath}/add-product" class="add-product-btn"><i class="fas fa-plus"></i> Thêm sản phẩm</a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Hàng hóa</th>
+                        <th>Giá dự kiến</th>
+                        <th>Tồn kho</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody id="offSaleBody">
+                    <c:forEach var="p" items="${offSale}">
+                        <tr data-id="${p.id}">
+                            <td class="product">
+                                <img src="${p.img}">
+                                <span>${p.name}</span>
+                            </td>
+                            <td>
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/> đ
+                            </td>
+                            <td>100</td>
+                            <td class="status pending">Chưa lên kệ</td>
+                            <td>
+                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline;">
+                                    <input type="hidden" name="action" value="publish">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <button type="submit" class="btn publish" onclick="return confirm('Xác nhận đưa sản phẩm lên kệ?')">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </button>
+                                </form>
+                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <button type="submit" class="btn delete" onclick="return confirm('Xóa sản phẩm này?')"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -546,7 +280,6 @@
 </footer>
 
 <script>
-    /* 1. CHUYỂN TAB (Đã lên kệ / Chưa lên kệ) */
     document.querySelectorAll(".tab").forEach(tab => {
         tab.onclick = () => {
             document.querySelectorAll(".tab").forEach(t =>
@@ -555,98 +288,21 @@
             document.querySelectorAll(".tab-content").forEach(c =>
                 c.classList.remove("active")
             );
-
             tab.classList.add("active");
             document.getElementById(tab.dataset.tab).classList.add("active");
         };
     });
 
-    /* 2. ĐIỀU CHỈNH GIÁ SẢN PHẨM */
-    function editPrice(btn){
+    function edit(btn){
         const row = btn.closest("tr");
-        row.querySelector(".price-text").style.display = "none";
-        row.querySelector(".price-input").style.display = "inline-block";
+        row.querySelectorAll(".view").forEach(e => {
+            e.style.display = "none";
+        });
+        row.querySelectorAll(".edit").forEach(e => {
+            e.style.display = "inline-block";
+        });
         btn.style.display = "none";
-        row.querySelector(".save").style.display = "inline-block";
-    }
-    function savePrice(btn){
-        const row = btn.closest("tr");
-        const input = row.querySelector(".price-input");
-        const newPrice = Number(input.value);
-
-        if(newPrice <= 0){
-            alert("Giá không hợp lệ");
-            return;
-        }
-        row.querySelector(".price-text").innerText =
-            newPrice.toLocaleString("vi-VN");
-
-        row.querySelector(".price-text").style.display = "inline";
-        input.style.display = "none";
-        btn.style.display = "none";
-        row.querySelector(".edit").style.display = "inline-block";
-    }
-
-    /* 3. XÓA SẢN PHẨM */
-    function deleteProduct(btn){
-        if(!confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) return;
-        const row = btn.closest("tr");
-        row.remove();
-    }
-
-    /* 4. LÊN KỆ SẢN PHẨM */
-    function publishProduct(btn){
-        if(!confirm("Xác nhận đưa sản phẩm lên kệ?")) return;
-        const oldRow = btn.closest("tr");
-        // Hàng hóa
-        const tdProduct = oldRow.querySelector("td.product").cloneNode(true);
-        // Giá
-        const rawPrice = oldRow.children[1].innerText.replace("đ","").trim();
-        const priceNumber = Number(rawPrice.replace(/\D/g,''));
-        const profit = Math.round(priceNumber * 0.05);
-        const tdPrice = document.createElement("td");
-        tdPrice.innerHTML = `
-        <span class="price-text">${rawPrice}</span> đ
-        <input type="number" class="price-input"
-               value="${priceNumber}"
-               style="display:none; width:100px;">
-    `;
-        // Tồn
-        const tdStock = document.createElement("td");
-        tdStock.innerText = oldRow.children[2].innerText;
-        // Đã bán
-        const tdSold = document.createElement("td");
-        tdSold.innerText = "0";
-        // Trạng thái
-        const tdStatus = document.createElement("td");
-        tdStatus.className = "status selling";
-        tdStatus.innerText = "Đang bán";
-        // Lợi nhuận 5%
-        const tdProfit = document.createElement("td");
-        tdProfit.className = "profit";
-        tdProfit.innerText = profit.toLocaleString("vi-VN") + "đ";
-        // Thao tác
-        const tdAction = document.createElement("td");
-        tdAction.innerHTML = `
-        <button class="remove" onclick="deleteProduct(this)">Xóa</button>
-        <button class="edit" onclick="editPrice(this)">Điều chỉnh</button>
-        <button class="save" onclick="savePrice(this)" style="display:none;">Lưu</button>
-    `;
-        // Ghép dòng
-        const newRow = document.createElement("tr");
-        newRow.append(
-            tdProduct,
-            tdPrice,
-            tdStock,
-            tdSold,
-            tdStatus,
-            tdProfit,
-            tdAction
-        );
-
-        document.getElementById("onSaleBody").appendChild(newRow);
-        oldRow.remove();
-        document.querySelector('[data-tab="on"]').click();
+        row.querySelector(".save").style.display = "inline-flex";
     }
 </script>
 </body>

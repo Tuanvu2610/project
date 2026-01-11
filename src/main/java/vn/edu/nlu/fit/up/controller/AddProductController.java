@@ -55,7 +55,7 @@ public class AddProductController extends HttpServlet {
         p.setSize(size);
         p.setPrice_sale(priceSale);
         p.setPrice_origin(priceOrigin);
-        ps.addProduct(p);
+        ps.add(p);
 
         List<Category> parents = cd.getCategoryParent();
         Map<Integer, List<Category>> childrenMap = new HashMap<>();
