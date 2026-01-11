@@ -9,8 +9,9 @@ public class Product {
     private String size;
     private int price_sale;
     private int price_origin;
+    private int status;
 
-    public Product(int id, String name, String img, int category_id, String material, String size, int price_sale, int price_origin) {
+    public Product(int id, String name, String img, int category_id, String material, String size, int price_sale, int price_origin,  int status) {
         this.id = id;
         this.name = name;
         this.img = img;
@@ -19,6 +20,7 @@ public class Product {
         this.size = size;
         this.price_sale = price_sale;
         this.price_origin = price_origin;
+        this.status = status;
     }
 
     public Product() {}
@@ -91,5 +93,11 @@ public class Product {
         return (int) Math.round(
                 (price_origin - price_sale) * 100.0 / price_origin
         );
+    }
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

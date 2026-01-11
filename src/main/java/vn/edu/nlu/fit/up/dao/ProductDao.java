@@ -1,26 +1,19 @@
 package vn.edu.nlu.fit.up.dao;
 
 import org.jdbi.v3.core.Jdbi;
-import vn.edu.nlu.fit.up.model.Category;
 import vn.edu.nlu.fit.up.model.Product;
 import vn.edu.nlu.fit.up.model.Reviews;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductDao extends BaseDao {
     public Product getProduct(int id) {
         return get().withHandle(h -> h.createQuery("SELECT * FROM products where id=:id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
     }
 
-    public List<Product> getProductsByCategoryId(int category_id) {
-        return get().withHandle(h -> h.createQuery("select * from products where category_id = :cid").bind("cid", category_id).mapToBean(Product.class).list());
-    }
-
     public Product getDiscountProducts(int category_id) {
-        return get().withHandle(h -> h.createQuery("select * from products where category_id = :cid and price_sale < price_origin limit 1").bind("cid", category_id).mapToBean(Product.class).findOne().orElse(null));
+        return get().withHandle(h -> h.createQuery("select * from products where category_id = :cid and price_sale < price_origin order by ((price_origin - price_sale) * 100.0 / price_origin) desc limit 1").bind("cid", category_id).mapToBean(Product.class).findOne().orElse(null));
     }
 
     public List<Product> getDiscountGomThoCung() {
@@ -56,7 +49,7 @@ public class ProductDao extends BaseDao {
     }
     public List<Product> getByCategory(int category_id) {
         return get().withHandle(h ->
-                h.createQuery("SELECT * FROM products WHERE category_id = :category_id")
+                h.createQuery("SELECT * FROM products WHERE category_id = :category_id AND status = 1")
                         .bind("category_id", category_id)
                         .mapToBean(Product.class)
                         .list()
@@ -123,10 +116,11 @@ public class ProductDao extends BaseDao {
         );
     }
 
-    public void addProduct(Product p) {
+    public void add(Product p) {
         get().withHandle(h -> h.createUpdate("""
-        INSERT INTO products(name, img, category_id, material, size, price_sale, price_origin)
-        VALUES (:name, :img, :category_id, :material, :size, :price_sale, :price_origin)
+        insert into products
+        (name, img, category_id, material, size, price_sale, price_origin, status)
+        values (:name, :img, :category_id, :material, :size, :price_sale, :price_origin, 0)
     """)
                 .bind("name", p.getName())
                 .bind("img", p.getImg())
@@ -136,6 +130,36 @@ public class ProductDao extends BaseDao {
                 .bind("price_sale", p.getPrice_sale())
                 .bind("price_origin", p.getPrice_origin())
                 .execute());
+    }
+    public void delete(int id) {
+        get().withHandle(h -> h.createUpdate("delete from products where id = :id").bind("id", id).execute()
+        );
+    }
+    public void publish(int id) {
+        get().withHandle(h -> h.createUpdate("update products set status = 1 where id = :id").bind("id", id).execute());
+    }
+    public void unpublish(int id) {
+        get().withHandle(h -> h.createUpdate("update products set status = 0 where id = :id").bind("id", id).execute());
+    }
+    public void update(int id, String name, double price) {
+        get().withHandle(h -> h.createUpdate("update products set name = :name, price_sale = :price where id = :id")
+                .bind("id", id).bind("price", price).bind("name", name).execute());
+    }
+
+    public List<Product> getOnSale() {
+        return get().withHandle(h ->
+                h.createQuery("select * from products where status = 1")
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public List<Product> getOffSale() {
+        return get().withHandle(h ->
+                h.createQuery("select * from products where status = 0")
+                        .mapToBean(Product.class)
+                        .list()
+        );
     }
 
 //    static void main() {

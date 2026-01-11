@@ -51,7 +51,8 @@
         <a href="html/giohang.jsp" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
-            <span class="cart-badge">0</span> </a>
+            <span class="cart-badge">  ${empty sessionScope.cart ? 0 : sessionScope.cart.totalQuantity}</span>
+        </a>
     </div>
 </header>
 <nav class="menu-home">

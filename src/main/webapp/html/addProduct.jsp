@@ -128,7 +128,10 @@
                     <h3>Giá gốc</h3>
                     <input name="price_origin" required>
                 </div>
-                <button class="btn" type="submit">💾 Lưu sản phẩm</button>
+                <div class="form-btn" style="display: flex; flex-direction: column;">
+                    <button class="btn" type="submit">💾 Lưu sản phẩm</button>
+                    <a href="${pageContext.request.contextPath}/kho" class="btn" style="width: 13%;">🔙 Quay về kho</a>
+                </div>
             </form>
         </div>
 

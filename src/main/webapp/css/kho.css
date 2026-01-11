@@ -1,172 +1,247 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 24px;
-    color: #333;
+    background:#f7f7f7;
+    margin:0;
+    padding:0;
 }
-
 .container{
-    display: flex;
-    min-height: 100vh;
-    margin-bottom: 50px;
+    display:flex;
+    min-height:100vh;
 }
-
 .sidebar{
-    width: 25%;
+    width:25%;
     background:#0d8e02c7;
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color:#fff;
+    padding:20px 0;
 }
-
 .title{
-    text-align: center;
-    padding: 0 20px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 20px;
+    text-align:center;
+    padding-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
 }
-
-.title h2{
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
 .nav-links{
-    list-style: none;
-    padding: 0 15px;
+    list-style:none;
+    padding:15px;
 }
-
-.nav-links li{
-    margin-bottom: 10px;
-}
-
-.nav-links a{
+.nav-links a {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
-    color: white;
+    gap: 10px;
+    padding: 16px 18px;
+    color: #fff;
     text-decoration: none;
     border-radius: 8px;
-    transition: all 0.3s;
 }
-
-.nav-links a:hover, .nav-links a.active{
-    background: rgba(255, 255, 255, 0.1);
+.nav-links a.active,
+.nav-links a:hover{
+    background:rgba(255,255,255,0.15);
 }
-
-.nav-links a i{
-    width: 20px;
-    text-align: center;
-}
-
 .content{
-    max-width: 1000px;
-    margin: auto;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    padding: 10px 0;
+    flex:1;
+    padding:24px;
 }
-
-.tab-content {
-    display: none;
+.content-wrapper{
+    background:#fff;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
-
-.tab-content.active {
-    display: block;
+.head-title h1{
+    margin-bottom:20px;
 }
-
-.tab {
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 6px;
-    background: #ddd;
-    border: none;
-    font-weight: bold;
+.tab-container{
+    margin-bottom:20px;
 }
-
-.tab.active {
-    background: #4b89ff;
-    color: white;
+.tab{
+    padding:10px 20px;
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    background:#ddd;
+    font-weight:bold;
 }
-
-/* --- Bảng kho hàng --- */
-.warehouse-table table {
-    width: 110%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.tab.active{
+    background:#4b89ff;
+    color:#fff;
 }
-
-.warehouse-table thead {
-    background: #f5f5f5;
+.tab-content{
+    display:none;
 }
-
-.warehouse-table th {
-    padding: 15px;
-    text-align: left;
-    font-weight: bold;
-    min-width: 120px;
+.tab-content.active{
+    display:block;
 }
-
-.warehouse-table td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+.add-product-btn{
+    background:#0d8e02c7;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:bold;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 }
-
-.product {
+.add-product-btn:hover{
+    background:#43a047;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+th, td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #eee;
+}
+th{
+    background:#f5f5f5;
+}
+.product{
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 280px;
+}
+.product .view{
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.product input.edit{
+    max-width: 180px;
+}
+.product img{
+    width:50px;
+    height:50px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+.status.selling{
+    color:#0079ff;
+    font-weight:bold;
 }
 
-.product img {
-    width: 50px;
-    height: 50px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+.status.pending{
+    color:#ff9800;
+    font-weight:bold;
 }
-
-/* --- Trạng thái & Lợi nhuận --- */
-.status.selling {
-    color: #0079ff;
-    font-weight: bold;
+.profit{
+    color:#00aa33;
+    font-weight:bold;
 }
-
-.profit.green {
-    color: #00aa33;
-    font-weight: bold;
+button{
+    padding:6px 12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
 }
-
-/* --- Buttons --- */
-.remove,
-.edit {
+button:hover{ opacity:0.85; }
+.publish {
+    background: #0d8e02c7;
+    color: white;
     padding: 6px 12px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: bold;
 }
-
-.remove {
-    background: #e0e0e0;
+.publish:hover{
+    background: #00ff00;
 }
-
-.edit {
-    background: #ffba00;
-    color: #000;
+.delete{
+    background: #cc0000;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
 }
-
-.remove:hover {
-    background: #ccc;
+.delete:hover{
+    background: #ff0000;
 }
-
-.edit:hover {
-    background: #e6a800;
+.edit-btn{
+    background: #ffb300;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.edit-btn:hover{
+    background: #fffb00;
+}
+.save{
+    background: #2196f3;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.save:hover{
+    background: #00ccff;
+}
+.remove{
+    background: #9e9e9e;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.remove:hover{
+    background: #cccccc;
+}
+input.edit{
+    padding: 6px 10px;
+    border: 1.5px solid #4b89ff;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #f9fbff;
+}
+input.edit:focus{
+    border-color: #1e6bff;
+    box-shadow: 0 0 0 2px rgba(75,137,255,0.2);
+    background: #fff;
+}
+td input[type="number"].edit{
+    width: 120px;
+    text-align: right;
+}
+.action-btn{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.action-btn form{
+    display: inline-flex;
+    margin: 0;
+}
+.btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+.btn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
