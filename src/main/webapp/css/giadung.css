@@ -463,3 +463,17 @@ body {
 .filter-group label {
     font-weight: bold;
 }
+
+
+.btn-add-style {
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid;
+    margin-left: 20px;
+    color: green;
+    transition: all 0.3s ease;
+}
+.btn-add-style:hover {
+    color: #006100;
+    transform: translateY(-5px);
+}

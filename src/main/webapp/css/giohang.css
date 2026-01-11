@@ -1,7 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .cart-container {
     width: 90%;
     max-width: 1200px;
@@ -10,37 +9,12 @@ body {
     grid-template-columns: 2fr 1fr;
     gap: 30px;
 }
-/* ----- Header của bảng sản phẩm ----- */
-.cart-header {
-    display: grid;
-    grid-template-columns: 40px 400px 140px 160px 140px;
-    padding: 12px 0;
-    border-bottom: 2px solid #aaa;
-    font-weight: bold;
-    text-align: right;
-}
-
-.cart-header .col-product {
-    grid-column: 1 / 3;
-    text-align: left;
-}
-
-.cart-header span {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.cart-header .col-product {
-    justify-content: flex-start;
-}
-/* ----- Mỗi item trong giỏ hàng ----- */
-.cart-item {
-    display: grid;
-    grid-template-columns: 40px 400px 140px 160px 140px;
+.cart-items {
     align-items: center;
     gap: 15px;
-    padding: 25px 0;
-    border-bottom: 1px solid #ddd;
+}
+.cart-item td{
+    text-align: center;
 }
 /* Checkbox */
 .item-check {
@@ -48,49 +22,35 @@ body {
     justify-content: center;
     accent-color: #e74c3c;
 }
-/* Thông tin sản phẩm */
+.cart-header {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+/*.cart-header thead, .cart-header tr {*/
+/*    border-bottom: 2px solid #ddd;*/
+/*}*/
+.cart-header th, .cart-header td {
+    padding: 18px;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+}
+
 .product-info {
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-
-.product-info img {
-    width: 85px;
-    height: 85px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.price,
-.quantity,
-.subtotal {
-    justify-self: end;
-}
-/* Số lượng */
-.quantity {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.qty-btn {
-    width: 28px;
-    height: 28px;
-    background: #eee;
-    border: 1px solid #ccc;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 4px;
+    gap: 15px;
 }
 
 .qty-input {
-    width: 45px;
+    width: 20px;
     text-align: center;
-    border: 1px solid #ccc;
-    height: 28px;
-    border-radius: 4px;
 }
+.quantity {
+    width: 100px;
+}
+
 /* Cột phải */
 .cart-summary {
     padding: 20px;
@@ -193,3 +153,4 @@ body {
     font-size: 15px;
     padding-left: 5px;
 }
+
