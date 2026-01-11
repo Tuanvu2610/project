@@ -52,8 +52,29 @@ public class ProductService {
         return pdao.getDiscountGomQuaTang();
     }
 
-    public void addProduct(Product p) {
-        pdao.addProduct(p);
+    public void add(Product p) {
+        pdao.add(p);
     }
+    public void delete(int id) {
+        pdao.delete(id);
+    }
+    public void publish(int id) {
+        pdao.publish(id);
+    }
+    public void unpublish(int id) {
+        pdao.unpublish(id);
+    }
+    public void update(int id, String name, double price_sale) {
+        pdao.update(id, name, price_sale);
+    }
+
+    public List<Product> getOnSale() {
+        return pdao.getOnSale();
+    }
+
+    public List<Product> getOffSale() {
+        return pdao.getOffSale();
+    }
+
 
 }
