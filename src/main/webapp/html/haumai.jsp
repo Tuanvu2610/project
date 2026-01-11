@@ -1,10 +1,13 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -306,58 +309,49 @@
                     <th>Khách hàng</th>
                     <th>Tiêu đề</th>
                     <th>Danh mục</th>
-                    <th>Ưu tiên</th>
                     <th>Trạng thái</th>
                     <th>Thời gian</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr data-id="TK001">
-                    <td>TK001</td>
-                    <td><b>Nguyễn Văn A</b><br><small>a.nguyen@email.com</small></td>
-                    <td>Sản phẩm bị trầy xước nhẹ</td>
-                    <td>Bảo hành</td>
-                    <td><span class="badge priority-high">Cao</span></td>
-                    <td class="status-cell"><span class="badge status-wait">Chờ xử lý</span></td>
-                    <td>20/11/2025 09:30</td>
-                    <td><button class="btn view" onclick="openModal(this)" data-id="TK001">Xem</button></td>
-                </tr>
-
-                <tr data-id="TK002">
-                    <td>TK002</td>
-                    <td><b>Trần Thị B</b><br><small>b.tran@email.com</small></td>
-                    <td>Giao sai mẫu đã đặt</td>
-                    <td>Đổi trả</td>
-                    <td><span class="badge priority-medium">Trung bình</span></td>
-                    <td class="status-cell"><span class="badge status-processing">Đang xử lý</span></td>
-                    <td>19/11/2025 14:20</td>
-                    <td><button class="btn view" onclick="openModal(this)" data-id="TK002">Xem</button></td>
-                </tr>
-
-                <tr data-id="TK003">
-                    <td>TK003</td>
-                    <td><b>Lê Văn C</b><br><small>c.le@email.com</small></td>
-                    <td>Trả hàng do không phù hợp</td>
-                    <td>Hoàn trả</td>
-                    <td><span class="badge priority-low">Thấp</span></td>
-                    <td class="status-cell"><span class="badge status-done">Đã giải quyết</span></td>
-                    <td>18/11/2025 10:00</td>
-                    <td><button class="btn view" onclick="openModal(this)" data-id="TK003">Xem</button></td>
-                </tr>
-
-                <tr data-id="TK004">
-                    <td>TK004</td>
-                    <td><b>Vũ Minh H</b><br><small>h.vu@email.com</small></td>
-                    <td>Yêu cầu hoàn tiền không hợp lệ</td>
-                    <td>Khác</td>
-                    <td><span class="badge priority-low">Thấp</span></td>
-                    <td class="status-cell"><span class="badge status-rejected">Đã từ chối</span></td>
-                    <td>18/11/2025 10:00</td>
-                    <td><button class="btn view" onclick="openModal(this)" data-id="TK004">Xem</button></td>
-                </tr>
-
+                <c:forEach var="s" items="${supports}">
+                    <tr data-id="TK${s.id}">
+                        <td>TK${s.id}</td>
+                        <td>
+                            <b>${s.fullName}</b><br>
+                            <small>${s.email}</small>
+                        </td>
+                        <td>${s.title}</td>
+                        <td>${s.category}</td>
+                        <td class="status-cell">
+                            <span class="badge
+                                ${s.status == 'CHO_XU_LY' ? 'status-wait' :
+                                  s.status == 'DANG_XU_LY' ? 'status-processing' :
+                                  s.status == 'DA_GIAI_QUYET' ? 'status-done' :
+                                  'status-rejected'}">
+                                    ${s.status == 'CHO_XU_LY' ? 'Chờ xử lý' :
+                                      s.status == 'DANG_XU_LY' ? 'Đang xử lý' :
+                                      s.status == 'DA_GIAI_QUYET' ? 'Đã giải quyết' :
+                                      'Từ chối'}
+                            </span>
+                        </td>
+                        <td>${s.createdAt}</td>
+                        <td>
+                            <button class="btn view"
+                                    onclick="openModal(this)"
+                                    data-id="${s.id}"
+                                    data-name="${s.fullName}"
+                                    data-email="${s.email}"
+                                    data-content="${s.description}"
+                                    data-status="${s.status}"
+                                    data-time="<fmt:formatDate value='${s.createdAt}' pattern='dd/MM/yyyy HH:mm'/>"
+                                    data-image="${s.image}">
+                                Xem
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -385,13 +379,9 @@
                     <h4>Nội dung</h4>
                     <p id="m-content"></p>
                 </div>
-
                 <div class="section">
                     <h4>Hình ảnh</h4>
-                    <div class="image-list">
-                        <img src="../img/loi1.jpg">
-                        <img src="../img/loi2.jpg">
-                    </div>
+                    <div id="m-image"></div>
                 </div>
             </div>
 
@@ -495,6 +485,19 @@
             document.getElementById("modalActions").style.display = "none";
         }else{
             document.getElementById("modalActions").style.display = "flex";
+        }
+
+        document.getElementById("supportModal").style.display = "flex";
+
+        const img = btn.dataset.image;
+        const imgBox = document.getElementById("m-image");
+
+        if (img && img.trim() !== "") {
+            imgBox.innerHTML =
+                `<img src="${pageContext.request.contextPath}/${img}"
+                  style="max-width:200px;border-radius:8px">`;
+        } else {
+            imgBox.innerHTML = "<i>Không có hình ảnh đính kèm</i>";
         }
 
         document.getElementById("supportModal").style.display = "flex";

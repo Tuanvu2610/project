@@ -383,7 +383,7 @@
                     <td class="receiver">Nguyễn Văn A</td>
                     <td class="center">30/11 - 2/12</td>
                     <td class="status">
-                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Đang xử lý </button>
+                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Chờ xử lý </button>
 
                         <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
                         <div class="action-menu">
@@ -407,7 +407,7 @@
                     <td class="receiver">Trần Thị B</td>
                     <td class="center">30/11 - 2/12</td>
                     <td class="status">
-                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Đang xử lý </button>
+                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Chờ xử lý </button>
 
                         <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
                         <div class="action-menu">

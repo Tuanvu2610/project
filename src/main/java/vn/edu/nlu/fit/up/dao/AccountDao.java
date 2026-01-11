@@ -126,6 +126,23 @@ public class AccountDao extends BaseDao{
                         .isPresent()
         );
     }
+    public Account login(String username, String password) {
+        return get().withHandle(handle ->
+                handle.createQuery("""
+            SELECT a.*, u.name, u.phone, u.date_of_birth
+            FROM accounts a
+            JOIN users u ON a.user_id = u.id
+            WHERE a.username = :username
+              AND a.password = :password
+              AND a.status = 'active'
+        """)
+                        .bind("username", username)
+                        .bind("password", password)
+                        .mapToBean(Account.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
 
 //    static void main() {
 //        AccountDao dao = new AccountDao();

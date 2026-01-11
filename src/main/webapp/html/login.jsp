@@ -9,7 +9,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gốm Sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="css/dangnhap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dangnhap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
