@@ -153,4 +153,13 @@ body {
     font-size: 15px;
     padding-left: 5px;
 }
+.remove {
+    border: none;
+    background: no-repeat;
+    font-size: 20px;
+}
+.remove:hover {
+    color: red;
+    cursor: pointer;
+}
 
