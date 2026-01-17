@@ -48,7 +48,7 @@
                 <button class="btn-header"><a href="login"><i class="fas fa-user"></i> Đăng nhập</a></button>
             </c:otherwise>
         </c:choose>
-        <a href="html/giohang.jsp" class="btn-header cart-btn">
+        <a href="gio-hang" class="btn-header cart-btn">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
             <span class="cart-badge">  ${empty sessionScope.cart ? 0 : sessionScope.cart.totalQuantity}</span>

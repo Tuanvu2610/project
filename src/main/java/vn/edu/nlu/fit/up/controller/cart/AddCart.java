@@ -31,7 +31,6 @@ public class AddCart extends HttpServlet {
             session.setAttribute("cart", cart);
         }
         cart.addItem(product, quantity);
-        System.out.println("TOTAL AFTER ADD = " + cart.getTotalQuantity());
 
         String referer = request.getHeader("referer");
         response.sendRedirect(referer != null ? referer : "home");

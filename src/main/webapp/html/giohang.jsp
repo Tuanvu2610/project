@@ -70,53 +70,24 @@
 <!-- content -->
 <div class="cart-container">
     <!-- SẢN PHẨM -->
-    <%--    <section class="cart-items">--%>
-    <%--        <h2>SẢN PHẨM</h2>--%>
-    <%--        <div class="cart-header">--%>
-    <%--            <span class="col-product"></span>--%>
-    <%--            <span class="col-price">GIÁ</span>--%>
-    <%--            <span class="col-quantity">SỐ LƯỢNG</span>--%>
-    <%--            <span class="col-total">TẠM TÍNH</span>--%>
-    <%--        </div>--%>
-    <%--        <!-- Sản phẩm 1 -->--%>
-    <%--        <c:forEach items="${sessionScope.cart.items}" var="ci">--%>
-    <%--        <div class="cart-item">--%>
-    <%--            <span class="item-check">--%>
-    <%--                <input type="checkbox" class="select-product">--%>
-    <%--            </span>--%>
-    <%--            <div class="product-info">--%>
-    <%--                <img src="${ci.product.img}" alt="">--%>
-    <%--                <div class="product-details">--%>
-    <%--                    <h3>${ci.product.name}</h3>--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
-    <%--            <div class="price">${ci.product.price_sale}</div>--%>
-    <%--            <div class="quantity">--%>
-    <%--                <button class="qty-btn minus">-</button>--%>
-    <%--                <input type="text" value="${ci.quantity}" class="qty-input">--%>
-    <%--                <button class="qty-btn plus">+</button>--%>
-    <%--            </div>--%>
-    <%--            <div class="subtotal">${ci.quantity * ci.price}</div>--%>
-    <%--        </div>--%>
-    <%--        </c:forEach>--%>
-    <%--    </section>--%>
     <section class="cart-items">
         <h2>SẢN PHẨM</h2>
         <table  class="cart-header">
             <thead>
             <tr>
-                <th style="width:40px"></th>
+                <th style="width:40px"><input type="checkbox" id="checkall"></th>
                 <th>SẢN PHẨM</th>
                 <th>GIÁ</th>
                 <th>SỐ LƯỢNG</th>
                 <th>TẠM TÍNH</th>
+                <th style="width:40px"></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${sessionScope.cart.items}" var="ci">
-                <tr class="cart-item">
+                <tr class="cart-item" id="row-${ci.product.id}">
                     <td>
-                        <input type="checkbox" class="select-product">
+                        <input type="checkbox" data-id="${ci.product.id}" class="select-product" ${ci.checked ? "checked" : ""}>
                     </td>
                     <td class="product-info">
                         <img src="${ci.product.img}" alt="" width="80">
@@ -125,15 +96,21 @@
                         </div>
                     </td>
                     <td class="price">
-                            ${ci.product.price_sale}
+                        <fmt:formatNumber value="${ci.product.price_sale}" groupingUsed="true"/>₫
                     </td>
                     <td class="quantity">
-                        <button class="qty-btn minus">-</button>
-                        <input type="text" value="${ci.quantity}" class="qty-input">
-                        <button class="qty-btn plus">+</button>
+                        <button class="qty-btn tru" data-id="${ci.product.id}">-</button>
+
+                        <input type="text" value="${ci.quantity}" class="qty-input" id="qty-${ci.product.id}">
+                        <button class="qty-btn cong" data-id="${ci.product.id}">+</button>
                     </td>
+
                     <td class="subtotal">
-                            ${ci.quantity * ci.product.price_sale}
+                        <fmt:formatNumber value="${ci.quantity * ci.product.price_sale}" groupingUsed="true"/>₫
+                    </td>
+                    <td class="btn-remove">
+                        <button class="qty-btn remove" data-id="${ci.product.id}"><i class="fa-solid fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </c:forEach>
@@ -145,11 +122,15 @@
         <h2>TỔNG CỘNG GIỎ HÀNG</h2>
         <div class="summary-row">
             <span>Tạm tính</span>
-            <span id="subtotal">${sessionScope.cart.total}₫</span>
+            <span id="subtotal">
+                <fmt:formatNumber value="${sessionScope.cart.total}" groupingUsed="true"/>₫
+            </span>
         </div>
         <div class="summary-row total">
             <span>Tổng cộng</span>
-            <span id="total"><b>${sessionScope.cart.total}₫</b></span>
+            <span id="total"><b>
+                <fmt:formatNumber value="${sessionScope.cart.total}" groupingUsed="true"/>₫</b>
+            </span>
         </div>
         <a href="" class="checkout-btn">Tiến hành thanh toán</a>
     </aside>
@@ -281,41 +262,99 @@
         <p>© 2025 Gốm Sứ Tinh Hoa Bát Tràng. Tất cả các quyền được bảo lưu.</p>
     </div>
 </footer>
-<%--<script>--%>
-<%--    // const subtotalEl = document.getElementById("subtotal");--%>
-<%--    // const totalEl = document.getElementById("total");--%>
-<%--    // const discountInput = document.getElementById("discount-code");--%>
-<%--    // const applyBtn = document.getElementById("apply-discount");--%>
-<%--    //--%>
-<%--    // let subtotal = parseInt(subtotalEl.textContent.replace(/\./g, ""), 10);--%>
-<%--    //--%>
-<%--    // const discountCodes = {--%>
-<%--    //     "GIAM10": 0.1,--%>
-<%--    //     "SALE20": 0.2,--%>
-<%--    //     "FREESHIP": 0.05--%>
-<%--    // };--%>
-<%--    //--%>
-<%--    // function formatVND(number) {--%>
-<%--    //     return number.toLocaleString("vi-VN");--%>
-<%--    // }--%>
-<%--    //--%>
-<%--    // applyBtn.addEventListener("click", () => {--%>
-<%--    //     const code = discountInput.value.trim().toUpperCase();--%>
-<%--    //     const discount = discountCodes[code];--%>
-<%--    //--%>
-<%--    //     if (discount) {--%>
-<%--    //         const newTotal = subtotal - subtotal * discount;--%>
-<%--    //         totalEl.innerHTML = `<b>${formatVND(newTotal)}</b>`;--%>
-<%--    //         alert(`Áp dụng mã "${code}" thành công! Giảm ${discount * 100}%`);--%>
-<%--    //     } else {--%>
-<%--    //         totalEl.innerHTML = `<b>${formatVND(subtotal)}</b>`;--%>
-<%--    //         alert("Mã giảm giá không hợp lệ!");--%>
-<%--    //     }--%>
-<%--    // });--%>
-<%--    // const subtotals = [395000, 100000];--%>
-<%--    // const total = subtotals.reduce((a, b) => a + b, 0);--%>
-<%--    // document.getElementById("subtotal").textContent = total.toLocaleString("vi-VN") + " ₫";--%>
-<%--    // document.getElementById("total").textContent = total.toLocaleString("vi-VN") + " ₫";--%>
-<%--</script>--%>
 </body>
+<script>
+    document.querySelectorAll(".select-product").forEach(cb => {
+        cb.addEventListener("change", function () {
+            const productId = this.dataset.id;
+            const checked = this.checked;
+
+            fetch("/gio-hang", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    action: "check",
+                    id: productId,
+                    checked: checked
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("subtotal").innerText = data.total + "₫";
+                    document.getElementById("total").innerText = data.total + "₫";
+                });
+        });
+    });
+    document.getElementById("checkall").addEventListener("change", function () {
+        const checked = this.checked;
+
+        fetch("/gio-hang", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+                action: "checkall",
+                checked: checked,
+                id: 1
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.querySelectorAll(".select-product").forEach(cb => {
+                    cb.checked = checked;
+                });
+
+                document.getElementById("subtotal").innerText = data.total + "₫";
+                document.getElementById("total").innerText = data.total + "₫";
+            });
+    });
+    // document.querySelectorAll(".select-product").forEach(cb => {
+    //     cb.addEventListener("change", () => {
+    //         document.getElementById("checkall").checked =
+    //             [...document.querySelectorAll(".select-product")].every(x => x.checked);
+    //     });
+    // });
+    document.querySelectorAll(".qty-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const productId = this.dataset.id;
+            let action;
+            if (this.classList.contains("cong") ){
+                action = "cong"
+            }
+            else if(this.classList.contains("tru")){
+                action = "tru"
+            }
+            else {
+                action = "xoa"
+            }
+            fetch("/gio-hang", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    action: action,
+                    id: productId
+                })
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error(res.status);
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.deleted) {
+                        const row = document.getElementById("row-" + productId);
+                        if (row) row.remove();
+                    } else {
+                        const qtyInput = document.getElementById("qty-" + productId);
+                        if (qtyInput) qtyInput.value = data.quantity;
+                    }
+                    document.getElementById("subtotal").innerText = data.total + "₫";
+                    document.getElementById("total").innerText = data.total + "₫";
+                })
+                .catch(err => console.error("Cart error:", err));
+        });
+    });
+</script>
 </html>

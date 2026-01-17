@@ -1,5 +1,6 @@
 package vn.edu.nlu.fit.up.cart;
 
+import vn.edu.nlu.fit.up.dao.ProductDao;
 import vn.edu.nlu.fit.up.model.Product;
 
 import java.util.ArrayList;
@@ -35,18 +36,54 @@ public class Cart {
     public List<CartItem> getItems() {
         return new ArrayList<>(data.values());
     }
-
+    public CartItem getItem(int id) {
+        return data.get(id);
+    }
     public int getTotalQuantity() {
         AtomicInteger total = new AtomicInteger();
         data.values().forEach(c -> total.addAndGet(c.getQuantity()));
         return total.get();
     }
-    public double getTotal() {
-        double sum = 0;
+    public int getTotal() {
+        int sum = 0;
         for (CartItem c : data.values()) {
-            sum += c.getPrice() * c.getQuantity();
+            if (c.isChecked()) {
+                sum += c.getPrice() * c.getQuantity();
+            }
         }
         return sum;
     }
+//    public double getTotalLast() {
+//        double sum = 0;
+//        for (CartItem c : data.values()) {
+//            sum += c.getPrice() * c.getQuantity();
+//        }
+//        return sum;
+//    }
 
+
+    public void tru(int id) {
+        CartItem item = data.get(id);
+        if (item == null) return;
+        int qty = item.getQuantity() - 1;
+        if (qty <= 0) {
+            data.remove(id);
+        } else {
+            item.setQuantity(qty);
+        }
+    }
+    public void cong(int id) {
+        CartItem item = data.get(id);
+        ProductDao pd = new ProductDao();
+        if (item == null) {
+            Product p = pd.getProduct(id);
+            item = new CartItem(p, 1, p.getPrice_sale());
+            data.put(id, item);
+        } else {
+            item.setQuantity(item.getQuantity() + 1);
+        }
+    }
+    public int getQuantity(int id) {
+        return data.get(id).getQuantity();
+    }
 }

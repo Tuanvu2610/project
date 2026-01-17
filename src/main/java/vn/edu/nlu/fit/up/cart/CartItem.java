@@ -6,6 +6,7 @@ public class CartItem {
     private Product product;
     private int quantity;
     private double price;
+    private boolean checked;
     public CartItem(Product product, int quantity, double price) {
         this.product = product;
         this.quantity = quantity;
@@ -36,7 +37,16 @@ public class CartItem {
         this.price = price;
     }
 
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
     public void upQuantity(int quantity) {
         this.quantity += quantity;
     }
+
 }
