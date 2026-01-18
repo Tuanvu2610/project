@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -324,46 +327,38 @@
             <h2><span>ADMIN CONTROL</span></h2>
         </div>
         <ul class="nav-links">
-            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
-            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
-            <li><a href="kho.jsp"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
-            <li><a href="#" class="active"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
-            <li><a href="haumai.jsp"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
+            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> Quản lý User</a></li>
+            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
+            <li><a href="kho.jsp"><i class="fas fa-house-user"></i> Kho</a></li>
+            <li><a class="active"><i class="fas fa-receipt"></i> Đơn hàng</a></li>
+            <li><a href="haumai.jsp"><i class="fas fa-headset"></i> Hậu mãi</a></li>
         </ul>
     </div>
+
     <div class="content">
         <div class="content-wrapper">
-        <!-- TITLE -->
-        <div class="head-title">
-            <h1><i class="fas fa-receipt"></i> Đơn hàng</h1>
-        </div>
 
-        <!-- TABS -->
-        <div class="order-tabs">
-            <button class="tab active" data-tab="pending">Chưa giao</button>
-            <button class="tab" data-tab="shipping">Đang vận chuyển</button>
-            <button class="tab" data-tab="done">Đã giao</button>
-
-            <div class="order-summary">
-                Đơn hàng đã hoàn thành: <b>36000</b>
+            <!-- TITLE -->
+            <div class="head-title">
+                <h1><i class="fas fa-receipt"></i> Đơn hàng</h1>
             </div>
-        </div>
 
-        <!-- FORM + TABLE -->
-        <form method="post">
+            <!-- TABS -->
+            <div class="order-tabs">
+                <button class="tab active" data-tab="pending">Chưa giao</button>
+                <button class="tab" data-tab="shipping">Đang vận chuyển</button>
+                <button class="tab" data-tab="done">Đã giao</button>
+
+                <div class="order-summary">
+                    Đơn hàng đã hoàn thành: <b>${doneCount}</b>
+                </div>
+            </div>
+
+            <!-- TABLE -->
             <table class="order-table">
-                <colgroup>
-                    <col style="width:120px">  <!-- Mã đơn hàng -->
-                    <col style="width:420px">  <!-- Hàng hóa -->
-                    <col style="width:90px">   <!-- Số lượng -->
-                    <col style="width:140px">  <!-- Số tiền -->
-                    <col style="width:160px">  <!-- Người nhận -->
-                    <col style="width:100px">  <!-- Ngày -->
-                    <col style="width:160px">  <!-- Trạng thái -->
-                </colgroup>
                 <thead>
                 <tr>
-                    <th>Mã đơn hàng</th>
+                    <th>Mã đơn</th>
                     <th>Hàng hóa</th>
                     <th>Số lượng</th>
                     <th>Số tiền</th>
@@ -375,92 +370,98 @@
 
                 <!-- ===== CHƯA GIAO ===== -->
                 <tbody id="pending">
-                <tr>
-                    <td>3601</td>
-                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                    <td class="center">1</td>
-                    <td class="money">2.300.000đ</td>
-                    <td class="receiver">Nguyễn Văn A</td>
-                    <td class="center">30/11 - 2/12</td>
-                    <td class="status">
-                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Chờ xử lý </button>
+                <c:forEach var="o" items="${pendingOrders}">
+                    <tr>
+                        <td>${o.id}</td>
 
-                        <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
-                        <div class="action-menu">
-                            <button class="btn-confirm" onclick="confirmOrder(this)"> ✔ Xác nhận </button>
-                            <button class="btn-cancel" onclick="openCancelBox(this, event)"> ✖ Hủy </button>
+                        <td class="item-name">
+                            <a href="${pageContext.request.contextPath}/order-detail?id${o.id}">Xem chi tiết</a>
+                        </td>
+                        <td class="center">${o.totalQuantity}</td>
+                        <td class="money">
+                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                        </td>
+                        <td class="receiver">${o.receiverName}</td>
+                        <td class="center">
+                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                        </td>
 
-                            <div class="cancel-box">
-                                <input type="text" placeholder="Lý do hủy...">
-                                <button onclick="cancelOrder(this, event)">Xác nhận hủy</button>
+                        <td class="status">
+                            <button type="button" class="btn-processing"
+                                    onclick="openActionMenu(this, event)">
+                                Chờ xử lý
+                            </button>
+
+                            <div class="action-menu">
+
+                                <!-- CONFIRM -->
+                                <form action="${pageContext.request.contextPath}/order" method="post">
+                                    <input type="hidden" name="orderId" value="${o.id}">
+                                    <input type="hidden" name="action" value="CONFIRM">
+                                    <button type="submit" class="btn-confirm">✔ Xác nhận</button>
+                                </form>
+
+                                <!-- CANCEL -->
+                                <form action="${pageContext.request.contextPath}/order" method="post">
+                                    <input type="hidden" name="orderId" value="${o.id}">
+                                    <input type="hidden" name="action" value="CANCEL">
+                                    <input type="text" name="reason" placeholder="Lý do hủy...">
+                                    <button type="submit" class="btn-cancel">✖ Hủy</button>
+                                </form>
+
                             </div>
-                        </div>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td>3602</td>
-                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                    <td class="center">1</td>
-                    <td class="money">2.300.000đ</td>
-                    <td class="receiver">Trần Thị B</td>
-                    <td class="center">30/11 - 2/12</td>
-                    <td class="status">
-                        <button class="btn-processing" onclick="openActionMenu(this, event)"> Chờ xử lý </button>
-
-                        <!-- MENU HÀNH ĐỘNG (ẨN BAN ĐẦU) -->
-                        <div class="action-menu">
-                            <button class="btn-confirm" onclick="confirmOrder(this)"> ✔ Xác nhận </button>
-                            <button class="btn-cancel" onclick="openCancelBox(this, event)"> ✖ Hủy </button>
-
-                            <div class="cancel-box">
-                                <input type="text" placeholder="Lý do hủy...">
-                                <button onclick="cancelOrder(this, event)">Xác nhận hủy</button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
 
                 <!-- ===== ĐANG VẬN CHUYỂN ===== -->
                 <tbody id="shipping" style="display:none">
-                <tr>
-                    <td>3501</td>
-                    <td class="item-name">Bộ Ấm Trà Gốm Sứ Hoa Sen Trắng</td>
-                    <td class="center">2</td>
-                    <td class="money">1.800.000đ</td>
-                    <td class="receiver">Phạm Văn D</td>
-                    <td class="center">28/11 - 30/11</td>
-                    <td><span class="status shipping">Đang giao</span></td>
-                </tr>
-
-                <tr>
-                    <td>3502</td>
-                    <td class="item-name">Chén Uống Trà Gốm Sứ Cao Cấp</td>
-                    <td class="center">1</td>
-                    <td class="money">950.000đ</td>
-                    <td class="receiver">Hoàng Thị E</td>
-                    <td class="center">29/11 - 1/12</td>
-                    <td><span class="status shipping">Đang giao</span></td>
-                </tr>
+                <c:forEach var="o" items="${shippingOrders}">
+                    <tr>
+                        <td>${o.id}</td>
+                        <td class="item-name">
+                            <a href="${pageContext.request.contextPath}/order-detail?id=${o.id}">
+                                Xem chi tiết
+                            </a>
+                        </td>
+                        <td class="center">${o.totalQuantity}</td>
+                        <td class="money">
+                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                        </td>
+                        <td class="receiver">${o.receiverName}</td>
+                        <td class="center">
+                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                        </td>
+                        <td><span class="status shipping">Đang giao</span></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
 
                 <!-- ===== ĐÃ GIAO ===== -->
                 <tbody id="done" style="display:none">
-                <tr>
-                    <td>3801</td>
-                    <td class="item-name">Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                    <td class="center">1</td>
-                    <td class="money">2.300.000đ</td>
-                    <td class="receiver">Nguyễn Văn D</td>
-                    <td class="center">01/12</td>
-                    <td><span class="status done">Đã giao</span></td>
-                </tr>
+                <c:forEach var="o" items="${doneOrders}">
+                    <tr>
+                        <td>${o.id}</td>
+                        <td class="item-name">
+                            <a href="${pageContext.request.contextPath}/order-detail?id=${o.id}">
+                                Xem chi tiết
+                            </a>
+                        </td>
+                        <td class="center">${o.totalQuantity}</td>
+                        <td class="money">
+                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                        </td>
+                        <td class="receiver">${o.receiverName}</td>
+                        <td class="center">
+                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                        </td>
+                        <td><span class="status done">Đã giao</span></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
 
             </table>
-        </form>
         </div>
     </div>
 </div>
