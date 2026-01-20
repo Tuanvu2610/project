@@ -29,16 +29,6 @@ public class ProductGomQuaTangController extends HttpServlet {
         request.setAttribute("listAmChenInLogo", listAmChenInLogo);
         request.setAttribute("listBinhHoa", listBinhHoa);
         request.setAttribute("listBatDia", listBatDia);
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/gomquatang.jsp").forward(request, response);
     }
 

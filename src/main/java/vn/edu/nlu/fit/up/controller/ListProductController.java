@@ -22,17 +22,6 @@ public class ListProductController extends HttpServlet {
         List<Product> listbatDia = ps.getByCategory(6);
         request.setAttribute("list", list);
         request.setAttribute("listbatDia", listbatDia);
-
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

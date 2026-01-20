@@ -53,16 +53,6 @@ public class StatisticController extends HttpServlet {
         request.setAttribute("year", year);
         request.setAttribute("month", String.valueOf(month));
         request.setAttribute("chartData", chartData);
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/thongke.jsp").forward(request, response);
 
     }

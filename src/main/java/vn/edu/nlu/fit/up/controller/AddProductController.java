@@ -21,14 +21,6 @@ public class AddProductController extends HttpServlet {
             throws ServletException, IOException {
 
         CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category pr : parents) {
-            childrenMap.put(pr.getId(),
-                    cd.getCategoryChild(pr.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.setAttribute("categoryImages", cd.getCategoryImages());
         request.setAttribute("categories", cd.getAllCategoryChild());
         request.getRequestDispatcher("/html/addProduct.jsp").forward(request, response);

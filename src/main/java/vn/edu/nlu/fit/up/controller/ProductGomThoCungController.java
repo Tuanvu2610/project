@@ -31,16 +31,6 @@ public class ProductGomThoCungController extends HttpServlet {
         request.setAttribute("listMamBong", listMamBong);
         request.setAttribute("listBatNap", listBatNap);
         request.setAttribute("listDenNen", listDenNen);
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/gomthocung.jsp").forward(request, response);
 
     }

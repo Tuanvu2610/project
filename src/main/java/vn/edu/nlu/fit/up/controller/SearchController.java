@@ -22,16 +22,6 @@ public class SearchController extends HttpServlet {
         ProductService ps = new ProductService();
         List<Product> list = ps.search(keyword);
         request.setAttribute("list", list);
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/search.jsp").forward(request, response);
     }
 
