@@ -22,15 +22,6 @@ public class WarehouseController extends HttpServlet {
         ProductService ps = new ProductService();
         List<Product> onSale = ps.getOnSale();
         List<Product> offSale = ps.getOffSale();
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category pr : parents) {
-            childrenMap.put(pr.getId(),
-                    cd.getCategoryChild(pr.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.setAttribute("onSale", onSale);
         request.setAttribute("offSale", offSale);
         request.getRequestDispatcher("/html/kho.jsp").forward(request, response);

@@ -32,16 +32,6 @@ public class ProductGiaDungController extends HttpServlet {
         request.setAttribute("listChum", listChum);
         request.setAttribute("listDenNgu", listDenNgu);
         request.setAttribute("listNhaTam", listNhaTam);
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category p : parents) {
-            childrenMap.put(p.getId(),
-                    cd.getCategoryChild(p.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/gomgiadung.jsp").forward(request, response);
     }
 

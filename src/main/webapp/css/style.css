@@ -435,3 +435,62 @@ ul {
     color: rgba(255,255,255,0.8);
 }
 
+.icon-zalo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1877f2;
+}
+.icon-phone {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: red;
+}
+.style-icon {
+    color: white;
+    height: 55px;
+    width: 35px;
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: width 0.3s ease;
+    font-size: 28px;
+    min-width: 28px;
+    z-index: 2;
+}
+
+.text {
+    white-space: nowrap;
+    opacity: 0;
+    font-size: 18px;
+    transform: translateX(-20px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    margin-right: auto;
+}
+
+.icon-page:hover .icon-phone {
+    width: 220px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.icon-page:hover .icon-zalo {
+    width: 130px;
+    justify-content: flex-start;
+}
+
+.icon-page:hover .text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.icon-page img {
+    padding: 10px;
+    width: 30px;
+    padding-right: 5px;
+}
