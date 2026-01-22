@@ -23,15 +23,6 @@ import java.util.Map;
 public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CategoryDao cd = new CategoryDao();
-        List<Category> parents = cd.getCategoryParent();
-        Map<Integer, List<Category>> childrenMap = new HashMap<>();
-        for (Category pr : parents) {
-            childrenMap.put(pr.getId(),
-                    cd.getCategoryChild(pr.getId()));
-        }
-        request.setAttribute("parents", parents);
-        request.setAttribute("children", childrenMap);
         request.getRequestDispatcher("/html/giohang.jsp").forward(request, response);
 
     }
@@ -101,6 +92,7 @@ public class CartController extends HttpServlet {
             response.getWriter().write(
                     "{ \"total\": \"" + totalFmt + "\" }"
             );
+
             return;
         }
 
@@ -121,7 +113,8 @@ public class CartController extends HttpServlet {
             response.getWriter().write(
                     "{"
                             + "\"deleted\":true,"
-                            + "\"total\":" + cart.getTotal()
+                            + "\"total\":" + cart.getTotal() + ","
+                            + "\"totalQty\":" + cart.getTotalQuantity()
                             + "}"
             );
             return;
@@ -130,7 +123,9 @@ public class CartController extends HttpServlet {
         response.getWriter().write(
                 "{"
                         + "\"quantity\":" + item.getQuantity() + ","
-                        + "\"total\":" + cart.getTotal()
+                        + "\"total\":" + cart.getTotal() + ","
+                        + "\"checked\":" + item.isChecked() + ","
+                        + "\"totalQty\":" + cart.getTotalQuantity()
                         + "}"
         );
     }
