@@ -15,8 +15,9 @@ public class User {
     String sex;
     int address_id;
     String img;
+    private String full_address;
 
-    public User(int id, String name, String username, String password, String firstname, String lastname, String email, LocalDate date_of_birth, String phone, String sex, int address_id, String img) {
+    public User(int id, String name, String username, String password, String firstname, String lastname, String email, LocalDate date_of_birth, String phone, String sex, int address_id, String img, String address) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -28,6 +29,7 @@ public class User {
         this.sex = sex;
         this.address_id = address_id;
         this.img = img;
+        this.full_address = full_address;
     }
 
     public User(){
@@ -124,5 +126,32 @@ public class User {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getFull_address() {
+        return full_address;
+    }
+
+    public void setFull_address(String full_address) {
+        this.full_address = full_address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", date_of_birth=" + date_of_birth +
+                ", phone='" + phone + '\'' +
+                ", sex='" + sex + '\'' +
+                ", address_id=" + address_id +
+                ", img='" + img + '\'' +
+                ", address=" + full_address +
+                '}';
     }
 }

@@ -53,15 +53,6 @@ public class Cart {
         }
         return sum;
     }
-//    public double getTotalLast() {
-//        double sum = 0;
-//        for (CartItem c : data.values()) {
-//            sum += c.getPrice() * c.getQuantity();
-//        }
-//        return sum;
-//    }
-
-
     public void tru(int id) {
         CartItem item = data.get(id);
         if (item == null) return;
@@ -70,6 +61,7 @@ public class Cart {
             data.remove(id);
         } else {
             item.setQuantity(qty);
+//            item.setChecked(true);
         }
     }
     public void cong(int id) {
@@ -79,8 +71,10 @@ public class Cart {
             Product p = pd.getProduct(id);
             item = new CartItem(p, 1, p.getPrice_sale());
             data.put(id, item);
+//            item.setChecked(true);
         } else {
             item.setQuantity(item.getQuantity() + 1);
+//            item.setChecked(true);
         }
     }
     public int getQuantity(int id) {

@@ -17,7 +17,7 @@
 <body>
 <!--header-->
 <header class="pageHome-header" id="header-home">
-  <a href="#" class="text-header">
+  <a href="home" class="text-header">
     <span class="text-nonglam">NÔNG LÂM</span>
     <span class="text-gomsu">GỐM SỨ TINH HOA</span>
   </a>
@@ -32,7 +32,7 @@
         <div class="user">
           <button class="btn-header">
             <i class="fas fa-user"></i>
-            <span class="username">Xin chào, ${sessionScope.auth.firstname}</span>
+            <span class="username">Xin chào, ${sessionScope.auth.name}</span>
             <i class="fas fa-caret-down"></i>
           </button>
           <div class="user-menu">

@@ -5,7 +5,11 @@ import vn.edu.nlu.fit.up.model.User;
 public class AuthDao extends BaseDao {
     public User getUserByUsername(String username) {
         return get().withHandle(h ->
-                h.createQuery("select * from users where username = :username")
+                h.createQuery("select a.*, u.name, u.date_of_birth, u.phone, u.sex, u.address_id, u.img, u.email, ad.full_address " +
+                                "from accounts a " +
+                                "join users u on u.id = a.user_id " +
+                                "join address ad on ad.id = u.address_id " +
+                                "where a.username = :username")
                         .bind("username", username)
                         .mapToBean(User.class).findFirst().orElse(null));
     }
@@ -41,5 +45,10 @@ public class AuthDao extends BaseDao {
         return get().withHandle(h -> h.createQuery("select * from users where email = :email")
                 .bind("email", email)
                 .mapToBean(User.class).findFirst().orElse(null));
+    }
+
+    static void main() {
+        AuthDao authDao = new AuthDao();
+        System.out.println(authDao.getUserByUsername("user_test_2"));
     }
 }
