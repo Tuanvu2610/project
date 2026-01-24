@@ -19,7 +19,7 @@
 
 <body>
 <!-- header -->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <%--body--%>
 <div class="cover-product-item">
     <c:forEach var="p" items="${list}">

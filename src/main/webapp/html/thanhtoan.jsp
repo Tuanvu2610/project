@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!-- content -->
 <section class="checkout-container">
     <section class="shipping-info">
