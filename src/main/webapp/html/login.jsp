@@ -23,6 +23,9 @@
             <c:if test="${not empty error}">
                 <div class="error-message">${error}</div>
             </c:if>
+            <c:if test="${not empty success}">
+                <div class="success-message">${success}</div>
+            </c:if>
             <form action="login" method="post">
                 <div class="section active">
                     <div class="username-section style-section">
@@ -56,23 +59,16 @@
         <div class="modal-content">
             <a href="javascript:void(0)" class="close-btn" onclick="showLogin()">&times;</a>
             <h1 class="head">Đăng ký</h1>
-            <c:if test="${not empty regiserror}">
-                <div class="error-message">${regiserror}</div>
+            <c:if test="${not empty registerError}">
+                <div class="error-message">${registerError}</div>
             </c:if>
             <form action="login" method="post">
                 <input type="hidden" name="action" value="register">
 
-                <div class="name-section">
-                    <div class="lastname-section name-style">
-                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                        <input class="input-style" name="lastname" type="text" placeholder="Họ"
-                               value="${last != null ? last : ''}">
-                    </div>
-                    <div class="firstname-section name-style">
-                        <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
-                        <input class="input-style" name="firstname" type="text" placeholder="Tên"
-                               value="${first != null ? first : ''}">
-                    </div>
+                <div class="name-section style-section">
+                    <img src="https://www.svgrepo.com/show/105517/user-icon.svg" alt="">
+                    <input class="input-style" name="name" type="text" placeholder="Tên đầy đủ"
+                           value="${name != null ? name : ''}">
                 </div>
 
                 <div class="username-section style-section">

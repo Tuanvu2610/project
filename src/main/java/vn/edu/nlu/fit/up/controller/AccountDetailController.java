@@ -24,19 +24,19 @@ public class AccountDetailController extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        response.getWriter().write(
-                "{"
-                        + "\"id\":" + acc.getId() + ","
-                        + "\"user_id\":\"" + acc.getUser_id() + "\","
-                        + "\"name\":\"" + acc.getName() + "\","
-                        + "\"username\":\"" + acc.getUsername() + "\","
-                        + "\"phone\":\"" + acc.getPhone() + "\","
-                        + "\"date_of_birth\":\"" + acc.getDate_of_birth() + "\","
-                        + "\"role\":\"" + acc.getRole() + "\","
-                        + "\"status\":\"" + acc.getStatus() + "\","
-                        + "\"registration_date\":\"" + acc.getRegistration_date() + "\""
-                        + "}"
-        );
+//        response.getWriter().write(
+//                "{"
+//                        + "\"id\":" + acc.getId() + ","
+//                        + "\"user_id\":\"" + acc.getUser_id() + "\","
+//                        + "\"name\":\"" + acc.getName() + "\","
+//                        + "\"username\":\"" + acc.getUsername() + "\","
+//                        + "\"phone\":\"" + acc.getPhone() + "\","
+//                        + "\"date_of_birth\":\"" + acc.getDate_of_birth() + "\","
+//                        + "\"role\":\"" + acc.getRole() + "\","
+//                        + "\"status\":\"" + acc.getStatus() + "\","
+//                        + "\"registration_date\":\"" + acc.getRegistration_date() + "\""
+//                        + "}"
+//        );
 
     }
 

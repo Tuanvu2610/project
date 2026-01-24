@@ -46,7 +46,7 @@ public class AddUserController extends HttpServlet {
         acc.setStatus(request.getParameter("status"));
         acc.setPassword(request.getParameter("password"));
         acc.setUsername(request.getParameter("username"));
-        if(ad.existsUsername(user.getUsername())) {
+        if(ad.existsUsername(acc.getUsername())) {
             response.sendRedirect(request.getContextPath() + "/them-tai-khoan?msg=exist");
         }else  {
             if(ad.addUser(acc, user) > 0) {
