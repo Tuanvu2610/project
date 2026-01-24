@@ -5,30 +5,23 @@ import java.time.LocalDate;
 public class User {
     int id;
     String name;
-    String username;
-    String password;
-    String firstname;
-    String lastname;
-    String email;
     LocalDate date_of_birth;
     String phone;
     String sex;
     int address_id;
     String img;
+    String email;
     private String full_address;
 
-    public User(int id, String name, String username, String password, String firstname, String lastname, String email, LocalDate date_of_birth, String phone, String sex, int address_id, String img, String address) {
+    public User(int id, String name, LocalDate date_of_birth, String phone, String sex, int address_id, String img, String email, String address) {
         this.id = id;
         this.name = name;
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
         this.date_of_birth = date_of_birth;
         this.phone = phone;
         this.sex = sex;
         this.address_id = address_id;
         this.img = img;
+        this.email = email;
         this.full_address = full_address;
     }
 
@@ -49,43 +42,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public LocalDate getDate_of_birth() {
@@ -128,6 +84,14 @@ public class User {
         this.img = img;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFull_address() {
         return full_address;
     }
@@ -141,16 +105,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
                 ", date_of_birth=" + date_of_birth +
                 ", phone='" + phone + '\'' +
                 ", sex='" + sex + '\'' +
                 ", address_id=" + address_id +
                 ", img='" + img + '\'' +
+                ", email='" + email + '\'' +
                 ", address=" + full_address +
                 '}';
     }

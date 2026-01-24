@@ -5,14 +5,11 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import vn.edu.nlu.fit.up.dao.CategoryDao;
-import vn.edu.nlu.fit.up.model.Category;
+import vn.edu.nlu.fit.up.model.Account;
 import vn.edu.nlu.fit.up.service.AuthService;
 import vn.edu.nlu.fit.up.model.User;
+import vn.edu.nlu.fit.up.utils.Hash;
 
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
@@ -42,11 +39,12 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String pass = request.getParameter("password");
         AuthService as = new AuthService();
-        User u = as.login(username, pass);
+        String hashPass = Hash.md5(pass);
+        Account acc = as.login(username, hashPass);
 
-        if(u != null){
+        if(acc != null){
             HttpSession session = request.getSession();
-            session.setAttribute("auth", u);
+            session.setAttribute("auth", acc);
             response.sendRedirect("home");
         } else {
             request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng!");
@@ -62,17 +60,16 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("dk_username");
         String password = request.getParameter("dk_pass");
         String confirmPassword = request.getParameter("confirm_pass");
-        String firstname = request.getParameter("firstname");
-        String lastname = request.getParameter("lastname");
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String error = validateRegistration(username, password, confirmPassword, firstname, lastname);
+        String error = validateRegistration(username, password, confirmPassword, name, email);
 
         if (error != null) {
             request.setAttribute("registerError", error);
             request.setAttribute("user", username);
-            request.setAttribute("first", firstname);
-            request.setAttribute("last", lastname);
+            request.setAttribute("name", name);
             request.setAttribute("email", email);
+            request.setAttribute("showSignup", true);
             request.getRequestDispatcher("html/login.jsp").forward(request, response);
             return;
         }
@@ -80,47 +77,52 @@ public class LoginController extends HttpServlet {
         if (as.isUsernameExist(username)) {
             request.setAttribute("registerError", "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.");
             request.setAttribute("user", username);
-            request.setAttribute("first", firstname);
-            request.setAttribute("last", lastname);
+            request.setAttribute("name", name);
             request.setAttribute("email", email);
+            request.setAttribute("showSignup", true);
             request.getRequestDispatcher("html/login.jsp").forward(request, response);
             return;
         }
 
         try {
             User u = new User();
-            u.setUsername(username);
-            u.setPassword(password);
-            u.setFirstname(firstname);
-            u.setLastname(lastname);
-            u.setName(lastname + " " + firstname);
-            u.setEmail("");
+            u.setName(name);
+            u.setEmail(email);
             u.setPhone("");
             u.setSex("male");
             u.setAddress_id(1);
             u.setImg("");
 
-            boolean isRegistered = as.register(u);
+            Account acc = new Account();
+            acc.setUsername(username);
+            acc.setPassword(Hash.md5(password));
+            acc.setRole("user");
+            acc.setStatus("active");
+            acc.setRegistration_date(java.time.LocalDate.now());
 
-            if (isRegistered) {
-                User registeredUser = as.login(username, password);
-                if (registeredUser != null) {
+            boolean success = as.register(acc, u);
+
+            if (success) {
+                Account logged = as.login(username, Hash.md5(password));
+                if (logged != null) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("auth", registeredUser);
+                    session.setAttribute("auth", logged);
                 }
-                response.sendRedirect("home");
+                response.sendRedirect("login");
             } else {
-                request.setAttribute("regiserror", "Đăng ký thất bại. Vui lòng thử lại sau.");
+                request.setAttribute("registerError", "Đăng ký thất bại. Vui lòng thử lại sau.");
                 request.getRequestDispatcher("html/login.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("registerError", "Có lỗi xảy ra trong quá trình đăng ký.");
             request.getRequestDispatcher("html/login.jsp").forward(request, response);
+            request.setAttribute("success", "Đăng ký thành công, vui lòng đăng nhập");
+            request.getRequestDispatcher("html/login.jsp").forward(request, response);
         }
     }
 
-    private String validateRegistration(String username, String password, String confirmPassword, String firstname, String lastname) {
+    private String validateRegistration(String username, String password, String confirmPassword, String name, String email) {
         if (username == null || username.trim().isEmpty()) {
             return "Tên đăng nhập không được để trống";
         }
@@ -130,21 +132,23 @@ public class LoginController extends HttpServlet {
         if (confirmPassword == null || confirmPassword.trim().isEmpty()) {
             return "Xác nhận mật khẩu không được để trống";
         }
+        if (name == null || name.trim().isEmpty()) {
+            return "Tên không được để trống";
+        }
+        if (email == null || email.trim().isEmpty()) {
+            return "Email không được để trống";
+        }
         if (!password.equals(confirmPassword)) {
             return "Mật khẩu và xác nhận mật khẩu không khớp";
         }
-        if (password.length() < 6) {
-            return "Mật khẩu phải có ít nhất 6 ký tự";
+        if (password.length() < 8) {
+            return "Mật khẩu phải có ít nhất 8 ký tự";
         }
-        if (firstname == null || firstname.trim().isEmpty()) {
-            return "Họ không được để trống";
+        if (!username.matches("^[a-zA-Z0-9]+$")) {
+            return "Tên đăng nhập chỉ được chứa chữ cái và số";
         }
-        if (lastname == null || lastname.trim().isEmpty()) {
-            return "Tên không được để trống";
-        }
-        //kiem tra dinh dang cua username
-        if (!username.matches("^[a-zA-Z0-9._]+$")) {
-            return "Tên đăng nhập chỉ được chứa chữ cái, số, dấu chấm và gạch dưới";
+        if (!password.matches("^[a-zA-Z0-9._@]+$")) {
+            return "Mật khẩu chỉ được chứa chữ cái, số, @, dấu chấm, gạch dưới";
         }
         return null;
     }
@@ -163,7 +167,6 @@ public class LoginController extends HttpServlet {
         }
 
         User u = as.findByEmail(email);
-
         if (u == null) {
             request.setAttribute("error", "Email không tồn tại trong hệ thống.");
             request.getRequestDispatcher("html/login.jsp").forward(request, response);
