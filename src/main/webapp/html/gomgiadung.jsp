@@ -18,7 +18,7 @@
 
 <body>
 <!-- header -->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!--body-->
 <section class="main-content item">
     <div class="cover-outstanding cursor">

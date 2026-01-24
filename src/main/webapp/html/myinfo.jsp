@@ -12,7 +12,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!--body-->
 <section class="body-info">
     <div class="container-info">

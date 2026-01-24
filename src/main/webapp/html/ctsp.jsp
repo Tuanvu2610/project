@@ -20,7 +20,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!--body-->
 <section class="cover-all-info">
     <div class="info-container container-sp">

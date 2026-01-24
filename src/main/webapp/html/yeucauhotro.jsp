@@ -180,7 +180,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <section class="page-body">
     <div class="container-page">
         <div class="cover-left-page">

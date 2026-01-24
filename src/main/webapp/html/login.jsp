@@ -14,7 +14,9 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
+
+<!--content-->
 <div class="modal-container active">
     <div id="loginModal" class="modal">
         <div class="modal-content">

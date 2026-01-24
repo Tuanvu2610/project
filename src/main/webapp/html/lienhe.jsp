@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <div class="container">
     <div class="content">
         <h1>LIÊN HỆ</h1>

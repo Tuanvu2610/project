@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!-- content -->
 <form method="post" action="${pageContext.request.contextPath}/thanhtoan">
 <div class="cart-container">
