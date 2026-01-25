@@ -6,17 +6,20 @@ import java.util.List;
 
 public class OrderDao extends BaseDao {
 
-    // ===== LẤY ĐƠN THEO TRẠNG THÁI =====
     public List<Order> getOrdersByStatus(String status) {
 
         String sql = """
-            SELECT o.*,
+            SELECT o.id,
+                   o.user_id,
+                   o.order_date,
+                   o.status,
+                   o.total,
                    COALESCE(SUM(oi.quantity), 0) AS total_quantity
             FROM orders o
             LEFT JOIN order_items oi ON o.id = oi.order_id
             WHERE o.status = :status
-            GROUP BY o.id
-            ORDER BY o.created_at DESC
+            GROUP BY o.id, o.user_id, o.order_date, o.status, o.total
+            ORDER BY o.order_date DESC
         """;
 
         return get().withHandle(handle ->
@@ -27,15 +30,9 @@ public class OrderDao extends BaseDao {
 
                             o.setId(rs.getInt("id"));
                             o.setUserId(rs.getInt("user_id"));
-                            o.setReceiverName(rs.getString("receiver_name"));
-                            o.setReceiverPhone(rs.getString("receiver_phone"));
-                            o.setReceiverAddress(rs.getString("receiver_address"));
-                            o.setTotalAmount(rs.getDouble("total_amount"));
+                            o.setOrderDate(rs.getTimestamp("order_date"));
                             o.setStatus(rs.getString("status"));
-
-                            // ⚠️ CỰC KỲ QUAN TRỌNG
-                            o.setCreatedAt(rs.getTimestamp("created_at"));
-
+                            o.setTotal(rs.getDouble("total"));
                             o.setTotalQuantity(rs.getInt("total_quantity"));
 
                             return o;
@@ -44,8 +41,8 @@ public class OrderDao extends BaseDao {
         );
     }
 
-    // ===== UPDATE TRẠNG THÁI =====
     public void updateStatus(int orderId, String status) {
+
         String sql = "UPDATE orders SET status = :status WHERE id = :id";
 
         get().useHandle(handle ->
@@ -56,16 +53,19 @@ public class OrderDao extends BaseDao {
         );
     }
 
-    // ===== LẤY ĐƠN THEO ID (XEM CHI TIẾT) =====
     public Order getById(int id) {
 
         String sql = """
-            SELECT o.*,
+            SELECT o.id,
+                   o.user_id,
+                   o.order_date,
+                   o.status,
+                   o.total,
                    COALESCE(SUM(oi.quantity), 0) AS total_quantity
             FROM orders o
             LEFT JOIN order_items oi ON o.id = oi.order_id
             WHERE o.id = :id
-            GROUP BY o.id
+            GROUP BY o.id, o.user_id, o.order_date, o.status, o.total
         """;
 
         return get().withHandle(handle ->
@@ -76,12 +76,9 @@ public class OrderDao extends BaseDao {
 
                             o.setId(rs.getInt("id"));
                             o.setUserId(rs.getInt("user_id"));
-                            o.setReceiverName(rs.getString("receiver_name"));
-                            o.setReceiverPhone(rs.getString("receiver_phone"));
-                            o.setReceiverAddress(rs.getString("receiver_address"));
-                            o.setTotalAmount(rs.getDouble("total_amount"));
+                            o.setOrderDate(rs.getTimestamp("order_date"));
                             o.setStatus(rs.getString("status"));
-                            o.setCreatedAt(rs.getTimestamp("created_at"));
+                            o.setTotal(rs.getDouble("total"));
                             o.setTotalQuantity(rs.getInt("total_quantity"));
 
                             return o;

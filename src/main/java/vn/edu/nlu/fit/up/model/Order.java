@@ -7,22 +7,13 @@ public class Order {
 
     private int id;
     private int userId;
-
-    private String receiverName;
-    private String receiverPhone;
-    private String receiverAddress;
-
-    private double totalAmount;
+    private Date orderDate;
+    private double total;
     private int totalQuantity;
-
     private String status;
-    private Date createdAt;
-
     private List<OrderItem> items;
-
     public Order() {
     }
-
 
     public int getId() {
         return id;
@@ -40,36 +31,20 @@ public class Order {
         this.userId = userId;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public String getReceiverPhone() {
-        return receiverPhone;
+    public double getTotal() {
+        return total;
     }
 
-    public void setReceiverPhone(String receiverPhone) {
-        this.receiverPhone = receiverPhone;
-    }
-
-    public String getReceiverAddress() {
-        return receiverAddress;
-    }
-
-    public void setReceiverAddress(String receiverAddress) {
-        this.receiverAddress = receiverAddress;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public int getTotalQuantity() {
@@ -86,14 +61,6 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public List<OrderItem> getItems() {

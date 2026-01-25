@@ -7,7 +7,9 @@ import vn.edu.nlu.fit.up.model.OrderItem;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,15 +30,30 @@ public class OrderDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int orderId = Integer.parseInt(request.getParameter("id"));
+        String idRaw = request.getParameter("id");
+        if (idRaw == null) {
+            response.sendRedirect(request.getContextPath() + "/donhang");
+            return;
+        }
 
-        // Lấy đơn hàng
+        int orderId;
+        try {
+            orderId = Integer.parseInt(idRaw);
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/donhang");
+            return;
+        }
+
         Order order = orderDao.getById(orderId);
+        if (order == null) {
+            response.sendRedirect(request.getContextPath() + "/donhang");
+            return;
+        }
 
-        // Lấy danh sách sản phẩm trong đơn
         List<OrderItem> items = orderItemDao.getItemsByOrderId(orderId);
         order.setItems(items);
 
+        // 4️⃣ Đẩy dữ liệu sang JSP
         request.setAttribute("order", order);
         request.setAttribute("items", items);
 

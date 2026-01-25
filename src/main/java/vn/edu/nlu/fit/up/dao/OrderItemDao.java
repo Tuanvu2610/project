@@ -1,6 +1,5 @@
 package vn.edu.nlu.fit.up.dao;
 
-import vn.edu.nlu.fit.up.dao.BaseDao;
 import vn.edu.nlu.fit.up.model.OrderItem;
 
 import java.util.List;
@@ -10,7 +9,13 @@ public class OrderItemDao extends BaseDao {
     public List<OrderItem> getItemsByOrderId(int orderId) {
 
         String sql = """
-            SELECT oi.*, p.name AS product_name
+            SELECT 
+                oi.id,
+                oi.order_id,
+                oi.product_id,
+                oi.quantity,
+                oi.price,
+                p.name AS product_name
             FROM order_items oi
             JOIN products p ON oi.product_id = p.id
             WHERE oi.order_id = :orderId

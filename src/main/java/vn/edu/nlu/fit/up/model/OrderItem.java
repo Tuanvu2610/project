@@ -5,13 +5,11 @@ public class OrderItem {
     private int id;
     private int orderId;
     private int productId;
-
     private String productName;
     private int quantity;
     private double price;
 
-    public OrderItem() {
-    }
+    public OrderItem() {}
 
     public int getId() {
         return id;

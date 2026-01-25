@@ -3,16 +3,16 @@ package vn.edu.nlu.fit.up.controller;
 import vn.edu.nlu.fit.up.dao.OrderDao;
 import vn.edu.nlu.fit.up.dao.OrderItemDao;
 import vn.edu.nlu.fit.up.model.Order;
+import vn.edu.nlu.fit.up.model.OrderItem;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import vn.edu.nlu.fit.up.model.OrderItem;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/order")
+@WebServlet("/donhang")
 public class OrderController extends HttpServlet {
 
     private OrderDao orderDao;
@@ -27,6 +27,7 @@ public class OrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String detailId = request.getParameter("detailId");
         if (detailId != null) {
             int orderId = Integer.parseInt(detailId);
@@ -42,9 +43,9 @@ public class OrderController extends HttpServlet {
             return;
         }
 
-        List<Order> pendingOrders = orderDao.getOrdersByStatus("CHUA_GIAO");
-        List<Order> shippingOrders = orderDao.getOrdersByStatus("DANG_VAN_CHUYEN");
-        List<Order> doneOrders = orderDao.getOrdersByStatus("DA_GIAO");
+        List<Order> pendingOrders  = orderDao.getOrdersByStatus("pending");     // Chưa giao
+        List<Order> shippingOrders = orderDao.getOrdersByStatus("processing");  // Đang vận chuyển
+        List<Order> doneOrders     = orderDao.getOrdersByStatus("completed");   // Đã giao
 
         request.setAttribute("pendingOrders", pendingOrders);
         request.setAttribute("shippingOrders", shippingOrders);
@@ -61,19 +62,21 @@ public class OrderController extends HttpServlet {
 
         String orderIdRaw = request.getParameter("orderId");
         String action = request.getParameter("action");
+
         if (orderIdRaw != null && action != null) {
             int orderId = Integer.parseInt(orderIdRaw);
 
             switch (action) {
                 case "CONFIRM":
-                    orderDao.updateStatus(orderId, "DANG_VAN_CHUYEN");
+                    orderDao.updateStatus(orderId, "processing");
                     break;
 
                 case "CANCEL":
-                    orderDao.updateStatus(orderId, "DA_HUY");
+                    orderDao.updateStatus(orderId, "cancelled");
                     break;
             }
         }
+
         response.sendRedirect(request.getContextPath() + "/donhang");
     }
 }

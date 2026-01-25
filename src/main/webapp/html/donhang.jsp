@@ -375,15 +375,22 @@
                         <td>${o.id}</td>
 
                         <td class="item-name">
-                            <a href="${pageContext.request.contextPath}/order-detail?id${o.id}">Xem chi tiết</a>
+                            <a href="${pageContext.request.contextPath}/order-detail?id=${o.id}">
+                                Xem chi tiết
+                            </a>
                         </td>
+
                         <td class="center">${o.totalQuantity}</td>
+
                         <td class="money">
-                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                            <fmt:formatNumber value="${o.total}" type="number"/>đ
                         </td>
-                        <td class="receiver">${o.receiverName}</td>
+
+                        <!-- DB chưa có người nhận → để trống, KHÔNG đổi text -->
+                        <td class="receiver"></td>
+
                         <td class="center">
-                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                            <fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy"/>
                         </td>
 
                         <td class="status">
@@ -393,22 +400,18 @@
                             </button>
 
                             <div class="action-menu">
-
-                                <!-- CONFIRM -->
-                                <form action="${pageContext.request.contextPath}/order" method="post">
+                                <form action="${pageContext.request.contextPath}/donhang" method="post">
                                     <input type="hidden" name="orderId" value="${o.id}">
                                     <input type="hidden" name="action" value="CONFIRM">
                                     <button type="submit" class="btn-confirm">✔ Xác nhận</button>
                                 </form>
 
-                                <!-- CANCEL -->
-                                <form action="${pageContext.request.contextPath}/order" method="post">
+                                <form action="${pageContext.request.contextPath}/donhang" method="post">
                                     <input type="hidden" name="orderId" value="${o.id}">
                                     <input type="hidden" name="action" value="CANCEL">
                                     <input type="text" name="reason" placeholder="Lý do hủy...">
                                     <button type="submit" class="btn-cancel">✖ Hủy</button>
                                 </form>
-
                             </div>
                         </td>
                     </tr>
@@ -420,19 +423,25 @@
                 <c:forEach var="o" items="${shippingOrders}">
                     <tr>
                         <td>${o.id}</td>
+
                         <td class="item-name">
                             <a href="${pageContext.request.contextPath}/order-detail?id=${o.id}">
                                 Xem chi tiết
                             </a>
                         </td>
+
                         <td class="center">${o.totalQuantity}</td>
+
                         <td class="money">
-                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                            <fmt:formatNumber value="${o.total}" type="number"/>đ
                         </td>
-                        <td class="receiver">${o.receiverName}</td>
+
+                        <td class="receiver"></td>
+
                         <td class="center">
-                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                            <fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy"/>
                         </td>
+
                         <td><span class="status shipping">Đang giao</span></td>
                     </tr>
                 </c:forEach>
@@ -443,19 +452,25 @@
                 <c:forEach var="o" items="${doneOrders}">
                     <tr>
                         <td>${o.id}</td>
+
                         <td class="item-name">
                             <a href="${pageContext.request.contextPath}/order-detail?id=${o.id}">
                                 Xem chi tiết
                             </a>
                         </td>
+
                         <td class="center">${o.totalQuantity}</td>
+
                         <td class="money">
-                            <fmt:formatNumber value="${o.totalAmount}" type="number"/>đ
+                            <fmt:formatNumber value="${o.total}" type="number"/>đ
                         </td>
-                        <td class="receiver">${o.receiverName}</td>
+
+                        <td class="receiver"></td>
+
                         <td class="center">
-                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                            <fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy"/>
                         </td>
+
                         <td><span class="status done">Đã giao</span></td>
                     </tr>
                 </c:forEach>

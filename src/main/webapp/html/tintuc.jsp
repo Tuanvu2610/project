@@ -1,103 +1,72 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Gốm sứ NÔNG LÂM</title>
-    <link rel="stylesheet" href="../css/tintuc.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Tin tức | Gốm sứ NÔNG LÂM</title>
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tintuc.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<!--header-->
+
+<!-- HEADER -->
 <jsp:include page="/common/header.jsp"/>
-<!-- content -->
-<!-- Banner -->
-<section class="banner">
-    <img src="https://gomsubattrang.com/Images/SanPham/sqp-bo-am-men-ran-bit-dong.jpg" alt="Banner Tin Tức">
-    <div class="banner-text">
-        <h1>Ấm Chén Bát Tràng</h1>
+
+<!-- ===== BANNER ===== -->
+<section class="news-banner">
+    <img src="https://gomsubattrang.com/Images/SanPham/sqp-bo-am-men-ran-bit-dong.jpg"
+         alt="Tin tức Gốm Sứ">
+    <div class="news-banner-text">
+        <h1>Tin tức Gốm Sứ</h1>
     </div>
 </section>
 
-<!-- Bản tin -->
-<section class="news-grid">
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
+<!-- ===== CONTENT CONTAINER ===== -->
+<div class="page-container">
+    <section class="news-wrapper">
+        <div class="news-grid">
+            <c:forEach var="n" items="${newsList}">
+                <article class="news-card">
+                    <a href="${pageContext.request.contextPath}/tintuc?id=${n.id}">
+                        <img src="${n.img}" alt="${n.title}">
+                    </a>
+                    <div class="news-info">
+                        <h3>
+                            <a href="${pageContext.request.contextPath}/tintuc?id=${n.id}">
+                                    ${n.title}
+                            </a>
+                        </h3>
+                        <p>
+                            <c:choose>
+                                <c:when test="${fn:length(n.content) > 130}">
+                                    ${fn:substring(n.content, 0, 130)}...
+                                </c:when>
+                                <c:otherwise>
+                                    ${n.content}
+                                </c:otherwise>
+                            </c:choose>
+                        </p>
+                        <a class="read-more"
+                           href="${pageContext.request.contextPath}/tintuc?id=${n.id}">
+                            Xem chi tiết →
+                        </a>
+                    </div>
+                </article>
+            </c:forEach>
         </div>
-    </div>
+    </section>
+</div>
 
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://sangom.vn/wp-content/uploads/2025/09/qua-tang-sep-cap-tren-tai-da-nang-66.jpg" alt="Tin tức 1">
-        <div class="news-info">
-            <h3>Địa chỉ mua quà tặng sếp, lãnh đạo, cấp trên tại Đà Nẵng</h3>
-            <p>Đến ngay cửa hàng Không Gian Gốm Đà Nẵng tại 250 đường 2/9 để chọn quà gốm sứ cao cấp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://topaz.vn/wp-content/uploads/2022/02/cua-hang-qua-tang-luu-niem-tai-da-nang-5.jpg" alt="Tin tức 2">
-        <div class="news-info">
-            <h3>Cửa hàng bán quà tặng khai trương tại Đà Nẵng</h3>
-            <p>Tại showroom Không Gian Gốm Đà Nẵng, chúng tôi hiểu rằng món quà phù hợp là khởi đầu tốt đẹp...</p>
-        </div>
-    </div>
-
-    <div class="news-card">
-        <img src="https://tangquatangia.com/public/uploads//images/qua-tan-gia%20(40).jpg" alt="Tin tức 3">
-        <div class="news-info">
-            <h3>Mua quà tặng tân gia tại Đà Nẵng: Quà gốm sứ ý nghĩa và đẳng cấp</h3>
-            <p>Tại Đà Nẵng, cửa hàng Không Gian Gốm là địa chỉ chuyên quà tặng tân gia uy tín với nhiều mẫu mã...</p>
-        </div>
-    </div>
-</section>
-
-<!--footer-->
+<!-- FOOTER -->
 <jsp:include page="/common/footer.jsp"/>
-<script src="../js/javascript.js"></script>
+
 </body>
 </html>
