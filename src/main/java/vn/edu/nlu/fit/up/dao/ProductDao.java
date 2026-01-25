@@ -161,7 +161,6 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
-
 //    static void main() {
 //        ProductDao dao = new ProductDao();
 //        int i = dao.totalProductSold(5);
