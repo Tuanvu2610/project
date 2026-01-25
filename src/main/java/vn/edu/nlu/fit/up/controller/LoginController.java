@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+import vn.edu.nlu.fit.up.dao.AccountDao;
 import vn.edu.nlu.fit.up.model.Account;
 import vn.edu.nlu.fit.up.service.AuthService;
 import vn.edu.nlu.fit.up.model.User;
@@ -44,7 +45,9 @@ public class LoginController extends HttpServlet {
 
         if(acc != null){
             HttpSession session = request.getSession();
-            session.setAttribute("auth", acc);
+            AccountDao ad = new AccountDao();
+            Account fullAcc = ad.getAccountByUserId(acc.getUser_id());
+            session.setAttribute("auth", fullAcc);
             response.sendRedirect("home");
         } else {
             request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng!");

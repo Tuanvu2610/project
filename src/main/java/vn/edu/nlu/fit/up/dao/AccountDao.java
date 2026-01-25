@@ -1,8 +1,9 @@
 package vn.edu.nlu.fit.up.dao;
 import vn.edu.nlu.fit.up.model.Account;
 import vn.edu.nlu.fit.up.model.User;
-
 import java.util.List;
+import java.sql.Date;
+
 
 public class AccountDao extends BaseDao{
     public List<Account> getAccount() {
@@ -11,31 +12,86 @@ public class AccountDao extends BaseDao{
     public int totalAccount() {
         return get().withHandle(h ->  h.createQuery("SELECT * FROM accounts").mapToBean(Account.class).list().size());
     }
-    public int getAccountByStatus(String status) {
+    public int countAccountByStatus(String status) {
         return get().withHandle(h ->
-                h.createQuery("SELECT * FROM accounts WHERE status like :status")
-                        .bind("status", "%" + status + "%")
-                        .mapToBean(Account.class)
-                        .list().size()
+                h.createQuery(
+                                "SELECT COUNT(*) FROM accounts WHERE status = :status"
+                        )
+                        .bind("status", status)
+                        .mapTo(Integer.class)
+                        .one()
         );
     }
-    public Account getAccountById(int id) {
-        return get().withHandle(handle ->
-                handle.createQuery("SELECT a.*, u.phone, u.date_of_birth FROM accounts a join users u on a.user_id = u.id WHERE a.id = :id")
+    public Account getAccountByUserId(int id) {
+        String sql = """
+        SELECT
+            a.id            AS acc_id,
+            a.user_id,
+            a.username,
+            a.password,
+            a.role,
+            a.status,
+            a.registration_date,
+            u.id            AS user_id_u,
+            u.name,
+            u.phone,
+            u.email,
+            u.sex,
+            u.address_id,
+            u.img,
+            u.date_of_birth
+        FROM accounts a
+        JOIN users u ON a.user_id = u.id
+        WHERE u.id = :id
+    """;
+
+        return get().withHandle(h ->
+                h.createQuery(sql)
                         .bind("id", id)
-                        .mapToBean(Account.class)
+                        .map((rs, ctx) -> {
+                            Account acc = new Account();
+                            acc.setId(rs.getInt("acc_id"));
+                            acc.setUser_id(rs.getInt("user_id"));
+                            acc.setUsername(rs.getString("username"));
+                            acc.setPassword(rs.getString("password"));
+                            acc.setRole(rs.getString("role"));
+                            acc.setStatus(rs.getString("status"));
+
+                            acc.setRegistration_date(
+                                    rs.getDate("registration_date").toLocalDate()
+                            );
+
+                            User user = new User();
+                            user.setId(rs.getInt("user_id_u"));
+                            user.setName(rs.getString("name"));
+                            user.setPhone(rs.getString("phone"));
+                            user.setEmail(rs.getString("email"));
+                            user.setSex(rs.getString("sex"));
+                            user.setAddress_id(rs.getInt("address_id"));
+                            user.setImg(rs.getString("img"));
+                            Date dob = rs.getDate("date_of_birth");
+                            if (dob != null) {
+                                user.setDate_of_birth(dob.toLocalDate());
+                            }
+                            acc.setUser(user);
+
+                            return acc;
+                        })
                         .findOne()
                         .orElse(null)
         );
     }
+
+
     public List<Account> getAccountByPage(int page, int pageSize) {
         int offset = (page - 1) * pageSize;
 
         return get().withHandle(h ->
                 h.createQuery("""
-            SELECT * FROM accounts
-            ORDER BY id DESC
-            LIMIT :limit OFFSET :offset
+           SELECT a.*, u.name, u.date_of_birth, u.phone, u.sex, u.address_id, u.img, u.email
+           FROM accounts a
+           JOIN users u on a.user_id = u.id
+          LIMIT :limit OFFSET :offset
         """)
                         .bind("limit", pageSize)
                         .bind("offset", offset)

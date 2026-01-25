@@ -10,8 +10,9 @@ public class Account {
     private String role;
     private String status;
     private LocalDate registration_date;
+    private User user;
 
-    public Account(int id, int user_id, String username, String password, String role, LocalDate registration_date, String status) {
+    public Account(int id, int user_id, String username, String password, String role, LocalDate registration_date, String status, User user) {
         this.id = id;
         this.user_id = user_id;
         this.username = username;
@@ -19,6 +20,7 @@ public class Account {
         this.role = role;
         this.registration_date = registration_date;
         this.status = status;
+        this.user = user;
     }
 
     public Account() {
@@ -79,4 +81,11 @@ public class Account {
     public void setRegistration_date(LocalDate registration_date) {
         this.registration_date = registration_date;
     }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

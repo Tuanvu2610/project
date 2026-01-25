@@ -23,9 +23,9 @@ public class AddUserController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AccountDao ad = new AccountDao();
         request.setAttribute("totalAcc", ad.totalAccount());
-        request.setAttribute("totalActive", ad.getAccountByStatus("active"));
-        request.setAttribute("totalPending",  ad.getAccountByStatus("pending"));
-        request.setAttribute("totalBanned",  ad.getAccountByStatus("banned"));
+        request.setAttribute("totalActive", ad.countAccountByStatus("active"));
+        request.setAttribute("totalPending",  ad.countAccountByStatus("pending"));
+        request.setAttribute("totalBanned",  ad.countAccountByStatus("banned"));
         request.getRequestDispatcher("/html/addUser.jsp").forward(request, response);
     }
 

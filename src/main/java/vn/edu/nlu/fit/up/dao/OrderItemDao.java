@@ -32,4 +32,20 @@ public class OrderItemDao extends BaseDao {
                         .list()
         );
     }
+    public void insert(int orderId, int productId, int quantity, double price) {
+
+        String sql = """
+        INSERT INTO order_details (order_id, product_id, quantity, price)
+        VALUES (:orderId, :productId, :quantity, :price)
+    """;
+
+        get().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("orderId", orderId)
+                        .bind("productId", productId)
+                        .bind("quantity", quantity)
+                        .bind("price", price)
+                        .execute()
+        );
+    }
 }

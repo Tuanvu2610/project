@@ -35,9 +35,9 @@ public class QuanLyAccountController extends HttpServlet {
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("totalAcc", total);
-        request.setAttribute("totalActive", ad.getAccountByStatus("active"));
-        request.setAttribute("totalPending",  ad.getAccountByStatus("pending"));
-        request.setAttribute("totalBanned",  ad.getAccountByStatus("banned"));
+        request.setAttribute("totalActive", ad.countAccountByStatus("active"));
+        request.setAttribute("totalPending",  ad.countAccountByStatus("pending"));
+        request.setAttribute("totalBanned",  ad.countAccountByStatus("banned"));
         request.getRequestDispatcher("/html/quanlyaccount.jsp").forward(request, response);
 
     }

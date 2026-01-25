@@ -5,6 +5,9 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.nlu.fit.up.cart.Cart;
 import vn.edu.nlu.fit.up.cart.CartItem;
+import vn.edu.nlu.fit.up.dao.AuthDao;
+import vn.edu.nlu.fit.up.model.Account;
+import vn.edu.nlu.fit.up.model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +18,22 @@ public class ThanhtoanConTroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        AuthDao addressDao = new AuthDao();
+        String fullAddress = null;
+        Account acc = (Account) session.getAttribute("auth");
+        if (acc == null || acc.getUser() == null) {
+            response.sendRedirect("login");
+            return;
+        }
+
+        User user = acc.getUser();
+
+        if (user.getAddress_id() > 0) {
+            fullAddress = addressDao.findById(user.getAddress_id());
+        }
+
+        request.setAttribute("fullAddress", fullAddress);
 
         request.getRequestDispatcher("/html/thanhtoan.jsp")
                 .forward(request, response);

@@ -65,6 +65,20 @@ public class AuthDao extends BaseDao {
                 .bind("email", email)
                 .mapToBean(User.class).findFirst().orElse(null));
     }
+    public String findById(int id) {
+        return get().withHandle(h ->
+                h.createQuery("""
+            SELECT full_address
+            FROM addresses
+            WHERE id = :id
+            """)
+                        .bind("id", id)
+                        .mapTo(String.class)
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
+
 
     static void main() {
         AuthDao authDao = new AuthDao();
