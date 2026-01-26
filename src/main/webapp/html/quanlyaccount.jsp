@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/quanly.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!--body-->
 <section class="container-quanly">
     <div class="sidebar">
@@ -131,9 +130,9 @@
                 </thead>
                 <tbody>
                 <c:forEach var="p" items="${listAcc}" varStatus="st">
-                    <tr class="view" data-id="${p.id}">
+                    <tr class="view" data-id="${p.user_id}">
                         <td>${st.index + 1 + 10 * (currentPage - 1)}</td>
-                        <td>${p.name}</td>
+                        <td>${p.user.name}</td>
                         <td>${p.username}</td>
                         <td><span class="role admin">${p.role}</span></td>
                         <td><span class="status ${p.status}">${p.status}</span></td>
@@ -255,29 +254,50 @@
 <jsp:include page="/common/footer.jsp"/>
 <script>
     let currentAcc = null;
-    document.querySelectorAll('.view').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const id = this.dataset.id;
 
-            fetch('${pageContext.request.contextPath}/account-detail?id=' + id)
+    document.querySelectorAll('.view').forEach(row => {
+        row.addEventListener('click', function () {
+            const userId = this.dataset.id;
+
+            fetch('${pageContext.request.contextPath}/account-detail?id=' + userId)
                 .then(res => res.json())
                 .then(acc => {
                     currentAcc = acc;
+
                     document.getElementById('name').innerText = acc.name;
-                    document.getElementById('email').innerText = acc.username;
+                    document.getElementById('email').innerText = acc.email;
                     document.getElementById('phone').innerText = acc.phone;
                     document.getElementById('birthday').innerText = acc.date_of_birth;
-                    document.getElementById('role').innerText = acc.role.toUpperCase();
                     document.getElementById('role2').innerText = acc.role;
                     document.getElementById('status').innerText = acc.status;
                     document.getElementById('date').innerText = acc.registration_date;
                     document.getElementById('delete-id').value = acc.user_id;
-                    document.querySelector('.overlay').style.display = 'block';
+
+                    document.querySelector('.overlay-view').style.display = 'block';
                 });
         });
     });
 
+    function openEdit() {
+        document.querySelector('.overlay-view').style.display = 'none';
+        document.querySelector('.overlay-edit').style.display = 'block';
+
+        document.getElementById("edit-id").value = currentAcc.user_id;
+        document.getElementById('name-id').innerText = currentAcc.name;
+        document.getElementById('edit-phone').value = currentAcc.phone;
+        document.getElementById('edit-email').value = currentAcc.email;
+        document.getElementById('edit-birthday').value = currentAcc.date_of_birth;
+        document.getElementById('edit-role').value = currentAcc.role;
+        document.getElementById('edit-status').value = currentAcc.status;
+        document.getElementById('date-edit').innerText = currentAcc.registration_date;
+    }
+
+    document.querySelectorAll('.exit-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelector('.overlay-view').style.display = 'none';
+            document.querySelector('.overlay-edit').style.display = 'none';
+        });
+    });
     setTimeout(() => {
         const thongbao = document.querySelector('.thongbao');
         if (thongbao) thongbao.style.display = 'none';
@@ -290,21 +310,6 @@
 
         window.history.replaceState({}, document.title, url.pathname + url.search);
     }
-    function openEdit() {
-        document.querySelector('.overlay-view').style.display = 'none';
-        document.querySelector('.overlay-edit').style.display = 'block';
-        document.getElementById("edit-id").value = currentAcc.user_id;
-        document.getElementById('name-id').innerText = currentAcc.name;
-        document.getElementById('edit-phone').value = currentAcc.phone;
-        document.getElementById('edit-email').value = currentAcc.username;
-        document.getElementById('edit-birthday').value = currentAcc.date_of_birth;
-        document.getElementById('edit-role').value = currentAcc.role;
-        document.getElementById('edit-status').value = currentAcc.status;
-        document.getElementById('date-edit').innerText = currentAcc.registration_date;
-    }
-    document.querySelector('.exit-btn').addEventListener('click', () => {
-        document.querySelector('.overlay').style.display = 'none';
-    });
 </script>
 
 </body>

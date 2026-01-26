@@ -21,7 +21,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!--body-->
 <section class="container-quanly">
   <div class="sidebar">
@@ -178,8 +178,8 @@
           </div>
 
           <div class="form-actions">
-            <a href="/quan-ly-account" class="btn btn-cancel">Hủy bỏ</a>
-            <button type="submit" class="btn btn-save">
+            <a href="/quan-ly-account" class="btn-style btn-cancel">Hủy bỏ</a>
+            <button type="submit" class="btn-style btn-save">
               <i class="fa fa-save"></i> Lưu tài khoản
             </button>
           </div>

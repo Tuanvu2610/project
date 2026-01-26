@@ -32,12 +32,12 @@
         <div class="user">
           <button class="btn-header">
             <i class="fas fa-user"></i>
-            <span class="username">Xin chào, ${sessionScope.auth.name}</span>
+            <span class="username">Xin chào, ${sessionScope.auth.user.name}</span>
             <i class="fas fa-caret-down"></i>
           </button>
           <div class="user-menu">
             <a href="tai-khoan">Tài khoản</a>
-            <a href="orders">Đơn hàng</a>
+            <a href="TrangThaiDon">Đơn hàng</a>
             <a href="logout">Đăng xuất</a>
           </div>
         </div>

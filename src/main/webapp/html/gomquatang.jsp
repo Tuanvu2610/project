@@ -17,7 +17,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!-- content -->
 <section id="main-quatang" class="content item">
     <div class="description">

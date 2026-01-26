@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,104 +33,48 @@
         </div>
         <div class="cover-right-page">
             <div class="title-page">
-                <p>Trạng thái đơn hàng của tôi</p>
+                <p>Quản lý đơn hàng</p>
             </div>
-            <ul class="list-page">
-                <li class="tab" data-target="all">Tất cả</li>
-                <li class="tab" data-target="dagiao">Đã giao</li>
-                <li class="tab" data-target="chuagiao">Chưa giao</li>
-                <li class="tab" data-target="huy">Đã hủy</li>
-            </ul>
+
+            <div class="list-page">
+                <a href="TrangThaiDon?status=all">Tất cả</a>
+                <a href="TrangThaiDon?status=pending">Chưa giao</a>
+                <a href="TrangThaiDon?status=processing">Đang giao</a>
+                <a href="TrangThaiDon?status=completed">Đã giao</a>
+                <a href="TrangThaiDon?status=cancelled">Đã huỷ</a>
+            </div>
+
             <div class="all-products">
-                <div class="table-container item"  id="all">
-                    <table>
-                        <thead class="title-table ">
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Tổng tiền</th>
-                            <th>Trạng thái</th>
-                        </tr>
-                        </thead>
-                        <tbody >
-                        <tr >
-                            <td>#001</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>1.000.000</td>
-                            <td><span class="status dagiao">Đã giao</span></td>
-                        </tr>
-                        <tr>
-                            <td>#002</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>5.000.000</td>
-                            <td><span class="status chuagiao">Chưa giao</span></td>
-                        </tr>
-                        <tr>
-                            <td>#003</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>600.000</td>
-                            <td><span class="status huy">Đã hủy</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-container item" id="dagiao" style="display: none">
+                <div class="table-container item active" id="all">
                     <table>
                         <thead class="title-table">
                         <tr>
-                            <th>Mã sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
+                            <th>Mã đơn</th>
+                            <th class="text-left">Tên sản phẩm</th>
+                            <th class="text-right">Tổng tiền</th>
+                            <th class="text-center">Trạng thái</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>#001</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>01</td>
-                            <td><span class="status dagiao">Đã giao</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-container item" id="chuagiao" style="display: none">
-                    <table>
-                        <thead class="title-table">
-                        <tr>
-                            <th>Mã sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>#002</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>02</td>
-                            <td><span class="status chuagiao">Chưa giao</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-container item" id="huy" style="display: none">
-                    <table>
-                        <thead class="title-table">
-                        <tr>
-                            <th>Mã sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>#003</td>
-                            <td>Bộ Bình Rượu Gốm Sứ Sóng Vàng Biển Xanh</td>
-                            <td>01</td>
-                            <td><span class="status huy">Đã hủy</span></td>
-                        </tr>
+                        <c:forEach items="${orders}" var="o">
+                            <tr>
+                                <td class="code">#${o.id}</td>
+                                <td class="name-pro">Đơn hàng #${o.id}</td>
+                                <td class="price text-right">
+                                    <fmt:formatNumber value="${o.totalAmount}" groupingUsed="true"/>₫
+                                </td>
+                                <td class="text-center">
+                                <span class="status ${o.status}">
+                                    <c:choose>
+                                        <c:when test="${o.status == 'pending'}">Chưa giao</c:when>
+                                        <c:when test="${o.status == 'processing'}">Đang giao</c:when>
+                                        <c:when test="${o.status == 'completed'}">Đã giao</c:when>
+                                        <c:when test="${o.status == 'cancelled'}">Đã hủy</c:when>
+                                    </c:choose>
+                                </span>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

@@ -16,28 +16,53 @@ import java.time.LocalDate;
 @WebServlet(name = "AccountDetailController", value = "/account-detail")
 public class AccountDetailController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        AccountDao ad = new AccountDao();
-        Account acc = ad.getAccountById(id);
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        response.getWriter().write(
-                "{"
-                        + "\"id\":" + acc.getId() + ","
-                        + "\"user_id\":\"" + acc.getUser_id() + "\","
-                        + "\"name\":\"" + acc.getName() + "\","
-                        + "\"username\":\"" + acc.getUsername() + "\","
-                        + "\"phone\":\"" + acc.getPhone() + "\","
-                        + "\"date_of_birth\":\"" + acc.getDate_of_birth() + "\","
-                        + "\"role\":\"" + acc.getRole() + "\","
-                        + "\"status\":\"" + acc.getStatus() + "\","
-                        + "\"registration_date\":\"" + acc.getRegistration_date() + "\""
-                        + "}"
-        );
+        try {
+            String idRaw = request.getParameter("id");
+            System.out.println(">>> account-detail id = " + idRaw);
 
+            int id = Integer.parseInt(idRaw);
+
+            AccountDao ad = new AccountDao();
+            System.out.println("ID nhận được = " + id);
+            Account acc = ad.getAccountByUserId(id);
+
+            if (acc == null || acc.getUser() == null) {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                response.getWriter().write("{\"error\":\"Account not found\"}");
+                return;
+            }
+            String birthday = acc.getUser().getDate_of_birth() == null
+                    ? ""
+                    : acc.getUser().getDate_of_birth().toString();
+
+            String phone = acc.getUser().getPhone() == null
+                    ? ""
+                    : acc.getUser().getPhone();
+
+            response.getWriter().write(
+                    "{"
+                            + "\"id\":" + acc.getId() + ","
+                            + "\"user_id\":" + acc.getUser_id() + ","
+                            + "\"name\":\"" + acc.getUser().getName() + "\","
+                            + "\"username\":\"" + acc.getUsername() + "\","
+                            + "\"email\":\"" +acc.getUser().getEmail() + "\","
+                            + "\"phone\":\"" +phone+ "\","
+                            + "\"date_of_birth\":\"" + birthday + "\","
+                            + "\"role\":\"" + acc.getRole() + "\","
+                            + "\"status\":\"" + acc.getStatus() + "\","
+                            + "\"registration_date\":\"" + acc.getRegistration_date() + "\""
+                            + "}"
+            );
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.setStatus(500);
+            response.getWriter().write("{\"error\":\"server error\"}");
+        }
     }
 
     @Override

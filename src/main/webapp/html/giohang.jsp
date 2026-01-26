@@ -16,72 +16,72 @@
 <jsp:include page="/common/header.jsp"/>
 <!-- content -->
 <form method="post" action="${pageContext.request.contextPath}/thanhtoan">
-<div class="cart-container">
-    <!-- SẢN PHẨM -->
-    <section class="cart-items">
-        <h2>SẢN PHẨM</h2>
-        <table  class="cart-header">
-            <thead>
-            <tr>
-                <th style="width:40px"><input type="checkbox" id="checkall"></th>
-                <th>SẢN PHẨM</th>
-                <th>GIÁ</th>
-                <th>SỐ LƯỢNG</th>
-                <th>TẠM TÍNH</th>
-                <th style="width:40px"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${sessionScope.cart.items}" var="ci">
-                <tr class="cart-item" id="row-${ci.product.id}">
-                    <td>
-                        <input type="checkbox" name="checkedIds" value="${ci.product.id}" data-id="${ci.product.id}" class="select-product" ${ci.checked ? "checked" : ""}>
-                    </td>
-                    <td class="product-info">
-                        <img src="${ci.product.img}" alt="" width="80">
-                        <div class="product-details">
-                            <strong>${ci.product.name}</strong>
-                        </div>
-                    </td>
-                    <td class="price">
-                        <fmt:formatNumber value="${ci.product.price_sale}" groupingUsed="true"/>₫
-                    </td>
-                    <td class="quantity">
-                        <button type="button" class="qty-btn tru" data-id="${ci.product.id}">-</button>
-                        <input type="text" value="${ci.quantity}" class="qty-input" id="qty-${ci.product.id}">
-                        <button type="button" class="qty-btn cong" data-id="${ci.product.id}">+</button>
-                    </td>
-
-                    <td class="subtotal">
-                        <fmt:formatNumber value="${ci.quantity * ci.product.price_sale}" groupingUsed="true"/>₫
-                    </td>
-                    <td class="btn-remove">
-                        <button type="button" class="qty-btn remove" data-id="${ci.product.id}"><i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td>
+    <div class="cart-container">
+        <!-- SẢN PHẨM -->
+        <section class="cart-items">
+            <h2>SẢN PHẨM</h2>
+            <table  class="cart-header">
+                <thead>
+                <tr>
+                    <th style="width:40px"><input type="checkbox" id="checkall"></th>
+                    <th>SẢN PHẨM</th>
+                    <th>GIÁ</th>
+                    <th>SỐ LƯỢNG</th>
+                    <th>TẠM TÍNH</th>
+                    <th style="width:40px"></th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </section>
-    <!-- THÀNH TIỀN-->
-    <aside class="cart-summary">
-        <h2>TỔNG CỘNG GIỎ HÀNG</h2>
-        <div class="summary-row">
-            <span>Tạm tính</span>
-            <span id="subtotal">
+                </thead>
+                <tbody>
+                <c:forEach items="${sessionScope.cart.items}" var="ci">
+                    <tr class="cart-item" id="row-${ci.product.id}">
+                        <td>
+                            <input type="checkbox" name="checkedIds" value="${ci.product.id}" data-id="${ci.product.id}" class="select-product" ${ci.checked ? "checked" : ""}>
+                        </td>
+                        <td class="product-info">
+                            <img src="${ci.product.img}" alt="" width="80">
+                            <div class="product-details">
+                                <strong>${ci.product.name}</strong>
+                            </div>
+                        </td>
+                        <td class="price">
+                            <fmt:formatNumber value="${ci.product.price_sale}" groupingUsed="true"/>₫
+                        </td>
+                        <td class="quantity">
+                            <button type="button" class="qty-btn tru" data-id="${ci.product.id}">-</button>
+                            <input type="text" value="${ci.quantity}" class="qty-input" id="qty-${ci.product.id}">
+                            <button type="button" class="qty-btn cong" data-id="${ci.product.id}">+</button>
+                        </td>
+
+                        <td class="subtotal">
+                            <fmt:formatNumber value="${ci.quantity * ci.product.price_sale}" groupingUsed="true"/>₫
+                        </td>
+                        <td class="btn-remove">
+                            <button type="button" class="qty-btn remove" data-id="${ci.product.id}"><i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </section>
+        <!-- THÀNH TIỀN-->
+        <aside class="cart-summary">
+            <h2>TỔNG CỘNG GIỎ HÀNG</h2>
+            <div class="summary-row">
+                <span>Tạm tính</span>
+                <span id="subtotal">
                 <fmt:formatNumber value="${sessionScope.cart.total}" groupingUsed="true"/>₫
             </span>
-        </div>
-        <div class="summary-row total">
-            <span>Tổng cộng</span>
-            <span id="total"><b>
+            </div>
+            <div class="summary-row total">
+                <span>Tổng cộng</span>
+                <span id="total"><b>
                 <fmt:formatNumber value="${sessionScope.cart.total}" groupingUsed="true"/>₫</b>
             </span>
-        </div>
-      <button type="submit" class="checkout-btn">Tiến hành thanh toán</button>
-    </aside>
-</div>
+            </div>
+            <a href="thanhtoan"><button type="submit" class="checkout-btn">Tiến hành thanh toán</button></a>
+        </aside>
+    </div>
 </form>
 
 

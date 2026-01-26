@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!-- body -->
 <section class="info-home">
     <div class="left-pageinfo">

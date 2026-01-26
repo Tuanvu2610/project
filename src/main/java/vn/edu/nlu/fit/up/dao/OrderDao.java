@@ -86,4 +86,53 @@ public class OrderDao extends BaseDao {
                         .one()
         );
     }
+    public int insert(int userId, double total) {
+
+        String sql = """
+        INSERT INTO orders (user_id, order_date, status, total)
+        VALUES (:userId, NOW(), 'pending', :total)
+    """;
+
+        return get().withHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("userId", userId)
+                        .bind("total", total)
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+    public List<Order> getOrdersByUser(int userId) {
+        String sql = """
+             SELECT o.id,
+             SUM(oi.price * oi.quantity) AS totalAmount,
+             o.status
+             FROM orders o
+             JOIN order_details oi ON o.id = oi.order_id
+             WHERE o.user_id =:userId
+             GROUP BY o.id;
+            """;
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("userId", userId)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+    public List<Order> getOrdersByUserAndStatus(int userId, String status) {
+        String sql = """
+        SELECT * FROM orders
+        WHERE user_id = :userId AND status = :status
+        ORDER BY order_date DESC
+    """;
+
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("userId", userId)
+                        .bind("status", status)
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
+
 }
