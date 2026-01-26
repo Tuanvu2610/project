@@ -20,12 +20,29 @@
 <!-- HEADER -->
 <jsp:include page="/common/header.jsp"/>
 
-<!-- ===== BANNER ===== -->
-<section class="news-banner">
-    <img src="https://gomsubattrang.com/Images/SanPham/sqp-bo-am-men-ran-bit-dong.jpg"
-         alt="Tin tức Gốm Sứ">
-    <div class="news-banner-text">
-        <h1>Tin tức Gốm Sứ</h1>
+<!-- HERO BANNER -->
+<section class="hero-banner">
+    <img
+            src="https://images.unsplash.com/photo-1765808270869-855ab9b7f5c4?auto=format&fit=crop&w=1600&q=80"
+            alt="Tin tức Gốm Sứ"
+            class="hero-bg"
+    >
+
+    <div class="hero-overlay"></div>
+
+    <!-- PHẢI NẰM TRONG -->
+    <div class="hero-content">
+        <div class="hero-inner">
+            <span class="hero-badge">Tin tức mới nhất</span>
+            <h1 class="hero-title">
+                Tin tức<br>
+                <span>Gốm Sứ</span>
+            </h1>
+            <p class="hero-desc">
+                Khám phá thế giới nghệ thuật gốm sứ truyền thống và hiện đại,
+                từ kỹ thuật chế tác đến xu hướng thiết kế mới nhất
+            </p>
+        </div>
     </div>
 </section>
 

@@ -18,72 +18,40 @@
 <jsp:include page="/common/header.jsp"/>
 <!-- content -->
 <section class="content">
-    <div class="cover-outstanding cursor">
-        <p>Sản phẩm đang giảm giá</p>
-        <div class="slider">
-            <div id="outstanding-product-list" class="product-list">
+    <div class="cover-outstanding">
 
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/374/750/products/z5938234770383-a781d1083307605ce07327ca1e0df85e.jpg?v=1729668224600" class="product-img">
-                            <div class="quick-view">Xem chi tiết</div>
-                        </div>
-                        <h3 class="product-name padding style-name">Bình hút lộc thuận buồm xuôi gió</h3>
-                        <p class="price-origin padding">800.000đ</p>
-                        <p class="product-price padding">600.000đ</p>
-                    </div>
-                </a>
+        <p class="outstanding-title">Sản phẩm đang giảm giá</p>
 
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="https://decopro.vn/wp-content/uploads/2019/10/Bo-am-tra-gom-chu-dau-ve-vang-750ml-View4.jpg" class="product-img">
-                            <div class="quick-view">Xem chi tiết</div>
-                        </div>
-                        <h3 class="product-name padding style-name">Bộ ấm chén gốm Chu Đậu vẽ vàng Quê Hương</h3>
-                        <p class="price-origin padding">3.000.000đ</p>
-                        <p class="product-price padding">2.200.000đ</p>
-                    </div>
-                </a>
+        <div class="slider-wrapper">
 
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="https://decopro.vn/wp-content/uploads/2018/04/Binh-gom-song-vang-decor-view1.jpg" class="product-img">
-                            <div class="quick-view">Xem chi tiết</div>
-                        </div>
-                        <h3 class="product-name padding style-name">Bình Gốm Sứ Decor Sóng Vàng</h3>
-                        <p class="price-origin padding">1.800.000đ</p>
-                        <p class="product-price padding">1.600.000đ</p>
-                    </div>
-                </a>
+            <!-- MŨI TÊN TRÁI -->
+            <button class="nav-btn left" onclick="slideLeft()">&#10094;</button>
 
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="https://cdn.hstatic.net/products/200000532849/avatar_8ad52fde5ccf405592371c99981408cb.png?v=1763636269158" class="product-img">
-                            <div class="quick-view">Xem chi tiết</div>
-                        </div>
-                        <h3 class="product-name padding style-name">Tô trái cây Khổng Tước - Trang trí vàng</h3>
-                        <p class="price-origin padding">8.400.000đ</p>
-                        <p class="product-price padding">8.240.000đ</p>
-                    </div>
-                </a>
-
-                <a href="ctsp.jsp">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="https://gomsuhcm.com/wp-content/uploads/2020/10/luc-binh-men-ran-cong-dao-160-cm.jpg" class="product-img">
-                            <div class="quick-view">Xem chi tiết</div>
-                        </div>
-                        <h3 class="product-name padding style-name">Lục bình Men Rạn Công Đào 160cm Bát Tràng</h3>
-                        <p class="price-origin padding">45.500.000đ</p>
-                        <p class="product-price padding">45.000.000đ</p>
-                    </div>
-                </a>
-
+            <!-- SLIDER -->
+            <div class="slider">
+                <div id="outstanding-product-list" class="product-list">
+                    <c:forEach items="${discountProducts}" var="p">
+                        <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                            <div class="product-card">
+                                <div class="product-img-wrapper">
+                                    <img src="${p.img}" class="product-img">
+                                </div>
+                                <h3 class="product-name">${p.name}</h3>
+                                <p class="price-origin">
+                                    <fmt:formatNumber value="${p.price_origin}" type="number"/>đ
+                                </p>
+                                <p class="product-price">
+                                    <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
+                                </p>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
             </div>
+
+            <!-- MŨI TÊN PHẢI -->
+            <button class="nav-btn right" onclick="slideRight()">&#10095;</button>
+
         </div>
     </div>
 </section>
@@ -273,5 +241,32 @@
 
 <!--footer-->
 <jsp:include page="/common/footer.jsp"/>
+
+<script>
+    const slider = document.getElementById("outstanding-product-list");
+    let currentIndex = 0;
+    const visibleCards = 5;
+
+    function slideRight() {
+        const totalCards = slider.children.length;
+        if (currentIndex < totalCards - visibleCards) {
+            currentIndex++;
+            updateSlider();
+        }
+    }
+
+    function slideLeft() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    }
+
+    function updateSlider() {
+        const cardWidth = slider.children[0].offsetWidth + 20;
+        slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+</script>
+
 </body>
 </html>

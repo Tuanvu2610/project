@@ -24,6 +24,8 @@ public class ProductTrangTriController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Product> discountProducts = productService.discountList();
+        request.setAttribute("discountProducts", discountProducts);
 
         // ===== GỐM TRANG TRÍ (category con) =====
         List<Product> listBinh       = productService.getByCategory(10); // Bình gốm

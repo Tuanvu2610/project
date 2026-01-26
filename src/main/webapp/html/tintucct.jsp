@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -39,9 +40,7 @@
         }
 
         .news-content {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #333;
+            white-space: pre-line;
         }
 
         .back-btn {
@@ -65,27 +64,21 @@
 
 <div class="news-detail">
 
-    <!-- TIÊU ĐỀ -->
     <h1>${news.title}</h1>
 
-    <!-- THỜI GIAN -->
     <div class="news-meta">
         <fmt:formatDate value="${news.publishedAt}" pattern="dd/MM/yyyy HH:mm"/>
     </div>
 
-    <!-- HÌNH ẢNH -->
     <c:if test="${not empty news.img}">
         <img src="${news.img}" alt="${news.title}">
     </c:if>
 
-    <!-- NỘI DUNG -->
     <div class="news-content">
-        ${news.content}
+        <c:out value="${news.content}" escapeXml="false"/>
     </div>
 
-    <!-- QUAY LẠI -->
-    <a class="back-btn"
-       href="${pageContext.request.contextPath}/tintuc">
+    <a class="back-btn" href="${pageContext.request.contextPath}/tintuc">
         ← Quay lại trang tin tức
     </a>
 
