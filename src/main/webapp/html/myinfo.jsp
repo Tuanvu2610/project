@@ -20,8 +20,8 @@
             <div class="info-avatar">
                 <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
                 <div class="name">
-                    <p>${sessionScope.auth.name}</p>
-                    <p>${sessionScope.auth.phone}</p>
+                    <p>${sessionScope.auth.user.name}</p>
+                    <p>${sessionScope.auth.user.phone}</p>
                 </div>
             </div>
             <ul class="nav-links">
@@ -45,26 +45,26 @@
                         </div>
                         <div class="cover-name style-lable">
                             <label>Tên: </label>
-                            <input type="text" class="style-input" name="name" id="" value="${sessionScope.auth.name}">
+                            <input type="text" class="style-input" name="name" id="" value="${sessionScope.auth.user.name}">
                         </div>
                         <div class="cover-email style-lable">
                             <label>Email: </label>
-                            <input type="text" class="style-input" name="email" id="" value="${sessionScope.auth.email}">
+                            <input type="text" class="style-input" name="email" id="" value="${sessionScope.auth.user.email}">
                         </div>
                         <div class="cover-phone style-lable">
                             <label>Phone: </label>
-                            <input type="text" class="style-phone" name="phone" id="" value="${sessionScope.auth.phone}">
+                            <input type="text" class="style-phone" name="phone" id="" value="${sessionScope.auth.user.phone}">
                         </div>
                         <div class="cover-phone style-lable">
                             <label>Giới tính: </label>
                             <div class="cover-sex">
                                 <div>
                                     <label> Nam</label>
-                                    <input type="radio" class="style-radio" name="sex" value="Male"${sessionScope.auth.sex == "Male" ? "checked" : ""}>
+                                    <input type="radio" class="style-radio" name="sex" value="Male"${sessionScope.auth.user.sex == "Male" ? "checked" : ""}>
                                 </div>
                                 <div>
                                     <label> Nu</label>
-                                    <input type="radio" class="style-radio" name="sex" value="Female"${sessionScope.auth.sex == "Female" ? "checked" : ""}>
+                                    <input type="radio" class="style-radio" name="sex" value="Female"${sessionScope.auth.user.sex == "Female" ? "checked" : ""}>
                                 </div>
                             </div>
                         </div>

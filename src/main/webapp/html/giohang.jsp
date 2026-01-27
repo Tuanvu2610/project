@@ -83,65 +83,6 @@
         </aside>
     </div>
 </form>
-
-
-<!-- recomment -->
-<%--<div class="recommend-wrapper">--%>
-<%--            <h2 class="recommet-title">Có thể bạn sẽ để tâm</h2>--%>
-<%--        <div class="recomment">--%>
-<%--                <div class="product-card">--%>
-<%--            <img src="https://battrangceramica.com.vn/wp-content/uploads/2016/06/tranh-bo.jpg" alt="">--%>
-<%--            <p class="title">Bộ tranh gốm sứ</p>--%>
-<%--            <p class="prices">2.500.000đ</p>--%>
-<%--                 </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQhnip1WooKhcdmngGuMhIWuilUIoGqopmrLFFjhhDnu1b41MlK2ZrFg1ywGa4eUosLbyKnOvrr5KGH4ahO3KqUt5zTc_5Ej5fqT0GrEho0&usqp=CAc" alt="">--%>
-<%--            <p class="title">Chum Sành Trống đồng Liên Hoa Ngũ Đồ 100 lít</p>--%>
-<%--            <p class="prices">19.500.000đ</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ5OlQMV0A2LbQDiI0hp1RrZw6ddK7DHSwV9JGK_1ldlYb9O5-RXPv5thj1bw5jgu3nWxL58lR113N4GUWif2AGFFWnUchNOGrYk5olJ6I3OfxlKccgeyXV&usqp=CAc" alt="">--%>
-<%--            <p class="title">Tượng Võ Thần Tài Quan Vũ - Quan Vân Trường</p>--%>
-<%--            <p class="prices">4.500.000đ</p>--%>
-<%--                </div>--%>
-<%--                <div class="product-card">--%>
-<%--            <img src="https://battrangceramica.com.vn/wp-content/uploads/2016/06/tranh-bo.jpg" alt="">--%>
-<%--            <p class="title">Bộ tranh gốm sứ</p>--%>
-<%--            <p class="prices">2.500.000đ</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQhnip1WooKhcdmngGuMhIWuilUIoGqopmrLFFjhhDnu1b41MlK2ZrFg1ywGa4eUosLbyKnOvrr5KGH4ahO3KqUt5zTc_5Ej5fqT0GrEho0&usqp=CAc" alt="">--%>
-<%--            <p class="title">Chum Sành Trống đồng Liên Hoa Ngũ Đồ 100 lít</p>--%>
-<%--            <p class="prices">19.500.000đ</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ5OlQMV0A2LbQDiI0hp1RrZw6ddK7DHSwV9JGK_1ldlYb9O5-RXPv5thj1bw5jgu3nWxL58lR113N4GUWif2AGFFWnUchNOGrYk5olJ6I3OfxlKccgeyXV&usqp=CAc" alt="">--%>
-<%--            <p class="title">Tượng Võ Thần Tài Quan Vũ - Quan Vân Trường</p>--%>
-<%--            <p class="prices">4.500.000đ</p>--%>
-<%--                </div>--%>
-<%--                <div class="product-card">--%>
-<%--            <img src="https://battrangceramica.com.vn/wp-content/uploads/2016/06/tranh-bo.jpg" alt="">--%>
-<%--            <p class="title">Bộ tranh gốm sứ</p>--%>
-<%--            <p class="prices">2.500.000đ</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQhnip1WooKhcdmngGuMhIWuilUIoGqopmrLFFjhhDnu1b41MlK2ZrFg1ywGa4eUosLbyKnOvrr5KGH4ahO3KqUt5zTc_5Ej5fqT0GrEho0&usqp=CAc" alt="">--%>
-<%--            <p class="title">Chum Sành Trống đồng Liên Hoa Ngũ Đồ 100 lít</p>--%>
-<%--            <p class="prices">19.500.000đ</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-card">--%>
-<%--            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ5OlQMV0A2LbQDiI0hp1RrZw6ddK7DHSwV9JGK_1ldlYb9O5-RXPv5thj1bw5jgu3nWxL58lR113N4GUWif2AGFFWnUchNOGrYk5olJ6I3OfxlKccgeyXV&usqp=CAc" alt="">--%>
-<%--            <p class="title">Tượng Võ Thần Tài Quan Vũ - Quan Vân Trường</p>--%>
-<%--            <p class="prices">4.500.000đ</p>--%>
-<%--                </div>--%>
-<%--        </div>--%>
-<%--</div>--%>
 <!--footer-->
 <jsp:include page="/common/footer.jsp"/>
 </body>

@@ -61,7 +61,7 @@
 </head>
 
 <body>
-
+<jsp:include page="/header"/>
 <div class="news-detail">
 
     <h1>${news.title}</h1>
@@ -83,6 +83,7 @@
     </a>
 
 </div>
+<jsp:include page="/common/footer.jsp"/>
 
 </body>
 </html>

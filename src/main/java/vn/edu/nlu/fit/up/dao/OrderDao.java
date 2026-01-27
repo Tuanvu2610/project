@@ -1,6 +1,7 @@
 package vn.edu.nlu.fit.up.dao;
 
 import vn.edu.nlu.fit.up.model.Order;
+import vn.edu.nlu.fit.up.model.OrderItem;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class OrderDao extends BaseDao {
                    o.total,
                    COALESCE(SUM(oi.quantity), 0) AS total_quantity
             FROM orders o
-            LEFT JOIN order_items oi ON o.id = oi.order_id
+            LEFT JOIN order_details oi ON o.id = oi.order_id
             WHERE o.status = :status
             GROUP BY o.id, o.user_id, o.order_date, o.status, o.total
             ORDER BY o.order_date DESC
@@ -63,7 +64,7 @@ public class OrderDao extends BaseDao {
                    o.total,
                    COALESCE(SUM(oi.quantity), 0) AS total_quantity
             FROM orders o
-            LEFT JOIN order_items oi ON o.id = oi.order_id
+            LEFT JOIN order_details oi ON o.id = oi.order_id
             WHERE o.id = :id
             GROUP BY o.id, o.user_id, o.order_date, o.status, o.total
         """;
@@ -105,7 +106,7 @@ public class OrderDao extends BaseDao {
     public List<Order> getOrdersByUser(int userId) {
         String sql = """
              SELECT o.id,
-             SUM(oi.price * oi.quantity) AS totalAmount,
+             SUM(oi.price * oi.quantity) AS total,
              o.status
              FROM orders o
              JOIN order_details oi ON o.id = oi.order_id
@@ -125,7 +126,6 @@ public class OrderDao extends BaseDao {
         WHERE user_id = :userId AND status = :status
         ORDER BY order_date DESC
     """;
-
         return get().withHandle(h ->
                 h.createQuery(sql)
                         .bind("userId", userId)
@@ -134,5 +134,6 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+
 
 }

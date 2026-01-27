@@ -8,7 +8,7 @@ public class News {
     private String title;
     private String img;
     private String content;
-    private int authorId;
+    private String author;
     private Timestamp publishedAt;
 
     public int getId() {
@@ -39,11 +39,12 @@ public class News {
         this.content = content;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public String getAuthor() {
+        return author;
     }
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Timestamp getPublishedAt() {

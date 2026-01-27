@@ -11,6 +11,7 @@ import vn.edu.nlu.fit.up.dao.OrderDao;
 import vn.edu.nlu.fit.up.dao.OrderItemDao;
 import vn.edu.nlu.fit.up.model.Account;
 import vn.edu.nlu.fit.up.model.Order;
+import vn.edu.nlu.fit.up.model.OrderItem;
 import vn.edu.nlu.fit.up.model.User;
 
 import java.io.IOException;
@@ -42,12 +43,12 @@ public class TrangThaiDonController extends HttpServlet {
             return;
         }
         String status = request.getParameter("status");
-        OrderDao orderDao = new OrderDao();
-        List<Order> orders;
+        OrderItemDao orderDao = new OrderItemDao();
+        List<OrderItem> orders;
         if (status == null || status.equals("all")) {
-            orders = orderDao.getOrdersByUser(user.getId());
+            orders = orderDao.getProductByUserId(user.getId());
         } else {
-            orders = orderDao.getOrdersByUserAndStatus(user.getId(), status);
+            orders = orderDao.getProductByuserIdAndStatus(user.getId(), status);
         }
         request.setAttribute("orders", orders);
         request.setAttribute("currentStatus", status);
