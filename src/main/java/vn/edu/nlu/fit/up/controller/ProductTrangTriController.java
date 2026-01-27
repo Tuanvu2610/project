@@ -11,49 +11,39 @@ import vn.edu.nlu.fit.up.service.ProductService;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/gomtrangtri")
+@WebServlet(name = "ProductTrangTriController", value = "/gom-trang-tri" )
 public class ProductTrangTriController extends HttpServlet {
-
-    private ProductService productService;
-
-    @Override
-    public void init() {
-        productService = new ProductService();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Product> discountProducts = productService.discountList();
+
+        ProductService ps = new ProductService();
+
+        List<Product> discountProducts = ps.discountList();
+
+        List<Product> listBinh       = ps.getByCategory(10);
+        List<Product> listLucBinh    = ps.getByCategory(11);
+        List<Product> listTuong      = ps.getByCategory(12);
+        List<Product> listTranh      = ps.getByCategory(13);
+        List<Product> listDia        = ps.getByCategory(14);
+        List<Product> listPhongThuy  = ps.getByCategory(15);
+        List<Product> listPhongKhach = ps.getByCategory(16);
+
         request.setAttribute("discountProducts", discountProducts);
-
-        // ===== GỐM TRANG TRÍ (category con) =====
-        List<Product> listBinh       = productService.getByCategory(10); // Bình gốm
-        List<Product> listLucBinh    = productService.getByCategory(11); // Lục bình
-        List<Product> listTuong      = productService.getByCategory(12); // Tượng gốm
-        List<Product> listTranh      = productService.getByCategory(13); // Tranh gốm
-        List<Product> listDia        = productService.getByCategory(14); // Đĩa trang trí
-        List<Product> listDen        = productService.getByCategory(15); // Đèn gốm
-        List<Product> listPhongThuy  = productService.getByCategory(16); // Gốm phong thủy
-        List<Product> listPhongKhach = productService.getByCategory(17); // Gốm trang trí phòng khách
-
-        // ===== setAttribute =====
         request.setAttribute("listBinh", listBinh);
         request.setAttribute("listLucBinh", listLucBinh);
         request.setAttribute("listTuong", listTuong);
         request.setAttribute("listTranh", listTranh);
         request.setAttribute("listDia", listDia);
-        request.setAttribute("listDen", listDen);
         request.setAttribute("listPhongThuy", listPhongThuy);
         request.setAttribute("listPhongKhach", listPhongKhach);
 
         request.getRequestDispatcher("/html/gomtrangtri.jsp")
                 .forward(request, response);
     }
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Chưa xử lý POST
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
