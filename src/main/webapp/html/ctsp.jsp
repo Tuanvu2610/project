@@ -118,7 +118,8 @@
         </div>
     </div>
 </section>
-<!--footer-->
-<jsp:include page="/common/header.jsp"/>
+<!-- footer -->
+<jsp:include page="/common/footer.jsp"/>
+<script src="js/javascript.js"></script>
 </body>
 </html>

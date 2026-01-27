@@ -56,6 +56,7 @@
                                     <span class="price-sale">
                                         <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
                                     </span>
+                                    <a href="AddCart?id=${p.id}&q=1"><i class="fas fa-shopping-cart btn-add-style"></i></a>
                                 </div>
                             </div>
                         </a>

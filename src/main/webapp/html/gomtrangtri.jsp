@@ -30,22 +30,23 @@
             <!-- SLIDER -->
             <div class="slider">
                 <div id="outstanding-product-list" class="product-list">
-                    <c:forEach items="${discountProducts}" var="p">
-                        <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                    <c:forEach items="${discountProducts}" var="p" begin="0" end="3">
+                        <a href="chitietsanpham?id=${p.id}">
                             <div class="product-card">
                                 <div class="product-img-wrapper">
                                     <img src="${p.img}" alt="${p.name}">
                                 </div>
 
                                 <h3 class="style-name">${p.name}</h3>
-
-                                <p class="price-origin">
-                                    <fmt:formatNumber value="${p.price_origin}" type="number"/>đ
-                                </p>
-
-                                <p class="product-price">
-                                    <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                                </p>
+                                <div class="product-price">
+                                <span class="price-origin ">
+                                    <fmt:formatNumber value="${p.price_origin}" groupingUsed="true"/>₫
+                                </span>
+                                    <span class="price-sale">
+                                    <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                                    <a href="AddCart?id=${p.id}&q=1"><i class="fas fa-shopping-cart btn-add-style"></i></a>
+                                </div>
                             </div>
                         </a>
                     </c:forEach>
@@ -65,8 +66,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listBinh}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -74,10 +75,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -95,8 +97,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listLucBinh}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -104,10 +106,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -128,8 +131,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listTuong}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -137,10 +140,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -161,8 +165,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listTranh}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -170,10 +174,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -194,8 +199,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listDia}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -203,10 +208,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -227,8 +233,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listPhongThuy}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -236,10 +242,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -260,8 +267,8 @@
     <div class="cover-product">
         <div class="product-list">
             <c:forEach var="p" items="${listPhongKhach}" varStatus="st">
-                <c:if test="${st.count <= 5}">
-                    <a href="${pageContext.request.contextPath}/ctsp.jsp?id=${p.id}">
+                <c:if test="${st.count <= 4}">
+                    <a href="chitietsanpham?id=${p.id}">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="${p.img}" alt="${p.name}">
@@ -269,10 +276,11 @@
                             </div>
 
                             <h3 class="style-name">${p.name}</h3>
-
-                            <p class="product-price">
-                                <fmt:formatNumber value="${p.price_sale}" type="number"/>đ
-                            </p>
+                            <div class="product-price">
+                                <span class="price-sale">
+                                <fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/>₫
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </c:if>
@@ -311,7 +319,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listBinh}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="">
                         <h3 class="style-name">${p.name}</h3>
@@ -357,7 +365,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listLucBinh}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
@@ -402,7 +410,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listTuong}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
@@ -448,7 +456,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listTranh}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
@@ -494,7 +502,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listDia}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
@@ -542,7 +550,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listPhongThuy}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
@@ -589,7 +597,7 @@
     <div class="cover-all-product-item full-width">
         <div class="cover-product-item full-width-grid">
             <c:forEach var="p" items="${listPhongKhach}">
-                <a href="ctsp.jsp?id=${p.id}">
+                <a href="chitietsanpham?id=${p.id}">
                     <div class="product-card-item">
                         <img src="${p.img}" alt="${p.name}">
                         <h3 class="style-name">${p.name}</h3>
