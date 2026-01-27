@@ -16,7 +16,7 @@ public class OrderItemDao extends BaseDao {
                 oi.quantity,
                 oi.price,
                 p.name AS product_name
-            FROM order_items oi
+            FROM order_details oi
             JOIN products p ON oi.product_id = p.id
             WHERE oi.order_id = :orderId
         """;
@@ -53,4 +53,41 @@ public class OrderItemDao extends BaseDao {
                         .execute()
         );
     }
+    public List<OrderItem> getProductByuserIdAndStatus(int userId, String status) {
+        String sql = """
+         SELECT od.id, od.order_id as orderId, od.product_id as productId,
+          od.quantity, od.price , p.name as productName, p.img, o.status
+                FROM order_details od
+                JOIN products p on p.id = od.product_id
+                JOIN orders o on o.id = od.order_id
+                Where o.user_id = :userId And o.status = :status
+                order by order_id desc
+        """;
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("userId", userId)
+                        .bind("status", status)
+                        .mapToBean(OrderItem.class)
+                        .list()
+        );
+    }
+    public List<OrderItem> getProductByUserId(int userId) {
+        String sql = """
+         SELECT od.id, od.order_id as orderId, od.product_id as productId,
+          od.quantity, od.price , p.name as productName, p.img, o.status
+                FROM order_details od
+                JOIN products p on p.id = od.product_id
+                JOIN orders o on o.id = od.order_id
+                Where o.user_id = :userId
+                order by order_id desc
+        """;
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("userId", userId)
+                        .mapToBean(OrderItem.class)
+                        .list()
+        );
+    }
+
+
 }

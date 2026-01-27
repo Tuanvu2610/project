@@ -22,12 +22,8 @@ public class AccountDetailController extends HttpServlet {
 
         try {
             String idRaw = request.getParameter("id");
-            System.out.println(">>> account-detail id = " + idRaw);
-
             int id = Integer.parseInt(idRaw);
-
             AccountDao ad = new AccountDao();
-            System.out.println("ID nhận được = " + id);
             Account acc = ad.getAccountByUserId(id);
 
             if (acc == null || acc.getUser() == null) {

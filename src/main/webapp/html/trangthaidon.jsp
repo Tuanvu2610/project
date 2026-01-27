@@ -12,7 +12,7 @@
 </head>
 <body>
 <!--header-->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 <!---->
 <section class="page-body">
     <div class="container-page">
@@ -20,8 +20,8 @@
             <div class="info-avatar">
                 <img src="https://www.svgrepo.com/show/535711/user.svg" alt="">
                 <div class="name">
-                    <p>Nguyen Van A</p>
-                    <p>0342104524</p>
+                    <p>${sessionScope.auth.user.name}</p>
+                    <p>${sessionScope.auth.user.phone}</p>
                 </div>
             </div>
             <ul class="nav-links">
@@ -50,7 +50,10 @@
                         <thead class="title-table">
                         <tr>
                             <th>Mã đơn</th>
+                            <th class="text-left">Tên đơn hàng</th>
+                            <th class="text-left">Sản phẩm</th>
                             <th class="text-left">Tên sản phẩm</th>
+                            <th class="text-left">Số lượng</th>
                             <th class="text-right">Tổng tiền</th>
                             <th class="text-center">Trạng thái</th>
                         </tr>
@@ -59,9 +62,12 @@
                         <c:forEach items="${orders}" var="o">
                             <tr>
                                 <td class="code">#${o.id}</td>
-                                <td class="name-pro">Đơn hàng #${o.id}</td>
+                                <td class="name-pro">Đơn hàng #${o.orderId}</td>
+                                <td class="img"><img src="${o.img}" alt=""></td>
+                                <td class="name-pro">${o.productName}</td>
+                                <td class="name-pro">x${o.quantity}</td>
                                 <td class="price text-right">
-                                    <fmt:formatNumber value="${o.totalAmount}" groupingUsed="true"/>₫
+                                    <fmt:formatNumber value="${o.price}" groupingUsed="true"/>₫
                                 </td>
                                 <td class="text-center">
                                 <span class="status ${o.status}">

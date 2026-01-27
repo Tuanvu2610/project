@@ -63,8 +63,6 @@
                 <input type="text" class="quantity-input" value="1">
                 <button type="button" class="btn-increase">&plus;</button>
             </div>
-
-
             <div class="action-buttons">
                 <a href="AddCart?id=${p.id}&q=1">
                 <button class="btn-add-cart">

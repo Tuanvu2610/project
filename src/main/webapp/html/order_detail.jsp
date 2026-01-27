@@ -13,7 +13,64 @@
             margin: 0;
             padding: 20px;
         }
+        .container{
+            display:flex;
+            min-height:100vh;
+        }
 
+        /* ===== SIDEBAR ===== */
+        .sidebar{
+            width:25%;
+            background:#0d8e02c7;
+            color:#fff;
+            padding:20px 0;
+        }
+
+        .title{
+            text-align:center;
+            padding-bottom:20px;
+            border-bottom:1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-links{
+            list-style:none;
+            padding:15px;
+        }
+
+        .nav-links a{
+            display:flex;
+            gap:10px;
+            padding:16px 18px;
+            color:#fff;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover{
+            background:rgba(255,255,255,0.15);
+        }
+
+        .content-wrapper{
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            box-shadow:0 8px 24px rgba(0,0,0,.06);
+        }
+
+        .content{
+            flex:1;
+            padding:25px;
+        }
+
+        /* TITLE */
+        .head-title h1{
+            font-size:26px;
+            margin-bottom:20px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
         .order-container {
             max-width: 900px;
             margin: auto;
@@ -23,7 +80,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        h2 {
+        .content h2 {
             margin-top: 0;
             color: #2c3e50;
             border-bottom: 2px solid #eee;
@@ -87,51 +144,70 @@
 </head>
 
 <body>
-
-<div class="order-container">
-
-    <h2>Chi tiết đơn hàng #${order.id}</h2>
-
-    <div class="order-info">
-        <p><b>Người dùng ID:</b> ${order.userId}</p>
-        <p><b>Ngày đặt:</b>
-            <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy"/>
-        </p>
-        <p><b>Trạng thái:</b> ${order.status}</p>
+<!--header-->
+<jsp:include page="/header"/>
+<!-- content -->
+<div class="container">
+    <div class="sidebar">
+        <div class="title">
+            <h2><span>ADMIN CONTROL</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/quan-ly-account"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="/thong-ke"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="/kho"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+            <li><a href="#" class="active"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
+            <li><a href="/haumai"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
+        </ul>
     </div>
 
-    <table>
-        <tr>
-            <th>Sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Giá</th>
-            <th>Thành tiền</th>
-        </tr>
+    <div class="content">
+            <div class="order-container">
 
-        <c:forEach var="i" items="${items}">
-            <tr>
-                <td>${i.productName}</td>
-                <td>${i.quantity}</td>
-                <td>
-                    <fmt:formatNumber value="${i.price}" type="number"/> đ
-                </td>
-                <td>
-                    <fmt:formatNumber value="${i.quantity * i.price}" type="number"/> đ
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+                <h2>Chi tiết đơn hàng #${order.id}</h2>
 
-    <div class="total">
-        Tổng tiền:
-        <fmt:formatNumber value="${order.total}" type="number"/> đ
+                <div class="order-info">
+                    <p><b>Người dùng ID:</b> ${order.userId}</p>
+                    <p><b>Ngày đặt:</b>
+                        <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy"/>
+                    </p>
+                    <p><b>Trạng thái:</b> ${order.status}</p>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+
+                    <c:forEach var="i" items="${items}">
+                        <tr>
+                            <td>${i.productName}</td>
+                            <td>${i.quantity}</td>
+                            <td>
+                                <fmt:formatNumber value="${i.price}" type="number"/> đ
+                            </td>
+                            <td>
+                                <fmt:formatNumber value="${i.quantity * i.price}" type="number"/> đ
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+                <div class="total">
+                    Tổng tiền:
+                    <fmt:formatNumber value="${order.total}" type="number"/> đ
+                </div>
+
+                <a class="back-link" href="${pageContext.request.contextPath}/donhang">
+                    ← Quay lại danh sách đơn hàng
+                </a>
+
+            </div>
     </div>
-
-    <a class="back-link" href="${pageContext.request.contextPath}/donhang">
-        ← Quay lại danh sách đơn hàng
-    </a>
-
 </div>
-
+<jsp:include page="/common/footer.jsp"/>
 </body>
 </html>

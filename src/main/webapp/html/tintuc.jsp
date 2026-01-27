@@ -18,7 +18,7 @@
 <body>
 
 <!-- HEADER -->
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 
 <!-- HERO BANNER -->
 <section class="hero-banner">

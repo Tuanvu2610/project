@@ -6,7 +6,7 @@ body {
 
 .hero-banner {
     position: relative;
-    width: 100vw;
+    width: calc(100vw - 10px);
     height: 380px;
     margin-left: calc(-50vw + 50%);
     overflow: hidden;

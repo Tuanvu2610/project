@@ -30,7 +30,8 @@ public class MyInfoController extends HttpServlet {
             response.sendRedirect("login");
             return;
         }
-        User user = (User) session.getAttribute("auth");
+        Account account = (Account) session.getAttribute("auth");
+        User user = account.getUser();
         int userid = user.getId();
         user.setName(request.getParameter("name"));
         user.setEmail(request.getParameter("email"));
