@@ -14,7 +14,7 @@ public class NewsDao extends BaseDao {
                 title,
                 img,
                 content,
-                author_id,
+                author,
                 published_at
             FROM news
             ORDER BY published_at DESC
@@ -29,7 +29,7 @@ public class NewsDao extends BaseDao {
                             n.setTitle(rs.getString("title"));
                             n.setImg(rs.getString("img"));
                             n.setContent(rs.getString("content"));
-                            n.setAuthorId(rs.getInt("author_id"));
+                            n.setAuthor(rs.getString("author"));
                             n.setPublishedAt(rs.getTimestamp("published_at"));
 
                             return n;
@@ -46,7 +46,7 @@ public class NewsDao extends BaseDao {
                 title,
                 img,
                 content,
-                author_id,
+                author,
                 published_at
             FROM news
             WHERE id = :id
@@ -62,7 +62,7 @@ public class NewsDao extends BaseDao {
                             n.setTitle(rs.getString("title"));
                             n.setImg(rs.getString("img"));
                             n.setContent(rs.getString("content"));
-                            n.setAuthorId(rs.getInt("author_id"));
+                            n.setAuthor(rs.getString("author"));
                             n.setPublishedAt(rs.getTimestamp("published_at"));
 
                             return n;

@@ -177,7 +177,7 @@
 
 <body>
 
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="/header"/>
 
 <div class="container">
 
@@ -185,11 +185,11 @@
     <div class="sidebar">
         <div class="title"><h2>ADMIN CONTROL</h2></div>
         <ul class="nav-links">
-            <li><a href="quanlyaccount.jsp"><i class="fas fa-users"></i> Quản lý User</a></li>
-            <li><a href="thongke.jsp"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
-            <li><a href="kho.jsp"><i class="fas fa-house-user"></i> Kho</a></li>
-            <li><a href="donhang.jsp"><i class="fas fa-receipt"></i> Đơn hàng</a></li>
-            <li><a class="active"><i class="fas fa-headset"></i> Hậu mãi</a></li>
+            <li><a href="/quan-ly-account"><i class="fas fa-users"></i> <span>Quản lý User</span></a></li>
+            <li><a href="/thong-ke"><i class="fas fa-chart-bar"></i> <span>Thống kê</span></a></li>
+            <li><a href="/kho"><i class="fas fa-house-user"></i> <span>Kho</span></a></li>
+            <li><a href="/donhang"><i class="fas fa-receipt"></i> <span>Đơn hàng</span></a> </li>
+            <li><a href="#" class="active"><i class="fas fa-headset"></i> <span>Hậu mãi</span></a> </li>
         </ul>
     </div>
 

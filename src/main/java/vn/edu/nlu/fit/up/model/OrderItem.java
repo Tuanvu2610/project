@@ -8,6 +8,9 @@ public class OrderItem {
     private String productName;
     private int quantity;
     private double price;
+    private String img;
+    private String status;
+
 
     public OrderItem() {}
 
@@ -57,5 +60,21 @@ public class OrderItem {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
